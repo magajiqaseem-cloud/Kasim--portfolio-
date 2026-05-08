@@ -26,7 +26,46 @@ color:#fff;
 line-height:1.8;
 overflow-x:hidden;
 }
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
 
+.nav-container{
+    max-width:1200px;
+    margin:auto;
+    padding:18px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#ffd700;
+    font-size:24px;
+    font-weight:800;
+}
+
+nav{
+    display:flex;
+    gap:24px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    font-weight:600;
+    transition:0.3s ease;
+}
+
+nav a:hover{
+    color:#ffd700;
+}
 .container{
 width:100%;
 max-width:1200px;

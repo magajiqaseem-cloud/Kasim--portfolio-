@@ -1,4 +1,4 @@
-j<!DOCTYPE html>
+8j<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -51,15 +51,21 @@ font-size:17px;
 padding:0;
 }
 
-.hero-image img{
-width:100%;
-height:520px;
-object-fit:cover;
-display:block;
+.hero-image{
+display:flex;
+justify-content:center;
+padding-top:40px;
+background:black;
 }
 
-.hero-content{
-padding:50px 24px 80px;
+.hero-image img{
+width:260px;
+height:260px;
+border-radius:50%;
+object-fit:cover;
+border:6px solid #ffd700;
+box-shadow:0 0 35px rgba(255,215,0,0.6);
+display:block;
 }
 
 .hero h1{
@@ -238,15 +244,6 @@ text-align:center;
 border-top:1px solid #222;
 }
 
-@media(max-width:768px){
-.hero-image img{
-height:420px;
-}
-
-.hero h1{
-font-size:42px;
-}
-
 .hero h2{
 font-size:24px;
 }
@@ -275,23 +272,6 @@ text-align:center;
 </div>
 
 <div class="container hero-content">
-
-.hero.hero-image{
-display:flex;
-justify-content:center;
-padding-top:40px;
-background:black;
-}
-
-.hero-image img{
-width:260px;
-height:260px;
-border-radius:50%;
-object-fit:cover;
-border:6px solid #ffd700;
-box-shadow:0 0 35px rgba(255,215,0,0.6);
-display:block;
-}
   
 <div class="container hero-content">
 <h1>Kasim M.</h1>

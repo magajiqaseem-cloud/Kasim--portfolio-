@@ -271,17 +271,24 @@ border-radius:24px;
 margin-top:50px;
 }
 
-form input,
-form textarea{
-width:100%;
-padding:18px;
-margin-bottom:18px;
-background:#000;
-border:1px solid #333;
-border-radius:14px;
-color:#fff;
-font-size:16px;
+form button{
+    background:#ffd700;
+    color:#000;
+    padding:18px 40px;
+    border:none;
+    border-radius:18px;
+    font-size:20px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s ease;
+    box-shadow:0 0 25px rgba(255,215,0,0.4);
 }
+
+form button:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 40px rgba(255,215,0,0.9);
+}
+
 
 form button{
 background:#ffd700;

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Kasim Elite Digital Global</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJBX0CJWRC"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-GJBX0CJWRC');</script>
+</head>
+<body>
+    <header>
+        <h1>Our Professional Services</h1>
+        <nav>
+            <a href="index.html">Home</a> <a href="services.html">Services</a> <a href="portfolio.html">Portfolio</a> <a href="about.html">About</a> <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section class="service-item">
+            <h2>Empowering Your Digital Transformation</h2>
+            <h3>AI Education & Training</h3>
+            <p>Customized workshops and coaching for businesses integrating AI into their workflows.</p>
+            <h3>Entrepreneurship Strategy</h3>
+            <p>Consulting for tech startups to refine business models.</p>
+            <h3>Digital Content Creation</h3>
+            <p>High-impact, AI-enhanced content strategies.</p>
+        </section>
+    </main>
+</body>
+</html>

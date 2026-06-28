@@ -1,0 +1,8 @@
+<!-- Inside <main> -->
+<div class="content">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:magajiqaseem@gmail.com" style="color:var(--gold)">magajiqaseem@gmail.com</a></p>
+    <p>WhatsApp: 07080083489</p>
+    <p><a href="https://www.upwork.com/freelancers/~01edb4f1d95b1a9790">Upwork</a> | <a href="https://www.linkedin.com/in/kasim-magaji-ab66b9310">LinkedIn</a></p>
+</div>
+

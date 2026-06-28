@@ -1,0 +1,13 @@
+<!-- Inside <main> -->
+<div class="content">
+    <h2>My Services</h2>
+    <ul>
+        <li>Cinematic Video Editing</li>
+        <li>Graphic Design</li>
+        <li>Copywriting & Technical Writing</li>
+        <li>Prompt Engineering</li>
+        <li>Web Development</li>
+        <li>Digital Strategy</li>
+    </ul>
+</div>
+

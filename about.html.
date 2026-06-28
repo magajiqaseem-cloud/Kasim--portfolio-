@@ -1,0 +1,7 @@
+<!-- Inside <main> -->
+<div class="content">
+    <h2>About Me</h2>
+    <img src="530177.png" style="width:200px; border-radius:50%;">
+    <p>Creative Director & Technical Expert specialized in high-end digital branding.</p>
+</div>
+

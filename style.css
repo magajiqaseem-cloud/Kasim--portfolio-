@@ -1,8 +1,33 @@
-:root { --gold: #D4AF37; --dark: #0A0A0A; --light: #F4F4F4; }
-body { background-color: var(--dark); color: var(--light); font-family: 'Inter', sans-serif; margin: 0; line-height: 1.6; }
-.navbar { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gold); background: #000; }
-.nav-links a { color: var(--light); text-decoration: none; margin-left: 20px; font-weight: bold; }
-.footer { padding: 40px; text-align: center; border-top: 1px solid #333; background: #000; margin-top: 50px; }
-.btn { background: var(--gold); color: black; padding: 12px 25px; text-decoration: none; font-weight: bold; border-radius: 4px; }
-h1, h2 { color: var(--gold); text-transform: uppercase; }
-.content { padding: 50px 10%; }
+:root {
+    --gold: #D4AF37;
+    --dark: #0A0A0A;
+    --black: #000000;
+    --white: #FFFFFF;
+    --gray: #CCCCCC;
+}
+
+body {
+    background-color: var(--dark);
+    color: var(--white);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Branding */
+.gold-text { color: var(--gold); }
+.navbar { background: var(--black); padding: 1rem 5%; display: flex; justify-content: space-between; border-bottom: 2px solid var(--gold); }
+.footer { background: var(--black); padding: 3rem 5%; text-align: center; border-top: 1px solid #333; }
+
+/* Buttons */
+.btn-gold {
+    background: var(--gold);
+    color: var(--black);
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.btn-gold:hover { background: var(--white); }
+

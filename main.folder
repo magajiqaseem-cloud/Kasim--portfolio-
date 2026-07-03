@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kasim Elite Digital Global | Professional AI Solutions</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GJBX0CJWRC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || []; 
+        function gtag(){dataLayer.push(arguments);} 
+        gtag('js', new Date()); 
+        gtag('config', 'G-GJBX0CJWRC');
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Kasim Elite Digital Global</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section id="hero">
+            <h2>Elite AI-Driven Creative Solutions</h2>
+            <p>Transforming your digital presence with premium, AI-powered design and strategy.</p>
+        </section>
+    </main>
+</body>
+</html>
+

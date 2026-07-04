@@ -1,66 +1,33 @@
-body { background-color: #000; color: #FFD700; font-family: 'Arial', sans-serif; margin: 0; padding: 0; }
+body { background-color: #000; color: #F4F4F4; font-family: 'Arial', sans-serif; margin: 0; padding: 0; }
 header { background-color: #8B0000; padding: 20px; text-align: center; }
-nav a { color: #FFD700; margin: 0 10px; text-decoration: none; font-weight: bold; }
+nav a { color: #F4FEF4; margin: 0 10px; text-decoration: none; font-weight: bold; }
 .service-item, .case-study, .about-section, .contact-section { 
-    background-color: #1a1a1a; border: 1px solid #FFD700; padding: 20px; margin: 20px auto; border-radius: 8px; max-width: 800px; 
+    background-color: #1a1a1a; border: 1px solid #F4F4F4; padding: 20px; margin: 20px auto; border-radius: 8px; max-width: 800px; 
 }
 .case-study { border-left: 5px solid #8B0000; }
-h2, h3 { color: #FFD700; }
+h2, h3 { color: #F4F4F4; }
 p, ul { color: #fff; line-height: 1.6; }
-button { background-color: #8B0000; color: #FFD700; padding: 10px 20px; border: none; cursor: pointer; font-weight: bold; }
-.social-links a { color: #FFD700; text-decoration: underline; }
+button { background-color: #8B0000; color: #F4F4F4; padding: 10px 20px; border: none; cursor: pointer; font-weight: bold; }
+.social-links a { color: #F4F4F4; text-decoration: underline; }
 
-/* =p<!-- ===== PORTFOLIO SECTION START ===== -->
-<section id="portfolio">
-  
-  <div class="portfolio-header">
-    <h2>Global Portfolio</h2>
-    <p>Strategy. Design. Results.</p>
-  </div>
+/* ===== PORTFOLIO SECTION ===== */
+#portfolio { padding: 80px 10%; background: #000; }
 
-  <!-- ADD YOUR 15s VIDEO HERE -->
-  <video class="portfolio-video" autoplay muted loop playsinline>
-    <source src="assets/hero-reel.mp4" type="video/mp4">
-  </video>
+.portfolio-header { text-align: center; margin-bottom: 50px; }
+.portfolio-header h2 { color: #FFD700; font-size: 36px; text-transform: uppercase; }
+.portfolio-header p { color: #aaa; font-size: 18px; }
 
-  <div class="portfolio-grid">
+.portfolio-video { width: 100%; max-width: 900px; margin: 0 auto 50px; display: block; border: 2px solid #FFD700; border-radius: 12px; }
 
-    <!-- PROJECT 1 -->
-    <div class="portfolio-card">
-      <img src="assets/luxvelo-redesign.png" alt="LuxVelo Redesign">
-      <div class="portfolio-content">
-        <h3>LuxVelo Global Redesign</h3>
-        <p class="role"><strong>Role:</strong> Lead Product Designer + Conversion Architect</p>
-        <p class="desc">Redesigned international e-commerce stack. Result: 2x site speed. 0% cross-border checkout friction.</p>
-        <p class="outcome">Outcome: 2x Speed. 0% Friction.</p>
-      </div>
-    </div>
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
-    <!-- PROJECT 2 -->
-    <div class="portfolio-card">
-      <img src="assets/apex-dashboard.png" alt="Apex Dashboard">
-      <div class="portfolio-content">
-        <h3>Apex Digital Scale Automation</h3>
-        <p class="role"><strong>Role:</strong> Automation Systems Engineer</p>
-        <p class="desc">Deployed AI frameworks that saved 35+ ops hours weekly. Fully automated client onboarding.</p>
-        <p class="outcome">Outcome: 35+ Hours Saved Weekly.</p>
-      </div>
-    </div>
+.portfolio-card { background: #1a1a1a; border: 1px solid #FFD700; border-radius: 10px; overflow: hidden; transition: 0.3s; }
+.portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(212,175,55,0.3); }
 
-    <!-- PROJECT 3 -->
-    <div class="portfolio-card">
-      <img src="assets/nexacore-landing.png" alt="NexaCore Landing">
-      <div class="portfolio-content">
-        <h3>NexaCore Systems Rebrand</h3>
-        <p class="role"><strong>Role:</strong> Brand & Landing Strategist</p>
-        <p class="desc">Elite rebranding for premium clients. High-trust landing mechanics for enterprise buyers.</p>
-        <p class="outcome">Outcome: Instant Trust. Premium Buyers.</p>
-      </div>
-    </div>
+.portfolio-card img { width: 100%; height: 200px; object-fit: cover; }
 
-  </div>
-</section>
-<!-- ===== PORTFOLIO SECTION END ===== -->
-}
-
-.port
+.portfolio-content { padding: 20px; }
+.portfolio-content h3 { color: #FFD700; margin-bottom: 10px; }
+.portfolio-content .role { color: #aaa; font-size: 13px; }
+.portfolio-content .desc { color: #fff; font-size: 14px; line-height: 1.6; }
+.portfolio-content .outcome { color: #FFD700; font-weight: bold; margin-top: 10px; }

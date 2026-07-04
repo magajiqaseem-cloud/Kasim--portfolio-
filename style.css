@@ -17,14 +17,14 @@ button { background-color: #8B0000; color: #F4F4F4; padding: 10px 20px; border: 
 .portfolio-header h2 { color: #FFD700; font-size: 36px; text-transform: uppercase; }
 .portfolio-header p { color: #aaa; font-size: 18px; }
 
-.portfolio-video { width: 100%; max-width: 900px; margin: 0 auto 50px; display: block; border: 2px solid #FFD700; border-radius: 12px; }
+.portfolio-video { width: 100%; max-width: 900px; margin: 0 auto 50px; display: block; }
 
 .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
-.portfolio-card { background: #1a1a1a; border: 1px solid #FFD700; border-radius: 10px; overflow: hidden; transition: 0.3s; }
+.portfolio-video { width: 100%; max-width: 900px; margin: 0 auto 50px; display: block; }
 .portfolio-card:hover { transform: translateY(-5px); box-shadow: 0 0 20px rgba(212,175,55,0.3); }
 
-.portfolio-card img { width: 100%; height: 200px; object-fit: cover; }
+.portfolio-video { width: 100%; max-width: 900px; margin: 0 auto 50px; display: block; }
 
 .portfolio-content { padding: 20px; }
 .portfolio-content h3 { color: #FFD700; margin-bottom: 10px; }

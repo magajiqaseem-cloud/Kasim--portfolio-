@@ -1,0 +1,66 @@
+body { background-color: #000; color: #FFD700; font-family: 'Arial', sans-serif; margin: 0; padding: 0; }
+header { background-color: #8B0000; padding: 20px; text-align: center; }
+nav a { color: #FFD700; margin: 0 10px; text-decoration: none; font-weight: bold; }
+.service-item, .case-study, .about-section, .contact-section { 
+    background-color: #1a1a1a; border: 1px solid #FFD700; padding: 20px; margin: 20px auto; border-radius: 8px; max-width: 800px; 
+}
+.case-study { border-left: 5px solid #8B0000; }
+h2, h3 { color: #FFD700; }
+p, ul { color: #fff; line-height: 1.6; }
+button { background-color: #8B0000; color: #FFD700; padding: 10px 20px; border: none; cursor: pointer; font-weight: bold; }
+.social-links a { color: #FFD700; text-decoration: underline; }
+
+/* =p<!-- ===== PORTFOLIO SECTION START ===== -->
+<section id="portfolio">
+  
+  <div class="portfolio-header">
+    <h2>Global Portfolio</h2>
+    <p>Strategy. Design. Results.</p>
+  </div>
+
+  <!-- ADD YOUR 15s VIDEO HERE -->
+  <video class="portfolio-video" autoplay muted loop playsinline>
+    <source src="assets/hero-reel.mp4" type="video/mp4">
+  </video>
+
+  <div class="portfolio-grid">
+
+    <!-- PROJECT 1 -->
+    <div class="portfolio-card">
+      <img src="assets/luxvelo-redesign.png" alt="LuxVelo Redesign">
+      <div class="portfolio-content">
+        <h3>LuxVelo Global Redesign</h3>
+        <p class="role"><strong>Role:</strong> Lead Product Designer + Conversion Architect</p>
+        <p class="desc">Redesigned international e-commerce stack. Result: 2x site speed. 0% cross-border checkout friction.</p>
+        <p class="outcome">Outcome: 2x Speed. 0% Friction.</p>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="portfolio-card">
+      <img src="assets/apex-dashboard.png" alt="Apex Dashboard">
+      <div class="portfolio-content">
+        <h3>Apex Digital Scale Automation</h3>
+        <p class="role"><strong>Role:</strong> Automation Systems Engineer</p>
+        <p class="desc">Deployed AI frameworks that saved 35+ ops hours weekly. Fully automated client onboarding.</p>
+        <p class="outcome">Outcome: 35+ Hours Saved Weekly.</p>
+      </div>
+    </div>
+
+    <!-- PROJECT 3 -->
+    <div class="portfolio-card">
+      <img src="assets/nexacore-landing.png" alt="NexaCore Landing">
+      <div class="portfolio-content">
+        <h3>NexaCore Systems Rebrand</h3>
+        <p class="role"><strong>Role:</strong> Brand & Landing Strategist</p>
+        <p class="desc">Elite rebranding for premium clients. High-trust landing mechanics for enterprise buyers.</p>
+        <p class="outcome">Outcome: Instant Trust. Premium Buyers.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ===== PORTFOLIO SECTION END ===== -->
+}
+
+.port

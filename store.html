@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Digital Products Store | Kasim Elite Digital Global — Premium website templates, branding kits, SEO guides and digital marketing resources."/>
+<title>Digital Store | Kasim Elite Digital Global</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GJBX0CJWRC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-GJBX0CJWRC");
+</script>
+<style>
+:root{--gold:#c9a84c;--gold-light:#e8cc7a;--gold-dark:#8a6a1f;--black:#050505;--dark:#0d0d0d;--dark2:#141414;--white:#f5f0e8;--muted:#888;--border:rgba(201,168,76,0.18);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--black);}::-webkit-scrollbar-thumb{background:var(--gold-dark);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 4rem;background:rgba(5,5,5,0.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:padding 0.3s;}
+nav.scrolled{padding:0.7rem 4rem;}
+.nav-logo img{height:52px;width:auto;display:block;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s;position:relative;padding-bottom:2px;}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-cta{background:var(--gold);border:1px solid var(--gold);color:var(--black);padding:0.55rem 1.4rem;font-family:'Outfit',sans-serif;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;font-weight:600;transition:background 0.3s;}
+.nav-cta:hover{background:var(--gold-light);}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-toggle span{display:block;width:24px;height:1.5px;background:var(--gold);}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,5,5,0.98);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.5rem;color:var(--gold);cursor:pointer;background:none;border:none;}
+
+/* HERO */
+.hero{min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10rem 2rem 5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(201,168,76,0.08) 0%,transparent 70%);}
+.hero-grid{position:absolute;inset:0;opacity:0.018;background-image:linear-gradient(var(--gold) 1px,transparent 1px),linear-gradient(90deg,var(--gold) 1px,transparent 1px);background-size:60px 60px;}
+.hero-label{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;position:relative;animation:fadeUp 0.8s ease 0.1s both;}
+.hero-label::before,.hero-label::after{content:'';display:block;width:40px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6rem);font-weight:300;line-height:1.05;color:var(--white);margin-bottom:1rem;position:relative;animation:fadeUp 0.8s ease 0.25s both;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero p{max-width:580px;font-size:1rem;line-height:1.8;color:var(--muted);position:relative;animation:fadeUp 0.8s ease 0.4s both;}
+
+/* TRUST BAR */
+.trust-bar{background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.2rem 4rem;display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:0.6rem;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+.trust-icon{color:var(--gold);}
+
+/* FILTER */
+.filter-bar{display:flex;justify-content:center;gap:0.5rem;padding:3rem 4rem 1rem;flex-wrap:wrap;}
+.filter-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:0.5rem 1.4rem;font-family:'Outfit',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;}
+.filter-btn:hover,.filter-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.06);}
+
+/* PRODUCTS GRID */
+.store-section{padding:2rem 4rem 8rem;}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);}
+.product-card{background:var(--dark);position:relative;overflow:hidden;transition:background 0.4s;display:flex;flex-direction:column;}
+.product-card:hover{background:var(--dark2);}
+.product-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold-dark),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);}
+.product-card:hover::after{transform:scaleX(1);}
+
+/* Badge */
+.product-badge{position:absolute;top:1.2rem;right:1.2rem;background:var(--gold);color:var(--black);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.3rem 0.7rem;font-weight:600;z-index:2;}
+.product-badge.hot{background:#e74c3c;color:#fff;}
+.product-badge.new{background:var(--gold);}
+
+.product-visual{height:180px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(201,168,76,0.06),rgba(201,168,76,0.02));border-bottom:1px solid var(--border);font-size:3.5rem;position:relative;overflow:hidden;}
+.product-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(201,168,76,0.05),transparent);}
+
+.product-body{padding:1.8rem 2rem;flex:1;display:flex;flex-direction:column;}
+.product-category{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+.product-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--white);margin-bottom:0.8rem;line-height:1.2;}
+.product-desc{font-size:0.83rem;line-height:1.75;color:var(--muted);margin-bottom:1.5rem;flex:1;}
+
+.product-includes{margin-bottom:1.5rem;}
+.product-includes h5{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+.product-includes ul{list-style:none;}
+.product-includes li{font-size:0.78rem;color:#aaa;padding:0.25rem 0;display:flex;align-items:center;gap:0.5rem;}
+.product-includes li::before{content:'✓';color:var(--gold);font-size:0.7rem;flex-shrink:0;}
+
+.product-footer{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2rem;border-top:1px solid var(--border);background:rgba(0,0,0,0.2);}
+.product-price{display:flex;flex-direction:column;}
+.price-amount{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--gold);line-height:1;}
+.price-original{font-size:0.75rem;color:#555;text-decoration:line-through;}
+.buy-btn{background:var(--gold);color:var(--black);border:none;padding:0.7rem 1.5rem;font-family:'Outfit',sans-serif;font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background 0.3s,transform 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;}
+.buy-btn:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+/* FEATURED PRODUCT */
+.featured-section{padding:0 4rem 6rem;}
+.featured-card{background:var(--dark);border:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;position:relative;}
+.featured-card::before{content:'BEST SELLER';position:absolute;top:2rem;left:2rem;background:var(--gold);color:var(--black);font-size:0.6rem;letter-spacing:0.2em;padding:0.3rem 0.8rem;font-weight:700;z-index:2;}
+.featured-visual{background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.02));display:flex;align-items:center;justify-content:center;font-size:8rem;min-height:400px;border-right:1px solid var(--border);position:relative;}
+.featured-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(201,168,76,0.08),transparent);}
+.featured-content{padding:4rem;}
+.featured-tag{font-size:0.68rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.featured-content h2{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.2;}
+.featured-content p{font-size:0.9rem;line-height:1.85;color:var(--muted);margin-bottom:2rem;}
+.featured-list{list-style:none;margin-bottom:2rem;}
+.featured-list li{font-size:0.83rem;color:#ccc;padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;gap:0.6rem;}
+.featured-list li::before{content:'◆';color:var(--gold);font-size:0.4rem;flex-shrink:0;}
+.featured-price-row{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;}
+.featured-price{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);}
+.featured-price-orig{font-size:0.85rem;color:#555;text-decoration:line-through;}
+
+/* WHY BUY */
+.why-section{padding:6rem 4rem;background:var(--dark2);border-top:1px solid var(--border);}
+.section-header{text-align:center;margin-bottom:4rem;}
+.section-tag{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.section-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--white);}
+.section-header h2 em{font-style:italic;color:var(--gold);}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);}
+.why-card{background:var(--dark);padding:2.5rem 2rem;text-align:center;}
+.why-icon{font-size:2rem;margin-bottom:1rem;}
+.why-card h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--white);margin-bottom:0.8rem;}
+.why-card p{font-size:0.82rem;color:var(--muted);line-height:1.7;}
+
+/* CTA */
+.cta-section{padding:8rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 50% 50%,rgba(201,168,76,0.06) 0%,transparent 70%);}
+.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--white);margin-bottom:1.5rem;position:relative;}
+.cta-section h2 em{font-style:italic;color:var(--gold);}
+.cta-section p{color:var(--muted);font-size:1rem;max-width:500px;margin:0 auto 3rem;line-height:1.8;position:relative;}
+.cta-actions{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;position:relative;}
+.btn-gold{background:var(--gold);color:var(--black);padding:1rem 2.5rem;text-decoration:none;font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;font-weight:600;transition:background 0.3s,transform 0.2s;display:inline-block;}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:1rem 2.5rem;text-decoration:none;font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;transition:background 0.3s,color 0.3s;display:inline-block;}
+.btn-outline:hover{background:var(--gold);color:var(--black);}
+
+/* FOOTER */
+footer{background:var(--dark2);border-top:1px solid var(--border);}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding:5rem 4rem 3rem;}
+.footer-logo-img{height:56px;width:auto;margin-bottom:1rem;}
+.footer-brand p{font-size:0.83rem;line-height:1.8;color:var(--muted);max-width:240px;margin-bottom:1.5rem;}
+.footer-socials{display:flex;gap:0.6rem;flex-wrap:wrap;}
+.social-btn{min-width:36px;height:36px;padding:0 8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:0.7rem;font-weight:600;transition:border-color 0.3s,color 0.3s;}
+.social-btn:hover{border-color:var(--gold);color:var(--gold);}
+.footer-col h4{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.8rem;}
+.footer-col ul a{font-size:0.83rem;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.footer-col ul a:hover{color:var(--white);}
+.footer-bottom{border-top:1px solid var(--border);padding:1.5rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-bottom p{font-size:0.75rem;color:#555;}
+.footer-bottom span{color:var(--gold);}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(5,5,5,0.92);z-index:500;align-items:center;justify-content:center;padding:2rem;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--dark);border:1px solid var(--border);max-width:500px;width:100%;position:relative;padding:3rem;}
+.modal::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold));}
+.modal-close{position:absolute;top:1.2rem;right:1.5rem;background:none;border:none;color:var(--gold);font-size:1.4rem;cursor:pointer;}
+.modal h3{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--white);margin-bottom:0.5rem;}
+.modal-price{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:var(--gold);margin-bottom:1.5rem;}
+.modal p{font-size:0.87rem;color:var(--muted);line-height:1.75;margin-bottom:2rem;}
+.modal-form{display:flex;flex-direction:column;gap:1rem;}
+.modal-form input{background:var(--dark2);border:1px solid var(--border);color:var(--white);padding:0.85rem 1rem;font-family:'Outfit',sans-serif;font-size:0.87rem;outline:none;transition:border-color 0.3s;}
+.modal-form input:focus{border-color:var(--gold);}
+.modal-form input::placeholder{color:#555;}
+.modal-submit{background:var(--gold);color:var(--black);border:none;padding:1rem;font-family:'Outfit',sans-serif;font-size:0.82rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background 0.3s;}
+.modal-submit:hover{background:var(--gold-light);}
+.modal-note{font-size:0.7rem;color:#555;text-align:center;margin-top:0.5rem;}
+.modal-success{display:none;text-align:center;padding:1rem 0;}
+.modal-success h4{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--gold);margin-bottom:0.5rem;}
+.modal-success p{font-size:0.85rem;color:var(--muted);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:1024px){.products-grid{grid-template-columns:repeat(2,1fr);}.why-grid{grid-template-columns:repeat(2,1fr);}.footer-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}.nav-links,.nav-cta{display:none;}.nav-toggle{display:flex;}
+  .hero,.store-section,.featured-section,.why-section,.cta-section{padding-left:1.5rem;padding-right:1.5rem;}
+  .filter-bar{padding:2rem 1.5rem 0;}
+  .trust-bar{padding:1rem 1.5rem;gap:1.5rem;}
+  .products-grid{grid-template-columns:1fr;}
+  .featured-card{grid-template-columns:1fr;}.featured-visual{min-height:200px;}
+  .featured-content{padding:2rem 1.5rem;}
+  .why-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;padding:3rem 1.5rem 2rem;}
+  .footer-bottom{padding:1.5rem;flex-direction:column;text-align:center;}
+}
+@media(max-width:500px){.footer-top{grid-template-columns:1fr;}.why-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<!-- PURCHASE MODAL -->
+<div class="modal-overlay" id="purchaseModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <h3 id="modalTitle">Product Name</h3>
+    <div class="modal-price" id="modalPrice">$0</div>
+    <p id="modalDesc">Product description</p>
+    <div class="modal-form" id="modalForm">
+      <input type="text" id="buyerName" placeholder="Your Full Name"/>
+      <input type="email" id="buyerEmail" placeholder="Your Email Address"/>
+      <input type="tel" id="buyerPhone" placeholder="WhatsApp Number (for delivery)"/>
+      <button class="modal-submit" onclick="submitPurchase()">Complete Purchase ◆</button>
+      <p class="modal-note">After payment confirmation, your digital product will be delivered to your email within 24 hours.</p>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <h4>Order Received ◆</h4>
+      <p>Thank you! Kasim will confirm your order and deliver your product to your email within 24 hours. For instant support WhatsApp <strong>+234 708 008 3489</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="services.html" onclick="toggleMenu()">Services</a>
+  <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
+  <a href="store.html" onclick="toggleMenu()">Store</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Kasim Elite Digital Global"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="store.html" class="active">Store</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Hire Me</a>
+  <div class="nav-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-label">Digital Products</div>
+  <h1>Premium <em>Digital</em><br/>Products Store</h1>
+  <p>Instant-access digital resources built from real client work — website templates, branding kits, SEO guides and marketing systems that deliver real results.</p>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">⚡</span> Instant Digital Delivery</div>
+  <div class="trust-item"><span class="trust-icon">◆</span> Premium Quality Guaranteed</div>
+  <div class="trust-item"><span class="trust-icon">🌍</span> Used By Global Clients</div>
+  <div class="trust-item"><span class="trust-icon">✦</span> Lifetime Access</div>
+  <div class="trust-item"><span class="trust-icon">💬</span> WhatsApp Support Included</div>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter(this)">All Products</button>
+  <button class="filter-btn" onclick="setFilter(this)">Web Templates</button>
+  <button class="filter-btn" onclick="setFilter(this)">Branding Kits</button>
+  <button class="filter-btn" onclick="setFilter(this)">SEO & Marketing</button>
+  <button class="filter-btn" onclick="setFilter(this)">AI & Automation</button>
+</div>
+
+<!-- FEATURED PRODUCT -->
+<section class="featured-section">
+  <div class="featured-card">
+    <div class="featured-visual">🌐</div>
+    <div class="featured-content">
+      <div class="featured-tag">⭐ Most Popular Product</div>
+      <h2>Complete Business Website Template Pack</h2>
+      <p>A full 5-page professional website template built with dark luxury aesthetics, gold accents and mobile-first responsive design. Ready to deploy in minutes — just add your content and go live.</p>
+      <ul class="featured-list">
+        <li>5 fully coded HTML pages (Home, About, Services, Portfolio, Contact)</li>
+        <li>Dark luxury design with gold accents</li>
+        <li>Mobile responsive & SEO optimised</li>
+        <li>Google Analytics integration included</li>
+        <li>Contact form with Formspree integration</li>
+        <li>Full source code — easy to customise</li>
+        <li>Free setup guide included</li>
+        <li>30-day WhatsApp support</li>
+      </ul>
+      <div class="featured-price-row">
+        <div>
+          <div class="featured-price">$49</div>
+          <div class="featured-price-orig">Regular price $120</div>
+        </div>
+        <button class="buy-btn" onclick="openModal('Complete Business Website Template Pack','$49','A full 5-page professional website template with dark luxury design, mobile responsive, SEO optimised and ready to deploy.')">Buy Now ◆</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS GRID -->
+<section class="store-section">
+  <div class="products-grid">
+
+    <!-- Product 1 -->
+    <div class="product-card">
+      <span class="product-badge hot">HOT</span>
+      <div class="product-visual">🎨</div>
+      <div class="product-body">
+        <div class="product-category">Branding Kit</div>
+        <div class="product-title">Elite Brand Identity Kit</div>
+        <div class="product-desc">A complete brand identity system including logo concepts, colour palettes, typography guide, business card design and social media brand templates.</div>
+        <div class="product-includes">
+          <h5>What's Included</h5>
+          <ul>
+            <li>Logo design files (PNG, SVG, PDF)</li>
+            <li>Brand colour palette & typography guide</li>
+            <li>Business card design template</li>
+            <li>Social media profile & banner templates</li>
+            <li>Brand usage guidelines document</li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-footer">
+        <div class="product-price">
+          <span class="price-amount">$35</span>
+          <span class="price-original">$80</span>
+        </div>
+        <button class="buy-btn" onclick="openModal('Elite Brand Identity Kit','$35','Complete brand identity system with logo files, colour palette, typography guide and social media templates.')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <span class="product-badge new">NEW</span>
+      <div class="product-visual">📈</div>
+      <div class="product-body">
+        <div class="product-category">SEO Guide</div>
+        <div class="product-title">SEO Domination Blueprint</div>
+        <div class="product-desc">The exact SEO strategy used to rank client websites on Google Page 1. Step-by-step guide covering technical SEO, keyword research, on-page optimisation and backlinks.</div>
+        <div class="product-includes">
+          <h5>What's Included</h5>
+          <ul>
+            <li>60-page SEO strategy PDF guide</li>
+            <li>Keyword research template (Excel)</li>
+            <li>On-page SEO checklist</li>
+            <li>Backlink outreach email templates</li>
+            <li>Google ranking tracker spreadsheet</li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-footer">
+        <div class="product-price">
+          <span class="price-amount">$25</span>
+          <span class="price-original">$60</span>
+        </div>
+        <button class="buy-btn" onclick="openModal('SEO Domination Blueprint','$25','Complete SEO strategy guide with keyword research templates, checklists and backlink outreach templates.')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <div class="product-visual">🤖</div>
+      <div class="product-body">
+        <div class="product-category">AI & Automation</div>
+        <div class="product-title">AI Business Automation Starter Kit</div>
+        <div class="product-desc">A complete guide to automating your business operations using free and low-cost AI tools. Save 20+ hours per week and scale faster with intelligent workflows.</div>
+        <div class="product-includes">
+          <h5>What's Included</h5>
+          <ul>
+            <li>AI tools master list & setup guide</li>
+            <li>10 ready-to-use automation workflows</li>
+            <li>ChatGPT prompt library (200+ prompts)</li>
+            <li>Social media auto-posting setup guide</li>
+            <li>Client follow-up automation templates</li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-footer">
+        <div class="product-price">
+          <span class="price-amount">$30</span>
+          <span class="price-original">$75</span>
+        </div>
+        <button class="buy-btn" onclick="openModal('AI Business Automation Starter Kit','$30','Complete AI automation guide with 10 workflows, 200+ ChatGPT prompts and social media automation setup.')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card">
+      <div class="product-visual">📱</div>
+      <div class="product-body">
+        <div class="product-category">Social Media</div>
+        <div class="product-title">Social Media Growth System</div>
+        <div class="product-desc">The complete social media strategy playbook for businesses. Content calendar templates, caption frameworks, hashtag research system and engagement strategies that grow real followers.</div>
+        <div class="product-includes">
+          <h5>What's Included</h5>
+          <ul>
+            <li>90-day content calendar template</li>
+            <li>Caption writing framework & templates</li>
+            <li>Hashtag research master spreadsheet</li>
+            <li>Instagram & Facebook growth guide</li>
+            <li>Engagement scripts & DM templates</li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-footer">
+        <div class="product-price">
+          <span class="price-amount">$20</span>
+          <span class="price-original">$50</span>
+        </div>
+        <button class="buy-btn" onclick="openModal('Social Media Growth System','$20','Complete social media playbook with 90-day content calendar, caption templates and hashtag research system.')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="product-card">
+      <span class="product-badge new">NEW</span>
+      <div class="product-visual">💰</div>
+      <div class="product-body">
+        <div class="product-category">Digital Marketing</div>
+        <div class="product-title">Facebook Ads Profit Blueprint</div>
+        <div class="product-desc">The exact Facebook and Instagram ad strategy used to generate 6x ROI for clients. Includes ad copy templates, targeting strategies, budget scaling framework and analytics guide.</div>
+        <div class="product-includes">
+          <h5>What's Included</h5>
+          <ul>
+            <li>Facebook Ads strategy PDF guide</li>
+            <li>30 proven ad copy templates</li>
+            <li>Audience targeting cheat sheet</li>
+            <li>Budget scaling framework</li>
+            <li>Ads performance tracker spreadsheet</li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-footer">
+        <div class="product-price">
+          <span class="price-amount">$29</span>
+          <span class="price-original">$70</span>
+        </div>
+        <button class="buy-btn" onclick="openModal('Facebook Ads Profit Blueprint','$29','Complete Facebook & Instagram ads strategy with 30 ad copy templates, targeting cheat sheet and budget scaling framework.')">Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="product-card">
+      <div class="product-visual">🚀</div>
+      <div class="product-body">
+        <div class="product-category">Full Bundle</div>
+        <div class="product-title">Complete Digital Business Bundle</div>
+        <div class="product-desc">Everything you need to build, brand, market and grow a professional digital business online. The ultimate all-in-one package combining all our best-selling digital products at a massive discount.</div>
+        <div class="product-includes">
+          <h5>What's Included</h5>
+          <ul>
+            <li>Website Template Pack</li>
+            <li>Elite Brand Identity Kit</li>
+            <li>SEO Domination Blueprint</li>
+            <li>AI Automation Starter Kit</li>
+            <li>Social Media Growth System</li>
+            <li>Facebook Ads Profit Blueprint</li>
+            <li>Priority WhatsApp support (60 days)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-footer">
+        <div class="product-price">
+          <span class="price-amount">$99</span>
+          <span class="price-original">$455</span>
+        </div>
+        <button class="buy-btn" onclick="openModal('Complete Digital Business Bundle','$99','All 6 premium digital products combined — website template, branding kit, SEO guide, AI automation, social media and Facebook ads blueprint.')">Buy Bundle</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY BUY -->
+<section class="why-section">
+  <div class="section-header">
+    <div class="section-tag">Why Choose Us</div>
+    <h2>Products Built From <em>Real Results</em></h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card"><div class="why-icon">⚡</div><h4>Instant Delivery</h4><p>All digital products delivered directly to your email within 24 hours of purchase confirmation.</p></div>
+    <div class="why-card"><div class="why-icon">◆</div><h4>Battle-Tested</h4><p>Every product is built from real strategies used on actual client projects that delivered measurable results.</p></div>
+    <div class="why-card"><div class="why-icon">💬</div><h4>WhatsApp Support</h4><p>Direct WhatsApp support included with every purchase. You're never left alone to figure things out.</p></div>
+    <div class="why-card"><div class="why-icon">♾</div><h4>Lifetime Access</h4><p>Pay once and own it forever. Free updates included whenever products are improved or expanded.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Need a <em>Custom</em><br/>Solution?</h2>
+  <p>Can't find exactly what you need? Contact us for a fully custom digital solution tailored specifically for your business.</p>
+  <div class="cta-actions">
+    <a href="contact.html" class="btn-gold">Request Custom Work</a>
+    <a href="https://wa.me/2347080083489" class="btn-outline" target="_blank">📱 WhatsApp Me</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Kasim Elite Digital Global Logo" class="footer-logo-img"/>
+      <p>Premium digital solutions, elite branding, AI automation and modern growth systems for global businesses.</p>
+      <div class="footer-socials">
+        <a href="https://wa.me/2347080083489" class="social-btn" title="WhatsApp" target="_blank">WA</a>
+        <a href="mailto:magajiqaseem@gmail.com" class="social-btn" title="Email">@</a>
+        <a href="https://www.upwork.com/freelancers/~01edb4f1d95b1a9790" class="social-btn" title="Upwork" target="_blank">Up</a>
+        <a href="https://www.facebook.com/profile.php?id=61559538970452" class="social-btn" title="Facebook" target="_blank">Fb</a>
+        <a href="https://www.linkedin.com/in/kasim-magaji-ab66b9310" class="social-btn" title="LinkedIn" target="_blank">In</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="store.html">Digital Store</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="store.html">Website Templates</a></li>
+        <li><a href="store.html">Branding Kits</a></li>
+        <li><a href="store.html">SEO Blueprint</a></li>
+        <li><a href="store.html">AI Automation Kit</a></li>
+        <li><a href="store.html">Full Bundle</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get In Touch</h4>
+      <ul>
+        <li><a href="mailto:magajiqaseem@gmail.com">magajiqaseem@gmail.com</a></li>
+        <li><a href="https://wa.me/2347080083489" target="_blank">+234 708 008 3489</a></li>
+        <li><a href="https://www.upwork.com/freelancers/~01edb4f1d95b1a9790" target="_blank">Hire on Upwork</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61559538970452" target="_blank">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/in/kasim-magaji-ab66b9310" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span>Kasim Elite Digital Global</span>. All Rights Reserved.</p>
+    <p>Designed & Built by <span>Kasim M.</span></p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);});
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+function setFilter(btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+
+var currentProduct='';
+var currentPrice='';
+
+function openModal(title,price,desc){
+  currentProduct=title;
+  currentPrice=price;
+  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalPrice').textContent=price;
+  document.getElementById('modalDesc').textContent=desc;
+  document.getElementById('modalForm').style.display='flex';
+  document.getElementById('modalSuccess').style.display='none';
+  document.getElementById('purchaseModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  document.getElementById('purchaseModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function submitPurchase(){
+  var name=document.getElementById('buyerName').value;
+  var email=document.getElementById('buyerEmail').value;
+  var phone=document.getElementById('buyerPhone').value;
+  if(!name||!email){alert('Please enter your name and email address.');return;}
+  var btn=document.querySelector('.modal-submit');
+  btn.textContent='Processing...';
+  btn.disabled=true;
+  var formData=new FormData();
+  formData.append('_subject','New Digital Product Purchase — '+currentProduct);
+  formData.append('product',currentProduct);
+  formData.append('price',currentPrice);
+  formData.append('name',name);
+  formData.append('email',email);
+  formData.append('phone',phone);
+  fetch('https://formspree.io/f/xbdvwjgg',{
+    method:'POST',
+    body:formData,
+    headers:{'Accept':'application/json'}
+  }).then(function(r){
+    if(r.ok){
+      document.getElementById('modalForm').style.display='none';
+      document.getElementById('modalSuccess').style.display='block';
+      btn.textContent='Complete Purchase ◆';
+      btn.disabled=false;
+    } else {
+      alert('Something went wrong. Please WhatsApp us on +234 708 008 3489 to complete your purchase.');
+      btn.textContent='Complete Purchase ◆';
+      btn.disabled=false;
+    }
+  }).catch(function(){
+    alert('Network error. Please WhatsApp us on +234 708 008 3489 to complete your purchase.');
+    btn.textContent='Complete Purchase ◆';
+    btn.disabled=false;
+  });
+}
+
+// Close modal on overlay click
+document.getElementById('purchaseModal').addEventListener('click',function(e){
+  if(e.target===this)closeModal();
+});
+</script>
+</body>
+</html>

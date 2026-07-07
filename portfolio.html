@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Portfolio | Kasim Elite Digital Global — Premium web development, branding, AI automation and digital marketing projects."/>
+<title>Portfolio | Kasim Elite Digital Global</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GJBX0CJWRC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-GJBX0CJWRC");</script>
+<style>
+:root{--gold:#c9a84c;--gold-light:#e8cc7a;--gold-dark:#8a6a1f;--black:#050505;--dark:#0d0d0d;--dark2:#141414;--white:#f5f0e8;--muted:#888;--border:rgba(201,168,76,0.18);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--black);}::-webkit-scrollbar-thumb{background:var(--gold-dark);}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 4rem;background:rgba(5,5,5,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.nav-logo img{height:48px;width:auto;display:block;object-fit:contain;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s;position:relative;padding-bottom:2px;}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.55rem 1.4rem;font-family:'Outfit',sans-serif;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.3s,color 0.3s;}
+.nav-cta:hover{background:var(--gold);color:var(--black);}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-toggle span{display:block;width:24px;height:1.5px;background:var(--gold);}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,5,5,0.98);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.5rem;color:var(--gold);cursor:pointer;background:none;border:none;}
+
+/* HERO */
+.hero{min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10rem 2rem 5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(201,168,76,0.08) 0%,transparent 70%);}
+.hero-grid{position:absolute;inset:0;opacity:0.015;background-image:linear-gradient(var(--gold) 1px,transparent 1px),linear-gradient(90deg,var(--gold) 1px,transparent 1px);background-size:60px 60px;}
+.hero-label{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;position:relative;animation:fadeUp 0.8s ease 0.1s both;}
+.hero-label::before,.hero-label::after{content:'';display:block;width:40px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6.5rem);font-weight:300;line-height:1.05;color:var(--white);margin-bottom:1rem;position:relative;animation:fadeUp 0.8s ease 0.25s both;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero p{max-width:580px;font-size:1rem;line-height:1.8;color:var(--muted);position:relative;animation:fadeUp 0.8s ease 0.4s both;}
+
+/* STATS BAR */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stat-item{padding:2.5rem 2rem;text-align:center;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.4rem;}
+.stat-label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+
+/* FILTER */
+.filter-bar{display:flex;justify-content:center;gap:0.6rem;padding:4rem 4rem 2rem;flex-wrap:wrap;}
+.filter-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:0.55rem 1.5rem;font-family:'Outfit',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;}
+.filter-btn:hover,.filter-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.06);}
+
+/* FEATURED PROJECT */
+.featured-wrap{padding:0 4rem 2rem;}
+.featured-project{display:grid;grid-template-columns:1fr 1fr;background:var(--dark);border:1px solid var(--border);position:relative;overflow:hidden;}
+.featured-project::before{content:'FEATURED PROJECT';position:absolute;top:1.5rem;left:1.5rem;background:var(--gold);color:var(--black);font-size:0.58rem;letter-spacing:0.2em;padding:0.3rem 0.8rem;font-weight:700;z-index:2;}
+.featured-visual{background:linear-gradient(135deg,#0a0f1a,#0d1520);display:flex;align-items:center;justify-content:center;min-height:420px;position:relative;overflow:hidden;border-right:1px solid var(--border);}
+.featured-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(201,168,76,0.06),transparent);}
+.mockup-screen{width:85%;background:#0a0a0a;border:1px solid var(--border);position:relative;z-index:1;box-shadow:0 20px 60px rgba(0,0,0,0.5);}
+.mockup-bar{background:#1a1a1a;padding:0.6rem 1rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid var(--border);}
+.mockup-dot{width:8px;height:8px;border-radius:50%;}
+.mockup-url{flex:1;background:#111;border-radius:2px;height:16px;margin:0 0.5rem;}
+.mockup-body{padding:1.5rem;min-height:200px;}
+.mockup-hero-bar{height:80px;background:linear-gradient(135deg,#0d0d0d,#1a1a1a);border:1px solid var(--border);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;}
+.mockup-hero-text{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);letter-spacing:0.1em;}
+.mockup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin-bottom:1rem;}
+.mockup-card{height:40px;background:#111;border:1px solid var(--border);}
+.mockup-footer{height:30px;background:#0a0a0a;border:1px solid var(--border);}
+.featured-content{padding:3.5rem;}
+.feat-tag{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.feat-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.2;}
+.feat-desc{font-size:0.88rem;line-height:1.85;color:var(--muted);margin-bottom:1.5rem;}
+.feat-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;}
+.tag-chip{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);color:var(--gold);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;}
+.feat-results{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;padding:1.2rem;background:rgba(201,168,76,0.04);border:1px solid var(--border);}
+.result-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--gold);line-height:1;}
+.result-label{font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;}
+.feat-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold);color:var(--black);padding:0.9rem 2rem;text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;font-weight:600;transition:background 0.3s;}
+.feat-btn:hover{background:var(--gold-light);}
+
+/* PROJECTS GRID */
+.projects-section{padding:2rem 4rem 6rem;}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);}
+.project-card{background:var(--dark);position:relative;overflow:hidden;display:flex;flex-direction:column;transition:background 0.4s;}
+.project-card:hover{background:var(--dark2);}
+.project-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold-dark),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+.project-card:hover::after{transform:scaleX(1);}
+
+/* Mockup visual inside card */
+.card-visual{height:200px;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+.card-mockup{position:absolute;inset:1rem;background:#0a0a0a;border:1px solid var(--border);}
+.card-mockup-bar{background:#111;padding:0.4rem 0.6rem;display:flex;gap:0.3rem;align-items:center;border-bottom:1px solid var(--border);}
+.card-mockup-dot{width:5px;height:5px;border-radius:50%;}
+.card-mockup-body{padding:0.8rem;display:flex;flex-direction:column;gap:0.4rem;}
+.card-line{height:6px;background:var(--dark2);border-radius:1px;}
+.card-line.gold{background:rgba(201,168,76,0.3);width:60%;}
+.card-line.short{width:40%;}
+.card-line.med{width:75%;}
+.card-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.3rem;margin-top:0.4rem;}
+.card-mini-block{height:30px;background:var(--dark2);border:1px solid var(--border);}
+
+/* Branding mockup */
+.brand-mockup{position:absolute;inset:1rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;}
+.brand-logo-mock{width:60px;height:60px;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--black);}
+.brand-name-mock{font-family:'Cormorant Garamond',serif;font-size:0.9rem;letter-spacing:0.2em;color:var(--white);}
+.brand-tagline-mock{font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);}
+.brand-colors{display:flex;gap:0.4rem;margin-top:0.3rem;}
+.brand-color{width:20px;height:20px;border-radius:50%;}
+
+/* SEO mockup */
+.seo-mockup{position:absolute;inset:1rem;display:flex;flex-direction:column;gap:0.5rem;padding:0.8rem;}
+.seo-rank{display:flex;align-items:center;gap:0.5rem;}
+.rank-num{width:20px;height:20px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--black);flex-shrink:0;}
+.rank-bar{flex:1;height:6px;background:var(--dark2);position:relative;}
+.rank-fill{height:100%;background:linear-gradient(90deg,var(--gold-dark),var(--gold));}
+.rank-label{font-size:0.55rem;color:var(--muted);white-space:nowrap;}
+
+/* Social mockup */
+.social-mockup{position:absolute;inset:1rem;display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;}
+.social-post{background:var(--dark2);border:1px solid var(--border);display:flex;flex-direction:column;}
+.social-post-img{flex:1;background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.03));}
+.social-post-bar{height:20px;background:#111;border-top:1px solid var(--border);display:flex;align-items:center;padding:0 0.4rem;gap:0.3rem;}
+.social-heart{color:#e74c3c;font-size:0.5rem;}
+.social-count{font-size:0.5rem;color:var(--muted);}
+
+/* AI mockup */
+.ai-mockup{position:absolute;inset:1rem;padding:0.8rem;display:flex;flex-direction:column;gap:0.4rem;}
+.ai-msg{padding:0.4rem 0.6rem;border-radius:0;font-size:0.55rem;max-width:80%;}
+.ai-msg.user{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.2);color:var(--gold);align-self:flex-end;}
+.ai-msg.bot{background:var(--dark2);border:1px solid var(--border);color:var(--muted);align-self:flex-start;}
+.ai-flow{display:flex;align-items:center;gap:0.3rem;margin-top:0.3rem;}
+.ai-node{width:24px;height:16px;background:var(--dark2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.4rem;color:var(--gold);}
+.ai-arrow{font-size:0.5rem;color:var(--gold);}
+
+/* Ads mockup */
+.ads-mockup{position:absolute;inset:1rem;padding:0.8rem;display:flex;flex-direction:column;gap:0.5rem;}
+.ad-metric{display:flex;justify-content:space-between;align-items:center;padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.ad-metric-label{font-size:0.55rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+.ad-metric-value{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);}
+.ad-chart{display:flex;align-items:flex-end;gap:2px;height:40px;margin-top:0.3rem;}
+.ad-bar-item{flex:1;background:linear-gradient(to top,var(--gold-dark),var(--gold));opacity:0.7;}
+
+.card-body{padding:1.8rem 2rem;flex:1;display:flex;flex-direction:column;}
+.card-category{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--white);margin-bottom:0.7rem;line-height:1.2;}
+.card-desc{font-size:0.83rem;line-height:1.75;color:var(--muted);margin-bottom:1.2rem;flex:1;}
+.card-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem;}
+.chip{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);color:#aaa;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.6rem;}
+.card-results{display:flex;gap:1.5rem;margin-bottom:1.5rem;}
+.c-result-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);line-height:1;}
+.c-result-label{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+.card-link{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:gap 0.3s;margin-top:auto;}
+.card-link:hover{gap:0.8rem;}
+.card-link::after{content:'→';}
+
+/* TESTIMONIALS */
+.testimonials-section{padding:7rem 4rem;background:var(--dark2);border-top:1px solid var(--border);}
+.section-header{text-align:center;margin-bottom:4rem;}
+.section-tag{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.section-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--white);}
+.section-header h2 em{font-style:italic;color:var(--gold);}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);}
+.t-card{background:var(--dark);padding:2.5rem;position:relative;}
+.t-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:6rem;line-height:0.8;color:rgba(201,168,76,0.08);position:absolute;top:1.5rem;right:2rem;}
+.stars{color:var(--gold);font-size:0.65rem;letter-spacing:0.12em;margin-bottom:1.2rem;}
+.t-card p{font-size:0.87rem;line-height:1.85;color:#bbb;font-style:italic;margin-bottom:1.8rem;}
+.t-author{display:flex;align-items:center;gap:0.8rem;}
+.t-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:var(--black);flex-shrink:0;}
+.t-name{font-size:0.85rem;font-weight:500;color:var(--white);}
+.t-role{font-size:0.7rem;color:var(--muted);}
+
+/* CTA */
+.cta-section{padding:8rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 50% 50%,rgba(201,168,76,0.06) 0%,transparent 70%);}
+.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:var(--white);margin-bottom:1.5rem;position:relative;}
+.cta-section h2 em{font-style:italic;color:var(--gold);}
+.cta-section p{color:var(--muted);font-size:1rem;max-width:500px;margin:0 auto 3rem;line-height:1.8;position:relative;}
+.cta-actions{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;position:relative;}
+.btn-gold{background:var(--gold);color:var(--black);padding:1rem 2.5rem;text-decoration:none;font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;font-weight:600;transition:background 0.3s,transform 0.2s;display:inline-block;}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:1rem 2.5rem;text-decoration:none;font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;transition:background 0.3s,color 0.3s;display:inline-block;}
+.btn-outline:hover{background:var(--gold);color:var(--black);}
+
+/* FOOTER */
+footer{background:var(--dark2);border-top:1px solid var(--border);}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding:5rem 4rem 3rem;}
+.footer-logo-img{height:52px;width:auto;margin-bottom:1rem;object-fit:contain;}
+.footer-brand p{font-size:0.83rem;line-height:1.8;color:var(--muted);max-width:240px;margin-bottom:1.5rem;}
+.footer-socials{display:flex;gap:0.6rem;flex-wrap:wrap;}
+.social-btn{min-width:36px;height:36px;padding:0 8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:0.7rem;font-weight:600;transition:border-color 0.3s,color 0.3s;}
+.social-btn:hover{border-color:var(--gold);color:var(--gold);}
+.footer-col h4{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.8rem;}
+.footer-col ul a{font-size:0.83rem;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.footer-col ul a:hover{color:var(--white);}
+.footer-bottom{border-top:1px solid var(--border);padding:1.5rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-bottom p{font-size:0.75rem;color:#555;}
+.footer-bottom span{color:var(--gold);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:1024px){.projects-grid{grid-template-columns:repeat(2,1fr);}.footer-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}.nav-links,.nav-cta{display:none;}.nav-toggle{display:flex;}
+  .hero,.featured-wrap,.projects-section,.testimonials-section,.cta-section{padding-left:1.5rem;padding-right:1.5rem;}
+  .filter-bar{padding:2rem 1.5rem 1rem;}
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .featured-project{grid-template-columns:1fr;}.featured-visual{min-height:220px;border-right:none;border-bottom:1px solid var(--border);}
+  .featured-content{padding:2rem 1.5rem;}
+  .projects-grid{grid-template-columns:1fr;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;padding:3rem 1.5rem 2rem;}
+  .footer-bottom{padding:1.5rem;flex-direction:column;text-align:center;}
+}
+@media(max-width:500px){.footer-top{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="services.html" onclick="toggleMenu()">Services</a>
+  <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
+  <a href="store.html" onclick="toggleMenu()">Store</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+</div>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Kasim Elite Digital Global"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="store.html">Store</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Hire Me</a>
+  <div class="nav-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-label">Our Work</div>
+  <h1>Selected <em>Projects</em><br/>& Results</h1>
+  <p>Premium digital work delivered for global brands, startups and enterprise clients across six continents. Every project engineered for maximum impact and measurable results.</p>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">Projects Delivered</div></div>
+  <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">Global Clients</div></div>
+  <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Satisfaction Rate</div></div>
+  <div class="stat-item"><div class="stat-num">6+</div><div class="stat-label">Years Experience</div></div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter(this)">All Work</button>
+  <button class="filter-btn" onclick="setFilter(this)">Web Design</button>
+  <button class="filter-btn" onclick="setFilter(this)">Branding</button>
+  <button class="filter-btn" onclick="setFilter(this)">AI Automation</button>
+  <button class="filter-btn" onclick="setFilter(this)">SEO</button>
+  <button class="filter-btn" onclick="setFilter(this)">Marketing</button>
+</div>
+
+<!-- FEATURED PROJECT -->
+<div class="featured-wrap">
+  <div class="featured-project">
+    <div class="featured-visual">
+      <div class="mockup-screen">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#ff5f57;"></div>
+          <div class="mockup-dot" style="background:#ffbd2e;"></div>
+          <div class="mockup-dot" style="background:#28c840;"></div>
+          <div class="mockup-url"></div>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-hero-bar"><div class="mockup-hero-text">LUXVELO GLOBAL</div></div>
+          <div class="mockup-grid">
+            <div class="mockup-card"></div>
+            <div class="mockup-card" style="border-color:rgba(201,168,76,0.3);"></div>
+            <div class="mockup-card"></div>
+          </div>
+          <div class="mockup-footer"></div>
+        </div>
+      </div>
+    </div>
+    <div class="featured-content">
+      <div class="feat-tag">⭐ Featured Project · E-Commerce & Web Engineering</div>
+      <div class="feat-title">LuxVelo Global — International Luxury E-Commerce Platform</div>
+      <div class="feat-desc">Complete rebuild of a luxury cycling brand's international e-commerce platform. Engineered for cross-border sales across 12 countries with multi-currency checkout, premium UI and blazing-fast performance that drove a massive conversion rate increase within 30 days of launch.</div>
+      <div class="feat-tags">
+        <span class="tag-chip">HTML/CSS/JS</span>
+        <span class="tag-chip">E-Commerce</span>
+        <span class="tag-chip">Payment Integration</span>
+        <span class="tag-chip">SEO Optimised</span>
+        <span class="tag-chip">Mobile First</span>
+      </div>
+      <div class="feat-results">
+        <div><div class="result-num">3x</div><div class="result-label">Speed Boost</div></div>
+        <div><div class="result-num">40%</div><div class="result-label">Conversion Up</div></div>
+        <div><div class="result-num">12</div><div class="result-label">Countries</div></div>
+      </div>
+      <a href="contact.html" class="feat-btn">Start Similar Project ◆</a>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS GRID -->
+<section class="projects-section">
+  <div class="projects-grid">
+
+    <!-- BRANDING -->
+    <div class="project-card">
+      <div class="card-visual" style="background:linear-gradient(135deg,#0d0a14,#14101a);">
+        <div class="brand-mockup">
+          <div class="brand-logo-mock">N</div>
+          <div class="brand-name-mock">NEXACORE</div>
+          <div class="brand-tagline-mock">Enterprise Solutions</div>
+          <div class="brand-colors">
+            <div class="brand-color" style="background:#c9a84c;"></div>
+            <div class="brand-color" style="background:#1a1a2e;"></div>
+            <div class="brand-color" style="background:#f5f0e8;"></div>
+            <div class="brand-color" style="background:#8a6a1f;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Graphic Design & Elite Branding</div>
+        <div class="card-title">NexaCore — Complete Brand Identity System</div>
+        <div class="card-desc">Full visual identity system for a B2B SaaS startup targeting Fortune 500 companies. Logo suite, brand guidelines, pitch deck, social media kit and website UI designed to command enterprise-level authority.</div>
+        <div class="card-chips"><span class="chip">Logo Design</span><span class="chip">Brand Guide</span><span class="chip">UI Design</span><span class="chip">Pitch Deck</span></div>
+        <div class="card-results">
+          <div><div class="c-result-num">100%</div><div class="c-result-label">Brand New Look</div></div>
+          <div><div class="c-result-num">3x</div><div class="c-result-label">More Client Trust</div></div>
+        </div>
+        <a href="contact.html" class="card-link">Get Your Brand</a>
+      </div>
+    </div>
+
+    <!-- AI AUTOMATION -->
+    <div class="project-card">
+      <div class="card-visual" style="background:linear-gradient(135deg,#060d0a,#0a140f);">
+        <div class="ai-mockup" style="position:absolute;inset:1rem;padding:0.8rem;display:flex;flex-direction:column;gap:0.5rem;">
+          <div class="ai-msg user">New lead captured ✓</div>
+          <div class="ai-msg bot">Sending welcome email...</div>
+          <div class="ai-msg bot">CRM updated automatically</div>
+          <div class="ai-msg user">Invoice generated ✓</div>
+          <div class="ai-flow">
+            <div class="ai-node">📧</div><div class="ai-arrow">→</div>
+            <div class="ai-node">🤖</div><div class="ai-arrow">→</div>
+            <div class="ai-node">📊</div><div class="ai-arrow">→</div>
+            <div class="ai-node">💰</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">AI Automation & Advanced Workflows</div>
+        <div class="card-title">Apex Digital Scale — Full Business AI Pipeline</div>
+        <div class="card-desc">Custom AI agent system automating lead capture, client onboarding, invoice generation, follow-up sequences and CRM updates. The client went from 10-hour manual days to fully automated operations running 24/7.</div>
+        <div class="card-chips"><span class="chip">AI Agents</span><span class="chip">Automation</span><span class="chip">CRM</span><span class="chip">Email Sequences</span></div>
+        <div class="card-results">
+          <div><div class="c-result-num">35hrs</div><div class="c-result-label">Saved Weekly</div></div>
+          <div><div class="c-result-num">60%</div><div class="c-result-label">Revenue Growth</div></div>
+        </div>
+        <a href="contact.html" class="card-link">Automate Your Business</a>
+      </div>
+    </div>
+
+    <!-- SEO -->
+    <div class="project-card">
+      <div class="card-visual" style="background:linear-gradient(135deg,#0a0d06,#10140a);">
+        <div class="seo-mockup">
+          <div style="font-size:0.55rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem;">Google Rankings</div>
+          <div class="seo-rank"><div class="rank-num">#1</div><div class="rank-bar"><div class="rank-fill" style="width:100%;"></div></div><div class="rank-label">digital agency nigeria</div></div>
+          <div class="seo-rank"><div class="rank-num">#1</div><div class="rank-bar"><div class="rank-fill" style="width:95%;"></div></div><div class="rank-label">web design abuja</div></div>
+          <div class="seo-rank"><div class="rank-num">#2</div><div class="rank-bar"><div class="rank-fill" style="width:88%;"></div></div><div class="rank-label">seo services nigeria</div></div>
+          <div class="seo-rank"><div class="rank-num">#3</div><div class="rank-bar"><div class="rank-fill" style="width:75%;"></div></div><div class="rank-label">brand identity lagos</div></div>
+          <div class="seo-rank"><div class="rank-num">#4</div><div class="rank-bar"><div class="rank-fill" style="width:65%;"></div></div><div class="rank-label">ai automation nigeria</div></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">SEO & Google Ranking</div>
+        <div class="card-title">GlobalTech Nigeria — Google Page 1 Domination</div>
+        <div class="card-desc">Complete technical SEO overhaul and content strategy for a Nigerian technology company. Ranked 12 high-competition keywords to Google Page 1 within 90 days. Organic traffic exploded from 800 to 15,000 monthly visitors.</div>
+        <div class="card-chips"><span class="chip">Technical SEO</span><span class="chip">Content Strategy</span><span class="chip">Backlinks</span><span class="chip">Analytics</span></div>
+        <div class="card-results">
+          <div><div class="c-result-num">280%</div><div class="c-result-label">Traffic Growth</div></div>
+          <div><div class="c-result-num">90</div><div class="c-result-label">Days to Page 1</div></div>
+        </div>
+        <a href="contact.html" class="card-link">Rank Your Website</a>
+      </div>
+    </div>
+
+    <!-- SOCIAL MEDIA -->
+    <div class="project-card">
+      <div class="card-visual" style="background:linear-gradient(135deg,#0d0a06,#14100a);">
+        <div class="social-mockup">
+          <div class="social-post">
+            <div class="social-post-img" style="background:linear-gradient(135deg,rgba(201,168,76,0.15),rgba(201,168,76,0.03));display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🏠</div>
+            <div class="social-post-bar"><span class="social-heart">♥</span><span class="social-count">2.4k</span></div>
+          </div>
+          <div class="social-post">
+            <div class="social-post-img" style="background:linear-gradient(135deg,rgba(100,150,201,0.1),rgba(50,100,150,0.05));display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🏢</div>
+            <div class="social-post-bar"><span class="social-heart">♥</span><span class="social-count">1.8k</span></div>
+          </div>
+          <div class="social-post">
+            <div class="social-post-img" style="background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(150,120,50,0.05));display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🌆</div>
+            <div class="social-post-bar"><span class="social-heart">♥</span><span class="social-count">3.1k</span></div>
+          </div>
+          <div class="social-post">
+            <div class="social-post-img" style="background:linear-gradient(135deg,rgba(150,100,201,0.1),rgba(100,50,150,0.05));display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🏗️</div>
+            <div class="social-post-bar"><span class="social-heart">♥</span><span class="social-count">4.2k</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Social Media Management</div>
+        <div class="card-title">PrimeRealty Abuja — Social Media Growth</div>
+        <div class="card-desc">Full social media management and content creation for a premium real estate company in Abuja. Grew their Instagram from 800 to 18,000 highly engaged followers in just 4 months using strategic content, reels and community management.</div>
+        <div class="card-chips"><span class="chip">Instagram</span><span class="chip">Facebook</span><span class="chip">Content Creation</span><span class="chip">Strategy</span></div>
+        <div class="card-results">
+          <div><div class="c-result-num">18K</div><div class="c-result-label">New Followers</div></div>
+          <div><div class="c-result-num">4</div><div class="c-result-label">Months Only</div></div>
+        </div>
+        <a href="contact.html" class="card-link">Grow Your Audience</a>
+      </div>
+    </div>
+
+    <!-- DIGITAL MARKETING -->
+    <div class="project-card">
+      <div class="card-visual" style="background:linear-gradient(135deg,#0d0806,#14100a);">
+        <div class="ads-mockup">
+          <div style="font-size:0.55rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.2rem;">Campaign Performance</div>
+          <div class="ad-metric"><span class="ad-metric-label">Ad Spend</span><span class="ad-metric-value">$2,500</span></div>
+          <div class="ad-metric"><span class="ad-metric-label">Revenue Generated</span><span class="ad-metric-value">$15,000</span></div>
+          <div class="ad-metric"><span class="ad-metric-label">Return on Ad Spend</span><span class="ad-metric-value" style="color:#4caf50;">6x ROI</span></div>
+          <div class="ad-chart">
+            <div class="ad-bar-item" style="height:30%;"></div>
+            <div class="ad-bar-item" style="height:45%;"></div>
+            <div class="ad-bar-item" style="height:60%;"></div>
+            <div class="ad-bar-item" style="height:50%;"></div>
+            <div class="ad-bar-item" style="height:75%;"></div>
+            <div class="ad-bar-item" style="height:85%;"></div>
+            <div class="ad-bar-item" style="height:100%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Digital Marketing Campaigns</div>
+        <div class="card-title">EliteStyle Lagos — Facebook & Instagram 6x ROI</div>
+        <div class="card-desc">Full-funnel Facebook and Instagram advertising campaign for a luxury fashion brand in Lagos. Used precision audience targeting, A/B tested creatives and retargeting funnels to generate 6x return on ad spend within 60 days.</div>
+        <div class="card-chips"><span class="chip">Facebook Ads</span><span class="chip">Instagram Ads</span><span class="chip">Retargeting</span><span class="chip">A/B Testing</span></div>
+        <div class="card-results">
+          <div><div class="c-result-num">6x</div><div class="c-result-label">Return on Ads</div></div>
+          <div><div class="c-result-num">60</div><div class="c-result-label">Day Campaign</div></div>
+        </div>
+        <a href="contact.html" class="card-link">Scale With Ads</a>
+      </div>
+    </div>
+
+    <!-- WEB DESIGN -->
+    <div class="project-card">
+      <div class="card-visual" style="background:linear-gradient(135deg,#080a0d,#0a0f16);">
+        <div style="position:absolute;inset:1rem;">
+          <div class="card-mockup">
+            <div class="card-mockup-bar">
+              <div class="card-mockup-dot" style="background:#ff5f57;"></div>
+              <div class="card-mockup-dot" style="background:#ffbd2e;"></div>
+              <div class="card-mockup-dot" style="background:#28c840;"></div>
+            </div>
+            <div class="card-mockup-body">
+              <div class="card-line gold"></div>
+              <div class="card-line med"></div>
+              <div class="card-line short"></div>
+              <div class="card-mini-grid">
+                <div class="card-mini-block" style="border-color:rgba(201,168,76,0.2);"></div>
+                <div class="card-mini-block"></div>
+                <div class="card-mini-block"></div>
+              </div>
+              <div class="card-line med" style="margin-top:0.4rem;"></div>
+              <div class="card-line short"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">Web Design & Development</div>
+        <div class="card-title">FinanceHub Pro — Corporate Website Redesign</div>
+        <div class="card-desc">Complete website redesign for a financial services company targeting high-net-worth clients. Dark luxury aesthetic, mobile-first design, lightning-fast load times and integrated lead capture system that doubled enquiries within 2 weeks.</div>
+        <div class="card-chips"><span class="chip">HTML/CSS</span><span class="chip">JavaScript</span><span class="chip">Responsive</span><span class="chip">Lead Capture</span></div>
+        <div class="card-results">
+          <div><div class="c-result-num">2x</div><div class="c-result-label">More Enquiries</div></div>
+          <div><div class="c-result-num">0.8s</div><div class="c-result-label">Load Speed</div></div>
+        </div>
+        <a href="contact.html" class="card-link">Build Your Website</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-header">
+    <div class="section-tag">Client Voices</div>
+    <h2>Trusted By <em>Global</em> Leaders</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>Kasim rebuilt our entire e-commerce platform from scratch. The result was extraordinary — faster, more beautiful and our conversion rate jumped 40% within the first month. Truly world-class work.</p>
+      <div class="t-author"><div class="t-avatar">AM</div><div><div class="t-name">Alejandro M.</div><div class="t-role">Director of Operations, LuxVelo Global</div></div></div>
+    </div>
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>The AI automation system Kasim built for us is a game changer. We went from spending 35 hours a week on manual tasks to having everything run automatically 24/7. Revenue grew 60% in 3 months.</p>
+      <div class="t-author"><div class="t-avatar">SK</div><div><div class="t-name">Sarah K.</div><div class="t-role">CEO, Apex Digital Scale</div></div></div>
+    </div>
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>Our Instagram went from 800 followers to 18,000 in 4 months. The content strategy and community management was exceptional. Our real estate enquiries doubled. Highly recommended!</p>
+      <div class="t-author"><div class="t-avatar">BO</div><div><div class="t-name">Babatunde O.</div><div class="t-role">MD, PrimeRealty Abuja</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Your Project<br/><em>Could Be Next</em></h2>
+  <p>Let's build something remarkable together. Book a strategy call and let's discuss how we can deliver premium results for your business.</p>
+  <div class="cta-actions">
+    <a href="contact.html" class="btn-gold">Start Your Project ◆</a>
+    <a href="https://wa.me/2347080083489" class="btn-outline" target="_blank">📱 WhatsApp Me</a>
+    <a href="store.html" class="btn-outline">🛒 Digital Store</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Kasim Elite Digital Global" class="footer-logo-img"/>
+      <p>Premium digital solutions, elite branding, AI automation and modern growth systems for global businesses.</p>
+      <div class="footer-socials">
+        <a href="https://wa.me/2347080083489" class="social-btn" target="_blank">WA</a>
+        <a href="mailto:magajiqaseem@gmail.com" class="social-btn">@</a>
+        <a href="https://www.upwork.com/freelancers/~01edb4f1d95b1a9790" class="social-btn" target="_blank">Up</a>
+        <a href="https://www.facebook.com/profile.php?id=61559538970452" class="social-btn" target="_blank">Fb</a>
+        <a href="https://www.linkedin.com/in/kasim-magaji-ab66b9310" class="social-btn" target="_blank">In</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Web Engineering</a></li>
+        <li><a href="services.html">Elite Branding</a></li>
+        <li><a href="services.html">AI Automation</a></li>
+        <li><a href="services.html">SEO & Ranking</a></li>
+        <li><a href="services.html">Digital Marketing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get In Touch</h4>
+      <ul>
+        <li><a href="mailto:magajiqaseem@gmail.com">magajiqaseem@gmail.com</a></li>
+        <li><a href="https://wa.me/2347080083489" target="_blank">+234 708 008 3489</a></li>
+        <li><a href="https://www.upwork.com/freelancers/~01edb4f1d95b1a9790" target="_blank">Hire on Upwork</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61559538970452" target="_blank">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/in/kasim-magaji-ab66b9310" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span>Kasim Elite Digital Global</span>. All Rights Reserved.</p>
+    <p>Designed & Built by <span>Kasim M.</span></p>
+  </div>
+</footer>
+<script>
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);});
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+function setFilter(btn){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+</script>
+</body>
+</html>

@@ -117,137 +117,335 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:cen
 .rank-num{width:20px;height:20px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:700;color:var(--black);flex-shrink:0;}
 .rank-bar{flex:1;height:6px;background:var(--dark2);position:relative;}
 .rank-fill{height:100%;background:linear-gradient(90deg,var(--gold-dark),var(--gold));}
-.rank-label{font-size:0.55rem;color:var(--muted);white-space:nowrap;}
+.rank-label{font-size:0.55rem;color:var(--muted);{
 
-/* Social mockup */
-.social-mockup{position:absolute;inset:1rem;display:grid;grid-template-columns:1fr 1fr;gap:0.4rem;}
-.social-post{background:var(--dark2);border:1px solid var(--border);display:flex;flex-direction:column;}
-.social-post-img{flex:1;background:linear-gradient(135deg,rgba(201,168,76,0.1),rgba(201,168,76,0.03));}
-.social-post-bar{height:20px;background:#111;border-top:1px solid var(--border);display:flex;align-items:center;padding:0 0.4rem;gap:0.3rem;}
-.social-heart{color:#e74c3c;font-size:0.5rem;}
-.social-count{font-size:0.5rem;color:var(--muted);}
+ <!-- PROJECTS GRID — FIN/TECH EDITION -->
+ <section class="projects-section">
+  <div class="projects-grid">
+   <!-- CARD 1: WEALTHVAULT CAPITAL (FinTech Wealth Management) -->
+    <div class="project-card">
+      <div class="card-visual" style="background:#0B1426; display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="width:100%; max-width:300px; background:#0F1A2E; border:1px solid rgba(255,255,255,0.06); border-radius:12px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+          <div style="display:flex; height:180px;">
+            <div style="width:60px; background:#0F1A2E; padding:8px 6px; border-right:1px solid rgba(255,255,255,0.06);">
+              <div style="color:#00D4AA; font-size:8px; font-weight:700; font-family:'Inter',sans-serif;">WV</div>
+              <div style="color:#94A3B8; font-size:6px; margin-top:8px;">Dash</div>
+              <div style="color:#94A3B8; font-size:6px;">Port</div>
+              <div style="color:#94A3B8; font-size:6px;">Trade</div>
+            </div>
+            <div style="flex:1; padding:10px 12px; background:#0B1426;">
+              <div style="color:#94A3B8; font-size:7px; font-family:'Inter',sans-serif;">Welcome back,</div>
+              <div style="color:#F0F4F8; font-size:12px; font-weight:600; font-family:'Inter',sans-serif;">John Doe</div>
+              <div style="color:#00D4AA; font-size:18px; font-weight:700; font-family:'JetBrains Mono',monospace; margin-top:2px;">$2.4M</div>
+              <div style="color:#00D4AA; font-size:7px; background:rgba(0,212,170,0.12); padding:1px 8px; border-radius:20px; display:inline-block;">↑ 12.4%</div>
+              <div style="display:flex; gap:2px; margin-top:6px;">
+                <div style="height:20px; flex:1; background:linear-gradient(to top,#00D4AA,rgba(0,212,170,0.2)); border-radius:2px;"></div>
+                <div style="height:30px; flex:1; background:linear-gradient(to top,#7B61FF,rgba(123,97,255,0.2)); border-radius:2px;"></div>
+                <div style="height:25px; flex:1; background:linear-gradient(to top,#00D4AA,rgba(0,212,170,0.2)); border-radius:2px;"></div>
+                <div style="height:35px; flex:1; background:linear-gradient(to top,#7B61FF,rgba(123,97,255,0.2)); border-radius:2px;"></div>
+                <div style="height:20px; flex:1; background:linear-gradient(to top,#00D4AA,rgba(0,212,170,0.2)); border-radius:2px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ FinTech · Wealth Management</div>
+        <div class="card-title">WealthVault Capital</div>
+        <div class="card-desc">Premium wealth management platform for high-net-worth individuals. Custom dashboard with real-time portfolio tracking, multi-currency support, and secure client portal. Designed to build trust at scale.</div>
+        <div class="card-chips">
+          <span class="chip">UI/UX Design</span>
+          <span class="chip">FinTech</span>
+          <span class="chip">D3.js</span>
+          <span class="chip">React</span>
+        </div>
+        <div class="card-results">
+          <div><span class="c-result-num">215%</span><span class="c-result-label">Engagement ↑</span></div>
+          <div><span class="c-result-num">$124M+</span><span class="c-result-label">AUM</span></div>
+        </div>
+        <a href="contact.html" class="card-link">View Case Study</a>
+      </div>
+    </div>
 
-/* AI mockup */
-.ai-mockup{position:absolute;inset:1rem;padding:0.8rem;display:flex;flex-direction:column;gap:0.4rem;}
-.ai-msg{padding:0.4rem 0.6rem;border-radius:0;font-size:0.55rem;max-width:80%;}
-.ai-msg.user{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.2);color:var(--gold);align-self:flex-end;}
-.ai-msg.bot{background:var(--dark2);border:1px solid var(--border);color:var(--muted);align-self:flex-start;}
-.ai-flow{display:flex;align-items:center;gap:0.3rem;margin-top:0.3rem;}
-.ai-node{width:24px;height:16px;background:var(--dark2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:0.4rem;color:var(--gold);}
-.ai-arrow{font-size:0.5rem;color:var(--gold);}
+    <!-- CARD 2: BLOCKTRADE EXCHANGE (Crypto) -->
+    <div class="project-card">
+      <div class="card-visual" style="background:#0A0A0F; display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="width:100%; max-width:300px; background:#0F0F1A; border:1px solid rgba(255,255,255,0.06); border-radius:12px; overflow:hidden;">
+          <div style="display:flex; justify-content:space-between; padding:8px 12px; border-bottom:1px solid rgba(255,255,255,0.06);">
+            <span style="color:#F7931A; font-size:9px; font-weight:700; font-family:'Inter',sans-serif;">BTC/USD</span>
+            <span style="color:#00C853; font-size:9px; font-weight:600; font-family:'Inter',sans-serif;">+2.41%</span>
+          </div>
+          <div style="padding:12px;">
+            <div style="color:#F0F4F8; font-size:18px; font-weight:600; font-family:'JetBrains Mono',monospace;">$67,482.30</div>
+            <div style="display:flex; gap:4px; margin-top:6px;">
+              <div style="background:rgba(0,200,83,0.12); color:#00C853; font-size:7px; padding:3px 10px; border-radius:4px; font-family:'Inter',sans-serif;">Buy</div>
+              <div style="background:rgba(255,23,68,0.12); color:#FF1744; font-size:7px; padding:3px 10px; border-radius:4px; font-family:'Inter',sans-serif;">Sell</div>
+              <div style="background:rgba(247,147,26,0.12); color:#F7931A; font-size:7px; padding:3px 10px; border-radius:4px; font-family:'Inter',sans-serif;">Swap</div>
+            </div>
+            <div style="display:flex; gap:2px; margin-top:8px; height:30px; align-items:flex-end;">
+              <div style="height:30%; flex:1; background:linear-gradient(to top,#00C853,rgba(0,200,83,0.2)); border-radius:2px;"></div>
+              <div style="height:45%; flex:1; background:linear-gradient(to top,#00C853,rgba(0,200,83,0.2)); border-radius:2px;"></div>
+              <div style="height:60%; flex:1; background:linear-gradient(to top,#F7931A,rgba(247,147,26,0.2)); border-radius:2px;"></div>
+              <div style="height:80%; flex:1; background:linear-gradient(to top,#F7931A,rgba(247,147,26,0.2)); border-radius:2px;"></div>
+              <div style="height:100%; flex:1; background:linear-gradient(to top,#00C853,rgba(0,200,83,0.2)); border-radius:2px;"></div>
+              <div style="height:70%; flex:1; background:linear-gradient(to top,#F7931A,rgba(247,147,26,0.2)); border-radius:2px;"></div>
+              <div style="height:50%; flex:1; background:linear-gradient(to top,#00C853,rgba(0,200,83,0.2)); border-radius:2px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ Crypto · Exchange</div>
+        <div class="card-title">BlockTrade Exchange</div>
+        <div class="card-desc">Complete brand identity and UI/UX redesign for a cryptocurrency exchange. Simplified order execution, reduced cognitive load, and increased daily trading volume by 187%.</div>
+        <div class="card-chips">
+          <span class="chip">UX Design</span>
+          <span class="chip">Web3</span>
+          <span class="chip">Mobile-First</span>
+          <span class="chip">Brand Identity</span>
+        </div>
+        <div class="card-results">
+          <div><span class="c-result-num">187%</span><span class="c-result-label">Volume ↑</span></div>
+          <div><span class="c-result-num">4.7★</span><span class="c-result-label">App Store</span></div>
+        </div>
+        <a href="contact.html" class="card-link">View Case Study</a>
+      </div>
+    </div>
 
-/* Ads mockup */
-.ads-mockup{position:absolute;inset:1rem;padding:0.8rem;display:flex;flex-direction:column;gap:0.5rem;}
-.ad-metric{display:flex;justify-content:space-between;align-items:center;padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.04);}
-.ad-metric-label{font-size:0.55rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
-.ad-metric-value{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);}
-.ad-chart{display:flex;align-items:flex-end;gap:2px;height:40px;margin-top:0.3rem;}
-.ad-bar-item{flex:1;background:linear-gradient(to top,var(--gold-dark),var(--gold));opacity:0.7;}
+    <!-- CARD 3: APEX DIGITAL SCALE (AI Automation — KEEP AS IS) -->
+    <div class="project-card">
+      <div class="card-visual" style="background:linear-gradient(135deg,#060d0a,#0a140f); display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="width:100%; max-width:300px; background:#0D1510; border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:14px;">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="background:rgba(0,212,170,0.12); border:1px solid rgba(0,212,170,0.15); padding:6px 10px; border-radius:6px; color:#00D4AA; font-size:8px; font-family:'Inter',sans-serif; align-self:flex-end;">New lead captured ✓</div>
+            <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); padding:6px 10px; border-radius:6px; color:#94A3B8; font-size:8px; font-family:'Inter',sans-serif; align-self:flex-start;">Sending welcome email...</div>
+            <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); padding:6px 10px; border-radius:6px; color:#94A3B8; font-size:8px; font-family:'Inter',sans-serif; align-self:flex-start;">CRM updated automatically</div>
+            <div style="background:rgba(0,212,170,0.12); border:1px solid rgba(0,212,170,0.15); padding:6px 10px; border-radius:6px; color:#00D4AA; font-size:8px; font-family:'Inter',sans-serif; align-self:flex-end;">Invoice generated ✓</div>
+            <div style="display:flex; align-items:center; gap:4px; justify-content:center; margin-top:4px;">
+              <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); width:24px; height:16px; display:flex; align-items:center; justify-content:center; font-size:8px; color:#00D4AA;">📧</div>
+              <span style="color:#00D4AA; font-size:8px;">→</span>
+              <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); width:24px; height:16px; display:flex; align-items:center; justify-content:center; font-size:8px; color:#00D4AA;">🤖</div>
+              <span style="color:#00D4AA; font-size:8px;">→</span>
+              <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); width:24px; height:16px; display:flex; align-items:center; justify-content:center; font-size:8px; color:#00D4AA;">📊</div>
+              <span style="color:#00D4AA; font-size:8px;">→</span>
+              <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06); width:24px; height:16px; display:flex; align-items:center; justify-content:center; font-size:8px; color:#00D4AA;">💰</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ AI · Automation</div>
+        <div class="card-title">Apex Digital Scale</div>
+        <div class="card-desc">Custom AI agent system automating lead capture, client onboarding, invoice generation, follow-up sequences and CRM updates. From 10-hour manual days to fully automated 24/7 operations.</div>
+        <div class="card-chips">
+          <span class="chip">AI Agents</span>
+          <span class="chip">Automation</span>
+          <span class="chip">CRM</span>
+          <span class="chip">Email Sequences</span>
+        </div>
+        <div class="card-results">
+          <div><span class="c-result-num">35hrs</span><span class="c-result-label">Saved Weekly</span></div>
+          <div><span class="c-result-num">60%</span><span class="c-result-label">Revenue Growth</span></div>
+        </div>
+        <a href="contact.html" class="card-link">View Case Study</a>
+      </div>
+    </div>
 
-.card-body{padding:1.8rem 2rem;flex:1;display:flex;flex-direction:column;}
-.card-category{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
-.card-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--white);margin-bottom:0.7rem;line-height:1.2;}
-.card-desc{font-size:0.83rem;line-height:1.75;color:var(--muted);margin-bottom:1.2rem;flex:1;}
-.card-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem;}
-.chip{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);color:#aaa;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.6rem;}
-.card-results{display:flex;gap:1.5rem;margin-bottom:1.5rem;}
-.c-result-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);line-height:1;}
-.c-result-label{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
-.card-link{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:gap 0.3s;margin-top:auto;}
-.card-link:hover{gap:0.8rem;}
-.card-link::after{content:'→';}
+    <!-- CARD 4: FINVAULT CONTENT (FinTech SEO) -->
+    <div class="project-card">
+      <div class="card-visual" style="background:#0A0F1A; display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="width:100%; max-width:300px; background:#0D1520; border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:12px;">
+          <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.04); padding-bottom:6px; margin-bottom:8px;">
+            <span style="color:#F0F4F8; font-size:8px; font-weight:600; font-family:'Inter',sans-serif;">Organic Traffic</span>
+            <span style="color:#00D4AA; font-size:11px; font-weight:700; font-family:'JetBrains Mono',monospace;">+287%</span>
+          </div>
+          <div style="display:flex; gap:3px; height:35px; align-items:flex-end;">
+            <div style="height:25%; flex:1; background:#00D4AA; border-radius:2px;"></div>
+            <div style="height:30%; flex:1; background:#00D4AA; border-radius:2px;"></div>
+            <div style="height:35%; flex:1; background:#00D4AA; border-radius:2px;"></div>
+            <div style="height:45%; flex:1; background:#7B61FF; border-radius:2px;"></div>
+            <div style="height:70%; flex:1; background:#7B61FF; border-radius:2px;"></div>
+            <div style="height:100%; flex:1; background:#7B61FF; border-radius:2px;"></div>
+          </div>
+          <div style="display:flex; gap:4px; margin-top:6px;">
+            <span style="background:rgba(0,212,170,0.12); color:#00D4AA; font-size:6px; padding:2px 6px; border-radius:4px; font-family:'Inter',sans-serif;">#1 SERP</span>
+            <span style="background:rgba(123,97,255,0.12); color:#7B61FF; font-size:6px; padding:2px 6px; border-radius:4px; font-family:'Inter',sans-serif;">47 Backlinks</span>
+            <span style="background:rgba(201,168,76,0.12); color:#c9a84c; font-size:6px; padding:2px 6px; border-radius:4px; font-family:'Inter',sans-serif;">14 Snippets</span>
+          </div>
+          <div style="display:flex; gap:2px; margin-top:6px; flex-wrap:wrap;">
+            <span style="color:#94A3B8; font-size:6px; font-family:'Inter',sans-serif;">crypto tax guide</span>
+            <span style="color:#94A3B8; font-size:6px; font-family:'Inter',sans-serif;">·</span>
+            <span style="color:#94A3B8; font-size:6px; font-family:'Inter',sans-serif;">NFT accounting</span>
+            <span style="color:#94A3B8; font-size:6px; font-family:'Inter',sans-serif;">·</span>
+            <span style="color:#94A3B8; font-size:6px; font-family:'Inter',sans-serif;">DeFi reporting</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ FinTech · SEO</div>
+        <div class="card-title">FinVault Content</div>
+        <div class="card-desc">SEO and content strategy for a FinTech blog covering crypto, DeFi, and wealth management. Ranked 14 high-competition financial keywords to Google Page 1 in 90 days.</div>
+        <div class="card-chips">
+          <span class="chip">SEO</span>
+          <span class="chip">Content Strategy</span>
+          <span class="chip">Financial Keywords</span>
+          <span class="chip">Analytics</span>
+        </div>
+        <div class="card-results">
+          <div><span class="c-result-num">287%</span><span class="c-result-label">Traffic ↑</span></div>
+          <div><span class="c-result-num">14</span><span class="c-result-label">Featured Snippets</span></div>
+        </div>
+        <a href="contact.html" class="card-link">View Case Study</a>
+      </div>
+    </div>
 
-/* TESTIMONIALS */
-.testimonials-section{padding:7rem 4rem;background:var(--dark2);border-top:1px solid var(--border);}
-.section-header{text-align:center;margin-bottom:4rem;}
-.section-tag{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
-.section-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--white);}
-.section-header h2 em{font-style:italic;color:var(--gold);}
-.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);}
-.t-card{background:var(--dark);padding:2.5rem;position:relative;}
-.t-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:6rem;line-height:0.8;color:rgba(201,168,76,0.08);position:absolute;top:1.5rem;right:2rem;}
-.stars{color:var(--gold);font-size:0.65rem;letter-spacing:0.12em;margin-bottom:1.2rem;}
-.t-card p{font-size:0.87rem;line-height:1.85;color:#bbb;font-style:italic;margin-bottom:1.8rem;}
-.t-author{display:flex;align-items:center;gap:0.8rem;}
-.t-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:var(--black);flex-shrink:0;}
-.t-name{font-size:0.85rem;font-weight:500;color:var(--white);}
-.t-role{font-size:0.7rem;color:var(--muted);}
+    <!-- CARD 5: PAYFLOW APP (FinTech Mobile Payment) -->
+    <div class="project-card">
+      <div class="card-visual" style="background:#0A0F0F; display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="width:100%; max-width:280px; background:#0D1515; border:1px solid rgba(255,255,255,0.06); border-radius:20px; padding:16px; box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span style="color:#F0F4F8; font-size:11px; font-weight:600; font-family:'Inter',sans-serif;">PayFlow</span>
+            <span style="color:#94A3B8; font-size:7px; font-family:'Inter',sans-serif;">•••</span>
+          </div>
+          <div style="margin:10px 0 8px;">
+            <div style="color:#94A3B8; font-size:7px; font-family:'Inter',sans-serif;">Balance</div>
+            <div style="color:#F0F4F8; font-size:18px; font-weight:600; font-family:'JetBrains Mono',monospace;">$12,847.50</div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:6px; margin:8px 0;">
+            <div style="background:rgba(255,255,255,0.04); padding:6px; text-align:center; border-radius:10px; border:1px solid rgba(255,255,255,0.04);">
+              <div style="color:#00D4AA; font-size:14px;">📤</div>
+              <div style="color:#94A3B8; font-size:6px; font-family:'Inter',sans-serif;">Send</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); padding:6px; text-align:center; border-radius:10px; border:1px solid rgba(255,255,255,0.04);">
+              <div style="color:#00D4AA; font-size:14px;">📥</div>
+              <div style="color:#94A3B8; font-size:6px; font-family:'Inter',sans-serif;">Recv</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); padding:6px; text-align:center; border-radius:10px; border:1px solid rgba(255,255,255,0.04);">
+              <div style="color:#7B61FF; font-size:14px;">💳</div>
+              <div style="color:#94A3B8; font-size:6px; font-family:'Inter',sans-serif;">Pay</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.04); padding:6px; text-align:center; border-radius:10px; border:1px solid rgba(255,255,255,0.04);">
+              <div style="color:#F7931A; font-size:14px;">📊</div>
+              <div style="color:#94A3B8; font-size:6px; font-family:'Inter',sans-serif;">Stats</div>
+            </div>
+          </div>
+          <div style="background:rgba(0,212,170,0.08); border:1px solid rgba(0,212,170,0.1); padding:6px 10px; border-radius:10px; text-align:center; margin-top:6px;">
+            <span style="color:#00D4AA; font-size:7px; font-family:'Inter',sans-serif;">✓ Payment processed in 1.2s</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ FinTech · Mobile</div>
+        <div class="card-title">PayFlow App</div>
+        <div class="card-desc">Mobile-first payment app with instant transfers, bill payments, and real-time transaction tracking. Designed for emerging markets with offline-first capability.</div>
+        <div class="card-chips">
+          <span class="chip">Mobile Design</span>
+          <span class="chip">FinTech</span>
+          <span class="chip">Micro-Interactions</span>
+          <span class="chip">UI/UX</span>
+        </div>
+        <div class="card-results">
+          <div><span class="c-result-num">99.97%</span><span class="c-result-label">Uptime</span></div>
+          <div><span class="c-result-num">1.2s</span><span class="c-result-label">Tx Speed</span></div>
+        </div>
+        <a href="contact.html" class="card-link">View Case Study</a>
+      </div>
+    </div>
 
-/* CTA */
-.cta-section{padding:8rem 4rem;text-align:center;position:relative;overflow:hidden;}
-.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 50% 50%,rgba(201,168,76,0.06) 0%,transparent 70%);}
-.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:var(--white);margin-bottom:1.5rem;position:relative;}
-.cta-section h2 em{font-style:italic;color:var(--gold);}
-.cta-section p{color:var(--muted);font-size:1rem;max-width:500px;margin:0 auto 3rem;line-height:1.8;position:relative;}
-.cta-actions{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;position:relative;}
-.btn-gold{background:var(--gold);color:var(--black);padding:1rem 2.5rem;text-decoration:none;font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;font-weight:600;transition:background 0.3s,transform 0.2s;display:inline-block;}
-.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
-.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:1rem 2.5rem;text-decoration:none;font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;transition:background 0.3s,color 0.3s;display:inline-block;}
-.btn-outline:hover{background:var(--gold);color:var(--black);}
+    <!-- CARD 6: CRYPTO MARKET VIEW (Analytics Dashboard) -->
+    <div class="project-card">
+      <div class="card-visual" style="background:#0A0A12; display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="width:100%; max-width:300px; background:#0F0F1A; border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:12px;">
+          <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.04); padding-bottom:6px; margin-bottom:6px;">
+            <span style="color:#7B61FF; font-size:8px; font-weight:700; font-family:'Inter',sans-serif;">Market Analytics</span>
+            <span style="color:#00D4AA; font-size:7px; font-family:'Inter',sans-serif;">● Live</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+            <span style="color:#F0F4F8; font-size:11px; font-weight:600; font-family:'JetBrains Mono',monospace;">$2.4T</span>
+            <span style="color:#00C853; font-size:8px; font-family:'Inter',sans-serif;">↑ 3.2%</span>
+          </div>
+          <div style="display:flex; gap:2px; height:35px; align-items:flex-end;">
+            <div style="height:30%; flex:1; background:linear-gradient(to top,#7B61FF,rgba(123,97,255,0.2)); border-radius:2px;"></div>
+            <div style="height:45%; flex:1; background:linear-gradient(to top,#7B61FF,rgba(123,97,255,0.2)); border-radius:2px;"></div>
+            <div style="height:60%; flex:1; background:linear-gradient(to top,#7B61FF,rgba(123,97,255,0.2)); border-radius:2px;"></div>
+            <div style="height:80%; flex:1; background:linear-gradient(to top,#00D4AA,rgba(0,212,170,0.2)); border-radius:2px;"></div>
+            <div style="height:100%; flex:1; background:linear-gradient(to top,#00D4AA,rgba(0,212,170,0.2)); border-radius:2px;"></div>
+            <div style="height:70%; flex:1; background:linear-gradient(to top,#7B61FF,rgba(123,97,255,0.2)); border-radius:2px;"></div>
+            <div style="height:50%; flex:1; background:linear-gradient(to top,#7B61FF,rgba(123,97,255,0.2)); border-radius:2px;"></div>
+          </div>
+          <div style="display:flex; gap:4px; margin-top:6px;">
+            <span style="background:rgba(247,147,26,0.12); color:#F7931A; font-size:6px; padding:2px 6px; border-radius:4px; font-family:'Inter',sans-serif;">BTC +2.4%</span>
+            <span style="background:rgba(0,212,170,0.12); color:#00D4AA; font-size:6px; padding:2px 6px; border-radius:4px; font-family:'Inter',sans-serif;">ETH +4.8%</span>
+            <span style="background:rgba(0,200,83,0.12); color:#00C853; font-size:6px; padding:2px 6px; border-radius:4px; font-family:'Inter',sans-serif;">SOL +18.2%</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ Crypto · Analytics</div>
+        <div class="card-title">Crypto Market View</div>
+        <div class="card-desc">Real-time cryptocurrency market analytics dashboard with custom D3.js charts, WebSocket data streaming, and AI-powered insights for 50K+ daily active traders.</div>
+        <div class="card-chips">
+          <span class="chip">D3.js</span>
+          <span class="chip">WebSocket</span>
+          <span class="chip">Dashboards</span>
+          <span class="chip">Crypto</span>
+        </div>
+        <div class="card-results">
+          <div><span class="c-result-num">50K+</span><span class="c-result-label">Daily Users</span></div>
+          <div><span class="c-result-num">3ms</span><span class="c-result-label">Data Latency</span></div>
+        </div>
+        <a href="contact.html" class="card-link">View Case Study</a>
+      </div>
+    </div>
 
-/* FOOTER */
-footer{background:var(--dark2);border-top:1px solid var(--border);}
-.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding:5rem 4rem 3rem;}
-.footer-logo-img{height:52px;width:auto;margin-bottom:1rem;object-fit:contain;}
-.footer-brand p{font-size:0.83rem;line-height:1.8;color:var(--muted);max-width:240px;margin-bottom:1.5rem;}
-.footer-socials{display:flex;gap:0.6rem;flex-wrap:wrap;}
-.social-btn{min-width:36px;height:36px;padding:0 8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:0.7rem;font-weight:600;transition:border-color 0.3s,color 0.3s;}
-.social-btn:hover{border-color:var(--gold);color:var(--gold);}
-.footer-col h4{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.8rem;}
-.footer-col ul a{font-size:0.83rem;color:var(--muted);text-decoration:none;transition:color 0.3s;}
-.footer-col ul a:hover{color:var(--white);}
-.footer-bottom{border-top:1px solid var(--border);padding:1.5rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
-.footer-bottom p{font-size:0.75rem;color:#555;}
-.footer-bottom span{color:var(--gold);}
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-@media(max-width:1024px){.projects-grid{grid-template-columns:repeat(2,1fr);}.footer-top{grid-template-columns:1fr 1fr;}}
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem;}.nav-links,.nav-cta{display:none;}.nav-toggle{display:flex;}
-  .hero,.featured-wrap,.projects-section,.testimonials-section,.cta-section{padding-left:1.5rem;padding-right:1.5rem;}
-  .filter-bar{padding:2rem 1.5rem 1rem;}
-  .stats-bar{grid-template-columns:repeat(2,1fr);}
-  .featured-project{grid-template-columns:1fr;}.featured-visual{min-height:220px;border-right:none;border-bottom:1px solid var(--border);}
-  .featured-content{padding:2rem 1.5rem;}
-  .projects-grid{grid-template-columns:1fr;}
-  .testimonials-grid{grid-template-columns:1fr;}
-  .footer-top{grid-template-columns:1fr 1fr;padding:3rem 1.5rem 2rem;}
-  .footer-bottom{padding:1.5rem;flex-direction:column;text-align:center;}
-}
-@media(max-width:500px){.footer-top{grid-template-columns:1fr;}}
-</style>
-</head>
-<body>
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="toggleMenu()">✕</button>
-  <a href="index.html" onclick="toggleMenu()">Home</a>
-  <a href="services.html" onclick="toggleMenu()">Services</a>
-  <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
-  <a href="store.html" onclick="toggleMenu()">Store</a>
-  <a href="about.html" onclick="toggleMenu()">About</a>
-  <a href="contact.html" onclick="toggleMenu()">Contact</a>
-</div>
-<nav id="navbar">
-  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Kasim Elite Digital Global"/></a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="portfolio.html" class="active">Portfolio</a></li>
-    <li><a href="store.html">Store</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <a href="contact.html" class="nav-cta">Hire Me</a>
-  <div class="nav-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
-</nav>
+    <!-- CARD 7: TRADEHUB PLATFORM (Stock Trading) -->
+    <div class="project-card">
+      <div class="card-visual" style="background:#0A0D14; display:flex; align-items:center; justify-content:center; padding:1rem;">
+        <div style="width:100%; max-width:300px; background:#0D1520; border:1px solid rgba(255,255,255,0.06); border-radius:12px; padding:12px;">
+          <div style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.04); padding-bottom:6px; margin-bottom:6px;">
+            <span style="color:#F0F4F8; font-size:8px; font-weight:600; font-family:'Inter',sans-serif;">AAPL</span>
+            <span style="color:#00C853; font-size:8px; font-family:'Inter',sans-serif;">+1.8%</span>
+          </div>
+          <div style="color:#F0F4F8; font-size:16px; font-weight:600; font-family:'JetBrains Mono',monospace;">$187.42</div>
+          <div style="display:flex; gap:4px; margin:6px 0 8px;">
+            <div style="flex:1; background:rgba(0,200,83,0.12); color:#00C853; font-size:6px; padding:3px; text-align:center; border-radius:4px; font-family:'Inter',sans-serif; border:1px solid rgba(0,200,83,0.1);">BUY</div>
+            <div style="flex:1; background:rgba(255,23,68,0.12); color:#FF1744; font-size:6px; padding:3px; text-align:center; border-radius:4px; font-family:'Inter',sans-serif; border:1px solid rgba(255,23,68,0.1);">SELL</div>
+            <div style="flex:1; background:rgba(123,97,255,0.12); color:#7B61FF; font-size:6px; padding:3px; text-align:center; border-radius:4px; font-family:'Inter',sans-serif; border:1px solid rgba(123,97,255,0.1);">LIMIT</div>
+          </div>
+          <div style="display:flex; gap:2px; height:20px; align-items:flex-end;">
+            <div style="height:30%; flex:1; background:linear-gradient(to top,#00C853,rgba(0,200,83,0.2)); border-radius:2px;"></div>
+            <div style="height:50%; flex:1; background:linear-gradient(to top,#00C853,rgba(0,200,83,0.2)); border-radius:2px;"></div>
+            <div style="height:70%; flex:1; background:linear-gradient(to top,#FF1744,rgba(255,23,68,0.2)); border-radius:2px;"></div>
+            <div style="height:90%; flex:1; background:linear-gradient(to top,#FF1744,rgba(255,23,68,0.2)); border-radius:2px;"></div>
+            <div style="height:100%; flex:1; background:linear-gradient(to top,#00C853,rgba(0,200,83,0.2)); border-radius:2px;"></div>
+            <div style="height:60%; flex:1; background:linear-gradient(to top,#00C853,rgba(0,200,83,0.2)); border-radius:2px;"></div>
+          </div>
+          <div style="display:flex; gap:4px; margin-top:6px;">
+            <span style="background:rgba(0,212,170,0.08); color:#00D4AA; font-size:5px; padding:2px 6px; border-radius:4px; font-family:'Inter',sans-serif;">0 Execution Errors</span>
+            <span style="background:rgba(201,168,76,0.08); color:#c9a84c; font-size:5px; padding:2px 6px; border-radius:4px; font-family:'Inter',sans-serif;">99.99% Uptime</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ FinTech · Trading</div>
+        <div class="card-title">TradeHub Platform</div>
+        <div class="card-desc">Professional stock trading platform with real-time market data, zero execution errors, and 99.99% uptime during market hours. Built for serious investors.</div>
+        <div class="card-chips">
+          <span class="chip">Trading</span>
+          <span class="chip">Real-Time</span>
+          <span class="chip">Security</span>
+          <span class="chip">FinTech</span>
+        </div>
+        <div class="card-results">
+          <div><span class="c-result-num">0</span><span class="c-result-label">Execution Errors</span></div>
+          <div><span class="c-result-num">99.99%</span><span class="c-result-label">Uptime</span></div>
+        </div>
+        <a href="contact.html" class="card-link">View Case Study</a>
+      </div>
+    </div>
 
-<section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-label">Our Work</div>
-  <h1>Selected <em>Projects</em><br/>& Results</h1>
-  <p>Premium digital work delivered for global brands, startups and enterprise clients across six continents. Every project engineered for maximum impact and measurable results.</p>
+  </div>
 </section>
-
 <div class="stats-bar">
   <div class="stat-item"><div class="stat-num">50+</div><div class="stat-label">Projects Delivered</div></div>
   <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">Global Clients</div></div>

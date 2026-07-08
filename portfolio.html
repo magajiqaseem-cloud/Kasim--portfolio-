@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="FinTech & Tech Portfolio — Wealth management dashboards, crypto exchanges, AI automation, and data visualization projects by Kasim Elite Digital Global."/>
+<title>FinTech Portfolio | Kasim Elite Digital Global — Premium FinTech Projects</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GJBX0CJWRC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-GJBX0CJWRC");</script>
+<style>
+:root{--gold:#c9a84c;--gold-light:#e8cc7a;--gold-dark:#8a6a1f;--black:#050505;--dark:#0d0d0d;--dark2:#141414;--white:#f5f0e8;--muted:#888;--border:rgba(201,168,76,0.18);--teal:#00D4AA;--purple:#7B61FF;--orange:#F7931A;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;}
+::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--black);}::-webkit-scrollbar-thumb{background:var(--gold-dark);}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 4rem;background:rgba(5,5,5,0.95);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+.nav-logo img{height:48px;width:auto;display:block;object-fit:contain;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;transition:color 0.3s;position:relative;padding-bottom:2px;}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:0.55rem 1.4rem;font-family:'Outfit',sans-serif;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:background 0.3s,color 0.3s;}
+.nav-cta:hover{background:var(--gold);color:var(--black);}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-toggle span{display:block;width:24px;height:1.5px;background:var(--gold);}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(5,5,5,0.98);z-index:190;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.5rem;color:var(--gold);cursor:pointer;background:none;border:none;}
+.hero{min-height:55vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:10rem 2rem 5rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(201,168,76,0.08) 0%,transparent 70%);}
+.hero-grid{position:absolute;inset:0;opacity:0.015;background-image:linear-gradient(var(--gold) 1px,transparent 1px),linear-gradient(90deg,var(--gold) 1px,transparent 1px);background-size:60px 60px;}
+.hero-label{font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem;position:relative;animation:fadeUp 0.8s ease 0.1s both;}
+.hero-label::before,.hero-label::after{content:'';display:block;width:40px;height:1px;background:var(--gold);}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,6.5rem);font-weight:300;line-height:1.05;color:var(--white);margin-bottom:1rem;position:relative;animation:fadeUp 0.8s ease 0.25s both;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero p{max-width:580px;font-size:1rem;line-height:1.8;color:var(--muted);position:relative;animation:fadeUp 0.8s ease 0.4s both;}
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stat-item{padding:2.5rem 2rem;text-align:center;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.4rem;}
+.stat-label{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+.filter-bar{display:flex;justify-content:center;gap:0.6rem;padding:4rem 4rem 2rem;flex-wrap:wrap;}
+.filter-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:0.55rem 1.5rem;font-family:'Outfit',sans-serif;font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;}
+.filter-btn:hover,.filter-btn.active{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.06);}
+.featured-wrap{padding:0 4rem 2rem;}
+.featured-project{display:grid;grid-template-columns:1fr 1fr;background:var(--dark);border:1px solid var(--border);position:relative;overflow:hidden;}
+.featured-project::before{content:'FEATURED PROJECT';position:absolute;top:1.5rem;left:1.5rem;background:var(--gold);color:var(--black);font-size:0.58rem;letter-spacing:0.2em;padding:0.3rem 0.8rem;font-weight:700;z-index:2;}
+.featured-visual{background:#0B1426;display:flex;align-items:center;justify-content:center;min-height:420px;position:relative;overflow:hidden;border-right:1px solid var(--border);}
+.featured-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(0,212,170,0.06),transparent);}
+.mockup-screen{width:85%;background:#0F1A2E;border:1px solid rgba(255,255,255,0.06);position:relative;z-index:1;box-shadow:0 20px 60px rgba(0,0,0,0.5);border-radius:12px;overflow:hidden;}
+.mockup-bar{background:#0F1A2E;padding:0.6rem 1rem;display:flex;align-items:center;gap:0.5rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+.mockup-dot{width:8px;height:8px;border-radius:50%;}
+.mockup-url{flex:1;background:#0B1426;border-radius:2px;height:16px;margin:0 0.5rem;}
+.mockup-body{padding:1.5rem;min-height:200px;background:#0B1426;}
+.mockup-hero-bar{height:80px;background:linear-gradient(135deg,#0B1426,#0F1A2E);border:1px solid rgba(255,255,255,0.06);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;border-radius:8px;}
+.mockup-hero-text{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);letter-spacing:0.1em;}
+.mockup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin-bottom:1rem;}
+.mockup-card{height:40px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:4px;}
+.mockup-footer{height:30px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:4px;}
+.featured-content{padding:3.5rem;}
+.feat-tag{font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.feat-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--white);margin-bottom:1rem;line-height:1.2;}
+.feat-desc{font-size:0.88rem;line-height:1.85;color:var(--muted);margin-bottom:1.5rem;}
+.feat-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;}
+.tag-chip{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.2);color:var(--gold);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;}
+.feat-results{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;padding:1.2rem;background:rgba(201,168,76,0.04);border:1px solid var(--border);}
+.result-num{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--gold);line-height:1;}
+.result-label{font-size:0.62rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;}
+.feat-btn{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold);color:var(--black);padding:0.9rem 2rem;text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;font-weight:600;transition:background 0.3s;}
+.feat-btn:hover{background:var(--gold-light);}
+.projects-section{padding:2rem 4rem 6rem;}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);}
+.project-card{background:var(--dark);position:relative;overflow:hidden;display:flex;flex-direction:column;transition:background 0.4s;}
+.project-card:hover{background:var(--dark2);}
+.project-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold-dark),var(--gold));transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+.project-card:hover::after{transform:scaleX(1);}
+.card-visual{height:200px;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+.card-body{padding:1.8rem 2rem;flex:1;display:flex;flex-direction:column;}
+.card-category{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem;}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;color:var(--white);margin-bottom:0.7rem;line-height:1.2;}
+.card-desc{font-size:0.83rem;line-height:1.75;color:var(--muted);margin-bottom:1.2rem;flex:1;}
+.card-chips{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.2rem;}
+.chip{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.18);color:#aaa;font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.6rem;}
+.card-results{display:flex;gap:1.5rem;margin-bottom:1.5rem;}
+.c-result-num{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold);line-height:1;}
+.c-result-label{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+.card-link{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:gap 0.3s;margin-top:auto;}
+.card-link:hover{gap:0.8rem;}
+.card-link::after{content:'→';}
+.testimonials-section{padding:7rem 4rem;background:var(--dark2);border-top:1px solid var(--border);}
+.section-header{text-align:center;margin-bottom:4rem;}
+.section-tag{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.section-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--white);}
+.section-header h2 em{font-style:italic;color:var(--gold);}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);}
+.t-card{background:var(--dark);padding:2.5rem;position:relative;}
+.t-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:6rem;line-height:0.8;color:rgba(201,168,76,0.08);position:absolute;top:1.5rem;right:2rem;}
+.stars{color:var(--gold);font-size:0.65rem;letter-spacing:0.12em;margin-bottom:1.2rem;}
+.t-card p{font-size:0.87rem;line-height:1.85;color:#bbb;font-style:italic;margin-bottom:1.8rem;}
+.t-author{display:flex;align-items:center;gap:0.8rem;}
+.t-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:var(--black);flex-shrink:0;}
+.t-name{font-size:0.85rem;font-weight:500;color:var(--white);}
+.t-role{font-size:0.7rem;color:var(--muted);}
+.cta-section{padding:8rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 50% 50%,rgba(201,168,76,0.06) 0%,transparent 70%);}
+.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:var(--white);margin-bottom:1.5rem;position:relative;}
+.cta-section h2 em{font-style:italic;color:var(--gold);}
+.cta-section p{color:var(--muted);font-size:1rem;max-width:500px;margin:0 auto 3rem;line-height:1.8;position:relative;}
+.cta-actions{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;position:relative;}
+.btn-gold{background:var(--gold);color:var(--black);padding:1rem 2.5rem;text-decoration:none;font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;font-weight:600;transition:background 0.3s,transform 0.2s;display:inline-block;}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:1rem 2.5rem;text-decoration:none;font-size:0.82rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;transition:background 0.3s,color 0.3s;display:inline-block;}
+.btn-outline:hover{background:var(--gold);color:var(--black);}
+footer{background:var(--dark2);border-top:1px solid var(--border);}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding:5rem 4rem 3rem;}
+.footer-logo-img{height:52px;width:auto;margin-bottom:1rem;object-fit:contain;}
+.footer-brand p{font-size:0.83rem;line-height:1.8;color:var(--muted);max-width:240px;margin-bottom:1.5rem;}
+.footer-socials{display:flex;gap:0.6rem;flex-wrap:wrap;}
+.social-btn{min-width:36px;height:36px;padding:0 8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:0.7rem;font-weight:600;transition:border-color 0.3s,color 0.3s;}
+.social-btn:hover{border-color:var(--gold);color:var(--gold);}
+.footer-col h4{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.8rem;}
+.footer-col ul a{font-size:0.83rem;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.footer-col ul a:hover{color:var(--white);}
+.footer-bottom{border-top:1px solid var(--border);padding:1.5rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-bottom p{font-size:0.75rem;color:#555;}
+.footer-bottom span{color:var(--gold);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:1024px){.projects-grid{grid-template-columns:repeat(2,1fr);}.footer-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}.nav-links,.nav-cta{display:none;}.nav-toggle{display:flex;}
+  .hero,.featured-wrap,.projects-section,.testimonials-section,.cta-section{padding-left:1.5rem;padding-right:1.5rem;}
+  .filter-bar{padding:2rem 1.5rem 1rem;}
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .featured-project{grid-template-columns:1fr;}.featured-visual{min-height:220px;border-right:none;border-bottom:1px solid var(--border);}
+  .featured-content{padding:2rem 1.5rem;}
+  .projects-grid{grid-template-columns:1fr;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;padding:3rem 1.5rem 2rem;}
+  .footer-bottom{padding:1.5rem;flex-direction:column;text-align:center;}
+}
+@media(max-width:500px){.footer-top{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="services.html" onclick="toggleMenu()">Services</a>
+  <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
+  <a href="store.html" onclick="toggleMenu()">Store</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+</div>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Kasim Elite Digital Global"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="store.html">Store</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Hire Me</a>
+  <div class="nav-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-label">✦ Our Work</div>
+  <h1>FinTech & <em>Tech</em><br/>Projects</h1>
+  <p>Premium digital work delivered for financial technology companies, crypto platforms, and global startups. Every project engineered for maximum impact and measurable results.</p>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">50K+</div><div class="stat-label">Daily Active Users</div></div>
+  <div class="stat-item"><div class="stat-num">$124M+</div><div class="stat-label">Portfolio Value Managed</div></div>
+  <div class="stat-item"><div class="stat-num">215%</div><div class="stat-label">Avg. Engagement ↑</div></div>
+  <div class="stat-item"><div class="stat-num">6+</div><div class="stat-label">Years Experience</div></div>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter(this)">All Work</button>
+  <button class="filter-btn" onclick="setFilter(this)">FinTech</button>
+  <button class="filter-btn" onclick="setFilter(this)">Crypto</button>
+  <button class="filter-btn" onclick="setFilter(this)">AI</button>
+  <button class="filter-btn" onclick="setFilter(this)">SEO</button>
+  <button class="filter-btn" onclick="setFilter(this)">Branding</button>
+</div>
+
+<!-- FEATURED PROJECT -->
+<div class="featured-wrap">
+  <div class="featured-project">
+    <div class="featured-visual">
+      <div class="mockup-screen">
+        <div class="mockup-bar">
+          <div class="mockup-dot" style="background:#ff5f57;"></div>
+          <div class="mockup-dot" style="background:#ffbd2e;"></div>
+          <div class="mockup-dot" style="background:#28c840;"></div>
+          <div class="mockup-url"></div>
+        </div>
+        <div class="mockup-body">
+          <div class="mockup-hero-bar"><div class="mockup-hero-text">WEALTHVAULT CAPITAL</div></div>
+          <div class="mockup-grid">
+            <div class="mockup-card"></div>
+            <div class="mockup-card" style="border-color:rgba(0,212,170,0.3);"></div>
+            <div class="mockup-card"></div>
+          </div>
+          <div class="mockup-footer"></div>
+        </div>
+      </div>
+    </div>
+    <div class="featured-content">
+      <div class="feat-tag">⭐ Featured Project · FinTech Wealth Management</div>
+      <div class="feat-title">WealthVault Capital — Premium Wealth Management Platform</div>
+      <div class="feat-desc">Complete redesign of a wealth management platform for high-net-worth clients. Custom dashboard with real-time portfolio tracking, multi-currency support, and secure client portal. Engineered to build trust at scale.</div>
+      <div class="feat-tags">
+        <span class="tag-chip">UI/UX Design</span>
+        <span class="tag-chip">FinTech</span>
+        <span class="tag-chip">React</span>
+        <span class="tag-chip">D3.js</span>
+        <span class="tag-chip">Mobile-First</span>
+      </div>
+      <div class="feat-results">
+        <div><div class="result-num">215

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Kasim Empire | Premium Digital Solutions</title>
+    <meta name="description" content="Explore 6 premium case studies across SaaS, Fintech, eCommerce, AI Automation, Branding, and Lead Generation — built for global scalability." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        /* ── RESET & BASE ── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --bg: #0A192F;
+            --surface: #112240;
+            --border: #233554;
+            --text-primary: #E6F1FF;
+            --text-secondary: #8892B0;
+            --accent: #64FFDA;
+            --accent-dim: rgba(100, 255, 218, 0.1);
+            --radius: 16px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ── TYPOGRAPHY ── */
+        .section-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.3rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        h1 .highlight {
+            color: var(--accent);
+        }
+        .subhead {
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin-bottom: 3rem;
+        }
+
+        /* ── FILTER BAR ── */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .filter-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.3rem 0;
+            transition: var(--transition);
+            position: relative;
+            font-family: inherit;
+        }
+        .filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            color: var(--text-primary);
+        }
+        .filter-btn.active::after {
+            width: 100%;
+        }
+
+        /* ── PROJECT GRID ── */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .project-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid transparent;
+            transition: var(--transition);
+            cursor: default;
+        }
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+        }
+        .project-thumbnail {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            overflow: hidden;
+            position: relative;
+        }
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        /* fallback gradient if no image */
+        .project-thumbnail .fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #1a2d4a, #0f1b2e);
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 1rem;
+            text-align: center;
+        }
+        .project-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--bg);
+            color: var(--accent);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.8rem;
+            border-radius: 100px;
+            border: 1px solid var(--accent);
+        }
+        .project-body {
+            padding: 1.5rem 1.5rem 1.8rem;
+        }
+        .project-body h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .project-client {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+        .project-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .project-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.85rem;
+        }
+        .project-metrics span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .project-metrics .label {
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.6rem;
+            margin-bottom: 1.2rem;
+        }
+        .project-stack .tech {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: var(--bg);
+            padding: 0.15rem 0.7rem;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+        }
+        .project-links {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .project-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .project-links a:hover {
+            color: var(--accent);
+        }
+        .project-links .primary-link {
+            color: var(--accent);
+        }
+        .project-links .primary-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials-section {
+            margin: 4rem 0 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .testimonial-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border-left: 3px solid var(--accent);
+        }
+        .testimonial-card .quote {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+        .testimonial-card .author {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .testimonial-card .role {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .testimonial-card .stars {
+            color: #FBBF24;
+            letter-spacing: 2px;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: var(--surface);
+            border-radius: var(--radius);
+            margin-top: 2rem;
+        }
+        .cta-section h2 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1.8rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-weight: 600;
+            padding: 0.8rem 2.4rem;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 30px rgba(100, 255, 218, 0.25);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .filter-bar {
+                gap: 0.4rem 0.8rem;
+            }
+            .filter-btn {
+                font-size: 0.8rem;
+            }
+            .project-body {
+                padding: 1.2rem;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ─── HERO ─── -->
+        <section>
+            <span class="section-tag">Portfolio</span>
+            <h1>Selected <span class="highlight">Work</span></h1>
+            <p class="subhead">
+                Real results for global brands — from SaaS and Fintech to AI automation and high-conversion eCommerce.
+                Each case study shows the problem, our solution, and the measurable impact.
+            </p>
+        </section>
+
+        <!-- ─── FILTER ─── -->
+        <div class="filter-bar" role="tablist">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="saas">SaaS</button>
+            <button class="filter-btn" data-filter="fintech">Fintech</button>
+            <button class="filter-btn" data-filter="ecommerce">eCommerce</button>
+            <button class="filter-btn" data-filter="ai">AI / Automation</button>
+            <button class="filter-btn" data-filter="branding">Branding</button>
+            <button class="filter-btn" data-filter="leadgen">Lead Gen</button>
+        </div>
+
+        <!-- ─── PROJECT GRID ─── -->
+        <div class="project-grid" id="projectGrid">
+
+            <!-- ============================================================ -->
+            <!-- PROJECT 1 — SaaS (Dashboard & Analytics)                     -->
+            <!-- ============================================================ -->
+            <div class="project-card" data-category="saas">
+                <div class="project-thumbnail">
+                    <span class="project-tag">SaaS</span>
+                    <!-- Replace src with your actual image -->
+                    <img src="https://placehold.co/600x375/1a2d4a/64FFDA?text=SaaS+Dashboard" alt="SaaS Dashboard Project" />
+                </div>
+                <div class="project-body">
+                    <h3>Analytix Pro</h3>
+                    <div class="project-client">B2B SaaS — Predictive Analytics</div>
+                    <div class="project-excerpt">
+                        The client's legacy dashboard couldn't handle real-time data — causing 30% churn among enterprise users.
+                        We engineered a lightning-fast analytics engine with embedded AI predictions.
+                    </div>
+                    <div class="project-metrics">
+                        <span>↓ 45%</span> <span class="label">load time reduction</span>
+                        <span>↑ 22%</span> <span class="label">enterprise retention</span>
+                    </div>
+                    <div class="project-stack">
+                        <span class="tech">Next.js</span>
+                        <span class="tech">Python</span>
+                        <span class="tech">AWS QuickSight</span>
+                        <span class="tech">WebSocket</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="primary-link">View Case Study →</a>
+                        <a href="#">Live Site →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- PROJECT 2 — Fintech (Payment Infrastructure)                 -->
+            <!-- ============================================================ -->
+            <div class="project-card" data-category="fintech">
+                <div class="project-thumbnail">
+                    <span class="project-tag">Fintech</span>
+                    <img src="https://placehold.co/600x375/1a2d4a/64FFDA?text=Fintech+Payment+Hub" alt="Fintech Payment Project" />
+                </div>
+                <div class="project-body">
+                    <h3>PayBridge Global</h3>
+                    <div class="project-client">Fintech — Cross-Border Payments</div>
+                    <div class="project-excerpt">
+                        Transaction failure rates hit 18% during peak hours due to legacy routing. We built a dynamic payment
+                        orchestration layer with 50+ local gateways — reducing friction and expanding market reach.
+                    </div>
+                    <div class="project-metrics">
+                        <span>↓ 12%</span> <span class="label">transaction failures</span>
+                        <span>↑ 28%</span> <span class="label">conversion across 15 markets</span>
+                    </div>
+                    <div class="project-stack">
+                        <span class="tech">Node.js</span>
+                        <span class="tech">Stripe Connect</span>
+                        <span class="tech">Redis</span>
+                        <span class="tech">Kafka</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="primary-link">View Case Study →</a>
+                        <a href="#">Live Site →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- PROJECT 3 — eCommerce (High-Volume Retail)                   -->
+            <!-- ============================================================ -->
+            <div class="project-card" data-category="ecommerce">
+                <div class="project-thumbnail">
+                    <span class="project-tag">eCommerce</span>
+                    <img src="https://placehold.co/600x375/1a2d4a/64FFDA?text=eCommerce+Storefront" alt="eCommerce Project" />
+                </div>
+                <div class="project-body">
+                    <h3>LuxVelo Global</h3>
+                    <div class="project-client">D2C — Premium Cycling Gear</div>
+                    <div class="project-excerpt">
+                        Cross-border checkout had 60% abandonment due to slow international payment processing and hidden fees.
+                        We deployed a headless stack with localized gateways and real-time currency — cutting load times by 45%.
+                    </div>
+                    <div class="project-metrics">
+                        <span>↓ 38%</span> <span class="label">checkout abandonment</span>
+                        <span>2.4×</span> <span class="label">EU revenue growth in 60 days</span>
+                    </div>
+                    <div class="project-stack">
+                        <span class="tech">Next.js</span>
+                        <span class="tech">Stripe</span>
+                        <span class="tech">Vercel</span>
+                        <span class="tech">AWS CloudFront</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="primary-link">View Case Study →</a>
+                        <a href="#">Live Site →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- PROJECT 4 — AI / Automation (Workflow)                      -->
+            <!-- ============================================================ -->
+            <div class="project-card" data-category="ai">
+                <div class="project-thumbnail">
+                    <span class="project-tag">AI / Automation</span>
+                    <img src="https://placehold.co/600x375/1a2d4a/64FFDA?text=AI+Workflow+Automation" alt="AI Automation Project" />
+                </div>
+                <div class="project-body">
+                    <h3>Apex Flow AI</h3>
+                    <div class="project-client">B2B — Client Pipeline Automation</div>
+                    <div class="project-excerpt">
+                        The team wasted 35+ hours weekly on manual lead qualification and follow-ups. We built an AI workflow
+                        engine with NLP classifiers and automated CRM sync — turning hours into minutes.
+                    </div>
+                    <div class="project-metrics">
+                        <span>↓ 35 hrs</span> <span class="label">saved per week</span>
+                        <span>↑ 3.2×</span> <span class="label">lead response speed</span>
+                    </div>
+                    <div class="project-stack">
+                        <span class="tech">Python</span>
+                        <span class="tech">OpenAI API</span>
+                        <span class="tech">Zapier</span>
+                        <span class="tech">HubSpot</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="primary-link">View Case Study →</a>
+                        <a href="#">Live Site →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- PROJECT 5 — Branding + Web (Complete Rebrand)              -->
+            <!-- ============================================================ -->
+            <div class="project-card" data-category="branding">
+                <div class="project-thumbnail">
+                    <span class="project-tag">Branding</span>
+                    <img src="https://placehold.co/600x375/1a2d4a/64FFDA?text=Branding+Identity" alt="Branding Project" />
+                </div>
+                <div class="project-body">
+                    <h3>NexaCore Systems</h3>
+                    <div class="project-client">Enterprise IT — B2B Brand Overhaul</div>
+                    <div class="project-excerpt">
+                        The brand felt outdated and failed to convey enterprise-grade trust. We executed a complete rebrand
+                        — visual identity, messaging, and a new web presence — positioning them as a market leader.
+                    </div>
+                    <div class="project-metrics">
+                        <span>↑ 47%</span> <span class="label">inquiry rate post-launch</span>
+                        <span>↑ 85%</span> <span class="label">brand recall in surveys</span>
+                    </div>
+                    <div class="project-stack">
+                        <span class="tech">Figma</span>
+                        <span class="tech">Webflow</span>
+                        <span class="tech">Adobe Suite</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="primary-link">View Case Study →</a>
+                        <a href="#">Live Site →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- PROJECT 6 — Lead Gen (High-Converting Landing Page)         -->
+            <!-- ============================================================ -->
+            <div class="project-card" data-category="leadgen">
+                <div class="project-thumbnail">
+                    <span class="project-tag">Lead Generation</span>
+                    <img src="https://placehold.co/600x375/1a2d4a/64FFDA?text=Lead+Gen+Landing" alt="Lead Generation Project" />
+                </div>
+                <div class="project-body">
+                    <h3>ScaleFast Academy</h3>
+                    <div class="project-client">EdTech — B2C Course Funnel</div>
+                    <div class="project-excerpt">
+                        The existing landing page converted at 1.2% — well below industry average. We rebuilt the funnel with
+                        persuasive copy, social proof, and frictionless checkout — turning visitors into students.
+                    </div>
+                    <div class="project-metrics">
+                        <span>↑ 4.8%</span> <span class="label">conversion rate</span>
+                        <span>↑ 320%</span> <span class="label">sales in first 30 days</span>
+                    </div>
+                    <div class="project-stack">
+                        <span class="tech">Next.js</span>
+                        <span class="tech">Typeform</span>
+                        <span class="tech">Stripe</span>
+                        <span class="tech">Mailchimp</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="primary-link">View Case Study →</a>
+                        <a href="#">Live Site →</a>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /project-grid -->
+
+        <!-- ─── TESTIMONIALS ─── -->
+        <section class="testimonials-section">
+            <span class="section-tag">Client Voices</span>
+            <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:0.25rem;">Trusted by <span class="highlight">Global Leaders</span></h2>
+            <p style="color:var(--text-secondary); margin-bottom:0.5rem;">Real feedback from real partners.</p>
+
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote class="quote">
+                        “They redesigned our international e-commerce stack from the ground up. Ecosystem speed multiplied immediately and cross-border conversion friction dropped completely. Absolute mastermind performance.”
+                    </blockquote>
+                    <div class="author">Alejandro M.</div>
+                    <div class="role">Director of Ops, LuxVelo Global</div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote class="quote">
+                        “The workflow automation infrastructure saved us over 35 operational hours every single week. The AI frameworks handle our client pipeline fluidly. Truly world-class delivery.”
+                    </blockquote>
+                    <div class="author">Sarah K.</div>
+                    <div class="role">Founder, Apex Digital Scale</div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <blockquote class="quote">
+                        “An incredible eye for high-end aesthetic details. The elite rebranding strategy and landing mechanics created instant trust with our premium enterprise clients globally.”
+                    </blockquote>
+                    <div class="author">David H.</div>
+                    <div class="role">VP Marketing, NexaCore Systems</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ─── FINAL CTA ─── -->
+        <section class="cta-section">
+            <h2>Ready to build your <span class="highlight">success story</span>?</h2>
+            <p>Let's discuss your next project — whether it's a full-scale platform, a brand overhaul, or an AI-powered automation.</p>
+            <a href="#" class="btn-primary">Book a Strategy Call →</a>
+        </section>
+
+    </div><!-- /container -->
+
+    <!-- ─── FILTER JAVASCRIPT ─── -->
+    <script>
+        (function() {
+            const buttons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.project-card');
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Update active button
+                    buttons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.dataset.filter;
+
+                    cards.forEach(card => {
+                        const category = card.dataset.category;
+                        if (filter === 'all' || category === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Kasim M. | Kasim Elite Digital Global — Start your premium digital project today.">
+  <title>Contact | Kasim Elite Digital Global</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ----- reset & base ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: #050505;
+      color: #f5f0e8;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #8a6a1f;
+    }
+
+    /* ----- root variables (gold palette) ----- */
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8cc7a;
+      --gold-dark: #8a6a1f;
+      --black: #050505;
+      --dark: #0d0d0d;
+      --dark2: #141414;
+      --white: #f5f0e8;
+      --muted: #888;
+      --border: rgba(201, 168, 76, 0.18);
+    }
+
+    /* ----- navigation ----- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 4rem;
+      background: rgba(5, 5, 5, 0.93);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
+    }
+    nav.scrolled {
+      padding: 0.7rem 4rem;
+    }
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--gold);
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      transform: scaleX(1);
+    }
+    .nav-cta {
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      color: var(--black);
+      padding: 0.55rem 1.4rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--gold);
+    }
+
+    /* mobile menu overlay */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(5, 5, 5, 0.98);
+      z-index: 190;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-menu.open {
+      display: flex;
+    }
+    .mobile-menu a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover {
+      color: var(--gold);
+    }
+    .mobile-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 1.5rem;
+      color: var(--gold);
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* ----- hero ----- */
+    .hero {
+      min-height: 48vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 9rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201, 168, 76, 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      position: relative;
+    }
+    .hero-label::before,
+    .hero-label::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero p {
+      max-width: 520px;
+      font-size: 0.97rem;
+      line-height: 1.8;
+      color: var(--muted);
+      position: relative;
+    }
+
+    /* ----- contact section (grid) ----- */
+    .contact-section {
+      padding: 5rem 4rem 8rem;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* left panel */
+    .info-block {
+      margin-bottom: 2.5rem;
+    }
+    .info-block h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+    .info-block p {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    .c-method {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.1rem 1.4rem;
+      background: var(--dark);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--white);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .c-method:hover {
+      border-color: var(--gold);
+      background: var(--dark2);
+    }
+    .m-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .m-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .m-value {
+      font-size: 0.83rem;
+      color: var(--white);
+    }
+
+    /* availability */
+    .availability {
+      padding: 1.4rem;
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .availability h4 {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .availability p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .status-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: #4caf50;
+      border-radius: 50%;
+      margin-right: 0.4rem;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* right panel (form) */
+    .form-header {
+      margin-bottom: 2rem;
+    }
+    .form-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .form-header p {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .form-group.full {
+      grid-column: span 2;
+    }
+    .form-group label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      color: var(--white);
+      padding: 0.85rem 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.87rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: #555;
+    }
+    .form-group select option {
+      background: var(--dark2);
+      color: var(--white);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .submit-btn {
+      margin-top: 1.2rem;
+      width: 100%;
+      background: var(--gold);
+      color: var(--black);
+      padding: 1.1rem 2rem;
+      border: none;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .submit-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+    .form-note {
+      margin-top: 0.7rem;
+      font-size: 0.7rem;
+      color: #555;
+      text-align: center;
+    }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      background: var(--dark);
+      border: 1px solid var(--gold);
+      margin-top: 1.2rem;
+    }
+    .success-msg h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .success-msg p {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    /* ----- footer ----- */
+    footer {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding: 5rem 4rem 3rem;
+    }
+    .footer-logo-img {
+      height: 52px;
+      width: auto;
+      margin-bottom: 1rem;
+      object-fit: contain;
+    }
+    .footer-brand p {
+      font-size: 0.83rem;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 240px;
+      margin-bottom: 1.5rem;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .social-btn {
+      min-width: 36px;
+      height: 36px;
+      padding: 0 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 600;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .social-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .footer-col h4 {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .footer-col ul a {
+      font-size: 0.83rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-col ul a:hover {
+      color: var(--white);
+    }
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p {
+      font-size: 0.75rem;
+      color: #555;
+    }
+    .footer-bottom span {
+      color: var(--gold);
+    }
+
+    /* animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .delay-1 {
+      animation-delay: 0.15s;
+      opacity: 0;
+    }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+      .hero { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .contact-section {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 3rem 1.5rem 5rem;
+      }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        padding: 3rem 1.5rem 2rem;
+      }
+      .footer-bottom {
+        padding: 1.5rem;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    @media (max-width: 500px) {
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMenu()">✕</button>
+    <a href="index.html" onclick="toggleMenu()">Home</a>
+    <a href="services.html" onclick="toggleMenu()">Services</a>
+    <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
+    <a href="store.html" onclick="toggleMenu()">Store</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+    <a href="contact.html" onclick="toggleMenu()">Contact</a>
+  </div>
+
+  <!-- navigation -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Kasim Elite Digital Global">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="store.html">Store</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a href="#form" class="nav-cta">Start Project</a>
+    <div class="nav-toggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="hero-label">Get In Touch</div>
+    <h1 class="fade-up">Let's Build<br><em>Something Great</em></h1>
+    <p class="fade-up delay-1">Ready to transform your digital presence? Tell us about your project and we'll craft a custom strategy for your brand.</p>
+  </section>
+
+  <!-- contact section -->
+  <div class="contact-section" id="form">
+    <!-- LEFT PANEL -->
+    <div>
+      <div class="info-block">
+        <h3>Start the Conversation</h3>
+        <p>Whether you need a full website, brand identity, AI automation or a complete digital growth strategy — we're ready to deliver elite results for your business worldwide.</p>
+      </div>
+
+      <div class="contact-methods">
+        <a href="https://wa.me/2347080083489" class="c-method" target="_blank">
+          <div class="m-icon">📱</div>
+          <div><div class="m-label">WhatsApp</div><div class="m-value">+234 708 008 3489</div></div>
+        </a>
+        <a href="mailto:magajiqaseem@gmail.com" class="c-method">
+          <div class="m-icon">✉</div>
+          <div><div class="m-label">Email</div><div class="m-value">magajiqaseem@gmail.com</div></div>
+        </a>
+        <a href="https://www.upwork.com/freelancers/~01edb4f1d95b1a9790" class="c-method" target="_blank">
+          <div class="m-icon">💼</div>
+          <div><div class="m-label">Upwork</div><div class="m-value">Hire on Upwork</div></div>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61559538970452" class="c-method" target="_blank">
+          <div class="m-icon">📘</div>
+          <div><div class="m-label">Facebook</div><div class="m-value">Kasim Elite Digital Global</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/kasim-magaji-ab66b9310" class="c-method" target="_blank">
+          <div class="m-icon">🔗</div>
+          <div><div class="m-label">LinkedIn</div><div class="m-value">Kasim Magaji</div></div>
+        </a>
+      </div>
+
+      <div class="availability">
+        <h4><span class="status-dot"></span>Currently Available</h4>
+        <p>Accepting new projects. Typical response time under 24 hours. Premium slots fill quickly — reach out early to secure yours.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div>
+      <div class="form-header">
+        <h2>Submit Your Project</h2>
+        <p>Fill in the details below and we'll respond within 24 hours.</p>
+      </div>
+      <div class="form-grid">
+        <div class="form-group"><label>First Name</label><input type="text" id="fname" placeholder="John"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" id="lname" placeholder="Smith"></div>
+        <div class="form-group"><label>Email Address</label><input type="email" id="email" placeholder="john@company.com"></div>
+        <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" id="phone" placeholder="+1 234 567 8900"></div>
+        <div class="form-group full"><label>Company / Brand Name</label><input type="text" id="company" placeholder="Your Company (optional)"></div>
+        <div class="form-group full">
+          <label>Service Required</label>
+          <select id="service">
+            <option value="" disabled selected>Select a service…</option>
+            <option>E-Commerce & Web Engineering</option>
+            <option>Graphic Design & Elite Branding</option>
+            <option>AI Automation & Advanced Workflows</option>
+            <option>SEO & Google Ranking</option>
+            <option>Social Media Management</option>
+            <option>Digital Marketing Campaigns</option>
+            <option>Multiple Services / Full Package</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Budget Range</label>
+          <select id="budget">
+            <option value="" disabled selected>Select budget range…</option>
+            <option>Under $500</option>
+            <option>$500 – $1,500</option>
+            <option>$1,500 – $5,000</option>
+            <option>$5,000 – $15,000</option>
+            <option>$15,000+</option>
+          </select>
+        </div>
+        <div class="form-group full"><label>Project Details</label><textarea id="message" placeholder="Tell us about your project, goals and any specific requirements…"></textarea></div>
+      </div>
+      <button class="submit-btn" onclick="handleSubmit()">Send Project Brief ◆</button>
+      <p class="form-note">We reply within 24 hours. All information is kept strictly confidential.</p>
+      <div class="success-msg" id="successMsg">
+        <h3>Message Received ◆</h3>
+        <p>Thank you! Kasim will review your brief and respond within 24 hours.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Kasim Elite Digital Global Logo" class="footer-logo-img">
+        <p>Premium digital solutions, elite branding, AI automation and modern growth systems for global businesses.</p>
+        <div class="footer-socials">
+          <a href="https://wa.me/2347080083489" class="social-btn" title="WhatsApp" target="_blank">WA</a>
+          <a href="mailto:magajiqaseem@gmail.com" class="social-btn" title="Email">@</a>
+  

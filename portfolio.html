@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Kasim Empire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        /* ─── RESET & BASE ─── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --bg: #0D0D0D;
+            --surface: #1A1A1A;
+            --border: #333333;
+            --text-primary: #F5F5F5;
+            --text-secondary: #AAAAAA;
+            --accent: #D4AF37;
+            --accent-dim: rgba(212, 175, 55, 0.1);
+            --accent-glow: rgba(212, 175, 55, 0.25);
+            --radius: 16px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 2rem 1.5rem;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ─── TYPOGRAPHY ─── */
+        .section-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.3rem 1rem;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        h1 .highlight {
+            color: var(--accent);
+        }
+        .subhead {
+            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin-bottom: 3rem;
+        }
+
+        /* ─── FILTER BAR ─── */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .filter-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.3rem 0;
+            transition: var(--transition);
+            position: relative;
+            font-family: inherit;
+        }
+        .filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            color: var(--text-primary);
+        }
+        .filter-btn.active::after {
+            width: 100%;
+        }
+
+        /* ─── PROJECT GRID ─── */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .project-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid transparent;
+            transition: var(--transition);
+            cursor: default;
+        }
+        .project-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -12px rgba(212, 175, 55, 0.15);
+        }
+        .project-thumbnail {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .project-thumbnail .fallback {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #1A1A1A, #0D0D0D);
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 1rem;
+            text-align: center;
+        }
+        .project-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--bg);
+            color: var(--accent);
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.8rem;
+            border-radius: 100px;
+            border: 1px solid var(--accent);
+        }
+        .project-body {
+            padding: 1.5rem 1.5rem 1.8rem;
+        }
+        .project-body h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--text-primary);
+        }
+        .project-client {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+        .project-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .project-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.2rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.85rem;
+        }
+        .project-metrics span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .project-metrics .label {
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.6rem;
+            margin-bottom: 1.2rem;
+        }
+        .project-stack .tech {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: var(--bg);
+            padding: 0.15rem 0.7rem;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+        }
+        .project-links {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .project-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .project-links a:hover {
+            color: var(--accent);
+        }
+        .project-links .primary-link {
+            color: var(--accent);
+        }
+        .project-links .primary-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ─── TESTIMONIALS ─── */
+        .testimonials-section {
+            margin: 4rem 0 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        .testimonial-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border-left: 3px solid var(--accent);
+        }
+        .testimonial-card .quote {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+        .testimonial-card .author {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+        .testimonial-card .role {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .testimonial-card .stars {
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: var(--surface);
+            border-radius: var(--radius);
+            margin-top: 2rem;
+            border: 1px solid var(--border);
+        }
+        .cta-section h2 {
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .cta-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1.8rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            font-weight: 600;
+            padding: 0.8rem 2.4rem;
+            border-radius: 100px;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .filter-bar {
+                gap: 0.4rem 0.8rem;
+            }
+            .filter-btn {
+                font-size: 0.8rem;
+            }
+            .project-body {
+                padding: 1.2rem;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ════════════════════════════════════════════════════════════════ -->
+        <!--  🟢 DATA SECTION — EDIT ONLY THIS PART                         -->
+        <!--  Replace ALL [YOUR ...] placeholders with your actual content  -->
+        <!-- ════════════════════════════════════════════════════════════════ -->
+
+        <!-- ─── HERO TEXT ─── -->
+        <span id="heroSubtext" style="display:none;">Premium digital solutions that drive revenue for brands worldwide.</span>
+
+        <!-- ─── PROJECT 1 ─── -->
+        <div id="project1" style="display:none;">
+            <span class="p1-category">SaaS</span>
+            <span class="p1-image">https://placehold.co/600x375/333333/D4AF37?text=Project+1</span>
+            <span class="p1-name">[YOUR PROJECT NAME]</span>
+            <span class="p1-client">[YOUR CLIENT INDUSTRY]</span>
+            <span class="p1-problem">[YOUR PROBLEM STATEMENT — 1 SENTENCE]</span>
+            <span class="p1-solution">[YOUR SOLUTION — 1-2 SENTENCES]</span>
+            <span class="p1-metric1">[e.g., ↑ 45%]</span>
+            <span class="p1-metric1-label">[e.g., conversion increase]</span>
+            <span class="p1-metric2">[e.g., 2.4×]</span>
+            <span class="p1-metric2-label">[e.g., revenue growth]</span>
+            <span class="p1-tech1">[TECH 1]</span>
+            <span class="p1-tech2">[TECH 2]</span>
+            <span class="p1-tech3">[TECH 3]</span>
+            <span class="p1-tech4">[TECH 4]</span>
+            <span class="p1-case-link">[YOUR CASE STUDY URL or #]</span>
+            <span class="p1-live-link">[YOUR LIVE SITE URL or #]</span>
+        </div>
+
+        <!-- ─── PROJECT 2 ─── -->
+        <div id="project2" style="display:none;">
+            <span class="p2-category">Fintech</span>
+            <span class="p2-image">https://placehold.co/600x375/333333/D4AF37?text=Project+2</span>
+            <span class="p2-name">[YOUR PROJECT NAME]</span>
+            <span class="p2-client">[YOUR CLIENT INDUSTRY]</span>
+            <span class="p2-problem">[YOUR PROBLEM STATEMENT — 1 SENTENCE]</span>
+            <span class="p2-solution">[YOUR SOLUTION — 1-2 SENTENCES]</span>
+            <span class="p2-metric1">[e.g., ↓ 12%]</span>
+            <span class="p2-metric1-label">[e.g., failure rate]</span>
+            <span class="p2-metric2">[e.g., ↑ 28%]</span>
+            <span class="p2-metric2-label">[e.g., conversion across markets]</span>
+            <span class="p2-tech1">[TECH 1]</span>
+            <span class="p2-tech2">[TECH 2]</span>
+            <span class="p2-tech3">[TECH 3]</span>
+            <span class="p2-tech4">[TECH 4]</span>
+            <span class="p2-case-link">[YOUR CASE STUDY URL or #]</span>
+            <span class="p2-live-link">[YOUR LIVE SITE URL or #]</span>
+        </div>
+
+        <!-- ─── PROJECT 3 ─── -->
+        <div id="project3" style="display:none;">
+            <span class="p3-category">eCommerce</span>
+            <span class="p3-image">https://placehold.co/600x375/333333/D4AF37?text=Project+3</span>
+            <span class="p3-name">[YOUR PROJECT NAME]</span>
+            <span class="p3-client">[YOUR CLIENT INDUSTRY]</span>
+            <span class="p3-problem">[YOUR PROBLEM STATEMENT — 1 SENTENCE]</span>
+            <span class="p3-solution">[YOUR SOLUTION — 1-2 SENTENCES]</span>
+            <span class="p3-metric1">[e.g., ↓ 38%]</span>
+            <span class="p3-metric1-label">[e.g., abandonment]</span>
+            <span class="p3-metric2">[e.g., 2.4×]</span>
+            <span class="p3-metric2-label">[e.g., revenue growth]</span>
+            <span class="p3-tech1">[TECH 1]</span>
+            <span class="p3-tech2">[TECH 2]</span>
+            <span class="p3-tech3">[TECH 3]</span>
+            <span class="p3-tech4">[TECH 4]</span>
+            <span class="p3-case-link">[YOUR CASE STUDY URL or #]</span>
+            <span class="p3-live-link">[YOUR LIVE SITE URL or #]</span>
+        </div>
+
+        <!-- ─── PROJECT 4 ─── -->
+        <div id="project4" style="display:none;">
+            <span class="p4-category">AI / Automation</span>
+            <span class="p4-image">https://placehold.co/600x375/333333/D4AF37?text=Project+4</span>
+            <span class="p4-name">[YOUR PROJECT NAME]</span>
+            <span class="p4-client">[YOUR CLIENT INDUSTRY]</span>
+            <span class="p4-problem">[YOUR PROBLEM STATEMENT — 1 SENTENCE]</span>
+            <span class="p4-solution">[YOUR SOLUTION — 1-2 SENTENCES]</span>
+            <span class="p4-metric1">[e.g., ↓ 35 hrs]</span>
+            <span class="p4-metric1-label">[e.g., saved per week]</span>
+            <span class="p4-metric2">[e.g., 3.2×]</span>
+            <span class="p4-metric2-label">[e.g., speed improvement]</span>
+            <span class="p4-tech1">[TECH 1]</span>
+            <span class="p4-tech2">[TECH 2]</span>
+            <span class="p4-tech3">[TECH 3]</span>
+            <span class="p4-tech4">[TECH 4]</span>
+            <span class="p4-case-link">[YOUR CASE STUDY URL or #]</span>
+            <span class="p4-live-link">[YOUR LIVE SITE URL or #]</span>
+        </div>
+
+        <!-- ─── PROJECT 5 ─── -->
+        <div id="project5" style="display:none;">
+            <span class="p5-category">Branding</span>
+            <span class="p5-image">https://placehold.co/600x375/333333/D4AF37?text=Project+5</span>
+            <span class="p5-name">[YOUR PROJECT NAME]</span>
+            <span class="p5-client">[YOUR CLIENT INDUSTRY]</span>
+            <span class="p5-problem">[YOUR PROBLEM STATEMENT — 1 SENTENCE]</span>
+            <span class="p5-solution">[YOUR SOLUTION — 1-2 SENTENCES]</span>
+            <span class="p5-metric1">[e.g., ↑ 47%]</span>
+            <span class="p5-metric1-label">[e.g., inquiry rate]</span>
+            <span class="p5-metric2">[e.g., ↑ 85%]</span>
+            <span class="p5-metric2-label">[e.g., brand recall]</span>
+            <span class="p5-tech1">[TECH 1]</span>
+            <span class="p5-tech2">[TECH 2]</span>
+            <span class="p5-tech3">[TECH 3]</span>
+            <span class="p5-tech4"></span>
+            <span class="p5-case-link">[YOUR CASE STUDY URL or #]</span>
+            <span class="p5-live-link">[YOUR LIVE SITE URL or #]</span>
+        </div>
+
+        <!-- ─── PROJECT 6 ─── -->
+        <div id="project6" style="display:none;">
+            <span class="p6-category">Lead Generation</span>
+            <span class="p6-image">https://placehold.co/600x375/333333/D4AF37?text=Project+6</span>
+            <span class="p6-name">[YOUR PROJECT NAME]</span>
+            <span class="p6-client">[YOUR CLIENT INDUSTRY]</span>
+            <span class="p6-problem">[YOUR PROBLEM STATEMENT — 1 SENTENCE]</span>
+            <span class="p6-solution">[YOUR SOLUTION — 1-2 SENTENCES]</span>
+            <span class="p6-metric1">[e.g., ↑ 4.8%]</span>
+            <span class="p6-metric1-label">[e.g., conversion rate]</span>
+            <span class="p6-metric2">[e.g., ↑ 320%]</span>
+            <span class="p6-metric2-label">[e.g., sales increase]</span>
+            <span class="p6-tech1">[TECH 1]</span>
+            <span class="p6-tech2">[TECH 2]</span>
+            <span class="p6-tech3">[TECH 3]</span>
+            <span class="p6-tech4">[TECH 4]</span>
+            <span class="p6-case-link">[YOUR CASE STUDY URL or #]</span>
+            <span class="p6-live-link">[YOUR LIVE SITE URL or #]</span>
+        </div>
+
+        <!-- ─── TESTIMONIALS ─── -->
+        <div id="testimonialsData" style="display:none;">
+            <span class="t1-quote">[YOUR CLIENT 1 TESTIMONIAL — e.g., "They transformed our entire digital presence."]</span>
+            <span class="t1-author">[CLIENT 1 NAME]</span>
+            <span class="t1-role">[CLIENT 1 ROLE, COMPANY]</span>
+
+            <span class="t2-quote">[YOUR CLIENT 2 TESTIMONIAL]</span>
+            <span class="t2-author">[CLIENT 2 NAME]</span>
+            <span class="t2-role">[CLIENT 2 ROLE, COMPANY]</span>
+
+            <span class="t3-quote">[YOUR CLIENT 3 TESTIMONIAL]</span>
+            <span class="t3-author">[CLIENT 3 NAME]</span>
+            <span class="t3-role">[CLIENT 3 ROLE, COMPANY]</span>
+        </div>
+
+        <!-- ─── CTA DATA ─── -->
+        <div id="ctaData" style="display:none;">
+            <span class="cta-headline">Ready to build your success story?</span>
+            <span class="cta-subtext">Let's discuss your next project — whether it's a full-scale platform, a brand overhaul, or an AI-powered automation.</span>
+            <span class="cta-button-text">Book a Strategy Call</span>
+            <span class="cta-button-link">#</span>
+        </div>
+
+        <!-- ════════════════════════════════════════════════════════════════ -->
+        <!--  🔵 DISPLAY SECTION — DO NOT EDIT BELOW THIS LINE             -->
+        <!-- ════════════════════════════════════════════════════════════════ -->
+
+        <!-- ─── HERO ─── -->
+        <section>
+            <span class="section-tag">Portfolio</span>
+            <h1>Selected <span class="highlight">Work</span></h1>
+            <p class="subhead" id="heroDisplay">Real results for global brands — from SaaS to AI automation.</p>
+        </section>
+
+        <!-- ─── FILTER ─── -->
+        <div class="filter-bar" role="tablist">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="saas">SaaS</button>
+            <button class="filter-btn" data-filter="fintech">Fintech</button>
+            <button class="filter-btn" data-filter="ecommerce">eCommerce</button>
+            <button class="filter-btn" data-filter="ai">AI / Automation</button>
+            <button class="filter-btn" data-filter="branding">Branding</button>
+            <button class="filter-btn" data-filter="leadgen">Lead Gen</button>
+        </div>
+
+        <!-- ─── PROJECT GRID ─── -->
+        <div class="project-grid" id="projectGrid"></div>
+
+        <!-- ─── TESTIMONIALS ─── -->
+        <section class="testimonials-section">
+            <span class="section-tag">Client Voices</span>
+            <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:0.25rem;">Trusted by <span class="highlight">Global Leaders</span></h2>
+            <p style="color:var(--text-secondary); margin-bottom:0.5rem;">Real feedback from real partners.</p>
+            <div class="testimonials-grid" id="testimonialsGrid"></div>
+        </section>
+
+        <!-- ─── CTA ─── -->
+        <section class="cta-section">
+            <h2 id="ctaHeadlineDisplay">Ready to build your <span class="highlight">success story</span>?</h2>
+            <p id="ctaSubtextDisplay">Let's discuss your next project — whether it's a full-scale platform or a brand overhaul.</p>
+            <a href="#" class="btn-primary" id="ctaButtonDisplay">Book a Strategy Call →</a>
+        </section>
+
+    </div>
+
+    <!-- ─── JAVASCRIPT — RENDERS ALL DATA SAFELY ─── -->
+    <script>
+        (function() {
+            // ─── READ DATA FROM HIDDEN SPANS ───
+            function getText(id, selector) {
+                const el = document.querySelector(id + ' ' + selector);
+                return el ? el.textContent.trim() : '';
+            }
+
+            // Hero
+            const heroText = document.querySelector('#heroSubtext')?.textContent.trim();
+            if (heroText && heroText !== '') {
+                document.getElementById('heroDisplay').textContent = heroText;
+            }
+
+            // Projects
+            const projects = [];
+            for (let i = 1; i <= 6; i++) {
+                const p = {
+                    category: getText('#project' + i, '.p' + i + '-category'),
+                    image: getText('#project' + i, '.p' + i + '-image'),
+                    name: getText('#project' + i, '.p' + i + '-name'),
+                    client: getText('#project' + i, '.p' + i + '-client'),
+                    problem: getText('#project' + i, '.p' + i + '-problem'),
+                    solution: getText('#project' + i, '.p' + i + '-solution'),
+                    metric1: getText('#project' + i, '.p' + i + '-metric1'),
+                    metric1Label: getText('#project' + i, '.p' + i + '-metric1-label'),
+                    metric2: getText('#project' + i, '.p' + i + '-metric2'),
+                    metric2Label: getText('#project' + i, '.p' + i + '-metric2-label'),
+                    tech1: getText('#project' + i, '.p' + i + '-tech1'),
+                    tech2: getText('#project' + i, '.p' + i + '-tech2'),
+                    tech3: getText('#project' + i, '.p' + i + '-tech3'),
+                    tech4: getText('#project' + i, '.p' + i + '-tech4'),
+                    caseLink: getText('#project' + i, '.p' + i + '-case-link'),
+                    liveLink: getText('#project' + i, '.p' + i + '-live-link'),
+                };
+                // Only add if name exists and isn't a placeholder
+                if (p.name && p.name !== '' && !p.name.includes('[YOUR')) {
+                    projects.push(p);
+                }
+            }
+
+            // ─── RENDER PROJECT CARDS ───
+            const grid = document.getElementById('projectGrid');
+            if (grid && projects.length > 0) {
+                grid.innerHTML = projects.map(p => `
+                    <div class="project-card" data-category="${p.category.toLowerCase().replace(/[^a-z]/g,'')}">
+                        <div class="project-thumbnail">
+                            <span class="project-tag">${p.category}</span>
+                            <img src="${p.image}" alt="${p.name}" />
+                        </div>
+                        <div class="project-body">
+                            <h3>${p.name}</h3>
+                            <div class="project-client">${p.client}</div>
+                            <div class="project-excerpt">
+                                ${p.problem} ${p.solution}
+                            </div>
+                            <div class="project-metrics">
+                                <span>${p.metric1}</span> <span class="label">${p.metric1Label}</span>
+                                <span>${p.metric2}</span> <span class="label">${p.metric2Label}</span>
+                            </div>
+                            <div class="project-stack">
+                                ${[p.tech1, p.tech2, p.tech3, p.tech4].filter(t => t && t !== '' && !t.includes('[YOUR')).map(t => `<span class="tech">${t}</span>`).join('')}
+                            </div>
+                            <div class="project-links">
+                                <a href="${p.caseLink}" class="primary-link">View Case Study →</a>
+                                <a href="${p.liveLink}">Live Site →</a>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            } else {
+                // Show placeholder message if no projects added
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1; text-align:center; padding:4rem 1rem; color:var(--text-secondary);">
+                        <p style="font-size:1.2rem; margin-bottom:0.5rem;">🚀 Projects coming soon</p>
+                        <p>Replace the placeholder content in the DATA SECTION with your actual projects.</p>
+                    </div>
+                `;
+            }
+
+            // ─── RENDER TESTIMONIALS ───
+            const tGrid = document.getElementById('testimonialsGrid');
+            if (tGrid) {
+                const t1 = {
+                    quote: document.querySelector('#testimonialsData .t1-quote')?.textContent.trim() || '',
+                    author: document.querySelector('#testimonialsData .t1-author')?.textContent.trim() || '',
+                    role: document.querySelector('#testimonialsData .t1-role')?.textContent.trim() || ''
+                };
+                const t2 = {
+                    quote: document.querySelector('#testimonialsData .t2-quote')?.textContent.trim() || '',
+                    author: document.querySelector('#testimonialsData .t2-author')?.textContent.trim() || '',
+                    role: document.querySelector('#testimonialsData .t2-role')?.textContent.trim() || ''
+                };
+                const t3 = {
+                    quote: document.querySelector('#testimonialsData .t3-quote')?.textContent.trim() || '',
+                    author: document.querySelector('#testimonialsData .t3-author')?.textContent.trim() || '',
+                    role: document.querySelector('#testimonialsData .t3-role')?.textContent.trim() || ''
+                };
+
+                const testimonials = [t1, t2, t3].filter(t => t.quote !== '' && !t.quote.includes('[YOUR'));
+                if (testimonials.length > 0) {
+                    tGrid.innerHTML = testimonials.map(t => `
+                        <div class="testimonial-card">
+                            <div class="stars">★★★★★</div>
+                            <blockquote class="quote">“${t.quote}”</blockquote>
+                            <div class="author">${t.author}</div>
+                            <div class="role">${t.role}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    tGrid.innerHTML = `
+                        <div style="grid-column:1/-1; text-align:center; padding:2rem; color:var(--text-secondary);">
+                            <p>Add your testimonials in the DATA SECTION.</p>
+                        </div>
+                    `;
+                }
+            }
+
+            // ─── RENDER CTA ───
+            const ctaHeadline = document.querySelector('#ctaData .cta-headline')?.textContent.trim() || 'Ready to build your success story?';
+            const ctaSubtext = document.querySelector('#ctaData .cta-subtext')?.textContent.trim() || 'Let\'s discuss your next project.';
+            const ctaButtonText = document.querySelector('#ctaData .cta-button-text')?.textContent.trim() || 'Book a Strategy Call';
+            const ctaButtonLink = document.querySelector('#ctaData .cta-button-link')?.textContent.trim() || '#';
+
+            document.getElementById('ctaHeadlineDisplay').innerHTML = ctaHeadline.replace(/(success story)/g, '<span class="highlight">$1</span>');
+            document.getElementById('ctaSubtextDisplay').textContent = ctaSubtext;
+            const btn = document.getElementById('ctaButtonDisplay');
+            btn.textContent = ctaButtonText + ' →';
+            btn.href = ctaButtonLink;
+
+            // ─── FILTER LOGIC ───
+            const buttons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.project-card');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    buttons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.dataset.filter;
+                    cards.forEach(card => {
+                        const category = card.dataset.category;
+                        card.style.display = (filter === 'all' || category === filter) ? 'block' : 'none';
+                    });
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>

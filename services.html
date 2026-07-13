@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Services | Kasim Elite Digital Global — Fintech UI/UX Design, Crypto Web Design, AI Automation, Fintech SEO, Financial Marketing Campaigns and Financial Brand Identity."/>
+<meta name="keywords" content="fintech web developer, crypto UI design, AI automation, fintech SEO, financial brand identity Nigeria"/>
+<meta property="og:title" content="Services | Kasim Elite Digital Global"/>
+<title>Services | Kasim Elite Digital Global</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GJBX0CJWRC"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-GJBX0CJWRC");</script>
+<style>
+/* ═══════════════════════════════════════════
+   BRAND DESIGN SYSTEM — KASIM ELITE DIGITAL
+═══════════════════════════════════════════ */
+:root{
+  --gold:#c9a84c;
+  --gold-light:#e8cc7a;
+  --gold-dark:#8a6a1f;
+  --gold-dim:rgba(201,168,76,0.08);
+  --gold-border:rgba(201,168,76,0.18);
+  --black:#050505;
+  --dark:#0d0d0d;
+  --dark2:#141414;
+  --dark3:#1c1c1c;
+  --white:#f5f0e8;
+  --muted:#888;
+  --muted2:#aaa;
+  --border:rgba(201,168,76,0.18);
+  --teal:#00D4AA;
+  --teal-dim:rgba(0,212,170,0.06);
+  --orange:#F7931A;
+  --green:#00C853;
+  --transition:0.35s cubic-bezier(0.4,0,0.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--black);}
+::-webkit-scrollbar-thumb{background:var(--gold-dark);}
+::selection{background:rgba(201,168,76,0.2);color:var(--white);}
+
+/* ═══ NAV ═══ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 4rem;
+  background:rgba(5,5,5,0.96);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:padding var(--transition);
+}
+nav.scrolled{padding:0.7rem 4rem;}
+.nav-logo img{height:48px;width:auto;display:block;object-fit:contain;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{
+  color:var(--muted);text-decoration:none;
+  font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;
+  transition:color var(--transition);position:relative;padding-bottom:3px;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:1px;background:var(--gold);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform var(--transition);
+}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-cta{
+  background:transparent;border:1px solid var(--gold);
+  color:var(--gold);padding:0.55rem 1.4rem;
+  font-family:'Outfit',sans-serif;font-size:0.75rem;
+  letter-spacing:0.12em;text-transform:uppercase;
+  text-decoration:none;transition:background var(--transition),color var(--transition);
+}
+.nav-cta:hover{background:var(--gold);color:var(--black);}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-toggle span{display:block;width:24px;height:1.5px;background:var(--gold);}
+.mobile-menu{
+  display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(5,5,5,0.99);z-index:190;
+  flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  font-family:'Cormorant Garamond',serif;font-size:2.5rem;
+  font-weight:300;color:var(--muted);text-decoration:none;
+  transition:color var(--transition);letter-spacing:0.05em;
+}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-close{position:absolute;top:1.5rem;right:1.5rem;font-size:1.5rem;color:var(--gold);cursor:pointer;background:none;border:none;}
+
+/* ═══ HERO ═══ */
+.hero{
+  min-height:58vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:10rem 2rem 5rem;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(201,168,76,0.07) 0%,transparent 70%);
+}
+.hero-grid{
+  position:absolute;inset:0;opacity:0.012;
+  background-image:linear-gradient(var(--gold) 1px,transparent 1px),
+    linear-gradient(90deg,var(--gold) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.hero-label{
+  font-size:0.68rem;letter-spacing:0.35em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:0.8rem;
+  position:relative;animation:fadeUp 0.8s ease 0.1s both;
+}
+.hero-label::before,.hero-label::after{content:'';display:block;width:40px;height:1px;background:var(--gold);}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3rem,7vw,6.5rem);
+  font-weight:300;line-height:1.02;color:var(--white);
+  margin-bottom:1rem;position:relative;
+  animation:fadeUp 0.8s ease 0.25s both;letter-spacing:-0.01em;
+}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero p{
+  max-width:600px;font-size:1rem;line-height:1.85;
+  color:var(--muted);position:relative;
+  animation:fadeUp 0.8s ease 0.4s both;
+}
+
+/* ═══ NICHE STRIP ═══ */
+.niche-strip{
+  background:linear-gradient(135deg,var(--teal-dim),var(--gold-dim),var(--teal-dim));
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:2rem 4rem;display:flex;align-items:center;
+  justify-content:center;gap:3rem;flex-wrap:wrap;
+}
+.niche-item{
+  display:flex;align-items:center;gap:0.6rem;
+  font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2);
+}
+.niche-icon{color:var(--gold);font-size:1.1rem;}
+
+/* ═══ SERVICES SECTION ═══ */
+.services-section{padding:5rem 4rem 8rem;}
+.section-tag-text{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;text-align:center;display:block;}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.2rem);font-weight:300;
+  color:var(--white);text-align:center;margin-bottom:4.5rem;line-height:1.15;
+}
+.section-title em{font-style:italic;color:var(--gold);}
+
+/* SERVICE BLOCK — alternating layout */
+.service-block{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1.5px;background:var(--border);
+  border:1px solid var(--border);margin-bottom:1.5px;
+}
+.service-block:last-child{margin-bottom:0;}
+
+/* SERVICE INFO PANEL */
+.service-info{
+  background:var(--dark);padding:3.5rem;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;overflow:hidden;transition:background var(--transition);
+}
+.service-info:hover{background:var(--dark2);}
+.service-info::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(to bottom,var(--gold-dark),var(--gold));
+  transform:scaleY(0);transform-origin:top;
+  transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.service-info:hover::before{transform:scaleY(1);}
+.service-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:5.5rem;font-weight:300;
+  color:rgba(201,168,76,0.08);line-height:1;
+  margin-bottom:1.5rem;transition:color var(--transition);
+}
+.service-info:hover .service-num{color:rgba(201,168,76,0.2);}
+.service-icon-wrap{
+  width:54px;height:54px;
+  background:var(--gold-dim);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;margin-bottom:1.5rem;
+}
+.service-info h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.85rem;font-weight:600;color:var(--white);
+  margin-bottom:1rem;line-height:1.15;
+}
+.service-info p{
+  font-size:0.87rem;line-height:1.9;color:var(--muted);margin-bottom:1.8rem;
+}
+.service-features{list-style:none;margin-bottom:2rem;}
+.service-features li{
+  font-size:0.8rem;color:var(--muted2);
+  padding:0.45rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.04);
+  display:flex;align-items:center;gap:0.6rem;
+}
+.service-features li::before{
+  content:'◆';color:var(--gold);
+  font-size:0.4rem;flex-shrink:0;
+}
+.service-link{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  transition:gap var(--transition);margin-top:auto;
+}
+.service-link:hover{gap:0.9rem;}
+.service-link::after{content:'→';}
+
+/* SERVICE VISUAL PANEL */
+.service-visual{
+  background:var(--dark2);
+  display:flex;align-items:center;justify-content:center;
+  padding:3rem;min-height:420px;
+  position:relative;overflow:hidden;
+}
+.service-visual::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(201,168,76,0.04),transparent);
+}
+
+/* ═══ MOCKUP 1: FINTECH DASHBOARD ═══ */
+.fintech-mock{
+  width:100%;max-width:320px;
+  background:#08101c;border:1px solid rgba(0,212,170,0.15);
+  position:relative;z-index:1;
+  box-shadow:0 24px 70px rgba(0,0,0,0.65),0 0 0 1px rgba(0,212,170,0.04);
+}
+.fm-header{
+  background:linear-gradient(135deg,#0a1628,#0d1f3a);
+  padding:1rem 1.4rem;border-bottom:1px solid rgba(0,212,170,0.08);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.fm-logo{font-family:'Outfit',sans-serif;font-size:0.72rem;font-weight:600;color:var(--teal);letter-spacing:0.1em;}
+.fm-nav{display:flex;gap:0.6rem;}
+.fm-nav-dot{width:28px;height:3px;background:rgba(0,212,170,0.15);border-radius:2px;}
+.fm-nav-dot.active{background:rgba(201,168,76,0.5);}
+.fm-body{padding:1.3rem;}
+.fm-balance{
+  text-align:center;padding:1.2rem;
+  background:linear-gradient(135deg,rgba(0,212,170,0.05),rgba(201,168,76,0.05));
+  border:1px solid rgba(201,168,76,0.1);margin-bottom:0.8rem;
+}
+.fm-bal-label{font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;}
+.fm-bal-val{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--gold);font-weight:300;line-height:1;}
+.fm-bal-change{font-size:0.55rem;color:var(--green);margin-top:0.2rem;}
+.fm-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin-bottom:0.8rem;}
+.fm-mini{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);padding:0.5rem;text-align:center;}
+.fm-mini-val{font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:var(--white);}
+.fm-mini-label{font-size:0.44rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;}
+.fm-chart{
+  height:48px;background:rgba(0,212,170,0.03);
+  border:1px solid rgba(0,212,170,0.07);
+  display:flex;align-items:flex-end;padding:0.4rem;gap:2px;
+}
+.fm-bar{flex:1;border-radius:1px;}
+
+/* ═══ MOCKUP 2: CRYPTO EXCHANGE ═══ */
+.crypto-mock{
+  width:100%;max-width:310px;
+  background:#06080e;border:1px solid rgba(247,147,26,0.12);
+  position:relative;z-index:1;
+  box-shadow:0 24px 70px rgba(0,0,0,0.65);
+}
+.cm-header{
+  background:#0A0A12;padding:0.9rem 1.3rem;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  display:flex;align-items:center;gap:0.5rem;
+}
+.cm-icon{
+  width:22px;height:22px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.55rem;font-weight:700;color:var(--black);
+}
+.cm-title{font-size:0.7rem;font-weight:600;color:var(--white);letter-spacing:0.04em;}
+.cm-body{padding:1.1rem 1.3rem;}
+.cm-pair{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;}
+.cm-pair-name{color:var(--orange);font-size:0.75rem;font-weight:700;letter-spacing:0.04em;}
+.cm-pair-change{color:var(--green);font-size:0.72rem;font-weight:600;}
+.cm-price{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:var(--white);line-height:1;margin-bottom:0.5rem;}
+.cm-actions{display:flex;gap:4px;margin-bottom:0.7rem;}
+.cm-btn{font-size:0.62rem;padding:3px 10px;border-radius:3px;font-weight:700;font-family:'Outfit',sans-serif;}
+.cm-buy{background:rgba(0,200,83,0.12);color:var(--green);}
+.cm-sell{background:rgba(255,23,68,0.1);color:#FF1744;}
+.cm-swap{background:rgba(247,147,26,0.1);color:var(--orange);}
+.cm-chart{display:flex;align-items:flex-end;gap:2px;height:32px;margin-bottom:0.7rem;}
+.cm-bar{flex:1;border-radius:1px 1px 0 0;}
+.cm-coins{display:flex;flex-direction:column;gap:4px;}
+.cm-coin{display:flex;align-items:center;gap:6px;padding:4px 6px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);}
+.cc-icon{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.5rem;font-weight:700;flex-shrink:0;}
+.cc-name{flex:1;font-size:0.58rem;color:rgba(255,255,255,0.5);}
+.cc-price{font-size:0.6rem;color:var(--gold);}
+.cc-chg{font-size:0.52rem;padding:1px 4px;border-radius:2px;}
+
+/* ═══ MOCKUP 3: AI WORKFLOW ═══ */
+.ai-mock{
+  width:100%;max-width:330px;
+  background:#060a08;border:1px solid rgba(0,212,170,0.1);
+  position:relative;z-index:1;
+  box-shadow:0 24px 70px rgba(0,0,0,0.65);
+}
+.ai-header{
+  background:#080d0a;padding:0.9rem 1.3rem;
+  border-bottom:1px solid rgba(0,212,170,0.07);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.ai-title{font-size:0.65rem;color:var(--teal);letter-spacing:0.12em;text-transform:uppercase;}
+.ai-status{display:flex;align-items:center;gap:4px;font-size:0.5rem;color:var(--muted);}
+.ai-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;}
+.ai-body{padding:1.1rem;}
+.ai-nodes{display:flex;flex-direction:column;gap:4px;}
+.ai-node{display:flex;align-items:center;gap:6px;padding:5px 8px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);}
+.ai-node.active{border-color:rgba(0,212,170,0.2);background:rgba(0,212,170,0.03);}
+.ai-node.done{border-color:rgba(201,168,76,0.2);background:rgba(201,168,76,0.03);}
+.ai-node-icon{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.55rem;flex-shrink:0;}
+.ai-node-text{flex:1;font-size:0.55rem;color:var(--muted2);}
+.ai-node-badge{font-size:0.44rem;padding:1px 5px;}
+.ai-arrow{height:8px;display:flex;align-items:center;justify-content:center;}
+.ai-arrow-line{width:1px;height:100%;background:rgba(0,212,170,0.15);margin:0 auto;}
+.ai-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:0.7rem;}
+.ai-metric{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);padding:4px;text-align:center;}
+.ai-metric-val{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--gold);}
+.ai-metric-lbl{font-size:0.42rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+
+/* ═══ MOCKUP 4: SEO DASHBOARD ═══ */
+.seo-mock{
+  width:100%;max-width:320px;
+  background:#07090c;border:1px solid rgba(201,168,76,0.12);
+  position:relative;z-index:1;
+  box-shadow:0 24px 70px rgba(0,0,0,0.65);
+}
+.seo-header{
+  background:#090b0e;padding:0.9rem 1.3rem;
+  border-bottom:1px solid rgba(201,168,76,0.08);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.seo-title{font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;}
+.seo-score-badge{font-size:0.6rem;color:var(--green);font-weight:600;}
+.seo-body{padding:1.1rem;}
+.seo-circle{
+  width:68px;height:68px;border-radius:50%;
+  background:conic-gradient(var(--gold) 0deg 322deg,rgba(201,168,76,0.1) 322deg 360deg);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 0.9rem;
+}
+.seo-circle-inner{
+  width:52px;height:52px;border-radius:50%;
+  background:#07090c;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.seo-circle-num{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--gold);line-height:1;}
+.seo-circle-lbl{font-size:0.38rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+.seo-kws{display:flex;flex-direction:column;gap:4px;}
+.seo-kw-row{display:flex;align-items:center;gap:5px;}
+.seo-rank{
+  width:18px;height:18px;background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.5rem;font-weight:700;color:var(--black);flex-shrink:0;
+}
+.seo-rank.r2{background:rgba(201,168,76,0.5);}
+.seo-rank.r3{background:rgba(201,168,76,0.3);}
+.seo-bar-wrap{flex:1;height:5px;background:rgba(255,255,255,0.04);}
+.seo-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold-dark),var(--gold));}
+.seo-kw-text{font-size:0.5rem;color:var(--muted);width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.seo-traffic{
+  display:flex;align-items:flex-end;gap:2px;
+  height:26px;margin-top:0.6rem;
+  background:rgba(255,255,255,0.02);padding:4px;
+  border:1px solid rgba(255,255,255,0.04);
+}
+.seo-t-bar{flex:1;border-radius:1px;background:linear-gradient(to top,var(--gold-dark),rgba(201,168,76,0.4));}
+
+/* ═══ MOCKUP 5: FINANCIAL MARKETING ═══ */
+.mkt-mock{
+  width:100%;max-width:320px;
+  background:#08060d;border:1px solid rgba(201,168,76,0.12);
+  position:relative;z-index:1;
+  box-shadow:0 24px 70px rgba(0,0,0,0.65);
+}
+.mkt-header{
+  background:#0a080f;padding:0.9rem 1.3rem;
+  border-bottom:1px solid rgba(201,168,76,0.08);
+}
+.mkt-header-title{font-size:0.65rem;color:var(--gold);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.2rem;}
+.mkt-header-sub{font-size:0.48rem;color:var(--muted);}
+.mkt-body{padding:1.1rem;}
+.mkt-kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin-bottom:0.7rem;}
+.mkt-kpi{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:6px;text-align:center;}
+.mkt-kpi-val{font-family:'Cormorant Garamond',serif;font-size:1.2rem;line-height:1;margin-bottom:0.15rem;}
+.mkt-kpi-lbl{font-size:0.44rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+.mkt-funnel-label{font-size:0.5rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.3rem;}
+.mkt-funnel{display:flex;flex-direction:column;gap:2px;}
+.mkt-funnel-row{display:flex;align-items:center;gap:4px;}
+.mkt-f-lbl{font-size:0.48rem;color:var(--muted);width:50px;text-align:right;}
+.mkt-f-bar{height:8px;background:linear-gradient(90deg,var(--gold-dark),var(--gold));opacity:0.75;border-radius:1px;}
+.mkt-f-val{font-size:0.5rem;color:var(--gold);}
+
+/* ═══ MOCKUP 6: BRAND IDENTITY ═══ */
+.brand-mock{
+  width:100%;max-width:320px;
+  background:#08060e;border:1px solid rgba(201,168,76,0.15);
+  position:relative;z-index:1;
+  box-shadow:0 24px 70px rgba(0,0,0,0.65);
+}
+.brand-header{
+  background:linear-gradient(135deg,#0d0a14,#140d1a);
+  padding:1.1rem 1.3rem;border-bottom:1px solid rgba(201,168,76,0.1);
+}
+.brand-logo-row{display:flex;align-items:center;gap:6px;margin-bottom:0.5rem;}
+.b-logo-icon{
+  width:34px;height:34px;
+  background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-weight:700;color:var(--black);
+}
+.b-logo-name{font-family:'Cormorant Garamond',serif;font-size:0.92rem;color:var(--white);letter-spacing:0.07em;}
+.b-tagline{font-size:0.48rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);}
+.brand-body{padding:1.1rem;}
+.brand-colors{display:flex;gap:3px;margin-bottom:0.6rem;}
+.b-swatch-wrap{flex:1;}
+.b-swatch{height:16px;border-radius:1px;}
+.b-swatch-lbl{font-size:0.4rem;color:var(--muted);text-align:center;margin-top:1px;}
+.brand-types{display:flex;flex-direction:column;gap:3px;margin-bottom:0.6rem;}
+.b-type{padding:3px 5px;border-left:2px solid var(--gold);background:rgba(255,255,255,0.02);}
+.b-type-lbl{font-size:0.4rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em;}
+.b-type-text{font-size:0.65rem;color:var(--white)

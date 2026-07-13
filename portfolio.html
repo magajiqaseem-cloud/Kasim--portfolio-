@@ -432,4 +432,680 @@ nav.scrolled{padding:0.7rem 4rem;}
   font-size:6px;font-weight:700;color:var(--black);
   border-radius:3px;flex-shrink:0;
 }
-.seo-ra
+.seo-rank-badge.rank2{background:rgba(201,168,76,0.5);}
+.seo-rank-badge.rank3{background:rgba(201,168,76,0.3);}
+.seo-kw-bar-wrap{flex:1;height:5px;background:rgba(255,255,255,0.04);border-radius:2px;}
+.seo-kw-fill{height:100%;background:linear-gradient(90deg,var(--gold-dark),var(--gold));border-radius:2px;}
+.seo-kw-text{font-size:5.5px;color:rgba(255,255,255,0.25);width:70px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.seo-chart-row{display:flex;gap:2px;align-items:flex-end;height:28px;margin-top:2px;background:rgba(255,255,255,0.02);padding:4px;border-radius:4px;}
+.seo-bar{flex:1;border-radius:1px 1px 0 0;background:linear-gradient(to top,var(--gold-dark),rgba(201,168,76,0.4));}
+
+/* ─── CARD 4: SOCIAL MEDIA ─── */
+.social-card-mock{
+  position:absolute;inset:0.8rem;
+  background:#0A080D;border:1px solid rgba(255,255,255,0.05);
+  border-radius:10px;overflow:hidden;padding:8px;
+  display:grid;grid-template-columns:1fr 1fr;gap:4px;
+}
+.social-post-mock{
+  background:var(--dark2);border:1px solid rgba(255,255,255,0.04);
+  border-radius:6px;overflow:hidden;display:flex;flex-direction:column;
+}
+.spm-img{flex:1;display:flex;align-items:center;justify-content:center;font-size:1.5rem;}
+.spm-bar{
+  padding:3px 6px;display:flex;align-items:center;gap:3px;
+  border-top:1px solid rgba(255,255,255,0.04);background:rgba(0,0,0,0.3);
+}
+.spm-heart{color:var(--red);font-size:7px;}
+.spm-count{font-size:6.5px;color:rgba(255,255,255,0.3);}
+.spm-bar-right{margin-left:auto;}
+.spm-share{font-size:6px;color:rgba(255,255,255,0.2);}
+
+/* ─── CARD 5: MARKETING ─── */
+.mkt-card-mock{
+  position:absolute;inset:0.8rem;
+  background:#08060D;border:1px solid rgba(255,255,255,0.05);
+  border-radius:10px;overflow:hidden;padding:10px;
+  display:flex;flex-direction:column;gap:5px;
+}
+.mkt-mock-title{font-size:7px;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;}
+.mkt-kpi-row{display:grid;grid-template-columns:repeat(2,1fr);gap:4px;}
+.mkt-kpi{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);padding:5px;text-align:center;border-radius:4px;}
+.mkt-kpi-val{font-family:'Cormorant Garamond',serif;font-size:1.1rem;line-height:1;}
+.mkt-kpi-lbl{font-size:5px;color:rgba(255,255,255,0.25);text-transform:uppercase;letter-spacing:0.08em;}
+.mkt-funnel{display:flex;flex-direction:column;gap:2px;margin-top:3px;}
+.mkt-funnel-row{display:flex;align-items:center;gap:4px;}
+.mkt-funnel-lbl{font-size:5.5px;color:rgba(255,255,255,0.25);width:50px;text-align:right;}
+.mkt-funnel-bar{height:8px;background:linear-gradient(90deg,var(--gold-dark),var(--gold));opacity:0.7;border-radius:1px;}
+.mkt-funnel-val{font-size:6px;color:var(--gold);}
+
+/* ─── CARD 6: BRAND IDENTITY ─── */
+.brand-card-mock{
+  position:absolute;inset:0.8rem;
+  background:#080610;border:1px solid rgba(201,168,76,0.1);
+  border-radius:10px;overflow:hidden;padding:10px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.brand-mock-logo-row{display:flex;align-items:center;gap:7px;}
+.brand-mock-icon{
+  width:32px;height:32px;
+  background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:1rem;
+  font-weight:700;color:var(--black);border-radius:4px;
+}
+.brand-mock-name{font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:var(--white);letter-spacing:0.06em;}
+.brand-mock-tag{font-size:5.5px;color:var(--gold);text-transform:uppercase;letter-spacing:0.18em;}
+.brand-color-row{display:flex;gap:3px;}
+.brand-swatch-mini{flex:1;height:16px;border-radius:2px;}
+.brand-swatch-lbl{font-size:4.5px;color:rgba(255,255,255,0.2);text-align:center;margin-top:1px;}
+.brand-type-samples{display:flex;flex-direction:column;gap:3px;}
+.bts{padding:3px 5px;border-left:2px solid var(--gold);}
+.bts-label{font-size:4.5px;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.1em;}
+.bts-text{font-size:7px;color:rgba(255,255,255,0.7);}
+.brand-collateral{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.bc-item{background:rgba(255,255,255,0.02);border:1px solid rgba(201,168,76,0.08);padding:4px;text-align:center;border-radius:3px;font-size:5.5px;color:rgba(255,255,255,0.25);}
+
+/* ═══ TESTIMONIALS ═══ */
+.testimonials-section{padding:7rem 4rem;background:var(--dark2);border-top:1px solid var(--border);}
+.section-header{text-align:center;margin-bottom:4rem;}
+.section-tag-text{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block;}
+.section-header h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--white);}
+.section-header h2 em{font-style:italic;color:var(--gold);}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);}
+.t-card{background:var(--dark);padding:2.5rem;position:relative;}
+.t-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:7rem;line-height:0.7;color:rgba(201,168,76,0.07);position:absolute;top:1.2rem;right:1.5rem;}
+.stars{color:var(--gold);font-size:0.62rem;letter-spacing:0.15em;margin-bottom:1.2rem;}
+.t-card p{font-size:0.86rem;line-height:1.85;color:#bbb;font-style:italic;margin-bottom:1.8rem;}
+.t-author{display:flex;align-items:center;gap:0.9rem;}
+.t-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:700;color:var(--black);flex-shrink:0;}
+.t-name{font-size:0.85rem;font-weight:500;color:var(--white);}
+.t-role{font-size:0.7rem;color:var(--muted);}
+
+/* ═══ TRUST SECTION ═══ */
+.trust-section{padding:5rem 4rem;border-top:1px solid var(--border);}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--border);border:1px solid var(--border);}
+.trust-card{background:var(--dark);padding:2.5rem 2rem;text-align:center;}
+.trust-icon{font-size:2rem;margin-bottom:1rem;}
+.trust-card h4{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--white);margin-bottom:0.7rem;}
+.trust-card p{font-size:0.8rem;color:var(--muted);line-height:1.7;}
+
+/* ═══ CTA ═══ */
+.cta-section{padding:9rem 4rem;text-align:center;position:relative;overflow:hidden;background:var(--dark2);border-top:1px solid var(--border);}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 70% at 50% 50%,rgba(201,168,76,0.05) 0%,transparent 70%);}
+.cta-section h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;color:var(--white);margin-bottom:1.5rem;position:relative;line-height:1.1;}
+.cta-section h2 em{font-style:italic;color:var(--gold);}
+.cta-section p{color:var(--muted);font-size:1rem;max-width:520px;margin:0 auto 3rem;line-height:1.85;position:relative;}
+.cta-actions{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;position:relative;}
+.btn-gold{background:var(--gold);color:var(--black);padding:1rem 2.5rem;text-decoration:none;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;font-weight:700;transition:background var(--transition),transform 0.2s;display:inline-block;}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);}
+.btn-outline{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:1rem 2.5rem;text-decoration:none;font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;font-family:'Outfit',sans-serif;transition:background var(--transition),color var(--transition);display:inline-block;}
+.btn-outline:hover{background:var(--gold);color:var(--black);}
+
+/* ═══ FOOTER ═══ */
+footer{background:var(--dark2);border-top:1px solid var(--border);}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding:5rem 4rem 3rem;}
+.footer-logo-img{height:52px;width:auto;margin-bottom:1rem;object-fit:contain;}
+.footer-brand p{font-size:0.82rem;line-height:1.8;color:var(--muted);max-width:240px;margin-bottom:1.5rem;}
+.footer-socials{display:flex;gap:0.6rem;flex-wrap:wrap;}
+.social-btn{min-width:36px;height:36px;padding:0 8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none;font-size:0.7rem;font-weight:600;transition:border-color var(--transition),color var(--transition);}
+.social-btn:hover{border-color:var(--gold);color:var(--gold);}
+.footer-col h4{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.8rem;}
+.footer-col ul a{font-size:0.82rem;color:var(--muted);text-decoration:none;transition:color var(--transition);}
+.footer-col ul a:hover{color:var(--white);}
+.footer-bottom{border-top:1px solid var(--border);padding:1.5rem 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-bottom p{font-size:0.73rem;color:#555;}
+.footer-bottom span{color:var(--gold);}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:1200px){.projects-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:1024px){.footer-top{grid-template-columns:1fr 1fr;}.trust-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}.nav-links,.nav-cta{display:none;}.nav-toggle{display:flex;}
+  .hero,.featured-wrap,.projects-section,.testimonials-section,.trust-section,.cta-section{padding-left:1.5rem;padding-right:1.5rem;}
+  .filter-bar{padding:2rem 1.5rem 1rem;}
+  .stats-bar{grid-template-columns:repeat(2,1fr);}
+  .featured-project{grid-template-columns:1fr;}.featured-visual{min-height:240px;border-right:none;border-bottom:1px solid var(--border);}
+  .featured-content{padding:2rem 1.5rem;}
+  .feat-results{grid-template-columns:repeat(3,1fr);}
+  .projects-grid{grid-template-columns:1fr;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .trust-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;padding:3rem 1.5rem 2rem;}
+  .footer-bottom{padding:1.5rem;flex-direction:column;text-align:center;}
+}
+@media(max-width:500px){.footer-top{grid-template-columns:1fr;}.trust-grid{grid-template-columns:1fr;}.feat-results{grid-template-columns:1fr;}.hero-badges{flex-direction:column;align-items:center;}}
+</style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="services.html" onclick="toggleMenu()">Services</a>
+  <a href="portfolio.html" onclick="toggleMenu()">Portfolio</a>
+  <a href="store.html" onclick="toggleMenu()">Store</a>
+  <a href="about.html" onclick="toggleMenu()">About</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="logo.png" alt="Kasim Elite Digital Global"/></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+    <li><a href="store.html">Store</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Hire Me</a>
+  <div class="nav-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-label">Our Work</div>
+  <h1>FinTech & <em>Tech</em><br/>Projects</h1>
+  <p class="hero-sub">Kasim Elite Digital Global</p>
+  <p>Premium digital work delivered for financial technology companies, crypto platforms, AI-driven startups and global enterprises. Every project engineered for maximum impact and measurable, verifiable results.</p>
+  <div class="hero-badges">
+    <div class="hero-badge"><div class="hero-badge-dot"></div>Fintech UI/UX Design</div>
+    <div class="hero-badge"><div class="hero-badge-dot"></div>Crypto Web Platforms</div>
+    <div class="hero-badge"><div class="hero-badge-dot"></div>AI Automation</div>
+    <div class="hero-badge"><div class="hero-badge-dot"></div>Financial SEO</div>
+    <div class="hero-badge"><div class="hero-badge-dot"></div>Brand Identity</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">50K+</div><div class="stat-label">Daily Active Users Served</div></div>
+  <div class="stat-item"><div class="stat-num">$124M+</div><div class="stat-label">Client Assets Managed</div></div>
+  <div class="stat-item"><div class="stat-num">215%</div><div class="stat-label">Avg. Engagement Lift</div></div>
+  <div class="stat-item"><div class="stat-num">6+</div><div class="stat-label">Years of Excellence</div></div>
+</div>
+
+<!-- FILTER -->
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="setFilter(this)">All Work</button>
+  <button class="filter-btn" onclick="setFilter(this)">FinTech</button>
+  <button class="filter-btn" onclick="setFilter(this)">Crypto</button>
+  <button class="filter-btn" onclick="setFilter(this)">AI</button>
+  <button class="filter-btn" onclick="setFilter(this)">SEO</button>
+  <button class="filter-btn" onclick="setFilter(this)">Social</button>
+  <button class="filter-btn" onclick="setFilter(this)">Branding</button>
+</div>
+
+<!-- ═══ FEATURED PROJECT ═══ -->
+<div class="featured-wrap">
+  <div class="featured-label">Featured Case Study</div>
+  <div class="featured-project">
+    <!-- WEALTH DASHBOARD MOCKUP -->
+    <div class="featured-visual">
+      <div class="wealth-dashboard">
+        <div class="wd-titlebar">
+          <div class="wd-dot" style="background:#ff5f57;"></div>
+          <div class="wd-dot" style="background:#ffbd2e;"></div>
+          <div class="wd-dot" style="background:#28c840;"></div>
+          <div class="wd-url"><div class="wd-url-text">https://wealthvault.capital — Secure Dashboard</div></div>
+        </div>
+        <div class="wd-body">
+          <div class="wd-header">
+            <div class="wd-logo-text">⬡ WEALTHVAULT</div>
+            <div class="wd-nav">
+              <div class="wd-nav-item active">Dashboard</div>
+              <div class="wd-nav-item">Portfolio</div>
+              <div class="wd-nav-item">Markets</div>
+              <div class="wd-nav-item">Reports</div>
+            </div>
+          </div>
+          <div class="wd-balance-row">
+            <div class="wd-balance">
+              <div class="wd-balance-label">Total Portfolio Value</div>
+              <div class="wd-balance-val">$248,750</div>
+              <div class="wd-balance-change">▲ +$3,240 (+1.32%) Today</div>
+            </div>
+            <div class="wd-balance" style="border-color:rgba(201,168,76,0.15);background:linear-gradient(135deg,rgba(201,168,76,0.06),rgba(0,212,170,0.04));">
+              <div class="wd-balance-label">YTD Returns</div>
+              <div class="wd-balance-val" style="color:var(--gold);">+24.8%</div>
+              <div class="wd-balance-change">Outperforming Market +11.2%</div>
+            </div>
+          </div>
+          <div class="wd-mini-stats">
+            <div class="wd-mini"><div class="wd-mini-val">$42.1K</div><div class="wd-mini-label">Equities</div></div>
+            <div class="wd-mini"><div class="wd-mini-val" style="color:var(--teal);">$18.6K</div><div class="wd-mini-label">Crypto</div></div>
+            <div class="wd-mini"><div class="wd-mini-val">94.2%</div><div class="wd-mini-label">Win Rate</div></div>
+          </div>
+          <div class="wd-chart">
+            <div class="wd-chart-label">Portfolio Performance — 8 Months</div>
+            <div class="wd-chart-bars">
+              <div class="wd-bar" style="height:38%;background:linear-gradient(to top,rgba(0,212,170,0.3),rgba(0,212,170,0.08));"></div>
+              <div class="wd-bar" style="height:52%;background:linear-gradient(to top,rgba(0,212,170,0.4),rgba(0,212,170,0.1));"></div>
+              <div class="wd-bar" style="height:44%;background:linear-gradient(to top,rgba(0,212,170,0.3),rgba(0,212,170,0.08));"></div>
+              <div class="wd-bar" style="height:67%;background:linear-gradient(to top,rgba(201,168,76,0.5),rgba(201,168,76,0.1));"></div>
+              <div class="wd-bar" style="height:58%;background:linear-gradient(to top,rgba(201,168,76,0.4),rgba(201,168,76,0.08));"></div>
+              <div class="wd-bar" style="height:82%;background:linear-gradient(to top,rgba(201,168,76,0.6),rgba(201,168,76,0.12));"></div>
+              <div class="wd-bar" style="height:76%;background:linear-gradient(to top,rgba(201,168,76,0.5),rgba(201,168,76,0.1));"></div>
+              <div class="wd-bar" style="height:100%;background:linear-gradient(to top,#c9a84c,rgba(201,168,76,0.2));"></div>
+            </div>
+          </div>
+          <div class="wd-assets">
+            <div class="wd-asset">
+              <div class="wd-asset-icon" style="background:linear-gradient(135deg,#F7931A,#ffb347);">₿</div>
+              <div class="wd-asset-name">Bitcoin (BTC)</div>
+              <div class="wd-asset-val">$67,420</div>
+              <div class="wd-asset-chg" style="background:rgba(0,200,83,0.1);color:var(--green);">+2.4%</div>
+            </div>
+            <div class="wd-asset">
+              <div class="wd-asset-icon" style="background:linear-gradient(135deg,#627eea,#8fa4f3);">Ξ</div>
+              <div class="wd-asset-name">Ethereum (ETH)</div>
+              <div class="wd-asset-val">$3,840</div>
+              <div class="wd-asset-chg" style="background:rgba(0,200,83,0.1);color:var(--green);">+1.8%</div>
+            </div>
+            <div class="wd-asset">
+              <div class="wd-asset-icon" style="background:linear-gradient(135deg,var(--gold-dark),var(--gold));">◆</div>
+              <div class="wd-asset-name">S&P 500 Index ETF</div>
+              <div class="wd-asset-val">$5,218</div>
+              <div class="wd-asset-chg" style="background:rgba(255,23,68,0.1);color:var(--red);">-0.3%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- FEATURED CONTENT -->
+    <div class="featured-content">
+      <div class="feat-tag">Featured Project · FinTech Wealth Management</div>
+      <div class="feat-title">WealthVault Capital — Premium Wealth Management Platform</div>
+      <div class="feat-desc">Complete UI/UX redesign of a wealth management platform for high-net-worth individuals and institutional investors. Custom real-time portfolio dashboard, multi-currency support across 12 countries, secure client portal and advanced data visualisation engine. Built to command trust at scale and drive deep client engagement from day one.</div>
+      <div class="feat-tags">
+        <span class="tag-chip">UI/UX Design</span>
+        <span class="tag-chip">FinTech</span>
+        <span class="tag-chip">Dashboard</span>
+        <span class="tag-chip">Data Visualisation</span>
+        <span class="tag-chip">Mobile-First</span>
+        <span class="tag-chip">Multi-Currency</span>
+      </div>
+      <div class="feat-results">
+        <div class="feat-result-item"><div class="result-num">215%</div><div class="result-label">Engagement Lift</div></div>
+        <div class="feat-result-item"><div class="result-num">$124M+</div><div class="result-label">AUM Tracked</div></div>
+        <div class="feat-result-item"><div class="result-num">12</div><div class="result-label">Countries</div></div>
+      </div>
+      <a href="contact.html" class="feat-btn">Start Similar Project</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PROJECTS GRID ═══ -->
+<section class="projects-section">
+  <div class="projects-grid">
+
+    <!-- CARD 1: CRYPTO EXCHANGE -->
+    <div class="project-card">
+      <div class="card-visual" style="background:#07070F;">
+        <div class="crypto-card-mock">
+          <div class="crypto-mock-header">
+            <div class="crypto-pair">BTC/USD ◆ Spot</div>
+            <div class="crypto-change-pos">▲ +2.41%</div>
+          </div>
+          <div class="crypto-mock-body">
+            <div class="crypto-price">$67,482.30</div>
+            <div style="font-size:7px;color:rgba(255,255,255,0.2);margin-top:1px;">Volume 24h: $28.4B · Mkt Cap: $1.33T</div>
+            <div class="crypto-actions">
+              <div class="crypto-action buy">Buy</div>
+              <div class="crypto-action sell">Sell</div>
+              <div class="crypto-action swap">Swap</div>
+            </div>
+            <div class="crypto-chart">
+              <div class="cc-bar" style="height:30%;background:linear-gradient(to top,var(--green),rgba(0,200,83,0.2));"></div>
+              <div class="cc-bar" style="height:45%;background:linear-gradient(to top,var(--green),rgba(0,200,83,0.2));"></div>
+              <div class="cc-bar" style="height:58%;background:linear-gradient(to top,var(--orange),rgba(247,147,26,0.2));"></div>
+              <div class="cc-bar" style="height:78%;background:linear-gradient(to top,var(--orange),rgba(247,147,26,0.2));"></div>
+              <div class="cc-bar" style="height:100%;background:linear-gradient(to top,var(--green),rgba(0,200,83,0.2));"></div>
+              <div class="cc-bar" style="height:70%;background:linear-gradient(to top,var(--orange),rgba(247,147,26,0.2));"></div>
+              <div class="cc-bar" style="height:52%;background:linear-gradient(to top,var(--green),rgba(0,200,83,0.2));"></div>
+              <div class="cc-bar" style="height:85%;background:linear-gradient(to top,var(--green),rgba(0,200,83,0.2));"></div>
+            </div>
+            <div class="crypto-orderbook">
+              <div class="ob-side">
+                <div class="ob-row ob-buy"><span>67,420</span><span>1.24</span></div>
+                <div class="ob-row ob-buy"><span>67,380</span><span>0.87</span></div>
+                <div class="ob-row ob-buy"><span>67,350</span><span>2.11</span></div>
+              </div>
+              <div class="ob-side">
+                <div class="ob-row ob-sell"><span>67,500</span><span>0.93</span></div>
+                <div class="ob-row ob-sell"><span>67,540</span><span>1.45</span></div>
+                <div class="ob-row ob-sell"><span>67,580</span><span>0.62</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ Crypto · Exchange Design</div>
+        <div class="card-title">BlockTrade Exchange — UI/UX Redesign</div>
+        <div class="card-desc">Complete UI/UX redesign for a cryptocurrency exchange platform. Simplified order execution flow, real-time order book, advanced charting integration and streamlined onboarding — resulting in a dramatic jump in daily active traders.</div>
+        <div class="card-chips"><span class="chip">UX Design</span><span class="chip">Web3</span><span class="chip">Trading UI</span><span class="chip">Brand Identity</span></div>
+        <div class="card-results">
+          <div class="c-result-block"><span class="c-result-num">187%</span><span class="c-result-label">Volume ↑</span></div>
+          <div class="c-result-block"><span class="c-result-num">4.7★</span><span class="c-result-label">App Rating</span></div>
+        </div>
+        <a href="contact.html" class="card-link">Start Similar Project</a>
+      </div>
+    </div>
+
+    <!-- CARD 2: AI AUTOMATION -->
+    <div class="project-card">
+      <div class="card-visual" style="background:linear-gradient(135deg,#060d0a,#0a140f);">
+        <div class="ai-card-mock">
+          <div class="ai-mock-title"><div class="ai-status-dot"></div>AI Automation Engine — Live</div>
+          <div class="ai-msg-row"><div class="ai-msg bot">New fintech lead captured from website ✓</div></div>
+          <div class="ai-msg-row"><div class="ai-msg bot">KYC verification initiated automatically</div></div>
+          <div class="ai-msg-row"><div class="ai-msg user">Risk scoring completed — APPROVED ✓</div></div>
+          <div class="ai-msg-row"><div class="ai-msg bot">Welcome email + onboarding sequence sent</div></div>
+          <div class="ai-msg-row"><div class="ai-msg user">CRM updated, invoice generated ✓</div></div>
+          <div class="ai-workflow">
+            <div class="ai-node done">📧 Capture</div><div class="ai-arrow-sm">→</div>
+            <div class="ai-node done">🔍 KYC</div><div class="ai-arrow-sm">→</div>
+            <div class="ai-node active">🤖 Score</div><div class="ai-arrow-sm">→</div>
+            <div class="ai-node">💰 Fund</div>
+          </div>
+          <div class="ai-metrics-row">
+            <div class="ai-metric-mini"><div class="ai-metric-val">35h</div><div class="ai-metric-lbl">Saved/wk</div></div>
+            <div class="ai-metric-mini"><div class="ai-metric-val">99%</div><div class="ai-metric-lbl">Accuracy</div></div>
+            <div class="ai-metric-mini"><div class="ai-metric-val">24/7</div><div class="ai-metric-lbl">Running</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ AI · Automation</div>
+        <div class="card-title">Apex Digital Scale — Full AI Business Pipeline</div>
+        <div class="card-desc">Custom AI agent system for a fintech startup — automating lead capture, KYC verification, risk scoring, client onboarding, invoice generation and CRM updates. The client scaled from 10-hour manual days to fully automated 24/7 operations.</div>
+        <div class="card-chips"><span class="chip">AI Agents</span><span class="chip">KYC Automation</span><span class="chip">CRM</span><span class="chip">Workflow</span></div>
+        <div class="card-results">
+          <div class="c-result-block"><span class="c-result-num">35hrs</span><span class="c-result-label">Saved Weekly</span></div>
+          <div class="c-result-block"><span class="c-result-num">60%</span><span class="c-result-label">Revenue ↑</span></div>
+        </div>
+        <a href="contact.html" class="card-link">Automate Your Business</a>
+      </div>
+    </div>
+
+    <!-- CARD 3: SEO -->
+    <div class="project-card">
+      <div class="card-visual" style="background:#07090C;">
+        <div class="seo-card-mock">
+          <div class="seo-mock-header">
+            <div class="seo-mock-title">📈 FinTech SEO Dashboard</div>
+            <div class="seo-score-badge">Score: 94 ▲</div>
+          </div>
+          <div class="seo-kw-list">
+            <div class="seo-kw-row"><div class="seo-rank-badge">#1</div><div class="seo-kw-bar-wrap"><div class="seo-kw-fill" style="width:100%;"></div></div><div class="seo-kw-text">fintech app nigeria</div></div>
+            <div class="seo-kw-row"><div class="seo-rank-badge">#1</div><div class="seo-kw-bar-wrap"><div class="seo-kw-fill" style="width:97%;"></div></div><div class="seo-kw-text">crypto platform africa</div></div>
+            <div class="seo-kw-row"><div class="seo-rank-badge rank2">#2</div><div class="seo-kw-bar-wrap"><div class="seo-kw-fill" style="width:89%;"></div></div><div class="seo-kw-text">payment solution lagos</div></div>
+            <div class="seo-kw-row"><div class="seo-rank-badge rank2">#2</div><div class="seo-kw-bar-wrap"><div class="seo-kw-fill" style="width:83%;"></div></div><div class="seo-kw-text">digital banking abuja</div></div>
+            <div class="seo-kw-row"><div class="seo-rank-badge rank3">#3</div><div class="seo-kw-bar-wrap"><div class="seo-kw-fill" style="width:74%;"></div></div><div class="seo-kw-text">blockchain startup</div></div>
+          </div>
+          <div class="seo-chart-row">
+            <div class="seo-bar" style="height:30%;"></div>
+            <div class="seo-bar" style="height:42%;"></div>
+            <div class="seo-bar" style="height:56%;"></div>
+            <div class="seo-bar" style="height:48%;"></div>
+            <div class="seo-bar" style="height:70%;"></div>
+            <div class="seo-bar" style="height:82%;"></div>
+            <div class="seo-bar" style="height:100%;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ SEO · Fintech</div>
+        <div class="card-title">GlobalTech Nigeria — Google Page 1 Domination</div>
+        <div class="card-desc">Complete technical SEO overhaul and fintech content strategy for a Nigerian technology company. Ranked 12 high-competition keywords to Google Page 1 within 90 days. Monthly organic traffic exploded from 800 to 15,000 unique visitors.</div>
+        <div class="card-chips"><span class="chip">Technical SEO</span><span class="chip">Content Strategy</span><span class="chip">Backlinks</span><span class="chip">Analytics</span></div>
+        <div class="card-results">
+          <div class="c-result-block"><span class="c-result-num">280%</span><span class="c-result-label">Traffic Growth</span></div>
+          <div class="c-result-block"><span class="c-result-num">90</span><span class="c-result-label">Days to Page 1</span></div>
+        </div>
+        <a href="contact.html" class="card-link">Rank Your Website</a>
+      </div>
+    </div>
+
+    <!-- CARD 4: SOCIAL MEDIA -->
+    <div class="project-card">
+      <div class="card-visual" style="background:#0A0708;">
+        <div class="social-card-mock">
+          <div class="social-post-mock">
+            <div class="spm-img" style="background:linear-gradient(135deg,rgba(201,168,76,0.12),rgba(201,168,76,0.03));">🏠</div>
+            <div class="spm-bar"><span class="spm-heart">♥</span><span class="spm-count">2.4k</span><span class="spm-bar-right spm-share">↗ 312</span></div>
+          </div>
+          <div class="social-post-mock">
+            <div class="spm-img" style="background:linear-gradient(135deg,rgba(0,212,170,0.1),rgba(0,212,170,0.02));">🏢</div>
+            <div class="spm-bar"><span class="spm-heart">♥</span><span class="spm-count">1.8k</span><span class="spm-bar-right spm-share">↗ 204</span></div>
+          </div>
+          <div class="social-post-mock">
+            <div class="spm-img" style="background:linear-gradient(135deg,rgba(123,97,255,0.1),rgba(123,97,255,0.02));">🌆</div>
+            <div class="spm-bar"><span class="spm-heart">♥</span><span class="spm-count">3.1k</span><span class="spm-bar-right spm-share">↗ 487</span></div>
+          </div>
+          <div class="social-post-mock">
+            <div class="spm-img" style="background:linear-gradient(135deg,rgba(247,147,26,0.1),rgba(247,147,26,0.02));">🏗️</div>
+            <div class="spm-bar"><span class="spm-heart">♥</span><span class="spm-count">4.2k</span><span class="spm-bar-right spm-share">↗ 621</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ Social Media · Growth</div>
+        <div class="card-title">PrimeRealty Abuja — Social Media Growth System</div>
+        <div class="card-desc">Full social media management and premium content creation for a real estate company in Abuja. Deployed strategic content architecture, reels strategy and community management — growing from 800 to 18,000 engaged followers in 4 months.</div>
+        <div class="card-chips"><span class="chip">Instagram</span><span class="chip">Facebook</span><span class="chip">Content Creation</span><span class="chip">Strategy</span></div>
+        <div class="card-results">
+          <div class="c-result-block"><span class="c-result-num">18K</span><span class="c-result-label">Followers Gained</span></div>
+          <div class="c-result-block"><span class="c-result-num">4</span><span class="c-result-label">Months Only</span></div>
+        </div>
+        <a href="contact.html" class="card-link">Grow Your Audience</a>
+      </div>
+    </div>
+
+    <!-- CARD 5: FINANCIAL MARKETING -->
+    <div class="project-card">
+      <div class="card-visual" style="background:#08060D;">
+        <div class="mkt-card-mock">
+          <div class="mkt-mock-title">📊 Financial Campaign Dashboard</div>
+          <div class="mkt-kpi-row">
+            <div class="mkt-kpi"><div class="mkt-kpi-val" style="color:var(--gold);">6.8x</div><div class="mkt-kpi-lbl">Return on Ad Spend</div></div>
+            <div class="mkt-kpi"><div class="mkt-kpi-val" style="color:var(--green);">$48K</div><div class="mkt-kpi-lbl">Revenue Generated</div></div>
+            <div class="mkt-kpi"><div class="mkt-kpi-val" style="color:var(--teal);">2,840</div><div class="mkt-kpi-lbl">Qualified Leads</div></div>
+            <div class="mkt-kpi"><div class="mkt-kpi-val" style="color:var(--gold);">4.2%</div><div class="mkt-kpi-lbl">Conversion Rate</div></div>
+          </div>
+          <div style="font-size:6px;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;">Acquisition Funnel</div>
+          <div class="mkt-funnel">
+            <div class="mkt-funnel-row"><div class="mkt-funnel-lbl">Impressions</div><div class="mkt-funnel-bar" style="width:100%;"></div><div class="mkt-funnel-val">124K</div></div>
+            <div class="mkt-funnel-row"><div class="mkt-funnel-lbl">Clicks</div><div class="mkt-funnel-bar" style="width:72%;"></div><div class="mkt-funnel-val">8.9K</div></div>
+            <div class="mkt-funnel-row"><div class="mkt-funnel-lbl">Leads</div><div class="mkt-funnel-bar" style="width:40%;"></div><div class="mkt-funnel-val">2.8K</div></div>
+            <div class="mkt-funnel-row"><div class="mkt-funnel-lbl">Clients</div><div class="mkt-funnel-bar" style="width:16%;"></div><div class="mkt-funnel-val">384</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ Financial Marketing · Campaigns</div>
+        <div class="card-title">EliteStyle Lagos — 6.8x Facebook ROI Campaign</div>
+        <div class="card-desc">Full-funnel Facebook and Instagram advertising campaign for a luxury fashion brand. Used precision audience targeting, A/B tested video creatives and strategic retargeting sequences to generate 6.8x return on ad spend within 60 days of launch.</div>
+        <div class="card-chips"><span class="chip">Facebook Ads</span><span class="chip">Instagram Ads</span><span class="chip">Retargeting</span><span class="chip">A/B Testing</span></div>
+        <div class="card-results">
+          <div class="c-result-block"><span class="c-result-num">6.8x</span><span class="c-result-label">Return on Ads</span></div>
+          <div class="c-result-block"><span class="c-result-num">60</span><span class="c-result-label">Day Campaign</span></div>
+        </div>
+        <a href="contact.html" class="card-link">Scale With Ads</a>
+      </div>
+    </div>
+
+    <!-- CARD 6: BRAND IDENTITY -->
+    <div class="project-card">
+      <div class="card-visual" style="background:#080610;">
+        <div class="brand-card-mock">
+          <div class="brand-mock-logo-row">
+            <div class="brand-mock-icon">F</div>
+            <div><div class="brand-mock-name">FINEDGE</div><div class="brand-mock-tag">Premium Financial Solutions</div></div>
+          </div>
+          <div>
+            <div style="font-size:5.5px;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:3px;">Brand Colour System</div>
+            <div class="brand-color-row">
+              <div><div class="brand-swatch-mini" style="background:var(--gold);"></div><div class="brand-swatch-lbl">Primary Gold</div></div>
+              <div><div class="brand-swatch-mini" style="background:#0a0a14;border:1px solid rgba(255,255,255,0.1);"></div><div class="brand-swatch-lbl">Deep Navy</div></div>
+              <div><div class="brand-swatch-mini" style="background:var(--white);"></div><div class="brand-swatch-lbl">Ivory White</div></div>
+              <div><div class="brand-swatch-mini" style="background:#00D4AA;"></div><div class="brand-swatch-lbl">Tech Teal</div></div>
+              <div><div class="brand-swatch-mini" style="background:var(--gold-dark);"></div><div class="brand-swatch-lbl">Dark Gold</div></div>
+            </div>
+          </div>
+          <div class="brand-type-samples">
+            <div class="bts"><div class="bts-label">Primary Typeface</div><div class="bts-text" style="font-family:'Cormorant Garamond',serif;">Cormorant Garamond — Authority</div></div>
+            <div class="bts"><div class="bts-label">Secondary Typeface</div><div class="bts-text" style="font-family:'Outfit',sans-serif;font-size:6.5px;">Outfit Sans — Clean & Modern</div></div>
+          </div>
+          <div class="brand-collateral">
+            <div class="bc-item">Business Card ◆</div>
+            <div class="bc-item">Letterhead ◆</div>
+            <div class="bc-item">Social Kit ◆</div>
+            <div class="bc-item">Pitch Deck ◆</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-category">✦ Financial Brand Identity</div>
+        <div class="card-title">FinEdge Capital — Complete Financial Brand System</div>
+        <div class="card-desc">Premium brand identity system crafted for a financial services company targeting institutional clients. Logo suite, complete brand guidelines, pitch deck, investor presentation, social media kit and full website brand application.</div>
+        <div class="card-chips"><span class="chip">Logo Design</span><span class="chip">Brand Guide</span><span class="chip">Pitch Deck</span><span class="chip">Social Kit</span></div>
+        <div class="card-results">
+          <div class="c-result-block"><span class="c-result-num">100%</span><span class="c-result-label">Brand New</span></div>
+          <div class="c-result-block"><span class="c-result-num">3x</span><span class="c-result-label">Client Trust ↑</span></div>
+        </div>
+        <a href="contact.html" class="card-link">Build Your Brand</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="testimonials-section">
+  <div class="section-header">
+    <span class="section-tag-text">Client Voices</span>
+    <h2>Trusted By <em>Global Leaders</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>Kasim rebuilt our entire wealth management platform dashboard from scratch. The result was extraordinary — faster, more beautiful, and our client engagement jumped 215% within the first 60 days. Truly elite work.</p>
+      <div class="t-author"><div class="t-avatar">AM</div><div><div class="t-name">Alejandro M.</div><div class="t-role">CTO, WealthVault Capital</div></div></div>
+    </div>
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>The AI automation system transformed our fintech operations completely. We went from spending 35 hours weekly on manual KYC and onboarding tasks to having everything run automatically 24/7. Revenue grew 60% in 3 months.</p>
+      <div class="t-author"><div class="t-avatar">SK</div><div><div class="t-name">Sarah K.</div><div class="t-role">CEO, Apex Digital Scale</div></div></div>
+    </div>
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <p>Our Instagram went from 800 to 18,000 followers in just 4 months. The content strategy and community management was exceptional. Real estate enquiries doubled and we closed 3 major deals directly from Instagram.</p>
+      <div class="t-author"><div class="t-avatar">BO</div><div><div class="t-name">Babatunde O.</div><div class="t-role">MD, PrimeRealty Abuja</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST ═══ -->
+<section class="trust-section">
+  <div class="section-header" style="margin-bottom:3rem;">
+    <span class="section-tag-text">Why Choose Us</span>
+    <h2>Built On <em>Proof</em> Not Promises</h2>
+  </div>
+  <div class="trust-grid">
+    <div class="trust-card"><div class="trust-icon">◆</div><h4>Real Measurable Results</h4><p>Every project is tracked with KPIs. We don't deliver work — we deliver outcomes you can measure and verify.</p></div>
+    <div class="trust-card"><div class="trust-icon">🌍</div><h4>Global Fintech Experience</h4><p>Clients across Nigeria, Africa, Europe and beyond. We understand how fintech markets work globally.</p></div>
+    <div class="trust-card"><div class="trust-icon">⚡</div><h4>Fast Delivery</h4><p>Premium quality without months of waiting. We move fast and execute with precision on every single project.</p></div>
+    <div class="trust-card"><div class="trust-icon">💬</div><h4>Direct Communication</h4><p>You always speak directly with Kasim — not an account manager or junior. Senior expertise on every call.</p></div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-section">
+  <h2>Your Project<br/><em>Could Be Next</em></h2>
+  <p>Let's build something world-class together. Book a strategy call and let's discuss how we can deliver premium results for your fintech business or global brand.</p>
+  <div class="cta-actions">
+    <a href="contact.html" class="btn-gold">Start Your Project ◆</a>
+    <a href="https://wa.me/2347080083489" class="btn-outline" target="_blank">📱 WhatsApp Me</a>
+    <a href="store.html" class="btn-outline">🛒 Digital Store</a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Kasim Elite Digital Global" class="footer-logo-img"/>
+      <p>Premium fintech design, crypto platforms, AI automation and financial marketing for global businesses and enterprises.</p>
+      <div class="footer-socials">
+        <a href="https://wa.me/2347080083489" class="social-btn" target="_blank">WA</a>
+        <a href="mailto:magajiqaseem@gmail.com" class="social-btn">@</a>
+        <a href="https://www.upwork.com/freelancers/~01edb4f1d95b1a9790" class="social-btn" target="_blank">Up</a>
+        <a href="https://www.facebook.com/profile.php?id=61559538970452" class="social-btn" target="_blank">Fb</a>
+        <a href="https://www.linkedin.com/in/kasim-magaji-ab66b9310" class="social-btn" target="_blank">In</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Fintech UI/UX Design</a></li>
+        <li><a href="services.html">Crypto Web Design</a></li>
+        <li><a href="services.html">AI Automation</a></li>
+        <li><a href="services.html">Fintech SEO</a></li>
+        <li><a href="services.html">Financial Marketing</a></li>
+        <li><a href="services.html">Brand Identity</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get In Touch</h4>
+      <ul>
+        <li><a href="mailto:magajiqaseem@gmail.com">magajiqaseem@gmail.com</a></li>
+        <li><a href="https://wa.me/2347080083489" target="_blank">+234 708 008 3489</a></li>
+        <li><a href="https://www.upwork.com/freelancers/~01edb4f1d95b1a9790" target="_blank">Hire on Upwork</a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61559538970452" target="_blank">Facebook</a></li>
+        <li><a href="https://www.linkedin.com/in/kasim-magaji-ab66b9310" target="_blank">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <span>Kasim Elite Digital Global</span>. All Rights Reserved.</p>
+    <p>Designed & Built by <span>Kasim M.</span></p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);
+});
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function setFilter(btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
+

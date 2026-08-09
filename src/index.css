@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import 'tailwindcss';
+
+/* ── Design Tokens ───────────────────────────────────────────── */
+:root {
+  --black:      #08080a;
+  --black-2:    #0e0e11;
+  --black-3:    #141417;
+  --gold:       #d4af37;
+  --gold-soft:  #e8cf7a;
+  --gold-dim:   rgba(212,175,55,0.16);
+  --gold-dim2:  rgba(212,175,55,0.35);
+  --white:      #f6f4ee;
+  --grey:       #9a988f;
+  --teal:       #4adec1;
+  --red-delta:  #e05c5c;
+}
+
+/* ── Reset ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Outfit', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim2); }
+
+/* ── Typography ──────────────────────────────────────────────── */
+.serif  { font-family: 'Cormorant Garamond', Georgia, serif; }
+.sans   { font-family: 'Outfit', system-ui, sans-serif; }
+.mono   { font-family: 'JetBrains Mono', monospace; }
+
+.gold   { color: var(--gold); }
+.grey   { color: var(--grey); }
+
+/* ── Labels / eyebrows ───────────────────────────────────────── */
+.label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+/* ── Nav link states ─────────────────────────────────────────── */
+.nav-link {
+  background: transparent !important;
+  color: rgba(246,244,238,0.38);
+  transition: color 0.18s;
+}
+.nav-link--active {
+  color: var(--gold) !important;
+  -webkit-text-fill-color: var(--gold) !important;
+}
+
+/* ── Hairlines ───────────────────────────────────────────────── */
+.rule      { width: 100%; height: 1px; background: var(--gold-dim); }
+.rule-grey { width: 100%; height: 1px; background: rgba(154,152,143,0.12); }
+
+/* ── Buttons ─────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: var(--gold);
+  color: #08080a !important;
+  -webkit-text-fill-color: #08080a !important;
+  padding: 0.85rem 2rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+.btn-primary:hover { opacity: 0.84; }
+
+.btn-ghost {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.62rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: transparent;
+  color: rgba(246,244,238,0.5);
+  padding: 0.85rem 2rem;
+  border: 1px solid var(--gold-dim);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.btn-ghost:hover {
+  color: var(--white);
+  border-color: var(--gold-dim2);
+}
+
+/* ── Layout helpers ──────────────────────────────────────────── */
+.section    { padding: 7rem 0; }
+.section-lg { padding: 9rem 0; }
+.container  { max-width: 1300px; margin: 0 auto; padding: 0 2.5rem; }
+
+/* ── Form inputs ─────────────────────────────────────────────── */
+input, textarea, select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--gold-dim);
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  padding: 0.85rem 0;
+  outline: none;
+  transition: border-color 0.2s;
+}
+input:focus, textarea:focus { border-bottom-color: var(--gold); }
+input::placeholder, textarea::placeholder {
+  color: rgba(154,152,143,0.6);
+  font-style: italic;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--black) inset !important;
+  -webkit-text-fill-color: var(--white) !important;
+  caret-color: var(--white);
+  transition: background-color 9999s;
+}
+
+/* ── Motion: respects prefers-reduced-motion ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .section    { padding: 5rem 0; }
+  .section-lg { padding: 6rem 0; }
+  .container  { padding: 0 1.5rem; }
+}

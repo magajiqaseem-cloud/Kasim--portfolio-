@@ -1,0 +1,10 @@
+{
+  "description": "Showcases a premium digital ecosystem with high-res video reels and a luxury contact form tailored for global corporate clients seeking elite web design.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

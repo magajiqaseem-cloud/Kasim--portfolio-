@@ -1,0 +1,29 @@
+# KEDG site — asset guide
+
+Upload these HTML files to the root of your GitHub repo (they replace the old ones; names match your existing links).
+
+## Images the pages expect (same folder as the HTML)
+| File | Used on | Notes |
+|---|---|---|
+| logo.png | every page | your existing official logo, unchanged |
+| profile.jpg | Home hero, About hero | **overwrite with your NEW retouched portrait** (portrait crop, ~1000×1250 px, face in upper third) |
+| fullbody.jpg | About (journey section) | existing full-length photo |
+| studio.jpg | Home (Who we are) | existing |
+| banner.jpg | Home hero background + social share image | existing |
+
+## Portfolio mockups (the Meta AI images)
+Put them in the `work/` folder with these names. Each one appears automatically inside its device frame; until then the built-in artwork shows.
+
+| File | Case study | Frame | Best shape |
+|---|---|---|---|
+| work/case-01.jpg | Nexura neobank | laptop | 16:10 landscape |
+| work/case-02.jpg | CryptoAd AI video | floating display | ~3:2 landscape |
+| work/case-03.jpg | Aetheria DeFi | laptop | 16:10 landscape |
+| work/case-04.jpg | QuantumFlow automation | floating display | ~3:2 landscape |
+| work/case-05.jpg | Valoris wealth app | phone | 9:19 portrait |
+| work/case-06.jpg | Nubian translation | floating display | ~3:2 landscape |
+| work/case-07.jpg | Aurelia brand identity | floating display | ~3:2 landscape |
+| work/case-08.jpg | CryptoShield audit portal | laptop | 16:10 landscape |
+| work/case-09.jpg | kasimempire.com (live) | laptop | 16:10 screenshot of your homepage |
+
+Keep each image under ~300 KB (export as JPG, quality 80) so pages stay fast.

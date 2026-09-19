@@ -246,7 +246,7 @@ p{color:var(--body);max-width:66ch}
 .portrait .ring{position:absolute;inset:-5% -7% auto;aspect-ratio:1;border-radius:50%;border:1px solid rgba(59,130,246,.28);pointer-events:none}
 .portrait .ring::after{content:"";position:absolute;inset:-1px;border-radius:50%;border:1.5px solid transparent;border-top-color:var(--gold-primary);border-right-color:rgba(212,175,55,.3);filter:drop-shadow(0 0 6px rgba(212,175,55,.7));animation:spin 26s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.plaque{position:absolute;left:-6%;bottom:8%;padding:14px 18px;border-radius:16px;background:rgba(8,14,34,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.plaque{position:absolute;left:-6%;bottom:-22px;padding:14px 18px;border-radius:16px;background:rgba(8,14,34,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 .plaque b{display:block;font-family:var(--f-display);font-size:2.2rem;line-height:1;color:var(--gold-primary)}
 .plaque span{font-size:.8rem;color:var(--text-muted)}
 .ab-hero h1{font-size:clamp(3rem,6.4vw,5.6rem);margin-bottom:10px}
@@ -285,7 +285,7 @@ p{color:var(--body);max-width:66ch}
 @media (prefers-reduced-motion:reduce){.radar .shape{transform:none;opacity:1}}
 
 .story{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,80px);align-items:start}
-.story-img{position:sticky;top:110px;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:3/4;background:linear-gradient(180deg,#0d1d45,#050505)}
+.story-img{position:sticky;top:110px;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:9/16;background:linear-gradient(180deg,#0d1d45,#050505)}
 .story-img img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
 .story-img::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(212,175,55,.3);background:linear-gradient(180deg,transparent 65%,rgba(5,5,5,.7))}
 .timeline{position:relative;display:grid;gap:14px;padding-left:34px}
@@ -295,7 +295,7 @@ p{color:var(--body);max-width:66ch}
 .tl small{font-size:.82rem;color:var(--gold-primary)}
 .tl h3{font-size:1.55rem;margin:4px 0 8px}
 .tl p{font-size:.95rem}
-@media(max-width:900px){.story{grid-template-columns:1fr}.story-img{position:relative;top:0;max-width:420px;aspect-ratio:4/5}}
+@media(max-width:900px){.story{grid-template-columns:1fr}.story-img{position:relative;top:0;max-width:420px;aspect-ratio:9/16}}
 
 .values{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .val{padding:28px 24px}
@@ -368,7 +368,7 @@ p{color:var(--body);max-width:66ch}
 
 <section class="sec" style="padding-top:0" aria-labelledby="story-h">
   <div class="wrap story">
-    <div class="story-img rv"><img src="fullbody.jpg" alt="Kasim Magaji, full-length portrait" width="600" height="800" loading="lazy"></div>
+    <div class="story-img rv"><img src="profile-full.jpg" alt="Kasim Magaji, full-length portrait" width="600" height="800" loading="lazy"></div>
     <div>
       <p class="kicker">The journey</p>
       <h2 id="story-h" style="margin-bottom:34px">From freelance work to a global studio.</h2>

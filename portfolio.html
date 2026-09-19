@@ -489,5 +489,48 @@ dl.brief dd{font-size:.93rem;color:var(--body)}
   })});
 })();
 </script>
+  <style>
+.kedg-draw{stroke-dasharray:var(--l);stroke-dashoffset:var(--l);transition:stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1)}
+.rv.in .kedg-draw{stroke-dashoffset:0}
+.kedg-lang{transition:opacity .45s ease}
+@media (prefers-reduced-motion:reduce){.kedg-draw{stroke-dasharray:none;stroke-dashoffset:0;transition:none}}
+</style>
+<script>
+(function(){
+if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+var NS='http://www.w3.org/2000/svg';
+document.querySelectorAll('.case svg,.feature svg').forEach(function(s){
+  s.querySelectorAll('path[stroke]:not([fill]),path[fill="none"],polyline').forEach(function(p){
+    try{var l=p.getTotalLength();if(l>40){p.style.setProperty('--l',l);p.classList.add('kedg-draw')}}catch(e){}
+  });
+});
+function count(t){
+  var m=t.textContent.match(/^([^\d]*)([\d,]+(?:\.\d+)?)(.*)$/);if(!m)return;
+  var pre=m[1],suf=m[3],end=parseFloat(m[2].replace(/,/g,'')),dec=(m[2].split('.')[1]||'').length,
+      grp=m[2].indexOf(',')>-1,t0=null;
+  function step(ts){t0=t0||ts;var k=Math.min((ts-t0)/1400,1),v=end*(1-Math.pow(1-k,3));
+    var o=dec?v.toFixed(dec):Math.round(v)+'';if(grp)o=(+o).toLocaleString('en-US',{minimumFractionDigits:dec});
+    t.textContent=pre+o+suf;if(k<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+}
+var io=new IntersectionObserver(function(en){en.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);
+  e.target.querySelectorAll('text').forEach(function(t){if(/\d/.test(t.textContent)&&t.textContent.length<12)count(t)})})},{threshold:.4});
+document.querySelectorAll('.case svg,.feature svg').forEach(function(s){io.observe(s)});
+var q=document.querySelector('figure[aria-label*="QuantumFlow"] svg');
+if(q){var d=document.createElementNS(NS,'path');d.setAttribute('d','M114 133 L164 83 L236 83 L288 133');
+  d.setAttribute('fill','none');d.setAttribute('stroke','none');q.appendChild(d);
+  var c=document.createElementNS(NS,'circle');c.setAttribute('r','6');c.setAttribute('fill','#D4AF37');
+  c.setAttribute('filter','drop-shadow(0 0 6px rgba(212,175,55,.9))');
+  var mo=document.createElementNS(NS,'animateMotion');mo.setAttribute('dur','3.6s');
+  mo.setAttribute('repeatCount','indefinite');mo.setAttribute('path','M114 133 L164 83 L236 83 L288 133');
+  c.appendChild(mo);q.appendChild(c)}
+var n=document.querySelector('figure[aria-label*="Nubian"] svg');
+if(n){var r=n.querySelectorAll('rect[y="152"]'),i=0;
+  r.forEach(function(x){x.classList.add('kedg-lang');x.style.opacity=.45});
+  setInterval(function(){r.forEach(function(x){x.style.opacity=.45});
+    if(r[i])r[i].style.opacity=1;i=(i+1)%r.length},900)}
+})();
+</script>
+  
 </body>
 </html>

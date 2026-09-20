@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,9 +101,9 @@ p{color:var(--body);max-width:66ch}
 .link-arrow:hover svg,a:hover>.link-arrow svg{transform:translateX(4px)}
 
 /* Surfaces & light */
-.panel{position:relative;border-radius:var(--r-lg);background:linear-gradient(165deg,rgba(13,29,69,.5),rgba(8,10,18,.94) 58%);box-shadow:0 30px 60px -34px rgba(0,0,0,.9)}
+.panel{--mx:50%;--my:-12%;position:relative;border-radius:var(--r-lg);background:radial-gradient(420px circle at var(--mx) var(--my),rgba(212,175,55,.085),transparent 60%),linear-gradient(165deg,rgba(13,29,69,.5),rgba(8,10,18,.94) 58%);box-shadow:0 30px 60px -34px rgba(0,0,0,.9)}
 .panel::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:linear-gradient(145deg,rgba(212,175,55,.55),rgba(255,255,255,.06) 36%,rgba(255,255,255,.04) 64%,rgba(59,130,246,.42));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
-.panel.quiet{background:linear-gradient(165deg,rgba(255,255,255,.035),rgba(255,255,255,.01))}
+.panel.quiet{background:radial-gradient(420px circle at var(--mx) var(--my),rgba(212,175,55,.075),transparent 60%),linear-gradient(165deg,rgba(255,255,255,.035),rgba(255,255,255,.01))}
 .panel.quiet::before{background:linear-gradient(145deg,rgba(255,255,255,.14),rgba(255,255,255,.04))}
 .glow{position:absolute;border-radius:50%;pointer-events:none;z-index:0}
 .glow.blue{background:radial-gradient(circle,rgba(30,58,138,.55),rgba(30,58,138,0) 65%)}
@@ -337,6 +336,59 @@ p{color:var(--body);max-width:66ch}
 .shelf .price{font-family:var(--f-display);font-size:1.7rem;font-weight:600;color:var(--gold-primary)}
 @media(max-width:900px){.duo{grid-template-columns:1fr}}
 
+
+/* ── pointer light ───────────────────────────────────────── */
+.panel::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;
+  opacity:0;transition:opacity .45s var(--ease);
+  background:radial-gradient(260px circle at var(--mx) var(--my),var(--gold-light),rgba(212,175,55,.45) 26%,transparent 62%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
+.panel.lit::after,.panel:focus-within::after{opacity:1}
+.panel{transition:box-shadow .45s var(--ease)}
+.panel.lit{box-shadow:0 30px 60px -34px rgba(0,0,0,.9),0 0 46px -14px rgba(212,175,55,.34)}
+
+.spot{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .6s var(--ease);
+  background:radial-gradient(420px circle at var(--hx) var(--hy),rgba(212,175,55,.16),transparent 62%),
+             radial-gradient(760px circle at var(--hx) var(--hy),rgba(59,130,246,.14),transparent 66%)}
+.spot-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .6s var(--ease);
+  background-image:radial-gradient(rgba(212,175,55,.55) 1px,transparent 1.4px);background-size:30px 30px;
+  -webkit-mask:radial-gradient(180px circle at var(--hx) var(--hy),#000,transparent 70%);
+  mask:radial-gradient(180px circle at var(--hx) var(--hy),#000,transparent 70%)}
+.hero.lit .spot,.hero.lit .spot-grid{opacity:1}
+.hero{--hx:60%;--hy:34%}
+@media (hover:none){.spot,.spot-grid{display:none}.panel::after{display:none}}
+@media (prefers-reduced-motion:reduce){.spot,.spot-grid,.panel::after{transition:none}}
+
+
+/* ── hero portrait: breathing rim, orbit lights, stars ── */
+.portal{animation:breathe 6.5s ease-in-out infinite}
+@keyframes breathe{
+  0%,100%{box-shadow:0 0 0 1px rgba(212,175,55,.4),0 40px 90px -30px rgba(0,0,0,.95),0 0 80px -20px rgba(59,130,246,.55)}
+  50%{box-shadow:0 0 0 1px rgba(212,175,55,.85),0 40px 90px -30px rgba(0,0,0,.95),0 0 112px -14px rgba(212,175,55,.5)}}
+.arc-b{opacity:.5}
+.trav{fill:var(--gold-light);filter:drop-shadow(0 0 7px rgba(255,223,0,.95)) drop-shadow(0 0 16px rgba(212,175,55,.6))}
+.trav.b{fill:var(--accent-blue);filter:drop-shadow(0 0 7px rgba(59,130,246,.9))}
+.stars{position:absolute;inset:-11% -15%;width:130%;height:122%;z-index:0;pointer-events:none;overflow:visible}
+.stars circle{fill:#fff;opacity:.2;animation:twinkle 3.6s ease-in-out infinite;animation-delay:var(--d)}
+.stars .spk{fill:var(--gold-light);opacity:.25;transform-box:fill-box;transform-origin:center;
+  animation:sparkle 5s ease-in-out infinite;animation-delay:var(--d)}
+@keyframes twinkle{0%,100%{opacity:.16;r:1}45%{opacity:.95}}
+@keyframes sparkle{0%,100%{opacity:.14}40%{opacity:.9}}
+.status-dot{position:relative}
+.status-dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1px solid rgba(52,211,153,.55);
+  animation:haloed 2.4s var(--ease) infinite}
+@keyframes haloed{0%{transform:scale(.55);opacity:.9}70%,100%{transform:scale(1.5);opacity:0}}
+@media (max-width:900px){
+  .float{font-size:.8rem;padding:10px 13px}
+  .f-name{right:-2%;max-width:70%}
+  .f-name span{font-size:.74rem;line-height:1.3}
+  .stars{inset:-8% -10%;width:120%;height:116%}
+}
+@media (prefers-reduced-motion:reduce){
+  .portal,.stars circle,.stars .spk,.status-dot::after{animation:none}
+  .stars circle{opacity:.4}
+}
+
 </style>
 </head>
 <body>
@@ -359,6 +411,8 @@ p{color:var(--body);max-width:66ch}
 <section class="hero" aria-labelledby="hero-h">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="dots" aria-hidden="true"></div>
+  <div class="spot" aria-hidden="true"></div>
+  <div class="spot-grid" aria-hidden="true"></div>
   <div class="glow blue" style="width:1000px;height:1000px;right:-360px;top:-320px" aria-hidden="true"></div>
   <div class="glow gold" style="width:600px;height:600px;left:-260px;bottom:-260px" aria-hidden="true"></div>
   <div class="wrap hero-grid">
@@ -374,9 +428,10 @@ p{color:var(--body);max-width:66ch}
       <p class="motto hl hl5" aria-label="Innovate, elevate, dominate">Innovate. <b>Elevate.</b> Dominate.</p>
     </div>
     <div class="hero-visual hl hl3">
+      <svg class="stars" viewBox="0 0 640 760" aria-hidden="true"><circle cx="586.8" cy="373.2" r="1.8" style="--d:0.2s"/><circle cx="578.3" cy="494.9" r="1.1" style="--d:1.7s"/><circle cx="542.5" cy="581.0" r="1.1" style="--d:0.3s"/><circle cx="109.3" cy="569.6" r="2.1" style="--d:1.0s"/><circle cx="74.5" cy="502.4" r="1.4" style="--d:2.8s"/><circle cx="36.5" cy="393.1" r="1.8" style="--d:1.3s"/><circle cx="73.0" cy="269.6" r="1.1" style="--d:0.7s"/><circle cx="172.6" cy="87.3" r="1.6" style="--d:1.0s"/><circle cx="280.0" cy="35.5" r="1.3" style="--d:2.0s"/><circle cx="372.1" cy="29.5" r="1.9" style="--d:1.0s"/><circle cx="465.8" cy="112.1" r="1.5" style="--d:2.6s"/><circle cx="583.9" cy="243.7" r="2.0" style="--d:1.9s"/><path class="spk" d="M0-9 1.6-1.6 9 0 1.6 1.6 0 9-1.6 1.6-9 0-1.6-1.6Z" transform="translate(210.1 47.1) scale(0.9)" style="--d:0.4s"/><path class="spk" d="M0-9 1.6-1.6 9 0 1.6 1.6 0 9-1.6 1.6-9 0-1.6-1.6Z" transform="translate(441.3 707.1) scale(1.15)" style="--d:1.7s"/><path class="spk" d="M0-9 1.6-1.6 9 0 1.6 1.6 0 9-1.6 1.6-9 0-1.6-1.6Z" transform="translate(53.7 221.4) scale(0.8)" style="--d:2.6s"/></svg>
       <svg class="globe" viewBox="0 0 520 520" aria-hidden="true"><circle class="m" cx="260" cy="260" r="230"/><ellipse class="m" cx="260" cy="260" rx="60" ry="230"/><ellipse class="m" cx="260" cy="260" rx="120" ry="230"/><ellipse class="m" cx="260" cy="260" rx="180" ry="230"/><ellipse class="m" cx="260" cy="120" rx="176" ry="16"/><ellipse class="m" cx="260" cy="190" rx="219" ry="16"/><ellipse class="m" cx="260" cy="260" rx="230" ry="16"/><ellipse class="m" cx="260" cy="330" rx="219" ry="16"/><ellipse class="m" cx="260" cy="400" rx="176" ry="16"/></svg>
       <figure class="portal"><img src="profile.jpg" alt="Portrait of Kasim Magaji, founder of Kasim Elite Digital Global" width="480" height="600" fetchpriority="high"></figure>
-      <svg class="globe front" viewBox="0 0 520 520" aria-hidden="true"><defs><linearGradient id="gArc" x1="0" x2="1"><stop offset="0" stop-color="#3B82F6" stop-opacity="0"/><stop offset=".45" stop-color="#D4AF37"/><stop offset="1" stop-color="#FFDF00"/></linearGradient></defs><path class="arc" d="M14 330 A250 250 0 0 1 492 175"/><circle class="node" cx="492" cy="175" r="5"/><circle class="node" cx="44" cy="190" r="3"/></svg>
+      <svg class="globe front" viewBox="0 0 520 520" aria-hidden="true"><defs><linearGradient id="gArc" x1="0" x2="1"><stop offset="0" stop-color="#3B82F6" stop-opacity="0"/><stop offset=".45" stop-color="#D4AF37"/><stop offset="1" stop-color="#FFDF00"/></linearGradient></defs><path class="arc" id="arcA" d="M14 330 A250 250 0 0 1 492 175"/><path class="arc arc-b" id="arcB" d="M506 350 A250 250 0 0 1 28 195"/><circle class="node" cx="492" cy="175" r="5"/><circle class="node" cx="44" cy="190" r="3"/><circle class="trav" r="4"><animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" calcMode="linear"><mpath href="#arcA"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="7s" repeatCount="indefinite"/></circle><circle class="trav b" r="3"><animateMotion dur="9s" begin="1.6s" repeatCount="indefinite"><mpath href="#arcB"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.12;.88;1" dur="9s" begin="1.6s" repeatCount="indefinite"/></circle></svg>
       <div class="float f-status panel"><span class="status-dot" aria-hidden="true"></span>Available for new projects</div>
       <div class="float f-name panel"><strong>Kasim Magaji</strong><span>Founder, Web Developer &amp; Designer</span></div>
     </div>
@@ -545,6 +600,49 @@ p{color:var(--body);max-width:66ch}
   }else{els.forEach(function(el){el.classList.add('in')})}
   document.querySelectorAll('[data-year]').forEach(function(e){e.textContent=new Date().getFullYear()});
 })();
+</script>
+
+<script>
+/* pointer light — fine pointers only, one rAF frame per move */
+(function(){
+  if(!window.matchMedia||!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  var hero=document.querySelector('.hero'),panels=[].slice.call(document.querySelectorAll('.panel')),
+      q=null,frame=0;
+  function paint(){
+    frame=0;if(!q)return;var e=q;q=null;
+    if(hero){
+      var r=hero.getBoundingClientRect();
+      if(e.clientY>r.top-160&&e.clientY<r.bottom+160){
+        hero.style.setProperty('--hx',(e.clientX-r.left)+'px');
+        hero.style.setProperty('--hy',(e.clientY-r.top)+'px');
+        hero.classList.add('lit');
+      }else hero.classList.remove('lit');
+    }
+    for(var i=0;i<panels.length;i++){
+      var p=panels[i],b=p.getBoundingClientRect();
+      if(b.bottom<-200||b.top>innerHeight+200){p.classList.remove('lit');continue;}
+      var x=e.clientX-b.left,y=e.clientY-b.top;
+      if(x>=0&&y>=0&&x<=b.width&&y<=b.height){
+        p.style.setProperty('--mx',x+'px');p.style.setProperty('--my',y+'px');p.classList.add('lit');
+      }else if(p.classList.contains('lit')){
+        p.classList.remove('lit');p.style.removeProperty('--mx');p.style.removeProperty('--my');
+      }
+    }
+  }
+  addEventListener('pointermove',function(e){
+    q={clientX:e.clientX,clientY:e.clientY};
+    if(!frame)frame=requestAnimationFrame(paint);
+  },{passive:true});
+  addEventListener('pointerleave',function(){
+    if(hero)hero.classList.remove('lit');
+    panels.forEach(function(p){p.classList.remove('lit');});
+  });
+})();
+</script>
+<script>
+if(matchMedia('(prefers-reduced-motion:reduce)').matches){
+  document.querySelectorAll('svg').forEach(function(s){if(s.pauseAnimations)s.pauseAnimations();});
+}
 </script>
 </body>
 </html>

@@ -1,0 +1,112 @@
+# KASIM ELITE DIGITAL — ASSET GUIDE
+
+Last corrected: 20 September 2026. Replaces every earlier version.
+
+---
+
+## 1. HOW THE PORTFOLIO USES IMAGES
+
+Two layers, and they do different jobs.
+
+**In the page:** hand-coded SVG mockups inside laptop, plate and phone
+frames, animated on scroll — chart paths draw themselves, figures count
+up. These are the proof that you build interfaces, not just pictures of
+them. They are never replaced by a photo.
+
+**Behind a button:** each device frame carries a **View concept**
+control. It opens the full-resolution render over the page, with
+previous/next paging through all ten. Nothing is covered; the visual
+render is one tap away at a size where it reads.
+
+The renders are AI-generated concept explorations. Every caption says
+so. They support a capability claim — they do not prove delivery. Only
+live projects do that.
+
+---
+
+## 2. WHAT EACH PAGE LOADS
+
+| Page | Images it requests |
+|------|--------------------|
+| index.html | `logo.png`, `banner.jpg`, `profile.jpg` |
+| portfolio.html | `logo.png` + the ten files in `/work` (lightbox only) |
+| services.html | `logo.png` — 107 inline SVGs, no image slots |
+| store.html | `logo.png` — 67 inline SVGs |
+| about.html | `logo.png`, `profile.jpg`, `profile-full.jpg` |
+| contact.html | `logo.png` |
+
+Before adding an image anywhere, search the page for the filename. If
+the HTML does not ask for it, uploading it changes nothing.
+
+---
+
+## 3. THE /work FOLDER — REQUIRED
+
+```
+/portfolio.html
+/logo.png
+/work
+  case-01.jpg  Nexura — fintech design system        1600x1000
+  case-02.jpg  CryptoAd — vertical ad creative       1200x825
+  case-03.jpg  Aetheria — portfolio dashboard        1600x1000
+  case-04.jpg  QuantumFlow — automation pipeline     1200x825
+  case-05.jpg  Valoris — portfolio screen             540x1140
+  case-05b.jpg Valoris — market pulse screen          540x1140
+  case-06.jpg  GlobalShop — multilingual storefront  1200x825
+  case-07.jpg  Neonex — motion identity board        1200x825
+  case-08.jpg  BlockTrade — exchange dashboard       1600x1000
+  case-09.jpg  kasimempire.com — studio site         1600x1000
+```
+
+All ten are required. Paths are relative to the repo root:
+`work/case-01.jpg`. Flat folder, `.jpg`, zero-padded, lowercase.
+
+Nothing loads until a visitor opens the viewer — the images are set
+from JavaScript, and neighbours are preloaded on open. The page costs
+nothing extra on first paint.
+
+To replace one: keep the filename, match the pixel size above, export
+JPEG quality ~84 progressive, under 250 KB.
+
+---
+
+## 4. UPLOADING TO GITHUB WITHOUT BREAKING THINGS
+
+1. **Check the filename after download.** Windows appends ` (1)` when
+   the name already exists in Downloads. `logo (1).png` will 404.
+2. **Lowercase, hyphens, no spaces.** GitHub and Vercel are
+   case-sensitive; Windows is not. `Logo.PNG` works on the laptop and
+   fails in production.
+3. **Edit HTML in place** — pencil icon, select all, paste, commit.
+   Never delete and re-add a file; that loses history and briefly 404s
+   the page.
+4. **Verify on the live URL**, not locally. Hard refresh or use a
+   private tab.
+
+---
+
+## 5. WHY A MISSING IMAGE IS INVISIBLE
+
+The page itself looks perfect whether or not `/work` exists — the
+coded mockups carry it. A missing render only shows when someone opens
+the viewer, where it appears as an empty frame.
+
+**So the portfolio looking right is not proof the images uploaded.**
+After any push, open one card's viewer and page through all ten with
+the arrow keys.
+
+---
+
+## 6. BRAND TOKENS
+
+```css
+--bg-primary:#050505;  --bg-secondary:#0a0a0a;
+--gold-primary:#D4AF37; --gold-light:#FFDF00; --gold-deep:#B8860B;
+--royal-blue:#1E3A8A;  --accent-blue:#3B82F6;
+--text-main:#FFFFFF;   --text-muted:#9CA3AF;
+```
+
+Display type: Cormorant Garamond. Body and UI: Inter.
+
+Logo and founder portraits are used as supplied — never recoloured,
+redrawn, or cropped past the framing already agreed.

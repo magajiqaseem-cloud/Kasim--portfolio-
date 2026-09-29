@@ -1,0 +1,101 @@
+<div align="center">
+
+# Kasim Elite Digital Global
+
+**The official website of Kasim Elite Digital Global, a founder-led digital studio by Kasim Magaji.**
+
+Port Harcourt, Nigeria · Working with clients worldwide
+
+[![Live Site](https://img.shields.io/badge/Live%20Site-kasimempire.com-D4AF37?style=for-the-badge&labelColor=050505)](https://kasimempire.com)
+[![Hosted on Vercel](https://img.shields.io/badge/Hosted%20on-Vercel-FFFFFF?style=for-the-badge&logo=vercel&logoColor=white&labelColor=050505)](https://vercel.com)
+[![Built with HTML CSS JS](https://img.shields.io/badge/Built%20with-HTML%20·%20CSS%20·%20JS-0038A8?style=for-the-badge&labelColor=050505)](#tech-stack)
+
+</div>
+
+---
+
+## About
+
+This repository holds the source code for **[kasimempire.com](https://kasimempire.com)**.
+
+Kasim Elite Digital Global is a founder-led studio, not a big agency. Clients work directly with Kasim from the first message to the final handover. The studio designs and builds websites, fintech and crypto interfaces, brand identities, motion and AI video, and AI automation workflows for businesses worldwide.
+
+## Pages
+
+| Page | File | What it covers |
+|---|---|---|
+| Home | `index.html` | Introduction, services overview, promo video |
+| About | `about.html` | Founder story, skills and journey |
+| Services | `services.html` | Full service list with live mockups and real work samples |
+| Portfolio | `portfolio.html` | Concept work and digital experiences |
+| Store | `store.html` | Digital products: templates, guides and ebooks |
+| Product | `how-to-make-money-with-ai.html` | Ebook page for *How to Make Money with AI* |
+| Contact | `contact.html` | Contact form, WhatsApp and email |
+
+## Services
+
+- Website Development & Redesign
+- Fintech & Crypto Web Design
+- AI Automation & Workflows
+- Motion Design
+- AI Video Creation & Photo Editing
+- Copywriting
+- Multilingual Translation
+- Financial Brand Identity Design
+
+## Tech Stack
+
+- **HTML5, CSS3 and vanilla JavaScript.** No framework, fast to load.
+- **Vercel** for hosting, deployed automatically from this repository.
+- **Formspree** for contact form handling.
+- **Google Analytics** for visitor insights.
+- **Selar** for secure ebook checkout and downloads.
+
+## Brand
+
+| Colour | Hex |
+|---|---|
+| Black | `#050505` |
+| Gold | `#D4AF37` |
+| Blue | `#0038A8` |
+| White | `#FFFFFF` |
+
+## Project Structure
+
+All pages, images, videos, `styles.css` and `app.js` sit at the root of the repository.
+
+```
+/
+├── index.html
+├── about.html
+├── services.html
+├── portfolio.html
+├── store.html
+├── how-to-make-money-with-ai.html
+├── contact.html
+├── styles.css
+├── app.js
+└── images and videos
+```
+
+## Work With Kasim
+
+Need a website, a redesign or a digital product? Get in touch directly:
+
+- **Website:** [kasimempire.com](https://kasimempire.com)
+- **Email:** [magajiqaseem@gmail.com](mailto:magajiqaseem@gmail.com)
+- **WhatsApp:** [+234 708 008 3489](https://wa.me/2347080083489)
+- **Upwork:** [Hire on Upwork](https://www.upwork.com/freelancers/~01edb4f1d95b1a9790)
+- **LinkedIn:** [Kasim Magaji](https://www.linkedin.com/in/kasim-magaji-ab66b9310)
+- **Instagram:** [@kasim_magaji](https://www.instagram.com/kasim_magaji)
+- **TikTok:** [@ksmgelitesdesigns](https://www.tiktok.com/@ksmgelitesdesigns)
+
+---
+
+<div align="center">
+
+**Designed & built by Kasim Magaji**
+
+© 2026 Kasim Elite Digital Global. All rights reserved.
+
+</div>

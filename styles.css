@@ -799,3 +799,33 @@ h1,h2,h3,.brand-name,.price-row b,.role-list b,.facts dd,.flow-total strong,.boo
 .ws-tag-a{right:auto;left:2%}
 .ws-tag-b{left:auto;right:2%}
 @media (max-width:600px){.ws-tag-a{left:0;right:auto}.ws-tag-b{right:0;left:auto}}
+/* Store hero: floating, glowing books */
+.book-stage{position:relative;margin:0 0 0 auto;width:100%;max-width:560px;aspect-ratio:1/.92}
+.bk{position:absolute;display:block;height:auto;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%),linear-gradient(0deg,transparent 0,#000 5%,#000 95%,transparent 100%);
+  -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%),linear-gradient(0deg,transparent 0,#000 5%,#000 95%,transparent 100%);mask-composite:intersect}
+.bk img{display:block;width:100%;height:auto}
+.bk-left{width:40%;left:2%;top:16%;transform:rotate(-9deg);opacity:.9;filter:drop-shadow(0 25px 40px rgba(0,0,0,.9)) brightness(.88)}
+.bk-right{width:40%;right:2%;top:16%;transform:rotate(9deg);opacity:.9;filter:drop-shadow(0 25px 40px rgba(0,0,0,.9)) brightness(.88)}
+.bk-front{width:47%;left:26.5%;top:6%;z-index:2;filter:drop-shadow(0 30px 50px rgba(0,0,0,.95)) drop-shadow(0 0 40px rgba(212,175,55,.35))}
+.bk-sweep{position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(241,210,122,.28) 50%,transparent 60%) no-repeat;background-size:260% 100%;background-position:160% 0}
+.bk-floor{position:absolute;left:8%;right:8%;bottom:2%;height:22%;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%,rgba(212,175,55,.55),rgba(212,175,55,.12) 55%,transparent 72%);filter:blur(6px)}
+.book-stage .ws-badge{top:-8%;right:-5%;width:30%}
+.bk-tag-a{bottom:6%;left:-2%}
+.bk-tag-b{bottom:-3%;right:2%;border-color:rgba(127,162,255,.6);color:#fff}
+@media (prefers-reduced-motion:no-preference){
+  .bk-front{animation:bk-float 6s ease-in-out infinite}
+  .bk-left{animation:bk-float-l 7s ease-in-out -2s infinite}
+  .bk-right{animation:bk-float-r 7.5s ease-in-out -4s infinite}
+  @keyframes bk-float{50%{transform:translateY(-16px)}}
+  @keyframes bk-float-l{0%,100%{transform:rotate(-9deg) translateY(0)}50%{transform:rotate(-7deg) translateY(-12px)}}
+  @keyframes bk-float-r{0%,100%{transform:rotate(9deg) translateY(0)}50%{transform:rotate(7deg) translateY(-12px)}}
+  .bk-sweep{animation:torch 5s ease-in-out infinite}
+  .bk-floor{animation:bk-glow 6s ease-in-out infinite}
+  @keyframes bk-glow{0%,100%{opacity:.75;transform:scaleX(1)}50%{opacity:1;transform:scaleX(.92)}}
+  .bk-tag-a{animation:ws-bob 5s ease-in-out infinite}
+  .bk-tag-b{animation:ws-bob 6s ease-in-out -2.5s infinite}
+}
+@media (max-width:900px){.book-stage{max-width:480px;margin:18px auto 0}}
+@media (max-width:600px){.book-stage .ws-badge{width:30%;top:-6%;right:-2%}.bk-tag-a{left:0}.bk-tag-b{right:0}}
+.book-stage .ws-badge{top:-13%}

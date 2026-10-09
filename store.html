@@ -23,9 +23,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261009f">
+<link rel="stylesheet" href="styles.css?v=20261009g">
 <link rel="stylesheet" href="store.css">
-<script src="app.js?v=20261009f" defer></script>
+<script src="app.js?v=20261009g" defer></script>
 <noscript><style>
 .nav{display:block!important;position:static!important;background:none!important;border:0!important;padding:0!important}
 .nav ul{flex-direction:row!important;flex-wrap:wrap;gap:16px!important}
@@ -63,11 +63,74 @@
   </div>
 </header>
 <main id="main">
-<section class="page-hero"><div class="floor" style="padding-bottom:clamp(40px,6vw,72px)"><div class="wrap">
+<section class="page-hero ph-deco"><svg class="ph-bg" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<defs>
+<linearGradient id="phSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030820"/><stop offset=".6" stop-color="#071538"/><stop offset="1" stop-color="#030303"/></linearGradient>
+<radialGradient id="phBlue" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#1A4BD1" stop-opacity=".8"/><stop offset=".55" stop-color="#0038A8" stop-opacity=".25"/><stop offset="1" stop-color="#0038A8" stop-opacity="0"/></radialGradient>
+<radialGradient id="phGold" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#D4AF37" stop-opacity=".28"/><stop offset="1" stop-color="#D4AF37" stop-opacity="0"/></radialGradient>
+<linearGradient id="phBeam" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1100" y2="700"><stop offset="0" stop-color="#FFF1BF" stop-opacity=".32"/><stop offset=".35" stop-color="#F1D27A" stop-opacity=".11"/><stop offset="1" stop-color="#D4AF37" stop-opacity="0"/></linearGradient>
+<linearGradient id="phGridFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></linearGradient>
+<mask id="phGridMask"><rect x="0" y="430" width="1600" height="330" fill="url(#phGridFade)"/></mask>
+<pattern id="phDots" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="1.2" cy="1.2" r="1.2" fill="#D4AF37" fill-opacity=".28"/></pattern>
+<linearGradient id="phDotFade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".45" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<mask id="phDotMask"><rect width="1600" height="760" fill="url(#phDotFade)"/></mask>
+</defs>
+<rect width="1600" height="760" fill="url(#phSky)"/>
+<rect width="1600" height="760" fill="url(#phDots)" mask="url(#phDotMask)"/>
+<ellipse class="ph-glow" cx="1180" cy="330" rx="560" ry="420" fill="url(#phBlue)"/>
+<ellipse cx="260" cy="110" rx="420" ry="260" fill="url(#phGold)"/>
+<path class="ph-beam" d="M-40 -40 L560 -40 L1180 760 L620 760 Z" fill="url(#phBeam)"/>
+<path class="ph-beam ph-beam2" d="M-40 -40 L180 -40 L760 760 L540 760 Z" fill="url(#phBeam)" opacity=".7"/>
+<g mask="url(#phGridMask)" stroke="#D4AF37" stroke-opacity=".38" stroke-width="1.2" fill="none">
+<path d="M0 470H1600M0 505H1600M0 548H1600M0 600H1600M0 664H1600M0 742H1600"/>
+<path class="ph-flow" d="M800 430 L-900 760M800 430 L-420 760M800 430 L60 760M800 430 L420 760M800 430 L700 760M800 430 L900 760M800 430 L1180 760M800 430 L1540 760M800 430 L2020 760M800 430 L2500 760"/>
+</g>
+<g fill="none" stroke-width="1.2">
+<ellipse class="ph-orbit" cx="1180" cy="330" rx="430" ry="150" stroke="#D4AF37" stroke-opacity=".55" stroke-dasharray="120 40 20 40" transform="rotate(-14 1180 330)"/>
+<ellipse class="ph-orbit ph-orbit2" cx="1180" cy="330" rx="520" ry="200" stroke="#7FA2FF" stroke-opacity=".45" transform="rotate(10 1180 330)" stroke-dasharray="3 10"/>
+</g>
+<g class="ph-net" stroke="#7FA2FF" stroke-opacity=".4" stroke-width="1" fill="none">
+<path d="M30 640 L110 560 L60 470 L140 390 M110 560 L170 600 M60 470 L20 380"/>
+<path d="M1460 120 L1530 210 L1440 290 M1530 210 L1590 300"/>
+</g>
+<g class="ph-nodes">
+<circle cx="30" cy="640" r="3" fill="#D4AF37"/><circle cx="110" cy="560" r="3.6" fill="#7FA2FF"/><circle cx="60" cy="470" r="2.6" fill="#D4AF37"/><circle cx="140" cy="390" r="3" fill="#7FA2FF"/><circle cx="170" cy="600" r="2.4" fill="#D4AF37"/><circle cx="20" cy="380" r="2.4" fill="#7FA2FF"/>
+<circle cx="1460" cy="120" r="3" fill="#D4AF37"/><circle cx="1530" cy="210" r="3.4" fill="#7FA2FF"/><circle cx="1440" cy="290" r="2.4" fill="#D4AF37"/><circle cx="1590" cy="300" r="2.4" fill="#7FA2FF"/>
+</g>
+<g class="ph-spark" fill="#F1D27A"><circle cx="720" cy="140" r="1.6"/><circle cx="980" cy="70" r="1.2"/><circle cx="1360" cy="560" r="1.8"/><circle cx="1560" cy="40" r="1.2"/><circle cx="1500" cy="420" r="1.4"/><circle cx="860" cy="620" r="1.2"/></g>
+<g class="ph-move">
+<circle r="3.5" fill="#F1D27A"><animateMotion dur="5s" repeatCount="indefinite" path="M30 640 L110 560 L60 470 L140 390"/></circle>
+<circle r="3" fill="#7FA2FF"><animateMotion dur="4s" begin="-2s" repeatCount="indefinite" path="M1460 120 L1530 210 L1440 290"/></circle>
+<g transform="rotate(-14 1180 330)"><circle r="6" fill="#F1D27A"><animateMotion dur="14s" repeatCount="indefinite" path="M750 330 a430 150 0 1 0 860 0 a430 150 0 1 0 -860 0"/></circle></g>
+<g transform="rotate(10 1180 330)"><circle r="4.5" fill="#7FA2FF"><animateMotion dur="20s" begin="-7s" repeatCount="indefinite" path="M1700 330 a520 200 0 1 1 -1040 0 a520 200 0 1 1 1040 0"/></circle></g>
+</g>
+<g class="ph-rise" fill="#F1D27A"><circle cx="640" cy="760" r="2"/><circle cx="900" cy="760" r="1.6"/><circle cx="1100" cy="760" r="2.2"/><circle cx="1380" cy="760" r="1.6"/><circle cx="300" cy="760" r="1.8"/><circle cx="1520" cy="760" r="2"/></g>
+</svg><div class="floor" style="padding-bottom:clamp(40px,6vw,72px)"><div class="wrap hero-split">
+<div class="hero-split-text">
 <p class="st-eyebrow">Kasim Elite Store</p>
 <h1>Digital products.</h1><p class="lede">Explore my collection of practical guides, templates and business-ready kits, made to help individuals and businesses work smarter, create better and grow with modern digital tools. Each one comes from the same work I do for clients.</p>
 <ul class="st-points" aria-label="How buying works"><li>8 products</li><li>Secure checkout on Selar</li><li>Instant download</li></ul>
 <div class="hero-actions" style="margin-top:26px"><a class="btn btn-gold" href="#products">Browse the products</a><a class="btn btn-line" href="https://selar.com/m/qaseem-magaji1" target="_blank" rel="noopener">See all products on Selar<span class="vh"> (opens my Selar store)</span></a></div>
+</div>
+<figure class="book-stage" aria-label="Three of my guides: Facebook Ads Profit Blueprint, Fintech SEO Domination Guide and Elite Fintech Brand Identity System">
+<span class="bk-floor" aria-hidden="true"></span>
+<img class="bk bk-left" src="img-book-ads.webp" alt="Facebook Ads Profit Blueprint guide cover" width="350" height="555" decoding="async">
+<img class="bk bk-right" src="img-book-brand.webp" alt="Elite Fintech Brand Identity System cover" width="350" height="555" decoding="async">
+<div class="bk bk-front"><img src="img-book-seo.webp" alt="Fintech SEO Domination Guide cover" width="350" height="555" fetchpriority="high" decoding="async"><span class="bk-sweep" aria-hidden="true"></span></div>
+<div class="ws-badge" aria-hidden="true">
+<svg class="wb-svg" viewBox="0 0 160 160">
+<defs><path id="wbCircle" d="M80 80 m-62 0 a62 62 0 1 1 124 0 a62 62 0 1 1 -124 0"/>
+<radialGradient id="wbCore" cx=".5" cy=".42" r=".6"><stop offset="0" stop-color="#0d1a4a"/><stop offset=".7" stop-color="#050814"/><stop offset="1" stop-color="#030303"/></radialGradient></defs>
+<circle cx="80" cy="80" r="78" fill="rgba(3,5,12,.88)" stroke="rgba(212,175,55,.75)" stroke-width="1.2"/>
+<g class="wb-text"><text font-family="Inter, system-ui, sans-serif" font-size="10.5" font-weight="700" fill="#F1D27A" letter-spacing="2"><textPath href="#wbCircle" textLength="384" lengthAdjust="spacing">KEDG &#183; DIGITAL PRODUCTS &#183; INSTANT DOWNLOAD &#183; </textPath></text></g>
+<g class="wb-orbit"><circle cx="80" cy="80" r="48" fill="none" stroke="#7FA2FF" stroke-opacity=".55" stroke-width="1" stroke-dasharray="3 6"/><circle cx="128" cy="80" r="3.5" fill="#F1D27A"/></g>
+<circle cx="80" cy="80" r="42" fill="url(#wbCore)" stroke="rgba(212,175,55,.55)" stroke-width="1"/>
+</svg>
+<img class="wb-logo" src="img-badge-emblem.webp" alt="" width="58" height="36" decoding="async">
+</div>
+<span class="ws-tag bk-tag-a" aria-hidden="true">Guides &amp; templates</span>
+<span class="ws-tag bk-tag-b" aria-hidden="true">Fintech &amp; growth kits</span>
+</figure>
 </div></div></section><section class="section" style="padding-top:0"><div class="wrap">
 <h2 class="vh">Products</h2>
 <div class="filters" id="products" role="group" aria-label="Filter products">

@@ -131,11 +131,11 @@
 <path class="ph-beam ph-beam2" d="M-40 -40 L180 -40 L760 760 L540 760 Z" fill="url(#phBeam)" opacity=".7"/>
 <g mask="url(#phGridMask)" stroke="#D4AF37" stroke-opacity=".38" stroke-width="1.2" fill="none">
 <path d="M0 470H1600M0 505H1600M0 548H1600M0 600H1600M0 664H1600M0 742H1600"/>
-<path d="M800 430 L-900 760M800 430 L-420 760M800 430 L60 760M800 430 L420 760M800 430 L700 760M800 430 L900 760M800 430 L1180 760M800 430 L1540 760M800 430 L2020 760M800 430 L2500 760"/>
+<path class="ph-flow" d="M800 430 L-900 760M800 430 L-420 760M800 430 L60 760M800 430 L420 760M800 430 L700 760M800 430 L900 760M800 430 L1180 760M800 430 L1540 760M800 430 L2020 760M800 430 L2500 760"/>
 </g>
 <g fill="none" stroke-width="1.2">
-<ellipse class="ph-orbit" cx="1180" cy="330" rx="430" ry="150" stroke="#D4AF37" stroke-opacity=".4" transform="rotate(-14 1180 330)"/>
-<ellipse class="ph-orbit ph-orbit2" cx="1180" cy="330" rx="520" ry="200" stroke="#7FA2FF" stroke-opacity=".32" transform="rotate(10 1180 330)" stroke-dasharray="2 9"/>
+<ellipse class="ph-orbit" cx="1180" cy="330" rx="430" ry="150" stroke="#D4AF37" stroke-opacity=".55" stroke-dasharray="120 40 20 40" transform="rotate(-14 1180 330)"/>
+<ellipse class="ph-orbit ph-orbit2" cx="1180" cy="330" rx="520" ry="200" stroke="#7FA2FF" stroke-opacity=".45" transform="rotate(10 1180 330)" stroke-dasharray="3 10"/>
 </g>
 <g class="ph-net" stroke="#7FA2FF" stroke-opacity=".4" stroke-width="1" fill="none">
 <path d="M30 640 L110 560 L60 470 L140 390 M110 560 L170 600 M60 470 L20 380"/>
@@ -146,6 +146,13 @@
 <circle cx="1460" cy="120" r="3" fill="#D4AF37"/><circle cx="1530" cy="210" r="3.4" fill="#7FA2FF"/><circle cx="1440" cy="290" r="2.4" fill="#D4AF37"/><circle cx="1590" cy="300" r="2.4" fill="#7FA2FF"/>
 </g>
 <g class="ph-spark" fill="#F1D27A"><circle cx="720" cy="140" r="1.6"/><circle cx="980" cy="70" r="1.2"/><circle cx="1360" cy="560" r="1.8"/><circle cx="1560" cy="40" r="1.2"/><circle cx="1500" cy="420" r="1.4"/><circle cx="860" cy="620" r="1.2"/></g>
+<g class="ph-move">
+<circle r="3.5" fill="#F1D27A"><animateMotion dur="5s" repeatCount="indefinite" path="M30 640 L110 560 L60 470 L140 390"/></circle>
+<circle r="3" fill="#7FA2FF"><animateMotion dur="4s" begin="-2s" repeatCount="indefinite" path="M1460 120 L1530 210 L1440 290"/></circle>
+<g transform="rotate(-14 1180 330)"><circle r="6" fill="#F1D27A"><animateMotion dur="14s" repeatCount="indefinite" path="M750 330 a430 150 0 1 0 860 0 a430 150 0 1 0 -860 0"/></circle></g>
+<g transform="rotate(10 1180 330)"><circle r="4.5" fill="#7FA2FF"><animateMotion dur="20s" begin="-7s" repeatCount="indefinite" path="M1700 330 a520 200 0 1 1 -1040 0 a520 200 0 1 1 1040 0"/></circle></g>
+</g>
+<g class="ph-rise" fill="#F1D27A"><circle cx="640" cy="760" r="2"/><circle cx="900" cy="760" r="1.6"/><circle cx="1100" cy="760" r="2.2"/><circle cx="1380" cy="760" r="1.6"/><circle cx="300" cy="760" r="1.8"/><circle cx="1520" cy="760" r="2"/></g>
 </svg><div class="floor" style="padding-bottom:clamp(40px,6vw,72px)"><div class="wrap hero-split">
 <div class="hero-split-text">
 <h1>Nine services that work as one.</h1><p class="lede">The site, the story and the growth plan come from the same hands, so everything fits together. Pick one service or combine them.</p>

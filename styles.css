@@ -711,3 +711,24 @@ h1,h2,h3,.brand-name,.price-row b,.role-list b,.facts dd,.flow-total strong,.boo
 @media (max-width:900px){.ph-net{display:none}}
 .ph-deco .hero-split-visual img{border-radius:0;box-shadow:none;
   -webkit-mask-image:radial-gradient(closest-side,#000 72%,transparent 100%);mask-image:radial-gradient(closest-side,#000 72%,transparent 100%)}
+/* Services hero: visible motion (matches homepage energy) */
+@media (prefers-reduced-motion:no-preference){
+  .ph-beam{transform-box:view-box;animation:ph-sweep 9s ease-in-out infinite}
+  .ph-beam2{animation-delay:-4.5s}
+  @keyframes ph-sweep{0%,100%{transform:translateX(-90px);opacity:.55}50%{transform:translateX(140px);opacity:1}}
+  .ph-flow{stroke-dasharray:14 22;animation:ph-flow 2.8s linear infinite}
+  @keyframes ph-flow{to{stroke-dashoffset:-72}}
+  .ph-orbit{animation:ph-dash 12s linear infinite}
+  .ph-orbit2{animation:ph-dash 18s linear infinite reverse}
+  @keyframes ph-dash{to{stroke-dashoffset:-1100}}
+  .ph-nodes circle{transform-box:fill-box;transform-origin:center;animation:ph-ping 3s ease-in-out infinite}
+  @keyframes ph-ping{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.9);opacity:1}}
+  .ph-rise circle{animation:ph-rise 8s linear infinite;opacity:0}
+  .ph-rise circle:nth-child(2){animation-delay:-1.4s}.ph-rise circle:nth-child(3){animation-delay:-2.8s}
+  .ph-rise circle:nth-child(4){animation-delay:-4.2s}.ph-rise circle:nth-child(5){animation-delay:-5.6s}.ph-rise circle:nth-child(6){animation-delay:-7s}
+  @keyframes ph-rise{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(-640px);opacity:0}}
+  .ph-deco .hero-split-visual img{animation:ph-float 6s ease-in-out infinite}
+  @keyframes ph-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+}
+@media (prefers-reduced-motion:reduce){.ph-move,.ph-rise{display:none}}
+@media (max-width:900px){.ph-move > circle{display:none}}

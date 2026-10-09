@@ -777,3 +777,25 @@ h1,h2,h3,.brand-name,.price-row b,.role-list b,.facts dd,.flow-total strong,.boo
 }
 @media (max-width:900px){.work-stack{max-width:520px;margin:12px auto 0}.ws-live{left:0}}
 @media (max-width:600px){.ws-tag{font-size:10.5px;padding:7px 10px}.ws-live{font-size:11.5px;padding:7px 10px}.ws-bar{height:20px}.ws-bar span{font-size:9.5px}.ws-sweep{inset:20px 0 0}}
+/* Work hero: spinning KEDG badge */
+.ws-badge{position:absolute;z-index:4;top:-9%;right:-3%;width:29%;aspect-ratio:1;filter:drop-shadow(0 14px 30px rgba(0,0,0,.85)) drop-shadow(0 0 22px rgba(212,175,55,.28))}
+.wb-svg{display:block;width:100%;height:100%;overflow:visible}
+.wb-text,.wb-orbit{transform-box:view-box;transform-origin:80px 80px}
+.wb-logo{position:absolute;left:50%;top:50%;width:40%;height:auto;transform:translate(-50%,-50%)}
+.ws-tag-a{right:auto;left:8%;top:-3%}
+@media (prefers-reduced-motion:no-preference){
+  .wb-text{animation:spin 16s linear infinite}
+  .wb-orbit{animation:spin 7s linear infinite reverse}
+  .ws-badge{animation:ws-bob 6s ease-in-out -3s infinite}
+  .wb-logo{animation:wb-glow 3.5s ease-in-out infinite}
+  @keyframes wb-glow{0%,100%{filter:drop-shadow(0 0 0 rgba(212,175,55,0))}50%{filter:drop-shadow(0 0 8px rgba(212,175,55,.75))}}
+}
+@media (max-width:600px){.ws-badge{width:30%;top:-12%;right:-1%}}
+.ws-badge{width:34%;top:-13%;right:-4%}
+.ws-tag-a{left:auto;top:auto;right:2%;bottom:-3%}
+.ws-tag-b{left:2%}
+@media (max-width:600px){.ws-badge{width:33%;top:-14%;right:-1%}.ws-tag-a{right:0}.ws-tag-b{left:0}}
+.wb-logo{mix-blend-mode:normal}
+.ws-tag-a{right:auto;left:2%}
+.ws-tag-b{left:auto;right:2%}
+@media (max-width:600px){.ws-tag-a{left:0;right:auto}.ws-tag-b{right:0;left:auto}}

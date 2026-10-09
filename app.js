@@ -46,3 +46,16 @@
   }
 })();
       
+/* Homepage hero: typing line */
+(function(){
+  var el=document.querySelector('.hero-type .ht-text');if(!el)return;
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var lines=['From scratch to finish.','Business & corporate websites.','Landing pages that convert.','E-commerce stores.','FinTech & crypto interfaces.','Brands & motion that stand out.'];
+  var li=0,ci=lines[0].length,del=true;
+  function tick(){
+    var t=lines[li];
+    if(del){ci--;el.textContent=t.slice(0,ci);if(ci<=0){del=false;li=(li+1)%lines.length;}setTimeout(tick,ci<=0?350:28);}
+    else{var n=lines[li];ci++;el.textContent=n.slice(0,ci);if(ci>=n.length){del=true;setTimeout(tick,li===0?2600:1700);}else setTimeout(tick,55);}
+  }
+  setTimeout(tick,3000);
+})();

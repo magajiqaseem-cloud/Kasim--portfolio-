@@ -829,3 +829,15 @@ h1,h2,h3,.brand-name,.price-row b,.role-list b,.facts dd,.flow-total strong,.boo
 @media (max-width:900px){.book-stage{max-width:480px;margin:18px auto 0}}
 @media (max-width:600px){.book-stage .ws-badge{width:30%;top:-6%;right:-2%}.bk-tag-a{left:0}.bk-tag-b{right:0}}
 .book-stage .ws-badge{top:-13%}
+/* Homepage hero: word pop-in, typing line, Nigerian flag */
+.hero-place{display:flex;align-items:center;gap:10px}
+.ng-flag{display:inline-flex;flex:none;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+.hero-type{margin:16px 0 0;min-height:1.5em;font:600 clamp(18px,1.9vw,24px)/1.4 var(--sans);color:var(--gold-hi);letter-spacing:.01em}
+.ht-caret{display:inline-block;width:3px;height:1.05em;margin-left:4px;vertical-align:-.15em;background:var(--gold);border-radius:2px}
+@media (prefers-reduced-motion:no-preference){
+  .hero-copy > h1.words{animation:none}
+  .hero-title.words .w{display:inline-block;animation:word-pop .7s cubic-bezier(.2,.8,.2,1.25) both;animation-delay:calc(.25s + var(--i) * 90ms)}
+  @keyframes word-pop{from{opacity:0;transform:translateY(22px) scale(.92)}to{opacity:1;transform:none}}
+  .ht-caret{animation:cw-blink 1s steps(1,end) infinite}
+}
+.hero-type{margin-top:12px}.hero-type + .lede{margin-top:16px}

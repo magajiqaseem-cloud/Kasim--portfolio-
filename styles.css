@@ -80,6 +80,7 @@ p{margin:0}
 .hero{padding:clamp(56px,8vw,110px) 0 0}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,72px);align-items:center}
 .hero-place{font-size:15px;color:var(--gold);margin-bottom:22px}
+.hero-kicker{margin:-10px 0 14px;font:600 13px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ivory)}
 .hero h1{max-width:15ch}
 .hero .lede{margin-top:24px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
@@ -96,7 +97,7 @@ p{margin:0}
              repeating-linear-gradient(90deg,transparent 0 30px,rgba(255,255,240,.035) 30px 31px);
   -webkit-mask:radial-gradient(circle at 40% 40%,#000 40%,transparent 72%);mask:radial-gradient(circle at 40% 40%,#000 40%,transparent 72%)}
 .float{position:absolute;background:rgba(6,10,28,.88);border:1px solid rgba(127,162,255,.35);border-radius:14px;padding:16px 18px;box-shadow:0 30px 60px -20px rgba(0,0,0,.8);backdrop-filter:blur(6px)}
-.float h4{margin:0 0 12px;font:600 12.5px/1.2 var(--sans);letter-spacing:.06em;color:var(--gold)}
+.float h4,.float .float-title{margin:0 0 12px;font:600 12.5px/1.2 var(--sans);letter-spacing:.06em;color:var(--gold)}
 .float-a{top:12%;right:-2%;width:46%}
 .float-a .bar{height:6px;border-radius:4px;background:var(--gold);width:78%;margin-bottom:8px}
 .float-a .bar.b{background:rgba(255,255,240,.18);width:92%}
@@ -276,7 +277,7 @@ p{margin:0}
   .brand-name{font-size:17px}
   .brand-name small{font-size:11px;letter-spacing:.12em}
   .hero-actions .btn{flex:1 1 100%}
-  .float h4{font-size:11px;margin-bottom:8px}
+  .float h4,.float .float-title{font-size:11px;margin-bottom:8px}
   .float{padding:12px}
   .float-a{width:52%;right:0}
   .float-b{width:50%;left:0}
@@ -457,7 +458,7 @@ p{margin:0}
 
 /* ========== Footer (multi-page) ========== */
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;padding-bottom:30px}
-.foot h4{margin:0 0 12px;font-size:14px;font-weight:600;color:var(--gold)}
+.foot h4,.foot .foot-title{margin:0 0 12px;font:600 14px/1.6 var(--sans);letter-spacing:normal;color:var(--gold)}
 .foot ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .foot ul a{text-decoration:none;color:var(--muted);display:inline-block;padding:6px 0}
 .foot ul a:hover{color:var(--ivory)}

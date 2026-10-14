@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dunemark Logistics — Freight forwarding from Dubai (concept demo)</title>
+<meta name="description" content="Concept demo by Kasim Elite Digital Global: a corporate website for a fictional Dubai freight forwarder, with live shipment tracking and an instant quote request.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0E2A33">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E2A33'/%3E%3Cpath d='M7 21h18l-3 4H10z' fill='%23F2C230'/%3E%3Crect x='10' y='12' width='5' height='7' fill='%23F2C230'/%3E%3Crect x='17' y='9' width='5' height='10' fill='%23EEF1F2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E2A33;--ink-2:#123844;--deep:#071B21;--steel:#5F7480;--mist:#EEF1F2;--white:#FFFFFF;
+  --signal:#F2C230;--signal-dk:#C99A0E;--ok:#2FA36B;
+  --f:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r:6px;--wrap:1180px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;font-family:var(--f);font-stretch:100%;color:var(--ink);background:var(--mist);line-height:1.6;font-size:17px}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:99;background:var(--signal);padding:8px 12px}
+
+/* concept bar */
+.concept{background:var(--deep);color:#C9D4D9;font-size:13px;text-align:center;padding:8px 16px;line-height:1.4}
+.concept a{color:var(--signal);font-weight:600}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:var(--ink);color:var(--white);border-bottom:1px solid rgba(255,255,255,.08)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-stretch:118%;letter-spacing:.01em;font-size:20px}
+.logo svg{width:34px;height:34px}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.nav a{text-decoration:none;font-size:15px;color:#D5DEE2}
+.nav a:hover{color:var(--white)}
+.top-cta{display:flex;align-items:center;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 20px;border-radius:var(--r);font:600 15px/1 var(--f);text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-signal{background:var(--signal);color:var(--deep)}
+.btn-signal:hover{background:#FFD24D}
+.btn-ghost{border-color:rgba(255,255,255,.35);color:var(--white);background:transparent}
+.btn-ghost:hover{border-color:var(--white)}
+.btn-ink{background:var(--ink);color:var(--white)}
+.btn-ink:hover{background:var(--ink-2)}
+.burger{display:none;background:none;border:0;color:var(--white);width:44px;height:44px;cursor:pointer}
+.burger span,.burger span::before,.burger span::after{display:block;width:22px;height:2px;background:currentColor;margin:auto;position:relative;transition:transform .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.burger[aria-expanded="true"] span{background:transparent}
+.burger[aria-expanded="true"] span::before{transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span::after{transform:translateY(-7px) rotate(-45deg)}
+
+/* hero */
+.hero{background:var(--ink);color:var(--white);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 1px,transparent 1px 96px),
+  radial-gradient(70% 90% at 85% 0%,#1B4B59 0%,transparent 70%);pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:84px}
+.hero h1{margin:0;font-size:clamp(40px,6vw,76px);line-height:.95;font-weight:800;font-stretch:122%;letter-spacing:-.01em}
+.hero p.lead{margin:22px 0 0;max-width:500px;font-size:19px;color:#C9D4D9}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.facts{display:flex;flex-wrap:wrap;gap:28px;margin:40px 0 0;padding:22px 0 0;border-top:1px solid rgba(255,255,255,.14)}
+.facts div{min-width:120px}
+.facts dt{font-size:13px;color:#9FB2BA}
+.facts dd{margin:2px 0 0;font-weight:700;font-stretch:115%;font-size:22px}
+
+/* tracker — the signature element */
+.tracker{background:var(--white);color:var(--ink);border-radius:10px;box-shadow:0 30px 70px -30px rgba(0,0,0,.65);overflow:hidden}
+.tracker-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:var(--mist);border-bottom:1px solid #DCE3E6}
+.tracker-head h2{margin:0;font-size:16px;font-weight:700;font-stretch:112%}
+.tracker-head small{color:var(--steel);font-size:13px}
+.track-form{display:flex;gap:8px;padding:18px 20px 6px}
+.track-form label{position:absolute;left:-999px}
+.track-form input{flex:1;min-width:0;height:48px;border:2px solid #CBD6DB;border-radius:var(--r);padding:0 14px;font:600 16px var(--f);font-stretch:108%;letter-spacing:.04em;color:var(--ink);text-transform:uppercase}
+.track-form input:focus{border-color:var(--ink);outline:none;box-shadow:0 0 0 3px rgba(242,194,48,.55)}
+.hint{padding:0 20px;margin:4px 0 0;font-size:13px;color:var(--steel)}
+.hint button{background:none;border:0;padding:0;font:inherit;color:var(--ink);text-decoration:underline;cursor:pointer}
+.route{padding:14px 20px 4px}
+.route svg{width:100%;height:auto}
+.route .lane{fill:none;stroke:#C5D1D6;stroke-width:3;stroke-dasharray:2 7;stroke-linecap:round}
+.route .done{fill:none;stroke:var(--ink);stroke-width:3.5;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.3,.7,.2,1)}
+.route .port{fill:var(--white);stroke:var(--ink);stroke-width:3}
+.route .portname{font:600 13px var(--f);fill:var(--ink)}
+.route .portsub{font:400 11.5px var(--f);fill:var(--steel)}
+.route .ship{transition:transform 1.4s cubic-bezier(.3,.7,.2,1)}
+.route .land{fill:#E7ECEE}
+.status{display:grid;grid-template-columns:repeat(4,1fr);gap:0;list-style:none;margin:0;padding:6px 20px 16px;counter-reset:s}
+.status li{position:relative;padding:22px 6px 0 0;font-size:13px;line-height:1.35;color:var(--steel)}
+.status li::before{content:"";position:absolute;top:6px;left:0;width:12px;height:12px;border-radius:50%;border:2px solid #C5D1D6;background:var(--white)}
+.status li::after{content:"";position:absolute;top:12px;left:14px;right:4px;height:2px;background:#DCE3E6}
+.status li:last-child::after{display:none}
+.status li b{display:block;color:var(--ink);font-weight:600;font-size:13.5px}
+.status li.is-done::before{background:var(--ink);border-color:var(--ink)}
+.status li.is-done::after{background:var(--ink)}
+.status li.is-now::before{background:var(--signal);border-color:var(--ink);box-shadow:0 0 0 4px rgba(242,194,48,.35)}
+.tracker-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid #E3E9EB;font-size:14px}
+.tracker-foot strong{font-weight:700}
+.eta{display:inline-flex;align-items:center;gap:8px;background:#FFF6D6;border:1px solid #F0D777;color:#5C4600;padding:5px 10px;border-radius:999px;font-weight:600;font-size:13px}
+.err{color:#B3261E;font-size:14px;padding:0 20px;margin:6px 0 0;min-height:0}
+
+/* sections */
+section.band{padding:96px 0}
+.head{max-width:640px;margin-bottom:44px}
+.head h2{margin:0;font-size:clamp(30px,4vw,46px);line-height:1.02;font-weight:800;font-stretch:118%}
+.head p{margin:14px 0 0;color:var(--steel);font-size:18px}
+
+.services{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid var(--ink)}
+.svc{padding:28px 28px 32px 0;border-bottom:1px solid #CFD9DD}
+.svc:nth-child(3n+2),.svc:nth-child(3n+3){padding-left:28px;border-left:1px solid #CFD9DD}
+.svc svg{width:40px;height:40px;stroke:var(--ink);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{margin:18px 0 6px;font-size:21px;font-weight:700;font-stretch:112%}
+.svc p{margin:0;color:#3D525B;font-size:16px}
+.svc .tag{display:inline-block;margin-top:14px;font-size:13px;color:var(--steel)}
+
+/* process (a real sequence) */
+.dark{background:var(--ink);color:var(--white)}
+.dark .head p{color:#B7C6CC}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;list-style:none;margin:0;padding:0;counter-reset:st}
+.steps li{counter-increment:st;padding:0 24px 0 0;position:relative}
+.steps li::before{content:counter(st);display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--signal);color:var(--deep);font-weight:800;font-size:19px;margin-bottom:18px;position:relative;z-index:1}
+.steps li::after{content:"";position:absolute;top:22px;left:46px;right:0;height:2px;background:rgba(255,255,255,.18)}
+.steps li:last-child::after{display:none}
+.steps h3{margin:0 0 6px;font-size:20px;font-weight:700;font-stretch:112%}
+.steps p{margin:0;color:#B7C6CC;font-size:16px}
+
+/* industries */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.inds{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.inds li{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid #CFD9DD;font-size:18px;font-weight:600}
+.inds li span{font-weight:400;color:var(--steel);font-size:15px;text-align:right}
+.coverage{background:var(--white);border-radius:10px;padding:26px;border:1px solid #DCE3E6}
+.coverage h3{margin:0 0 4px;font-size:20px;font-weight:700;font-stretch:112%}
+.coverage p{margin:0 0 18px;color:var(--steel);font-size:15px}
+.lanes{list-style:none;margin:0;padding:0}
+.lanes li{display:grid;grid-template-columns:1fr auto;gap:12px;padding:12px 0;border-top:1px solid #E6ECEE;font-size:15.5px}
+.lanes b{font-weight:600}
+.lanes span{color:var(--steel);white-space:nowrap}
+
+/* quote */
+.quote{background:var(--white)}
+.quote .split{grid-template-columns:.85fr 1.15fr}
+.qform{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.qform .full{grid-column:1/-1}
+.qform label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.qform input,.qform select,.qform textarea{width:100%;height:50px;border:2px solid #CBD6DB;border-radius:var(--r);padding:0 14px;font:400 16px var(--f);color:var(--ink);background:var(--white)}
+.qform textarea{height:96px;padding:12px 14px;resize:vertical}
+.qform input:focus,.qform select:focus,.qform textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(242,194,48,.55)}
+.modes{display:flex;gap:8px;flex-wrap:wrap;border:0;padding:0;margin:0}
+.modes legend{font-size:14px;font-weight:600;margin-bottom:6px;padding:0}
+.modes input{position:absolute;opacity:0;width:1px;height:1px}
+.modes label{margin:0;display:inline-flex;align-items:center;height:44px;padding:0 16px;border:2px solid #CBD6DB;border-radius:var(--r);font-weight:600;cursor:pointer;font-size:15px}
+.modes input:checked+label{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.modes input:focus-visible+label{outline:3px solid var(--signal);outline-offset:2px}
+.qnote{font-size:14px;color:var(--steel);margin:0}
+.done-msg{display:none;border:2px solid var(--ink);border-radius:10px;padding:26px;background:var(--mist)}
+.done-msg h3{margin:0 0 6px;font-size:22px;font-stretch:112%}
+.done-msg p{margin:0 0 6px}
+.contact-list{list-style:none;margin:28px 0 0;padding:0}
+.contact-list li{padding:14px 0;border-top:1px solid #DCE3E6}
+.contact-list small{display:block;color:var(--steel);font-size:13px}
+.contact-list a{font-weight:600;text-decoration:none;font-size:17px}
+.wa{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:#1F9D55;color:var(--white);text-decoration:none;font-weight:600;padding:12px 18px;border-radius:var(--r)}
+.wa svg{width:22px;height:22px;fill:currentColor}
+
+footer{background:var(--deep);color:#9FB2BA;font-size:14px;padding:40px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--signal)}
+
+/* responsive */
+@media (max-width:980px){
+  .hero .wrap{grid-template-columns:1fr;gap:44px;padding-top:48px}
+  .services{grid-template-columns:1fr 1fr}
+  .svc:nth-child(n){padding:26px 22px 28px 0;border-left:0}
+  .svc:nth-child(2n){padding-left:22px;border-left:1px solid #CFD9DD}
+  .steps{grid-template-columns:1fr 1fr;gap:36px 0}
+  .steps li:nth-child(2)::after{display:none}
+  .split,.quote .split{grid-template-columns:1fr;gap:44px}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .nav{display:none;position:absolute;left:0;right:0;top:68px;background:var(--ink);border-bottom:1px solid rgba(255,255,255,.1)}
+  .nav.open{display:block}
+  .nav ul{flex-direction:column;gap:0;padding:8px 20px 16px}
+  .nav a{display:block;padding:12px 0;font-size:17px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .burger{display:block}
+  .top-cta .btn{display:none}
+  section.band{padding:68px 0}
+  .services{grid-template-columns:1fr}
+  .svc:nth-child(n){padding:24px 0;border-left:0}
+  .steps{grid-template-columns:1fr;gap:30px}
+  .steps li::after{display:none}
+  .status{grid-template-columns:1fr 1fr;row-gap:12px}
+  .status li:nth-child(2)::after{display:none}
+  .qform{grid-template-columns:1fr}
+  .facts{gap:20px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="concept">Concept demo designed and built by <a href="https://www.kasimempire.com/portfolio">Kasim Elite Digital Global</a>. Dunemark Logistics is a fictional company; tracking and figures are sample data.</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Dunemark Logistics, home">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="6" fill="#F2C230"/><path d="M6 22h22l-3.5 5h-15z" fill="#0E2A33"/><rect x="9" y="13" width="6" height="7" fill="#0E2A33"/><rect x="17" y="8" width="7" height="12" fill="#0E2A33" opacity=".7"/></svg>
+      Dunemark
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#process">How it works</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#quote">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="top-cta">
+      <a class="btn btn-signal" href="#quote">Get a quote</a>
+      <button class="burger" aria-controls="nav" aria-expanded="false" aria-label="Open menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>Your cargo, out of Jebel Ali and on time.</h1>
+      <p class="lead">Sea, air and road freight from Dubai, with customs clearance handled in-house. One contact person for every shipment, and tracking you can check yourself.</p>
+      <div class="actions">
+        <a class="btn btn-signal" href="#quote">Get a quote in 24 hours</a>
+        <a class="btn btn-ghost" href="#services">See our services</a>
+      </div>
+      <dl class="facts" aria-label="At a glance">
+        <div><dt>Based in</dt><dd>Deira, Dubai</dd></div>
+        <div><dt>Modes</dt><dd>Sea · Air · Road</dd></div>
+        <div><dt>Quote reply</dt><dd>Within 24h</dd></div>
+      </dl>
+    </div>
+
+    <div class="tracker" aria-labelledby="trk-title">
+      <div class="tracker-head"><h2 id="trk-title">Track a shipment</h2><small>Sample data</small></div>
+      <form class="track-form" id="trackForm" novalidate>
+        <label for="trk">Tracking number</label>
+        <input id="trk" name="trk" value="DMK-48219" autocomplete="off" spellcheck="false" aria-describedby="trk-hint trk-err">
+        <button class="btn btn-ink" type="submit">Track</button>
+      </form>
+      <p class="hint" id="trk-hint">Try <button type="button" data-code="DMK-48219">DMK-48219</button>, <button type="button" data-code="DMK-55107">DMK-55107</button> or <button type="button" data-code="DMK-60342">DMK-60342</button></p>
+      <p class="err" id="trk-err" role="alert"></p>
+      <div class="route" aria-hidden="true">
+        <svg viewBox="0 0 520 190">
+          <path class="land" d="M0 150 C80 135 120 160 190 148 C260 136 300 160 360 150 C420 140 470 158 520 150 L520 190 L0 190Z"/>
+          <path id="lanePath" class="lane" d="M50 120 C150 30 330 30 470 100"/>
+          <path id="donePath" class="done" d="M50 120 C150 30 330 30 470 100"/>
+          <circle class="port" cx="50" cy="120" r="8"/>
+          <circle class="port" cx="470" cy="100" r="8"/>
+          <text class="portname" id="fromName" x="50" y="146" text-anchor="middle">Jebel Ali</text>
+          <text class="portsub" id="fromSub" x="50" y="162" text-anchor="middle">Dubai, UAE</text>
+          <text class="portname" id="toName" x="470" y="126" text-anchor="middle">Rotterdam</text>
+          <text class="portsub" id="toSub" x="470" y="142" text-anchor="middle">Netherlands</text>
+          <g id="ship"><circle r="15" fill="#F2C230" stroke="#0E2A33" stroke-width="2.5"/><path d="M-7 1h14l-2.5 4h-9z M-4 -6h4v6h-4z M1 -4h4v4h-4z" fill="#0E2A33"/></g>
+        </svg>
+      </div>
+      <ol class="status" id="statusList" aria-live="polite"></ol>
+      <div class="tracker-foot"><span id="trkSummary"><strong>DMK-48219</strong> · 2 × 40ft containers</span><span class="eta" id="trkEta">ETA 28 Oct</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="services">
+  <div class="wrap">
+    <div class="head"><h2>Freight services, under one roof.</h2><p>Pick the mode that fits your cargo and deadline. We book the space, prepare the documents and keep you updated until delivery.</p></div>
+    <div class="services">
+      <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 26h32l-4 7H8z"/><path d="M10 26V16h8v10M20 26V11h9v15"/><path d="M4 36c3 0 3-2 6-2s3 2 6 2 3-2 6-2 3 2 6 2 3-2 6-2"/></svg><h3>Sea freight</h3><p>Full container (FCL) and shared container (LCL) shipping from Jebel Ali to ports in Europe, Asia and Africa.</p><span class="tag">Best for heavy or bulk cargo</span></article>
+      <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 22l32-10-3 6-12 4 2 10-4 2-4-10-7 2-2 4-3-1 1-6z"/></svg><h3>Air freight</h3><p>Priority and economy air cargo through Dubai International and Al Maktoum, with door pickup across the UAE.</p><span class="tag">Best for urgent or high-value goods</span></article>
+      <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M3 12h21v16H3zM24 18h8l5 6v4H24z"/><circle cx="10" cy="30" r="3"/><circle cx="30" cy="30" r="3"/></svg><h3>Road freight</h3><p>Trucking across the GCC to Saudi Arabia, Oman, Qatar, Bahrain and Kuwait, with border paperwork done for you.</p><span class="tag">Best for GCC deliveries</span></article>
+      <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M10 4h14l7 7v25H10z"/><path d="M24 4v7h7M15 18h11M15 23h11M15 28h7"/></svg><h3>Customs clearance</h3><p>Import and export declarations, HS codes and duty payments handled by our licensed in-house team.</p><span class="tag">Fewer delays at the port</span></article>
+      <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 16L20 6l16 10v20H4z"/><path d="M11 36V22h18v14M11 27h18M11 32h18"/></svg><h3>Warehousing</h3><p>Short and long-term storage in Jebel Ali Free Zone, with stock counts, packing and re-export.</p><span class="tag">Store now, ship later</span></article>
+      <article class="svc"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M5 20h30M20 5c5 5 5 25 0 30M20 5c-5 5-5 25 0 30"/></svg><h3>Project cargo</h3><p>Oversized machinery and equipment moved with route surveys, special permits and lifting plans.</p><span class="tag">For construction and industry</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="band dark" id="process">
+  <div class="wrap">
+    <div class="head"><h2>How a shipment works with us.</h2><p>Four steps, one contact person, and an update at every stage.</p></div>
+    <ol class="steps">
+      <li><h3>Request a quote</h3><p>Tell us what, where and when. You get a fixed price within 24 hours.</p></li>
+      <li><h3>Book and collect</h3><p>We reserve space with the carrier and collect your cargo from your door.</p></li>
+      <li><h3>Customs and loading</h3><p>Our team files the documents and clears customs before departure.</p></li>
+      <li><h3>Delivery</h3><p>Track it live, and we confirm with photos when it arrives.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band" id="industries">
+  <div class="wrap split">
+    <div>
+      <div class="head" style="margin-bottom:28px"><h2>Who we move freight for.</h2><p>Businesses that import and export from the UAE every week.</p></div>
+      <ul class="inds">
+        <li>Trading companies <span>Re-export and mixed cargo</span></li>
+        <li>Construction <span>Steel, machinery, project cargo</span></li>
+        <li>Retail and e-commerce <span>Stock replenishment</span></li>
+        <li>Food and FMCG <span>Temperature-controlled</span></li>
+        <li>Automotive <span>Vehicles and spare parts</span></li>
+      </ul>
+    </div>
+    <aside class="coverage" aria-labelledby="lanes-title">
+      <h3 id="lanes-title">Regular lanes from Dubai</h3>
+      <p>Typical door-to-door transit times. Your quote confirms the exact schedule.</p>
+      <ul class="lanes">
+        <li><b>Jebel Ali → Rotterdam</b><span>18–22 days by sea</span></li>
+        <li><b>Jebel Ali → Mombasa</b><span>10–12 days by sea</span></li>
+        <li><b>Jebel Ali → Nhava Sheva</b><span>5–7 days by sea</span></li>
+        <li><b>Dubai → London</b><span>2–3 days by air</span></li>
+        <li><b>Dubai → Riyadh</b><span>2–3 days by road</span></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section class="band quote" id="quote">
+  <div class="wrap split">
+    <div>
+      <div class="head" style="margin-bottom:0"><h2>Get a freight quote.</h2><p>Send the basics and we reply with a fixed price within 24 hours, Sunday to Thursday.</p></div>
+      <ul class="contact-list">
+        <li><small>Office</small>Al Maktoum Road, Deira, Dubai</li>
+        <li><small>Phone</small><a href="tel:+97140000000">+971 4 000 0000</a></li>
+        <li><small>Email</small><a href="mailto:quotes@dunemark.example">quotes@dunemark.example</a></li>
+      </ul>
+      <a class="wa" href="https://wa.me/2347080083489?text=Hi%20Kasim%2C%20I%20saw%20the%20Dunemark%20demo%20and%20would%20like%20a%20website%20like%20this." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Chat on WhatsApp</a>
+      <p class="qnote" style="margin-top:10px">In this demo, the WhatsApp button reaches the website's designer, Kasim.</p>
+    </div>
+    <div>
+      <form class="qform" id="quoteForm" novalidate>
+        <fieldset class="modes full">
+          <legend>Shipping mode</legend>
+          <input type="radio" id="m-sea" name="mode" value="Sea" checked><label for="m-sea">Sea</label>
+          <input type="radio" id="m-air" name="mode" value="Air"><label for="m-air">Air</label>
+          <input type="radio" id="m-road" name="mode" value="Road"><label for="m-road">Road</label>
+        </fieldset>
+        <div><label for="q-from">From</label><input id="q-from" name="from" value="Dubai, UAE" required></div>
+        <div><label for="q-to">To</label><input id="q-to" name="to" placeholder="City, country" required></div>
+        <div><label for="q-cargo">Cargo</label><select id="q-cargo" name="cargo"><option>General cargo</option><option>Machinery</option><option>Food (chilled)</option><option>Vehicles</option><option>Dangerous goods</option></select></div>
+        <div><label for="q-weight">Approx. weight (kg)</label><input id="q-weight" name="weight" inputmode="numeric" placeholder="e.g. 1200"></div>
+        <div><label for="q-name">Your name</label><input id="q-name" name="name" autocomplete="name" required></div>
+        <div><label for="q-email">Work email</label><input id="q-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="full"><label for="q-msg">Anything else? <span style="font-weight:400;color:var(--steel)">(optional)</span></label><textarea id="q-msg" name="msg" placeholder="Pickup date, dimensions, Incoterms..."></textarea></div>
+        <p class="err full" id="q-err" role="alert" style="padding:0;margin:0"></p>
+        <div class="full" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap"><button class="btn btn-signal" type="submit">Request quote</button><p class="qnote">Demo form: nothing is sent.</p></div>
+      </form>
+      <div class="done-msg" id="quoteDone" tabindex="-1" role="status">
+        <h3>Quote request received.</h3>
+        <p id="quoteSummary"></p>
+        <p style="color:var(--steel);font-size:15px">In a live site this goes straight to the sales inbox and WhatsApp. This is a demo, so nothing was sent.</p>
+        <button class="btn btn-ink" type="button" id="quoteAgain" style="margin-top:10px">Request another quote</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Dunemark Logistics (fictional). Concept demo.</span>
+    <span>Designed and built by <a href="https://www.kasimempire.com/portfolio">Kasim Elite Digital Global</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // mobile menu
+  var b=document.querySelector('.burger'),n=document.getElementById('nav');
+  b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')!=='true';b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu');n.classList.toggle('open',o)});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){b.setAttribute('aria-expanded','false');n.classList.remove('open')}});
+
+  // tracker (sample data)
+  var DATA={
+    'DMK-48219':{from:['Jebel Ali','Dubai, UAE'],to:['Rotterdam','Netherlands'],load:'2 × 40ft containers',eta:'ETA 28 Oct',p:.58,now:2,
+      steps:[['Booked','6 Oct'],['Departed Jebel Ali','10 Oct'],['At sea','Suez Canal, 17 Oct'],['Arrives Rotterdam','28 Oct']]},
+    'DMK-55107':{from:['Dubai (DXB)','UAE'],to:['London (LHR)','United Kingdom'],load:'420 kg air cargo',eta:'Delivered 13 Oct',p:1,now:4,
+      steps:[['Booked','11 Oct'],['Customs cleared','12 Oct'],['Flight landed','13 Oct'],['Delivered','13 Oct, 16:40']]},
+    'DMK-60342':{from:['Jebel Ali','Dubai, UAE'],to:['Riyadh','Saudi Arabia'],load:'Truck, 18 pallets',eta:'ETA 16 Oct',p:.25,now:1,
+      steps:[['Booked','13 Oct'],['Collected','14 Oct'],['At border','Ghuwaifat'],['Arrives Riyadh','16 Oct']]}
+  };
+  var lane=document.getElementById('lanePath'),done=document.getElementById('donePath'),ship=document.getElementById('ship');
+  var L=lane.getTotalLength();done.style.strokeDasharray=L;done.style.strokeDashoffset=L;
+  var list=document.getElementById('statusList'),err=document.getElementById('trk-err');
+  function setText(id,t){document.getElementById(id).textContent=t}
+  function show(code){
+    var d=DATA[code];
+    if(!d){err.textContent='No shipment found for '+code+'. Tracking numbers look like DMK-48219.';return}
+    err.textContent='';
+    setText('fromName',d.from[0]);setText('fromSub',d.from[1]);setText('toName',d.to[0]);setText('toSub',d.to[1]);
+    done.style.strokeDashoffset=L*(1-d.p);
+    var pt=lane.getPointAtLength(L*d.p);ship.style.transform='translate('+pt.x+'px,'+pt.y+'px)';
+    list.innerHTML=d.steps.map(function(s,i){var c=i<d.now?'is-done':(i===d.now?'is-now':'');if(d.now>=4)c='is-done';return '<li class="'+c+'"><b>'+s[0]+'</b>'+s[1]+'</li>'}).join('');
+    document.getElementById('trkSummary').innerHTML='<strong>'+code+'</strong> · '+d.load;
+    setText('trkEta',d.eta);
+  }
+  var inp=document.getElementById('trk');
+  ship.style.transform='translate(50px,120px)';
+  document.getElementById('trackForm').addEventListener('submit',function(e){e.preventDefault();var c=inp.value.trim().toUpperCase().replace(/\s+/g,'');if(/^DMK\d/.test(c))c=c.replace('DMK','DMK-');show(c)});
+  document.querySelectorAll('[data-code]').forEach(function(x){x.addEventListener('click',function(){inp.value=x.dataset.code;show(x.dataset.code)})});
+  requestAnimationFrame(function(){setTimeout(function(){show('DMK-48219')},250)});
+
+  // quote form (demo)
+  var f=document.getElementById('quoteForm'),ok=document.getElementById('quoteDone'),qe=document.getElementById('q-err');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var miss=[].slice.call(f.querySelectorAll('[required]')).filter(function(i){return !i.value.trim()});
+    var em=f.elements.email.value.trim();
+    if(miss.length){qe.textContent='Please fill in: '+miss.map(function(i){return f.querySelector('label[for="'+i.id+'"]').textContent}).join(', ')+'.';miss[0].focus();return}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){qe.textContent='Enter a valid work email, like name@company.com.';f.elements.email.focus();return}
+    qe.textContent='';
+    var ref='Q-'+String(Math.floor(10000+Math.random()*89999));
+    document.getElementById('quoteSummary').textContent='Reference '+ref+': '+f.elements.mode.value+' freight from '+f.elements.from.value+' to '+f.elements.to.value+'. We would reply to '+em+' within 24 hours.';
+    f.style.display='none';ok.style.display='block';ok.focus();
+  });
+  document.getElementById('quoteAgain').addEventListener('click',function(){f.reset();ok.style.display='none';f.style.display='grid';f.elements.to.focus()});
+})();
+</script>
+</body>
+</html>

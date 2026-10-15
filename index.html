@@ -55,6 +55,7 @@
   .ribbon ul{flex-wrap:wrap;justify-content:center;row-gap:10px;padding:0 20px}
 }
 </style>
+<style id="demo-row">.demo-row{display:flex;flex-wrap:wrap;justify-content:flex-start;align-items:center;gap:10px;margin-top:34px}.demo-row p{width:100%;margin:0 0 2px;text-align:left;color:var(--muted);font-size:15px}.demo-row .btn{flex:0 0 auto;width:auto;margin-top:0}@media (max-width:600px){.demo-row .btn{flex:1 1 100%}}</style>
 <style id="hero-proof">
 /* Hero proof line: dot sits after each item, so wrapped lines never start with a dot */
 .hero-proof{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px 0;font-size:13.5px;color:rgba(255,255,255,.66)}
@@ -426,6 +427,12 @@ html{scroll-behavior:smooth}
         <img decoding="async" src="img-brand-ui-kit.webp" alt="Brand UI kit board with gold line icons, a dark dashboard with a gold balance card, and blue buttons" loading="lazy" width="1200" height="848">
       </figure>
     </article>
+    <div class="demo-row" aria-label="Working demos">
+      <p>Or click through a working demo:</p>
+      <a class="btn btn-line" href="demos/dunemark/" target="_blank" rel="noopener">Corporate website <span aria-hidden="true">&#8599;</span></a>
+      <a class="btn btn-line" href="https://vaultra-dashboard-kedg.lovable.app" target="_blank" rel="noopener">Fintech dashboard <span aria-hidden="true">&#8599;</span></a>
+      <a class="btn btn-line" href="https://nexacoin-landing-kedg.lovable.app" target="_blank" rel="noopener">Crypto exchange <span aria-hidden="true">&#8599;</span></a>
+    </div>
     <div class="more"><a class="btn btn-line" href="portfolio.html">See all concepts and live demos</a></div>
   </div>
 </section>

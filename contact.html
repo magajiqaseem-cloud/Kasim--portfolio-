@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=20261010b">
-<script src="app.js?v=20261010b" defer></script>
+<script src="app.js?v=20261019f" defer></script>
 <noscript><style>
 .nav{display:block!important;position:static!important;background:none!important;border:0!important;padding:0!important}
 .nav ul{flex-direction:row!important;flex-wrap:wrap;gap:16px!important}
@@ -116,21 +116,25 @@
 <a class="ct-chip ct-up" href="https://www.upwork.com/freelancers/~01edb4f1d95b1a9790" target="_blank" rel="noopener"><b>Upwork</b><span>Hire me on Upwork &#8599;</span></a>
 </nav>
 </div></div></section><section class="section" style="padding-top:0"><div class="wrap contact-grid">
-<form class="form" id="enquiry" action="mailto:magajiqaseem@gmail.com" method="post" enctype="text/plain" novalidate>
+<form class="form" id="enquiry" action="https://formspree.io/f/xbdvwjgg" method="POST" novalidate>
   <div class="two">
-    <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
-    <div class="field"><label for="f-email">Email <span class="hint">(optional)</span></label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email"></div>
+    <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required maxlength="100" aria-describedby="f-name-err"><span class="field-err" id="f-name-err"></span></div>
+    <div class="field"><label for="f-email">Your email</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="160" aria-describedby="f-email-err"><span class="field-err" id="f-email-err"></span></div>
   </div>
+  <div class="field"><label for="f-subject">Subject</label><input id="f-subject" name="subject" required maxlength="140" placeholder="For example: Redesign of our company website" aria-describedby="f-subject-err"><span class="field-err" id="f-subject-err"></span></div>
   <div class="two">
     <div class="field"><label for="f-service">What do you need?</label><select id="f-service" name="service"><option>Business or corporate website</option><option>Website redesign</option><option>Landing page</option><option>E-commerce store</option><option>Startup or portfolio website</option><option>Fintech &amp; crypto web design</option><option>AI automation</option><option>Financial brand identity</option><option>Motion design</option><option>AI video &amp; photo editing</option><option>Marketing campaigns</option><option>Copywriting</option><option>Multilingual translation</option><option>Not sure yet</option></select></div>
     <div class="field"><label for="f-budget">Budget</label><select id="f-budget" name="budget"><option>$120 (Starter Audit)</option><option>$300 to $1,200 (Growth Redesign)</option><option>$1,200 or more (Elite Full Build)</option><option selected>Not sure yet</option></select></div>
   </div>
-  <div class="field"><label for="f-time">Timeline <span class="hint">(optional)</span></label><input id="f-time" name="timeline" placeholder="For example: launch by end of November"></div>
-  <div class="field"><label for="f-msg">About the project</label><textarea id="f-msg" name="message" required placeholder="What are you building, who is it for, and what would a great result look like?"></textarea></div>
+  <div class="field"><label for="f-time">Timeline <span class="hint">(optional)</span></label><input id="f-time" name="timeline" maxlength="140" placeholder="For example: launch by end of November"></div>
+  <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" required minlength="10" maxlength="5000" placeholder="What are you building, who is it for, and what would a great result look like?" aria-describedby="f-msg-err"></textarea><span class="field-err" id="f-msg-err"></span></div>
+  <input type="hidden" name="_subject" id="f-subject-line" value="New website enquiry from kasimempire.com">
+  <div class="hp" aria-hidden="true"><label for="f-gotcha">Leave this empty</label><input id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off"></div>
   <p class="form-error" id="f-error" role="alert"></p>
+  <div class="form-status" id="f-status" role="status" aria-live="polite" hidden></div>
   <div class="form-actions">
-    <button class="btn btn-gold" type="submit">Send on WhatsApp</button>
-    <button class="btn btn-line" type="button" id="f-mail">Send by email</button>
+    <button class="btn btn-gold" type="submit" id="f-send">Send message</button>
+    <button class="btn btn-line" type="button" id="f-wa">Send on WhatsApp instead</button>
   </div>
 </form>
 <aside>

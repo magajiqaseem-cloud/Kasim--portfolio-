@@ -413,6 +413,15 @@ p{margin:0}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.2)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .form-error{color:#ffb4bd;font-size:14.5px;min-height:1em}
+.field-err{color:#ffb4bd;font-size:13.5px;min-height:0}
+.field-err:empty{display:none}
+.field [aria-invalid="true"]{border-color:#ff8a98}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-status{padding:14px 16px;border-radius:12px;font-size:15px;line-height:1.5}
+.form-status a{color:inherit;text-decoration:underline}
+.form-status.ok{background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.55);color:var(--ivory)}
+.form-status.bad{background:rgba(255,120,140,.1);border:1px solid rgba(255,138,152,.6);color:#ffd9de}
+.form-actions .btn[disabled]{opacity:.6;cursor:wait}
 .form-actions{display:flex;flex-wrap:wrap;gap:12px}
 .form-actions .btn{border:0;cursor:pointer;font-family:var(--sans)}
 .form-actions .btn-line{border:1px solid rgba(255,255,240,.28);background:transparent}

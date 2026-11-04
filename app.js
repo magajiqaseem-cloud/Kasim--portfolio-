@@ -88,3 +88,49 @@
   }
   setTimeout(tick,3000);
 })();
+
+/* ===== Global-conversion upgrade (Nov 2026) ===== */
+/* Scroll reveal for featured work + pricing cards */
+(function(){
+  var els=[].slice.call(document.querySelectorAll('.reveal'));if(!els.length)return;
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -5% 0px',threshold:0});
+  els.forEach(function(e){io.observe(e)});
+})();
+/* Free 3-point review form: same Formspree endpoint as the contact form (xbdvwjgg) */
+(function(){
+  var f=document.getElementById('review-form');if(!f)return;
+  var $=function(id){return document.getElementById(id)};
+  var err=function(id,m){$(id+'-err').textContent=m;$(id).setAttribute('aria-invalid',m?'true':'false')};
+  var btn=$('r-send'),label=btn.textContent,st=$('r-status');
+  var say=function(k,h){st.hidden=false;st.className='form-status '+k;st.innerHTML=h};
+  f.addEventListener('submit',function(e){
+    e.preventDefault();st.hidden=true;
+    var site=$('r-site').value.trim(),em=$('r-email').value.trim(),bad=[];
+    var siteOk=/^(https?:\/\/)?[^\s.]+\.[^\s]{2,}$/i.test(site);
+    err('r-site',!site?'Please add your website address.':(siteOk?'':'That web address doesn’t look right.'));if(!site||!siteOk)bad.push('r-site');
+    var emOk=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em);
+    err('r-email',!em?'Please add your email so I can send the review.':(emOk?'':'That email address doesn’t look right.'));if(!em||!emOk)bad.push('r-email');
+    if(bad.length){$(bad[0]).focus();return}
+    $('r-msg').value='Please send me a free 3-point review of my website: '+site;
+    $('r-subject').value='Free website review request: '+site;
+    btn.disabled=true;btn.textContent='Sending…';
+    fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}})
+      .then(function(r){
+        if(r.ok){f.reset();say('ok','<b>Thank you, your request is in.</b> Your three fixes will arrive by email within 48 hours. For anything urgent, <a href="https://wa.me/2347080083489" target="_blank" rel="noopener">message on WhatsApp</a>.');if(window.gtag)gtag('event','generate_lead',{method:'free_review_form'})}
+        else{say('bad','<b>Sorry, that didn’t send.</b> Please try again, or send your link on <a href="https://wa.me/2347080083489" target="_blank" rel="noopener">WhatsApp</a> or to <a href="mailto:hello@kasimempire.com">hello@kasimempire.com</a>.')}
+      })
+      .catch(function(){say('bad','<b>Sorry, that didn’t send</b> (no connection). Please try again, or send your link on <a href="https://wa.me/2347080083489" target="_blank" rel="noopener">WhatsApp</a> or to <a href="mailto:hello@kasimempire.com">hello@kasimempire.com</a>.')})
+      .then(function(){btn.disabled=false;btn.textContent=label});
+  });
+})();
+/* Contact page: pre-fill from package buttons (?package=audit|growth|elite, ?topic=review) */
+(function(){
+  var form=document.getElementById('enquiry');if(!form||!window.URLSearchParams)return;
+  var q=new URLSearchParams(location.search),p=q.get('package'),t=q.get('topic');
+  var map={audit:['Website redesign','$120 (Starter Audit)','Starter Audit ($120) enquiry'],growth:['Website redesign','$300 to $1,200 (Growth Redesign)','Growth Redesign (from $300) enquiry'],elite:['Business or corporate website','$1,200 or more (Elite Full Build)','Elite Full Build (from $1,200) enquiry']};
+  var pick=function(id,val){var s=document.getElementById(id);if(!s)return;[].slice.call(s.options).forEach(function(o){if(o.text===val)s.value=o.value})};
+  var subj=document.getElementById('f-subject');
+  if(p&&map[p]){pick('f-service',map[p][0]);pick('f-budget',map[p][1]);if(subj&&!subj.value)subj.value=map[p][2]}
+  else if(t==='review'){pick('f-service','Website redesign');if(subj&&!subj.value)subj.value='Free 3-point website review';var m=document.getElementById('f-msg');if(m&&!m.value)m.value='Please review my website: '}
+})();

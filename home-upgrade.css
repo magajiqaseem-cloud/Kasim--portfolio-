@@ -158,8 +158,6 @@
    ========================================================= */
 .hero-visual{min-width:0}
 .showcase{padding-top:52px}
-/* one screen per device: switch off the old 3-screen cycle */
-.showcase .laptop-view img,.showcase .laptop-url span{opacity:1!important;animation:none!important}
 .showcase .laptop-screen{overflow:hidden;border-color:rgba(212,175,55,.5);box-shadow:inset 0 1px 0 rgba(255,231,160,.35),0 0 0 1px #000,0 40px 90px -30px rgba(0,0,0,.9),0 0 60px -22px rgba(212,175,55,.45),-18px 10px 60px -34px rgba(0,56,168,.75)}
 /* soft gold edge light along the top of the lid */
 .showcase .laptop-screen::before{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,223,120,.85),transparent);z-index:2;pointer-events:none}

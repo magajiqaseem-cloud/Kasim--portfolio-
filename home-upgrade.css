@@ -232,22 +232,22 @@
 }
 
 /* =========================================================
-   Hero tagline above the headline (8 Nov 2026)
-   Text always occupies its space; only opacity, transform and
-   the gold sheen animate, so nothing around it ever moves.
+   Hero tagline above the headline (updated 8 Nov 2026)
+   Word-by-word reveal, played once (~3s). Every word always
+   occupies its space; only opacity/transform animate, so the
+   heading and buttons never move.
    ========================================================= */
-.hero-tagline{margin:6px 0 14px;font:italic 600 clamp(21px,2vw,27px)/1.3 var(--serif);letter-spacing:.01em;color:var(--gold);text-wrap:balance;max-width:30ch}
-.tl-text{display:inline-block;padding:0 .14em .06em 0;color:#E2BE52}
-@supports ((-webkit-background-clip:text) or (background-clip:text)){
-  .tl-text{background:linear-gradient(100deg,#E2BE52 0 40%,#FFF1C2 50%,#E2BE52 60% 100%) 0 0/260% 100% no-repeat;-webkit-background-clip:text;background-clip:text;color:transparent}
-}
+.hero-tagline{margin:6px 0 14px;font:italic 600 clamp(21px,2vw,27px)/1.3 var(--serif);letter-spacing:.01em;max-width:none}
+.tl-w{display:inline-block}
+.tl-g{color:#E2BE52}          /* gold: "Your vision." and "website." */
+.tl-wh{color:#fff}            /* white: "Built into a" */
+.tl-b{color:#5A9BFF}          /* bright, readable blue: "standout" */
 @media (prefers-reduced-motion:no-preference){
-  /* 8.4s loop: rise + fade in (0.9s), one soft shimmer (1.7s), full sentence then held still 5s, gentle fade, repeat */
-  .tl-text{animation:tl-cycle 8.4s cubic-bezier(.2,.7,.2,1) .2s infinite both,tl-shine 8.4s ease-in-out .2s infinite both}
-  @keyframes tl-cycle{0%{opacity:0;transform:translateY(12px)}11%{opacity:1;transform:none}92%{opacity:1;transform:none}98%,100%{opacity:0;transform:translateY(-3px)}}
-  @keyframes tl-shine{0%,12%{background-position:100% 0}32%,100%{background-position:0 0}}
+  /* the words carry the entrance, so the line itself doesn't fade as a block */
+  .hero-copy > .hero-tagline{animation:none}
+  .tl-w{animation:tl-word .65s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.25s + var(--i) * .38s)}
+  @keyframes tl-word{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   /* keep the original entrance stagger for the items below */
-  .hero-copy > .hero-tagline{animation-delay:.12s}
   .hero-copy > h1{animation-delay:.16s}
   .hero-copy > .lede{animation-delay:.24s}
   .hero-copy > div{animation-delay:0s}

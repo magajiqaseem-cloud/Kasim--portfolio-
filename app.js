@@ -89,6 +89,29 @@
   setTimeout(tick,3000);
 })();
 
+/* Homepage hero tagline: write word by word, hold 3s, fade out, repeat.
+   Only transforms/opacity change, so nothing around it moves.
+   Skipped entirely when the visitor prefers reduced motion. */
+(function(){
+  var el=document.querySelector('.hero-tagline');if(!el)return;
+  var mq=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):null;
+  if(mq&&mq.matches)return;
+  var words=el.querySelectorAll('.tl-w').length;
+  var WRITE=100+(words-1)*380+600, HOLD=3000, FADE=700, GAP=350, timers=[];
+  function later(fn,ms){timers.push(setTimeout(fn,ms))}
+  function stop(){timers.forEach(clearTimeout);timers=[];el.classList.remove('tl-loop','is-on','is-out')}
+  function cycle(){
+    el.classList.remove('is-on','is-out');
+    void el.offsetWidth;            /* restart from hidden words */
+    el.classList.add('is-on');
+    later(function(){el.classList.add('is-out')},WRITE+HOLD);
+    later(cycle,WRITE+HOLD+FADE+GAP);
+  }
+  el.classList.add('tl-loop');
+  later(cycle,250);
+  if(mq&&mq.addEventListener)mq.addEventListener('change',function(e){if(e.matches)stop()});
+})();
+
 /* ===== Global-conversion upgrade (Nov 2026) ===== */
 /* Scroll reveal for featured work + pricing cards */
 (function(){

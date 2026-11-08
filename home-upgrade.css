@@ -242,15 +242,24 @@
 .tl-g{color:#E2BE52}          /* gold: "Your vision." and "website." */
 .tl-wh{color:#fff}            /* white: "Built into a" */
 .tl-b{color:#5A9BFF}          /* bright, readable blue: "standout" */
+/* Loop (driven by app.js, which only runs when motion is allowed):
+   words write in one by one (~3s), full line holds 3s, fades out, repeats.
+   Without JS or with reduced motion, the full sentence simply shows. */
 @media (prefers-reduced-motion:no-preference){
-  /* the words carry the entrance, so the line itself doesn't fade as a block */
+  /* hidden from first paint (html.js is set in <head>) so the sentence never flashes before the loop starts */
+  .js .hero-tagline .tl-w{opacity:0;transform:translateY(10px)}
+}
+.tl-loop.is-on .tl-w{opacity:1;transform:none;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1);transition-delay:calc(.1s + var(--i) * .38s)}
+.tl-loop{transition:opacity .7s ease}
+.tl-loop.is-out{opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  /* the words carry the entrance, so the line itself doesn't fade in as a block */
   .hero-copy > .hero-tagline{animation:none}
-  .tl-w{animation:tl-word .65s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.25s + var(--i) * .38s)}
-  @keyframes tl-word{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   /* keep the original entrance stagger for the items below */
   .hero-copy > h1{animation-delay:.16s}
   .hero-copy > .lede{animation-delay:.24s}
   .hero-copy > div{animation-delay:0s}
+}
 }
 @media (max-width:880px){.hero-copy > .hero-tagline{order:3}}
 @media (max-width:640px){.hero-tagline{font-size:clamp(20px,5.6vw,23px);margin:4px 0 12px;max-width:none}}

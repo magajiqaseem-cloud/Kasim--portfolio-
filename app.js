@@ -157,3 +157,12 @@
   if(p&&map[p]){pick('f-service',map[p][0]);pick('f-budget',map[p][1]);if(subj&&!subj.value)subj.value=map[p][2]}
   else if(t==='review'){pick('f-service','Website redesign');if(subj&&!subj.value)subj.value='Free 3-point website review';var m=document.getElementById('f-msg');if(m&&!m.value)m.value='Please review my website: '}
 })();
+
+/* Analytics: count clicks on WhatsApp, email and phone links as contact_click events (no personal data sent) */
+(function(){
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;if(!a||!window.gtag)return;
+    var h=a.getAttribute('href')||'',m=h.indexOf('wa.me/')>-1?'whatsapp':h.indexOf('mailto:')===0?'email':h.indexOf('tel:')===0?'phone':'';
+    if(m)gtag('event','contact_click',{method:m,page_path:location.pathname});
+  });
+})();

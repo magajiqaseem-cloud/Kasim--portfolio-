@@ -172,3 +172,15 @@
     else if(a.getAttribute('data-demo'))gtag('event','view_demo',{demo:a.getAttribute('data-demo'),page_path:location.pathname});
   });
 })();
+
+/* Gentle float on project previews and service art: runs only while on screen,
+   never with reduced motion (see "Gentle float" in styles.css). */
+(function(){
+  if(!('IntersectionObserver' in window))return;
+  var mq=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):null;if(mq&&mq.matches)return;
+  var els=[].slice.call(document.querySelectorAll('.work-shot,.pillar-art,.row-visual,.fc-browser,.d5-shot'));if(!els.length)return;
+  els.forEach(function(e,i){if(i%3===1)e.classList.add('fl-b');else if(i%3===2)e.classList.add('fl-c')});
+  var io=new IntersectionObserver(function(es){es.forEach(function(x){x.target.classList.toggle('is-floating',x.isIntersecting)})},{rootMargin:'40px 0px'});
+  els.forEach(function(e){io.observe(e)});
+  if(mq&&mq.addEventListener)mq.addEventListener('change',function(e){if(e.matches){io.disconnect();els.forEach(function(x){x.classList.remove('is-floating')})}});
+})();

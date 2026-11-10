@@ -44,22 +44,34 @@ p{margin:0}
 .btn-s{min-height:42px;padding:0 18px;font-size:14px}
 @media (max-width:760px){.nav{display:none}}
 /* hero */
-.hero{position:relative;overflow:hidden;padding:clamp(48px,8vw,96px) 0 0;background:radial-gradient(80% 60% at 70% 62%,rgba(227,169,60,.16),transparent 60%),radial-gradient(60% 50% at 10% 0,rgba(63,123,255,.14),transparent 60%),linear-gradient(180deg,#0A0C10,#0D1118)}
+.hero{position:relative;background:#07090C}
+.hero-in{position:relative;max-width:1672px;margin:0 auto;display:flex;flex-direction:column}
+.hero-copy{order:1;padding:clamp(36px,7vw,64px) 20px clamp(26px,5vw,40px);background:radial-gradient(70% 90% at 0 0,rgba(63,123,255,.14),transparent 60%)}
+.hero-img{order:2;display:block}
+.hero-img img{width:100%;height:auto;aspect-ratio:1672/941}
+.img-note{order:3;font-size:12.5px;color:var(--muted);padding:10px 20px 14px}
 .eyebrow{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-hi);margin-bottom:16px}
-.hero h1{font-size:clamp(38px,5.2vw,68px);font-weight:500;max-width:14ch}
+.hero h1{font-size:clamp(36px,4.6vw,62px);font-weight:500;max-width:15ch}
 .hero h1 em{font-style:normal;color:var(--amber-hi)}
-.hero .lede{color:var(--muted);max-width:52ch;margin:20px 0 28px;font-size:clamp(17px,1.5vw,19px)}
+.hero .lede{color:#D5DAE3;max-width:46ch;margin:18px 0 26px;font-size:clamp(17px,1.4vw,19px)}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
-.hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(20px,3vw,48px);align-items:center;padding-bottom:clamp(40px,6vw,72px)}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
-.stage{position:relative}
-.stage svg{width:100%;height:auto}
-@media (prefers-reduced-motion:no-preference){
-  .stage .car{animation:drive-in 1.6s cubic-bezier(.2,.7,.2,1) both}
-  .stage .sweep{animation:sweep 6s 1.2s ease-in-out infinite}
-  @keyframes drive-in{from{transform:translateX(9%);opacity:0}to{transform:none;opacity:1}}
-  @keyframes sweep{0%,100%{opacity:.15;transform:translateX(-12%)}50%{opacity:.55;transform:translateX(12%)}}
+/* wide screens: the whole lineup stays in frame, headline sits on the dark upper-left of the scene */
+@media (min-width:1100px){
+  .hero-in{display:block}
+  .hero-copy{position:absolute;left:0;top:0;width:min(52%,700px);padding:clamp(24px,3vw,52px) 0 0 clamp(28px,4.2vw,72px);background:none;z-index:1}
+  .hero h1{font-size:clamp(34px,3.9vw,60px);max-width:none}
+  .hero-in::before{content:"";position:absolute;inset:0 auto 0 0;width:62%;height:62%;background:radial-gradient(120% 100% at 0 0,rgba(5,7,10,.92),rgba(5,7,10,.6) 45%,transparent 72%);pointer-events:none}
+  .hero .lede{margin:12px 0 18px;font-size:16px;max-width:56ch}
+  .hero .eyebrow{margin-bottom:10px}
+  .img-note{position:absolute;right:16px;bottom:10px;padding:5px 10px;border-radius:999px;background:rgba(5,7,10,.7);color:#D5DAE3}
 }
+@media (min-width:1100px) and (prefers-reduced-motion:no-preference){
+  .hero-img img{animation:settle 1.8s cubic-bezier(.2,.7,.2,1) both}
+  .hero-copy{animation:rise .9s .2s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes settle{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+.hero-in{overflow:hidden}
 .facts{padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line);position:relative;z-index:1}
 .facts div{background:var(--bg);padding:22px 20px}
 .facts b{display:block;font-size:clamp(22px,2.6vw,30px);font-weight:500;color:var(--amber-hi)}
@@ -157,36 +169,18 @@ footer a{color:var(--amber-hi)}
 
 <main id="main">
 <section class="hero" id="top">
-  <div class="wrap hero-grid">
-   <div>
-    <p class="eyebrow">Riyadh &middot; Performance &amp; luxury</p>
-    <h1>Drive the one you <em>kept thinking about.</em></h1>
-    <p class="lede">Hand-picked coupés, SUVs and saloons, each inspected at 180 points and priced openly. Browse the showroom, check the numbers, and book a test drive in under a minute.</p>
-    <div class="actions"><a class="btn btn-a" href="#inventory">Browse inventory</a><a class="btn btn-l" href="#testdrive">Book a test drive</a></div>
-   </div>
-  <div class="stage" aria-hidden="true">
-    <svg viewBox="130 110 940 250" focusable="false">
-      <defs>
-        <linearGradient id="hBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6CF7A"/><stop offset=".45" stop-color="#C98A22"/><stop offset="1" stop-color="#5C3C0C"/></linearGradient>
-        <linearGradient id="hGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9FC2FF" stop-opacity=".75"/><stop offset="1" stop-color="#0B1220"/></linearGradient>
-        <radialGradient id="hFloor" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#E3A93C" stop-opacity=".45"/><stop offset="1" stop-color="#E3A93C" stop-opacity="0"/></radialGradient>
-        <linearGradient id="hSweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-      </defs>
-      <ellipse cx="600" cy="330" rx="520" ry="34" fill="url(#hFloor)"/>
-      <g transform="translate(150 60) scale(2.25)"><g class="car">
-        <ellipse cx="200" cy="121" rx="178" ry="7" fill="#000" opacity=".6"/>
-        <path d="M20 110 Q22 92 50 88 L120 80 Q160 50 215 48 Q270 48 310 78 L360 86 Q382 90 384 108 L384 116 L20 116 Z" fill="url(#hBody)"/>
-        <path d="M135 80 Q165 58 212 56 L250 56 Q275 60 295 78 Z" fill="url(#hGlass)"/>
-        <path d="M214 56 L212 79" stroke="#5C3C0C" stroke-width="2.5"/>
-        <path d="M40 96 L360 96" stroke="#fff" stroke-opacity=".28" stroke-width="1.2"/>
-        <path d="M362 90 L382 94 L380 100 L360 98 Z" fill="#FFF3C4"/>
-        <path d="M22 96 L36 94 L36 102 L22 104 Z" fill="#E0463A"/>
-        <g fill="#0A0C10"><circle cx="100" cy="112" r="27"/><circle cx="310" cy="112" r="27"/></g>
-        <g fill="none" stroke="#C9CED8" stroke-width="3"><circle cx="100" cy="112" r="16"/><circle cx="310" cy="112" r="16"/></g>
-        <g fill="#C9CED8"><circle cx="100" cy="112" r="4"/><circle cx="310" cy="112" r="4"/></g>
-      </g></g>
-    </svg>
-  </div>
+  <div class="hero-in">
+    <picture class="hero-img">
+      <source type="image/webp" srcset="showroom-720.webp 720w, showroom-1100.webp 1100w, showroom-1672.webp 1672w" sizes="(min-width:1672px) 1672px, 100vw">
+      <img src="showroom-1100.webp" width="1672" height="941" alt="Five cars lined up outside a glass-fronted showroom at night: a white saloon, a silver SUV, a black saloon, a dark blue coupé and a white SUV" fetchpriority="high" decoding="async">
+    </picture>
+    <div class="hero-copy">
+      <p class="eyebrow">Riyadh &middot; Performance &amp; luxury</p>
+      <h1>Drive the one you <em>kept thinking about.</em></h1>
+      <p class="lede">Hand-picked coupés, SUVs and saloons, each inspected at 180 points and priced openly. Browse, check the numbers and book a test drive in under a minute.</p>
+      <div class="actions"><a class="btn btn-a" href="#inventory">Browse inventory</a><a class="btn btn-l" href="#testdrive">Book a test drive</a></div>
+    </div>
+    <p class="img-note">Concept imagery. The cars pictured are illustrative and are not the sample inventory below.</p>
   </div>
   <div class="facts wrap" role="list">
     <div role="listitem"><b>180-point</b><span>inspection on every car</span></div>

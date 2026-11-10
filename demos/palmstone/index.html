@@ -44,17 +44,28 @@ p{margin:0}
 .btn-l{border-color:rgba(19,33,29,.35);background:none;color:var(--ink)}.btn-l:hover{border-color:var(--ink)}
 .btn-s{min-height:44px;padding:0 18px;font-size:14px}
 /* hero */
-.hero{position:relative;color:#fff;overflow:hidden;background:#101B2E}
-.hero-art{position:absolute;inset:0}
-.hero-art svg{width:100%;height:100%}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,16,26,.82),rgba(10,16,26,.35) 60%,rgba(10,16,26,.1))}
-.hero .wrap{position:relative;z-index:1;padding-top:clamp(56px,9vw,120px);padding-bottom:clamp(120px,14vw,180px)}
+.hero{position:relative;color:#fff;background:var(--ink)}
+.hero-art{display:block}
+.hero-art img{width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;object-position:84% 50%}
+.hero-copy{padding:28px 0 96px}
 .eyebrow{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-hi);margin-bottom:14px}
-.hero h1{font-size:clamp(40px,6.6vw,84px);max-width:13ch}
-.hero .lede{max-width:50ch;margin:18px 0 0;color:#E4E8EC;font-size:clamp(17px,1.5vw,19px)}
-@media (prefers-reduced-motion:no-preference){
-  .hero-art .sun{animation:glow 8s ease-in-out infinite}.hero-art .win{animation:lights 5s ease-in-out infinite}.hero-art .win:nth-child(2n){animation-delay:1.6s}
-  @keyframes glow{50%{opacity:.75}}@keyframes lights{50%{opacity:.55}}
+.hero h1{font-size:clamp(38px,5.4vw,72px);max-width:12ch}
+.hero .lede{max-width:44ch;margin:16px 0 0;color:#E9ECEA;font-size:clamp(17px,1.4vw,19px)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn-w{border-color:rgba(255,255,255,.6);background:rgba(19,33,29,.35);color:#fff}.btn-w:hover{border-color:#fff;background:rgba(19,33,29,.6)}
+.feat-tag{margin-top:22px;font-size:14px;color:#E9ECEA}.feat-tag b{color:var(--brass-hi)}.feat-tag span{display:block;font-size:12.5px;color:#B9C4BF}
+/* tablet and up: the villa fills the frame, copy sits on the shaded left */
+@media (min-width:820px){
+  .hero{overflow:hidden;min-height:clamp(560px,52vw,820px);display:flex;align-items:center}
+  .hero-art{position:absolute;inset:0}
+  .hero-art img{height:100%;aspect-ratio:auto;object-position:78% 50%}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,16,14,.9) 0,rgba(9,16,14,.72) 30%,rgba(9,16,14,.18) 58%,transparent 72%),linear-gradient(0deg,rgba(9,16,14,.5),transparent 30%)}
+  .hero-copy{position:relative;z-index:1;width:100%;padding:clamp(48px,6vw,90px) 0 clamp(110px,11vw,150px)}
+  .hero-copy .wrap>*{max-width:560px}
+}
+@media (min-width:820px) and (prefers-reduced-motion:no-preference){
+  .hero-art img{animation:drift 16s ease-out both}
+  @keyframes drift{from{transform:scale(1.06)}to{transform:none}}
 }
 /* search */
 .search{position:relative;z-index:2;margin-top:clamp(-96px,-9vw,-70px)}
@@ -79,8 +90,8 @@ input[type=range]{width:100%;accent-color:var(--brass);height:28px}
 .home{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .3s,box-shadow .3s}
 .home:hover{transform:translateY(-4px);box-shadow:0 28px 50px -32px rgba(19,33,29,.55)}
 .home-art{aspect-ratio:16/10;position:relative;overflow:hidden}
-.home-art svg{width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
-.home:hover .home-art svg{transform:scale(1.04)}
+.home-art svg,.home-art img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.home:hover .home-art svg,.home:hover .home-art img{transform:scale(1.04)}
 .pill{position:absolute;left:12px;top:12px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--ink)}
 .save{position:absolute;right:10px;top:10px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.92);cursor:pointer;display:grid;place-items:center}
 .save svg{width:20px;height:20px;fill:none;stroke:var(--ink);stroke-width:2}
@@ -96,7 +107,7 @@ input[type=range]{width:100%;accent-color:var(--brass);height:28px}
 /* dialog */
 dialog{width:min(1000px,calc(100% - 24px));max-height:calc(100dvh - 24px);padding:0;border:0;border-radius:18px;background:var(--card);color:var(--ink);overflow:auto;box-shadow:0 40px 90px -30px rgba(0,0,0,.6)}
 dialog::backdrop{background:rgba(10,16,14,.7);backdrop-filter:blur(3px)}
-.dlg-art{aspect-ratio:21/9;min-height:200px}.dlg-art svg{width:100%;height:100%}
+.dlg-art{aspect-ratio:21/9;min-height:200px;overflow:hidden}.dlg-art svg,.dlg-art img{width:100%;height:100%;object-fit:cover;object-position:80% 45%}
 .dlg{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;padding:26px}
 .dlg h2{font-size:34px}
 .dlg-price{font:600 30px var(--serif);color:var(--brass)}
@@ -144,36 +155,20 @@ footer a{color:var(--brass);font-weight:600}
 
 <main id="main">
 <section class="hero" id="top">
-  <div class="hero-art" aria-hidden="true">
-    <svg viewBox="0 0 1600 700" preserveAspectRatio="xMidYMax slice" focusable="false">
-      <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#15223F"/><stop offset=".5" stop-color="#7A5673"/><stop offset=".78" stop-color="#F0A56A"/><stop offset="1" stop-color="#F7D9A8"/></linearGradient>
-        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9A771"/><stop offset="1" stop-color="#1B3554"/></linearGradient>
-        <radialGradient id="sunG"><stop offset="0" stop-color="#FFF4D6"/><stop offset=".4" stop-color="#FFD08A" stop-opacity=".7"/><stop offset="1" stop-color="#FFD08A" stop-opacity="0"/></radialGradient>
-      </defs>
-      <rect width="1600" height="700" fill="url(#sky)"/>
-      <circle class="sun" cx="1120" cy="470" r="170" fill="url(#sunG)"/>
-      <rect y="500" width="1600" height="200" fill="url(#sea)"/>
-      <g fill="#1B2742" opacity=".7"><rect x="700" y="330" width="46" height="170"/><rect x="756" y="290" width="38" height="210"/><rect x="806" y="360" width="56" height="140"/><rect x="876" y="310" width="34" height="190"/><rect x="1330" y="340" width="50" height="160"/><rect x="1392" y="300" width="40" height="200"/><rect x="1446" y="372" width="70" height="128"/></g>
-      <g>
-        <rect x="900" y="560" width="700" height="140" fill="#0E1A1A"/>
-        <rect x="1010" y="372" width="430" height="110" fill="#F4EEE2"/><rect x="1080" y="296" width="300" height="80" fill="#E7DFCF"/>
-        <rect x="990" y="476" width="480" height="90" fill="#EDE5D6"/><rect x="980" y="366" width="490" height="10" fill="#2A2A2A"/><rect x="1060" y="290" width="340" height="9" fill="#2A2A2A"/>
-        <g fill="#FFD98A"><rect class="win" x="1030" y="392" width="120" height="70"/><rect class="win" x="1170" y="392" width="120" height="70"/><rect class="win" x="1310" y="392" width="110" height="70"/><rect class="win" x="1100" y="312" width="120" height="50"/><rect class="win" x="1240" y="312" width="120" height="50"/><rect class="win" x="1016" y="492" width="200" height="60"/><rect class="win" x="1240" y="492" width="200" height="60"/></g>
-        <rect x="940" y="604" width="560" height="50" rx="4" fill="#3FA7C9" opacity=".85"/><rect x="940" y="604" width="560" height="8" fill="#BFEAF5" opacity=".6"/>
-      </g>
-      <g stroke="#0C1512" stroke-width="12" fill="none" stroke-linecap="round"><path d="M940 700 Q930 520 962 400"/><path d="M1540 700 Q1552 540 1520 430"/></g>
-      <g fill="#0C1512"><path d="M962 400 Q900 372 846 404 Q906 384 962 400Z M962 400 Q920 330 860 320 Q926 344 962 400Z M962 400 Q980 322 1040 300 Q996 344 962 400Z M962 400 Q1030 372 1080 410 Q1024 388 962 400Z M962 400 Q950 340 968 300 Q972 350 962 400Z"/><path d="M1520 430 Q1460 400 1410 432 Q1466 414 1520 430Z M1520 430 Q1480 364 1424 356 Q1486 376 1520 430Z M1520 430 Q1540 360 1596 340 Q1554 380 1520 430Z M1520 430 Q1580 410 1620 440 Q1576 420 1520 430Z"/></g>
-    </svg>
-  </div>
-  <div class="wrap">
+  <picture class="hero-art">
+    <source type="image/webp" srcset="estate-720.webp 720w, estate-1100.webp 1100w, estate-1672.webp 1672w" sizes="100vw">
+    <img src="estate-1100.webp" width="1672" height="941" alt="A modern limestone villa with tall glass walls and a water feature, on a palm-lined drive beside the bay at sunset" fetchpriority="high" decoding="async">
+  </picture>
+  <div class="hero-copy"><div class="wrap">
     <p class="eyebrow">Miami &middot; Sales &amp; lettings</p>
     <h1>Find the home that fits your life.</h1>
     <p class="lede">Waterfront condos, family villas and townhouses across Miami's best neighbourhoods. Search, shortlist and book a viewing in a few taps.</p>
-  </div>
+    <div class="actions"><a class="btn btn-b" href="#search">Search homes</a><button class="btn btn-w" type="button" id="heroView">Request a viewing</button></div>
+    <p class="feat-tag"><b>Featured:</b> Modern family villa with pool, Coral Gables &middot; $3,975,000 <span>Concept imagery, sample listing</span></p>
+  </div></div>
 </section>
 
-<section class="search" aria-label="Search listings"><div class="wrap">
+<section class="search" id="search" aria-label="Search listings"><div class="wrap">
   <form id="searchForm" onsubmit="return false">
     <div><span class="lbl" id="mode-lbl">I want to</span><div class="seg" role="group" aria-labelledby="mode-lbl" id="mode"><button type="button" data-m="sale" aria-pressed="true">Buy</button><button type="button" data-m="rent" aria-pressed="false">Rent</button></div></div>
     <div><label for="area">Neighbourhood</label><select id="area"></select></div>
@@ -260,7 +255,7 @@ footer a{color:var(--brass);font-weight:600}
 (function(){
   var H=[
     {id:'p1',title:'Bayfront penthouse with wraparound terrace',area:'Brickell',type:'Condo',mode:'sale',price:2850000,beds:3,baths:3,sqft:2640,sky:'dusk',feats:['Private elevator','Bay and skyline views','Two parking spaces','24-hour concierge','Rooftop pool','Wine storage'],blurb:'A corner penthouse on the 48th floor, with floor-to-ceiling glass and a terrace that runs the full width of the home.'},
-    {id:'p2',title:'Modern family villa with pool',area:'Coral Gables',type:'Villa',mode:'sale',price:3975000,beds:5,baths:5,sqft:5120,sky:'day',feats:['Heated saltwater pool','Chef\'s kitchen','Home office','Three-car garage','Summer kitchen','Impact windows'],blurb:'A newly built villa on a quiet, tree-lined street, with an open ground floor that leads straight out to the pool.'},
+    {id:'p2',img:1,title:'Modern family villa with pool',area:'Coral Gables',type:'Villa',mode:'sale',price:3975000,beds:5,baths:5,sqft:5120,sky:'day',feats:['Heated saltwater pool','Chef\'s kitchen','Home office','Three-car garage','Summer kitchen','Impact windows'],blurb:'A newly built villa on a quiet, tree-lined street, with an open ground floor that leads straight out to the pool.'},
     {id:'p3',title:'Garden townhouse near the marina',area:'Coconut Grove',type:'Townhouse',mode:'sale',price:1425000,beds:3,baths:3,sqft:2210,sky:'day',feats:['Private courtyard','Roof terrace','Two-car garage','Walk to the marina','Smart home system','Low monthly fees'],blurb:'Three floors of light-filled living, a short walk from the bayfront parks and the village centre.'},
     {id:'p4',title:'Oceanfront two-bedroom with beach access',area:'Miami Beach',type:'Condo',mode:'sale',price:1190000,beds:2,baths:2,sqft:1380,sky:'dusk',feats:['Direct beach access','Ocean-view balcony','Valet parking','Fitness centre','Renovated kitchen','Pet friendly'],blurb:'Wake up to the Atlantic. A renovated apartment in a full-service building on the sand.'},
     {id:'p5',title:'Waterfront estate with private dock',area:'Key Biscayne',type:'Villa',mode:'sale',price:8600000,beds:6,baths:7,sqft:7850,sky:'dusk',feats:['80 ft private dock','Infinity pool','Guest house','Home cinema','Gated entrance','Generator'],blurb:'A gated waterfront estate with open bay views, deep-water dockage and a separate guest house.'},
@@ -271,7 +266,7 @@ footer a{color:var(--brass);font-weight:600}
   ];
   var SKY={dusk:['#1B2A4F','#8A5A78','#F2A76C'],day:['#5FA9DB','#A9D5EE','#F6EBD8'],night:['#070C1C','#12224A','#2D4A80']};
   function palm(x,y,s){return '<g transform="translate('+x+' '+y+') scale('+s+')"><path d="M0 0 Q-6 -60 8 -110" stroke="#0E1B16" stroke-width="5" fill="none" stroke-linecap="round"/><path fill="#0E1B16" d="M8 -110 Q-22 -124 -48 -108 Q-18 -118 8 -110Z M8 -110 Q-12 -146 -42 -150 Q-10 -138 8 -110Z M8 -110 Q18 -148 48 -158 Q26 -136 8 -110Z M8 -110 Q40 -124 64 -104 Q36 -116 8 -110Z M8 -110 Q4 -140 12 -160 Q14 -136 8 -110Z"/></g>'}
-  function scene(h){var c=SKY[h.sky],id='s'+h.id+Math.random().toString(36).slice(2,6),lit=h.sky==='day'?'#DCEBF2':'#FFD98A',wall=h.sky==='night'?'#C9CFDB':'#F4EEE2',b='';
+  function scene(h,big){if(h.img)return big?'<img src="estate-1100.webp" srcset="estate-1100.webp 1100w, estate-1672.webp 1672w" sizes="(min-width:1000px) 1000px, 100vw" width="1672" height="941" alt="" decoding="async">':'<img src="estate-card.webp" width="800" height="577" alt="" loading="lazy" decoding="async">';var c=SKY[h.sky],id='s'+h.id+Math.random().toString(36).slice(2,6),lit=h.sky==='day'?'#DCEBF2':'#FFD98A',wall=h.sky==='night'?'#C9CFDB':'#F4EEE2',b='';
     if(h.type==='Condo'){var w='';for(var r=0;r<9;r++)for(var k=0;k<4;k++)w+='<rect x="'+(168+k*17)+'" y="'+(34+r*15)+'" width="12" height="9" fill="'+lit+'" opacity="'+(((r*3+k*5)%4)?'.95':'.35')+'"/>';
       b='<rect x="250" y="70" width="52" height="110" fill="'+wall+'" opacity=".75"/><rect x="160" y="24" width="80" height="156" fill="'+wall+'"/><rect x="156" y="20" width="88" height="6" fill="#26302C"/>'+w+'<rect x="96" y="120" width="56" height="60" fill="'+wall+'" opacity=".6"/>'}
     else if(h.type==='Villa'){b='<rect x="150" y="84" width="130" height="44" fill="'+wall+'"/><rect x="142" y="80" width="146" height="5" fill="#26302C"/><rect x="100" y="124" width="220" height="56" fill="'+wall+'"/><rect x="92" y="120" width="236" height="5" fill="#26302C"/><g fill="'+lit+'"><rect x="160" y="94" width="50" height="26"/><rect x="220" y="94" width="50" height="26"/><rect x="112" y="136" width="70" height="36"/><rect x="192" y="136" width="50" height="36"/><rect x="252" y="136" width="56" height="36"/></g><rect x="110" y="192" width="200" height="18" rx="3" fill="#3FA7C9"/><rect x="110" y="192" width="200" height="4" fill="#C8EEF7" opacity=".7"/>'}
@@ -307,13 +302,15 @@ footer a{color:var(--brass);font-weight:600}
   function pay(){var d=+$('d-down').value/100,n=+$('d-years').value*12,P=cur.price*(1-d),r=.065/12;$('d-pay').textContent=usd(P*r/(1-Math.pow(1+r,-n)))+' per month'}
   $('grid').addEventListener('click',function(e){
     var s=e.target.closest('[data-save]');if(s){saved[s.dataset.save]=!saved[s.dataset.save];s.setAttribute('aria-pressed',!!saved[s.dataset.save]);$('shortN').textContent=Object.keys(saved).filter(function(k){return saved[k]}).length;if(st.short)render();return}
-    var b=e.target.closest('[data-open]');if(!b)return;opener=b;cur=H.filter(function(h){return h.id===b.dataset.open})[0];
-    $('d-art').innerHTML=scene(cur);$('d-area').textContent=cur.area+' · '+cur.type+' · '+(cur.mode==='sale'?'For sale':'For rent');$('d-title').textContent=cur.title;$('d-price').textContent=price(cur);
+    var b=e.target.closest('[data-open]');if(!b)return;openHome(b.dataset.open,b)});
+  function openHome(id,from){opener=from;cur=H.filter(function(h){return h.id===id})[0];
+    $('d-art').innerHTML=scene(cur,1);$('d-area').textContent=cur.area+' · '+cur.type+' · '+(cur.mode==='sale'?'For sale':'For rent');$('d-title').textContent=cur.title;$('d-price').textContent=price(cur);
     $('d-meta').innerHTML='<li><b>'+cur.beds+'</b> beds</li><li><b>'+cur.baths+'</b> baths</li><li><b>'+cur.sqft.toLocaleString('en-US')+'</b> sq ft</li>';
     $('d-blurb').textContent=cur.blurb;$('d-feats').innerHTML=cur.feats.map(function(f){return '<li>'+f+'</li>'}).join('');
     $('d-mort').style.display=cur.mode==='sale'?'block':'none';if(cur.mode==='sale')pay();
     $('vForm').reset();$('vForm').style.display='block';$('vDone').style.display='none';$('v-err').textContent='';
-    if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');dlg.scrollTop=0});
+    if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');dlg.scrollTop=0}
+  $('heroView').addEventListener('click',function(){openHome('p2',this);$('v-name').focus()});
   function close(){if(dlg.close)dlg.close();else dlg.removeAttribute('open')}
   dlg.addEventListener('close',function(){if(opener&&document.contains(opener))opener.focus()});
   $('d-close').addEventListener('click',close);dlg.addEventListener('click',function(e){if(e.target===dlg)close()});

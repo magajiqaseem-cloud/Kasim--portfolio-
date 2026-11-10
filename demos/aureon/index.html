@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aureon Motors — Performance and luxury cars in Riyadh (concept demo)</title>
+<meta name="description" content="Concept demo by Kasim Elite Digital Global: a showroom website for a fictional Riyadh car dealer, with inventory filters, vehicle details, a finance estimate and a test-drive request.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0A0C10">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0C10'/%3E%3Cpath d='M16 6l9 20h-4.4l-1.7-4h-5.8l-1.7 4H7z' fill='%23E3A93C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0C10;--bg-2:#10141B;--card:#141922;--line:rgba(255,255,255,.1);--line-2:rgba(227,169,60,.4);
+  --text:#F4F1EA;--muted:#A9B0BD;--amber:#E3A93C;--amber-hi:#F6CF7A;--blue:#3F7BFF;--ok:#46C08A;--bad:#FF8A7A;
+  --f:"Outfit",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--wrap:1200px;--r:14px
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+body{margin:0;font-family:var(--f);color:var(--text);background:var(--bg);line-height:1.6;font-size:17px}
+svg,img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{line-height:1.12;margin:0;font-weight:600;letter-spacing:-.01em}
+p{margin:0}
+:focus-visible{outline:3px solid var(--amber-hi);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;z-index:99;background:var(--amber);color:#111;padding:8px 12px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.concept{background:#05070A;color:#C5CBD6;font-size:13px;text-align:center;padding:8px 16px;line-height:1.4;border-bottom:1px solid var(--line)}
+.concept a{color:var(--amber-hi);font-weight:600}
+/* header */
+.top{position:sticky;top:0;z-index:20;background:rgba(10,12,16,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:66px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:.16em;font-size:15px}
+.logo svg{width:30px;height:30px}
+.nav{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:15px}
+.nav a{text-decoration:none;color:var(--muted);padding:10px 0;display:block}.nav a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 24px;border-radius:999px;font:600 15px var(--f);text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .2s,border-color .2s,color .2s,transform .2s}
+.btn-a{background:var(--amber);color:#14110A}.btn-a:hover{background:var(--amber-hi)}
+.btn-l{border-color:rgba(255,255,255,.3);color:var(--text);background:none}.btn-l:hover{border-color:var(--amber);color:var(--amber-hi)}
+.btn-s{min-height:42px;padding:0 18px;font-size:14px}
+@media (max-width:760px){.nav{display:none}}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(48px,8vw,96px) 0 0;background:radial-gradient(80% 60% at 70% 62%,rgba(227,169,60,.16),transparent 60%),radial-gradient(60% 50% at 10% 0,rgba(63,123,255,.14),transparent 60%),linear-gradient(180deg,#0A0C10,#0D1118)}
+.eyebrow{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-hi);margin-bottom:16px}
+.hero h1{font-size:clamp(38px,5.2vw,68px);font-weight:500;max-width:14ch}
+.hero h1 em{font-style:normal;color:var(--amber-hi)}
+.hero .lede{color:var(--muted);max-width:52ch;margin:20px 0 28px;font-size:clamp(17px,1.5vw,19px)}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(20px,3vw,48px);align-items:center;padding-bottom:clamp(40px,6vw,72px)}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.stage{position:relative}
+.stage svg{width:100%;height:auto}
+@media (prefers-reduced-motion:no-preference){
+  .stage .car{animation:drive-in 1.6s cubic-bezier(.2,.7,.2,1) both}
+  .stage .sweep{animation:sweep 6s 1.2s ease-in-out infinite}
+  @keyframes drive-in{from{transform:translateX(9%);opacity:0}to{transform:none;opacity:1}}
+  @keyframes sweep{0%,100%{opacity:.15;transform:translateX(-12%)}50%{opacity:.55;transform:translateX(12%)}}
+}
+.facts{padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line);position:relative;z-index:1}
+.facts div{background:var(--bg);padding:22px 20px}
+.facts b{display:block;font-size:clamp(22px,2.6vw,30px);font-weight:500;color:var(--amber-hi)}
+.facts span{font-size:14px;color:var(--muted)}
+@media (max-width:760px){.facts{grid-template-columns:1fr 1fr}}
+/* sections */
+.sec{padding:clamp(56px,8vw,104px) 0;scroll-margin-top:60px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:28px}
+.sec h2{font-size:clamp(28px,3.6vw,44px);font-weight:500}
+.sec-head p{color:var(--muted);max-width:52ch}
+/* filters */
+.filters{display:grid;grid-template-columns:1fr auto auto;gap:16px 24px;align-items:end;padding:18px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg-2);margin-bottom:22px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:0 18px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--muted);font:500 15px var(--f);cursor:pointer}
+.chip:hover{color:var(--text);border-color:rgba(255,255,255,.3)}
+.chip[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:#14110A}
+.fld label,.lbl{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+input[type=range]{width:220px;max-width:100%;accent-color:var(--amber);height:28px}
+select,input[type=text],input[type=email],input[type=tel],input[type=date],textarea{width:100%;min-height:48px;padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:#0C1016;color:var(--text);font:400 16px var(--f)}
+textarea{min-height:96px;resize:vertical}
+select:focus,input:focus,textarea:focus{border-color:var(--amber)}
+.count{color:var(--muted);font-size:15px;margin:0 0 16px}
+.count b{color:var(--text);font-weight:600}
+@media (max-width:860px){.filters{grid-template-columns:1fr}input[type=range]{width:100%}}
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;list-style:none;margin:0;padding:0}
+@media (max-width:980px){.grid{grid-template-columns:1fr 1fr}}
+@media (max-width:620px){.grid{grid-template-columns:1fr}}
+.car-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+.car-card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 26px 50px -30px rgba(227,169,60,.5)}
+.car-art{aspect-ratio:16/9;background:radial-gradient(70% 80% at 50% 78%,rgba(255,255,255,.12),transparent 62%),linear-gradient(180deg,#171D28,#0C1016);position:relative}
+.car-art svg{position:absolute;inset:0;width:100%;height:100%}
+.badge{position:absolute;left:12px;top:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(5,7,10,.75);border:1px solid var(--line-2);color:var(--amber-hi)}
+.car-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.car-body h3{font-size:21px;font-weight:500}
+.car-sub{color:var(--muted);font-size:14px}
+.specs{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none;margin:0;padding:0;font-size:14px;color:var(--muted)}
+.specs li::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--amber);margin-right:7px;vertical-align:middle}
+.car-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:8px}
+.price{font-size:20px;font-weight:600}.price small{display:block;font-size:12px;font-weight:400;color:var(--muted)}
+.empty{padding:36px;border:1px dashed var(--line);border-radius:var(--r);text-align:center;color:var(--muted)}
+/* dialog */
+dialog{width:min(980px,calc(100% - 24px));max-height:calc(100dvh - 24px);padding:0;border:1px solid var(--line-2);border-radius:18px;background:var(--bg-2);color:var(--text);overflow:auto}
+dialog::backdrop{background:rgba(3,4,6,.78);backdrop-filter:blur(4px)}
+.dlg{display:grid;grid-template-columns:1.15fr 1fr}
+.dlg-art{position:relative;min-height:280px;background:radial-gradient(70% 70% at 50% 76%,rgba(255,255,255,.14),transparent 62%),linear-gradient(180deg,#1A2130,#0B0E14)}
+.dlg-art svg{position:absolute;inset:0;width:100%;height:100%}
+.dlg-body{padding:26px 26px 28px;display:flex;flex-direction:column;gap:16px}
+.dlg-body h2{font-size:28px;font-weight:500}
+.x{position:absolute;right:12px;top:12px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(5,7,10,.8);color:var(--text);font-size:22px;cursor:pointer}
+dl.sheet{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:0}
+dl.sheet div{border-top:1px solid var(--line);padding-top:8px}
+dl.sheet dt{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+dl.sheet dd{margin:2px 0 0;font-size:16px}
+.fin{border:1px solid var(--line);border-radius:12px;padding:16px;background:#0C1016}
+.fin-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fin output{display:block;font-size:24px;font-weight:600;color:var(--amber-hi);margin-top:10px}
+.note{font-size:13px;color:var(--muted)}
+@media (max-width:820px){.dlg{grid-template-columns:1fr}.dlg-art{min-height:0;aspect-ratio:16/9}}
+/* why */
+.why{background:var(--bg-2);border-block:1px solid var(--line)}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.why-grid article{padding:24px;border:1px solid var(--line);border-radius:var(--r);background:var(--bg)}
+.why-grid h3{font-size:20px;font-weight:500;margin-bottom:8px}
+.why-grid p{color:var(--muted);font-size:16px}
+.num{font-size:13px;letter-spacing:.2em;color:var(--amber-hi);margin-bottom:14px}
+@media (max-width:860px){.why-grid{grid-template-columns:1fr}}
+/* enquiry */
+.enq{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,64px);align-items:start}
+.enq-info p{color:var(--muted);margin-top:14px}
+.enq-info ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px;color:var(--muted)}
+.enq-info li b{color:var(--text);font-weight:500}
+form.card,.done{padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--bg-2)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fld{margin-bottom:14px}
+.err{color:var(--bad);font-size:14px;min-height:20px;margin:4px 0 10px}
+.done{display:none;border-color:rgba(70,192,138,.6)}
+.done h3{font-size:22px;margin-bottom:8px;color:var(--ok)}
+.done p{color:var(--muted);margin-bottom:16px}
+@media (max-width:860px){.enq{grid-template-columns:1fr}.row2{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:26px 0;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+footer a{color:var(--amber-hi)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="concept">Concept demo designed and built by <a href="https://www.kasimempire.com/portfolio">Kasim Elite Digital Global</a>. Aureon Motors is a fictional dealer; cars, prices and finance figures are sample data.</div>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#top" aria-label="Aureon Motors, back to top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#161B24"/><path d="M16 6l9 20h-4.4l-1.7-4h-5.8l-1.7 4H7z" fill="#E3A93C"/></svg>AUREON</a>
+  <nav aria-label="Main"><ul class="nav"><li><a href="#inventory">Inventory</a></li><li><a href="#why">Why Aureon</a></li><li><a href="#visit">Showroom</a></li></ul></nav>
+  <a class="btn btn-a btn-s" href="#testdrive">Book a test drive</a>
+</div></header>
+
+<main id="main">
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+   <div>
+    <p class="eyebrow">Riyadh &middot; Performance &amp; luxury</p>
+    <h1>Drive the one you <em>kept thinking about.</em></h1>
+    <p class="lede">Hand-picked coupés, SUVs and saloons, each inspected at 180 points and priced openly. Browse the showroom, check the numbers, and book a test drive in under a minute.</p>
+    <div class="actions"><a class="btn btn-a" href="#inventory">Browse inventory</a><a class="btn btn-l" href="#testdrive">Book a test drive</a></div>
+   </div>
+  <div class="stage" aria-hidden="true">
+    <svg viewBox="130 110 940 250" focusable="false">
+      <defs>
+        <linearGradient id="hBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6CF7A"/><stop offset=".45" stop-color="#C98A22"/><stop offset="1" stop-color="#5C3C0C"/></linearGradient>
+        <linearGradient id="hGlass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9FC2FF" stop-opacity=".75"/><stop offset="1" stop-color="#0B1220"/></linearGradient>
+        <radialGradient id="hFloor" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#E3A93C" stop-opacity=".45"/><stop offset="1" stop-color="#E3A93C" stop-opacity="0"/></radialGradient>
+        <linearGradient id="hSweep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      </defs>
+      <ellipse cx="600" cy="330" rx="520" ry="34" fill="url(#hFloor)"/>
+      <g transform="translate(150 60) scale(2.25)"><g class="car">
+        <ellipse cx="200" cy="121" rx="178" ry="7" fill="#000" opacity=".6"/>
+        <path d="M20 110 Q22 92 50 88 L120 80 Q160 50 215 48 Q270 48 310 78 L360 86 Q382 90 384 108 L384 116 L20 116 Z" fill="url(#hBody)"/>
+        <path d="M135 80 Q165 58 212 56 L250 56 Q275 60 295 78 Z" fill="url(#hGlass)"/>
+        <path d="M214 56 L212 79" stroke="#5C3C0C" stroke-width="2.5"/>
+        <path d="M40 96 L360 96" stroke="#fff" stroke-opacity=".28" stroke-width="1.2"/>
+        <path d="M362 90 L382 94 L380 100 L360 98 Z" fill="#FFF3C4"/>
+        <path d="M22 96 L36 94 L36 102 L22 104 Z" fill="#E0463A"/>
+        <g fill="#0A0C10"><circle cx="100" cy="112" r="27"/><circle cx="310" cy="112" r="27"/></g>
+        <g fill="none" stroke="#C9CED8" stroke-width="3"><circle cx="100" cy="112" r="16"/><circle cx="310" cy="112" r="16"/></g>
+        <g fill="#C9CED8"><circle cx="100" cy="112" r="4"/><circle cx="310" cy="112" r="4"/></g>
+      </g></g>
+    </svg>
+  </div>
+  </div>
+  <div class="facts wrap" role="list">
+    <div role="listitem"><b>180-point</b><span>inspection on every car</span></div>
+    <div role="listitem"><b>12 months</b><span>warranty included</span></div>
+    <div role="listitem"><b>7 days</b><span>exchange if it isn't right</span></div>
+    <div role="listitem"><b>Open pricing</b><span>no hidden fees</span></div>
+  </div>
+</section>
+
+<section class="sec" id="inventory" aria-labelledby="inv-title">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="inv-title">In the showroom now</h2><p>Filter by body style and budget. Open any car for full specifications and a finance estimate.</p></div>
+    <div class="filters">
+      <div><span class="lbl" id="body-lbl">Body style</span><div class="chips" role="group" aria-labelledby="body-lbl" id="chips"></div></div>
+      <div class="fld" style="margin:0"><label for="max">Maximum price: <b id="maxOut"></b></label><input type="range" id="max" min="150000" max="900000" step="25000" value="900000"></div>
+      <div class="fld" style="margin:0"><label for="sort">Sort by</label><select id="sort"><option value="new">Newest first</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="km">Lowest mileage</option></select></div>
+    </div>
+    <p class="count" id="count" role="status" aria-live="polite"></p>
+    <ul class="grid" id="grid"></ul>
+    <div class="empty" id="empty" hidden>No cars match those filters. <button class="btn btn-l btn-s" type="button" id="reset" style="margin-left:10px">Clear filters</button></div>
+  </div>
+</section>
+
+<section class="sec why" id="why" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="why-title">Buying should feel as good as driving</h2></div>
+    <div class="why-grid">
+      <article><p class="num">01</p><h3>Inspected, then inspected again</h3><p>Every car passes a 180-point check and comes with its full service history before it reaches the floor.</p></article>
+      <article><p class="num">02</p><h3>One price, shown openly</h3><p>The price on the card is the price you pay. Registration and handover are included.</p></article>
+      <article><p class="num">03</p><h3>Test drives that come to you</h3><p>Visit the showroom, or we bring the car to your home or office anywhere in Riyadh.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="testdrive" aria-labelledby="td-title">
+  <div class="wrap enq">
+    <div class="enq-info" id="visit">
+      <p class="eyebrow">Test drive</p>
+      <h2 id="td-title">Book a test drive</h2>
+      <p>Choose a car and a day. A sales advisor confirms the time by phone or email.</p>
+      <ul>
+        <li><b>Showroom:</b> King Fahd Road, Riyadh (fictional address)</li>
+        <li><b>Hours:</b> Saturday to Thursday, 10:00 to 22:00</li>
+        <li><b>Phone:</b> +966 11 000 0000 (sample)</li>
+      </ul>
+    </div>
+    <div>
+      <form class="card" id="tdForm" novalidate>
+        <div class="row2">
+          <div class="fld"><label for="t-name">Full name</label><input type="text" id="t-name" name="name" autocomplete="name" required></div>
+          <div class="fld"><label for="t-email">Email</label><input type="email" id="t-email" name="email" autocomplete="email" inputmode="email" required></div>
+        </div>
+        <div class="row2">
+          <div class="fld"><label for="t-car">Car</label><select id="t-car" name="car" required></select></div>
+          <div class="fld"><label for="t-date">Preferred date</label><input type="date" id="t-date" name="date" required></div>
+        </div>
+        <div class="fld"><label for="t-where">Where</label><select id="t-where" name="where"><option>At the showroom</option><option>At my home or office</option></select></div>
+        <div class="fld"><label for="t-msg">Anything we should know? (optional)</label><textarea id="t-msg" name="msg"></textarea></div>
+        <p class="err" id="t-err" role="alert"></p>
+        <button class="btn btn-a" type="submit">Request test drive</button>
+        <p class="note" style="margin-top:12px">Demo form: nothing is sent or stored.</p>
+      </form>
+      <div class="done" id="tdDone" tabindex="-1"><h3>Request received</h3><p id="tdSummary"></p><button class="btn btn-l btn-s" type="button" id="tdAgain">Book another</button></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Aureon Motors (fictional). Concept demo.</span><span>Designed and built by <a href="https://www.kasimempire.com/portfolio">Kasim Elite Digital Global</a></span></div></footer>
+
+<dialog id="dlg" aria-labelledby="d-title">
+  <div class="dlg">
+    <div class="dlg-art" id="d-art" aria-hidden="true"></div>
+    <div class="dlg-body">
+      <div><p class="car-sub" id="d-sub"></p><h2 id="d-title"></h2></div>
+      <p id="d-blurb" style="color:var(--muted)"></p>
+      <dl class="sheet" id="d-sheet"></dl>
+      <div class="fin">
+        <p class="lbl" style="margin:0 0 10px;color:var(--text);font-size:15px">Finance estimate</p>
+        <div class="fin-row">
+          <div><label class="lbl" for="d-dep">Deposit</label><select id="d-dep"><option value="10">10%</option><option value="20" selected>20%</option><option value="30">30%</option><option value="40">40%</option></select></div>
+          <div><label class="lbl" for="d-term">Term</label><select id="d-term"><option value="36">36 months</option><option value="48" selected>48 months</option><option value="60">60 months</option></select></div>
+        </div>
+        <output id="d-pay" for="d-dep d-term" aria-live="polite"></output>
+        <p class="note">Illustration only, at a sample 4.9% annual rate. Not a finance offer.</p>
+      </div>
+      <div class="actions"><button class="btn btn-a" type="button" id="d-book">Book a test drive</button><button class="btn btn-l" type="button" id="d-close2">Keep browsing</button></div>
+    </div>
+  </div>
+  <button class="x" type="button" id="d-close" aria-label="Close details">&times;</button>
+</dialog>
+
+<script>
+(function(){
+  var CARS=[
+    {id:'gt',name:'Aureon GT Coupé',year:2025,body:'Coupé',price:685000,km:4200,fuel:'Petrol',power:'540 hp',drive:'Rear-wheel',box:'8-speed auto',col:'#C98A22',colName:'Solar Bronze',tag:'New arrival',blurb:'A long-bonnet grand tourer with a twin-turbo V8, adaptive suspension and a hand-stitched cabin.'},
+    {id:'sx',name:'Vanta SX',year:2024,body:'SUV',price:412000,km:18500,fuel:'Hybrid',power:'455 hp',drive:'All-wheel',box:'8-speed auto',col:'#2E3A4E',colName:'Midnight Steel',tag:'',blurb:'A seven-seat performance SUV with air suspension, a panoramic roof and a quiet hybrid drivetrain.'},
+    {id:'e4',name:'Lumen E4',year:2025,body:'Saloon',price:298000,km:6100,fuel:'Electric',power:'402 hp',drive:'All-wheel',box:'Single-speed',col:'#DADFE8',colName:'Glacier White',tag:'Electric',blurb:'An electric saloon with a 520 km sample range, fast charging and a clean, screen-led interior.'},
+    {id:'rs',name:'Corsa RS',year:2023,body:'Coupé',price:356000,km:27400,fuel:'Petrol',power:'420 hp',drive:'Rear-wheel',box:'7-speed dual-clutch',col:'#B3261E',colName:'Rosso Fuoco',tag:'',blurb:'A light, sharp two-door built for mountain roads, with carbon seats and a sports exhaust.'},
+    {id:'lx',name:'Meridia LX',year:2024,body:'Saloon',price:244000,km:21900,fuel:'Petrol',power:'335 hp',drive:'Rear-wheel',box:'9-speed auto',col:'#1F2B3D',colName:'Royal Navy',tag:'',blurb:'An executive saloon with massage seats, rear-seat screens and a library-quiet cabin.'},
+    {id:'tr',name:'Dune TR-8',year:2025,body:'SUV',price:529000,km:3900,fuel:'Petrol',power:'510 hp',drive:'All-wheel',box:'10-speed auto',col:'#B9A27A',colName:'Desert Sand',tag:'New arrival',blurb:'A full-size off-roader with locking differentials, a raised ride height and a leather-lined interior.'},
+    {id:'ex',name:'Lumen EX',year:2024,body:'SUV',price:338000,km:14800,fuel:'Electric',power:'480 hp',drive:'All-wheel',box:'Single-speed',col:'#3F7BFF',colName:'Pulse Blue',tag:'Electric',blurb:'An electric family SUV with a 480 km sample range, a flat floor and seven seats.'},
+    {id:'s5',name:'Meridia S5',year:2022,body:'Saloon',price:176000,km:46200,fuel:'Hybrid',power:'292 hp',drive:'Front-wheel',box:'8-speed auto',col:'#8A8F99',colName:'Graphite',tag:'Best value',blurb:'A well-kept hybrid saloon with a full service history, heated seats and adaptive cruise.'},
+    {id:'sp',name:'Aureon Spyder',year:2024,body:'Coupé',price:842000,km:5200,fuel:'Petrol',power:'630 hp',drive:'All-wheel',box:'8-speed dual-clutch',col:'#0F1116',colName:'Obsidian',tag:'',blurb:'A mid-engined flagship with a folding hardtop, carbon-ceramic brakes and launch control.'}
+  ];
+  var SHAPES={
+    'Coupé':{b:'M20 110 Q22 92 50 88 L120 80 Q160 50 215 48 Q270 48 310 78 L360 86 Q382 90 384 108 L384 116 L20 116 Z',w:'M135 80 Q165 58 212 56 L250 56 Q275 60 295 78 Z',p:'M214 56 L212 79'},
+    'SUV':{b:'M20 112 L22 84 Q24 74 50 70 L95 66 Q120 34 170 32 L290 32 Q320 34 335 66 L372 74 Q384 78 384 100 L384 116 L20 116 Z',w:'M112 64 Q130 42 170 40 L285 40 Q305 42 318 64 Z',p:'M215 40 L215 64'},
+    'Saloon':{b:'M20 110 Q22 94 48 90 L110 82 Q145 54 195 52 L262 52 Q300 56 322 80 L362 88 Q382 92 384 108 L384 116 L20 116 Z',w:'M126 80 Q152 60 196 59 L258 59 Q285 62 304 80 Z',p:'M222 59 L222 80'}
+  };
+  function art(c){var s=SHAPES[c.body],g='g'+c.id+Math.random().toString(36).slice(2,6);
+    return '<svg viewBox="-20 -10 444 170" preserveAspectRatio="xMidYMid meet" focusable="false" aria-hidden="true"><defs><linearGradient id="'+g+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".35" stop-color="'+c.col+'"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient></defs>'+
+    '<ellipse cx="202" cy="124" rx="182" ry="7" fill="#000" opacity=".55"/>'+
+    '<path d="'+s.b+'" fill="'+c.col+'"/><path d="'+s.b+'" fill="url(#'+g+')" opacity=".55"/>'+
+    '<path d="'+s.w+'" fill="#0B1220"/><path d="'+s.w+'" fill="#9FC2FF" opacity=".28"/><path d="'+s.p+'" stroke="'+c.col+'" stroke-width="3"/>'+
+    '<path d="M40 97 L360 97" stroke="#fff" stroke-opacity=".25" stroke-width="1.2"/><path d="M362 90 L382 94 L380 100 L360 98 Z" fill="#FFF3C4"/><path d="M22 96 L36 94 L36 102 L22 104 Z" fill="#E0463A"/>'+
+    '<g fill="#07090C"><circle cx="100" cy="112" r="27"/><circle cx="310" cy="112" r="27"/></g><g fill="none" stroke="#C9CED8" stroke-width="3"><circle cx="100" cy="112" r="16"/><circle cx="310" cy="112" r="16"/></g><g fill="#C9CED8"><circle cx="100" cy="112" r="4"/><circle cx="310" cy="112" r="4"/></g></svg>'}
+  var sar=function(n){return 'SAR '+Math.round(n).toLocaleString('en-US')};
+  var $=function(id){return document.getElementById(id)};
+  var state={body:'All',max:900000,sort:'new'};
+  var bodies=['All','Coupé','SUV','Saloon','Electric'];
+  $('chips').innerHTML=bodies.map(function(b){return '<button class="chip" type="button" data-b="'+b+'" aria-pressed="'+(b==='All')+'">'+b+'</button>'}).join('');
+  $('t-car').innerHTML='<option value="">Select a car</option>'+CARS.map(function(c){return '<option value="'+c.id+'">'+c.name+' ('+c.year+')</option>'}).join('');
+  function render(){
+    var list=CARS.filter(function(c){return (state.body==='All'||(state.body==='Electric'?c.fuel==='Electric':c.body===state.body))&&c.price<=state.max});
+    list.sort({new:function(a,b){return b.year-a.year||a.km-b.km},low:function(a,b){return a.price-b.price},high:function(a,b){return b.price-a.price},km:function(a,b){return a.km-b.km}}[state.sort]);
+    $('maxOut').textContent=sar(state.max);
+    $('count').innerHTML='<b>'+list.length+'</b> '+(list.length===1?'car':'cars')+' available';
+    $('empty').hidden=list.length>0;
+    $('grid').innerHTML=list.map(function(c){return '<li class="car-card"><div class="car-art">'+art(c)+(c.tag?'<span class="badge">'+c.tag+'</span>':'')+'</div><div class="car-body"><p class="car-sub">'+c.year+' &middot; '+c.body+' &middot; '+c.colName+'</p><h3>'+c.name+'</h3><ul class="specs"><li>'+c.km.toLocaleString('en-US')+' km</li><li>'+c.fuel+'</li><li>'+c.power+'</li></ul><div class="car-foot"><p class="price">'+sar(c.price)+'<small>incl. registration</small></p><button class="btn btn-l btn-s" type="button" data-open="'+c.id+'">View details<span class="sr">: '+c.name+'</span></button></div></div></li>'}).join('');
+  }
+  $('chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;state.body=b.dataset.b;[].forEach.call($('chips').children,function(x){x.setAttribute('aria-pressed',x===b)});render()});
+  $('max').addEventListener('input',function(){state.max=+this.value;render()});
+  $('sort').addEventListener('change',function(){state.sort=this.value;render()});
+  $('reset').addEventListener('click',function(){state={body:'All',max:900000,sort:'new'};$('max').value=900000;$('sort').value='new';[].forEach.call($('chips').children,function(x,i){x.setAttribute('aria-pressed',i===0)});render();$('chips').children[0].focus()});
+  /* details dialog */
+  var dlg=$('dlg'),cur=null,opener=null;
+  function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));$('d-pay').textContent=sar(m)+' per month'}
+  $('grid').addEventListener('click',function(e){var b=e.target.closest('[data-open]');if(!b)return;opener=b;cur=CARS.filter(function(c){return c.id===b.dataset.open})[0];
+    $('d-art').innerHTML=art(cur);$('d-sub').textContent=cur.year+' · '+cur.body+' · '+sar(cur.price);$('d-title').textContent=cur.name;$('d-blurb').textContent=cur.blurb;
+    $('d-sheet').innerHTML=[['Mileage',cur.km.toLocaleString('en-US')+' km'],['Fuel',cur.fuel],['Power',cur.power],['Gearbox',cur.box],['Drive',cur.drive],['Colour',cur.colName]].map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'}).join('');
+    pay();if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')});
+  function close(){if(dlg.close)dlg.close();else dlg.removeAttribute('open')}
+  dlg.addEventListener('close',function(){if(opener&&document.contains(opener))opener.focus()});
+  $('d-close').addEventListener('click',close);$('d-close2').addEventListener('click',close);
+  dlg.addEventListener('click',function(e){if(e.target===dlg)close()});
+  $('d-dep').addEventListener('change',pay);$('d-term').addEventListener('change',pay);
+  $('d-book').addEventListener('click',function(){var id=cur.id;opener=null;close();$('t-car').value=id;$('testdrive').scrollIntoView();$('t-name').focus()});
+  /* test-drive form (demo only) */
+  var f=$('tdForm'),ok=$('tdDone'),er=$('t-err'),d=new Date();d.setDate(d.getDate()+1);$('t-date').min=d.toISOString().slice(0,10);
+  f.addEventListener('submit',function(e){e.preventDefault();
+    var miss=[].filter.call(f.querySelectorAll('[required]'),function(i){return !i.value.trim()});
+    if(miss.length){er.textContent='Please fill in: '+miss.map(function(i){return f.querySelector('label[for="'+i.id+'"]').textContent}).join(', ')+'.';miss[0].focus();return}
+    var em=f.elements.email.value.trim();if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(em)){er.textContent='Enter a valid email, like name@example.com.';f.elements.email.focus();return}
+    er.textContent='';var c=CARS.filter(function(x){return x.id===f.elements.car.value})[0];
+    $('tdSummary').textContent='Reference TD-'+Math.floor(10000+Math.random()*89999)+': '+c.name+' on '+new Date(f.elements.date.value+'T12:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'})+', '+f.elements.where.value.toLowerCase()+'. An advisor would confirm the time at '+em+'. This is a demo, so nothing was sent.';
+    f.style.display='none';ok.style.display='block';ok.focus()});
+  $('tdAgain').addEventListener('click',function(){f.reset();ok.style.display='none';f.style.display='block';$('t-name').focus()});
+  render();
+})();
+</script>
+</body>
+</html>

@@ -89,24 +89,29 @@
   setTimeout(tick,3000);
 })();
 
-/* Homepage hero tagline: write word by word, hold 3s, fade out, repeat.
-   Only transforms/opacity change, so nothing around it moves.
+/* Homepage hero tagline: write word by word, rest, fade softly, repeat.
+   One loop lasts 25s, the same as the five-project showcase, so the two
+   never compete. Only transforms/opacity change, so nothing around it moves.
+   Paused while the tab is hidden or the hero is off screen.
    Skipped entirely when the visitor prefers reduced motion. */
 (function(){
   var el=document.querySelector('.hero-tagline');if(!el)return;
   var mq=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):null;
   if(mq&&mq.matches)return;
   var words=el.querySelectorAll('.tl-w').length;
-  var WRITE=100+(words-1)*380+600, HOLD=3000, FADE=700, GAP=350, timers=[];
+  var WRITE=100+(words-1)*300+700, FADE=900, GAP=400, HOLD=25000-WRITE-FADE-GAP, timers=[], seen=true;
   function later(fn,ms){timers.push(setTimeout(fn,ms))}
   function stop(){timers.forEach(clearTimeout);timers=[];el.classList.remove('tl-loop','is-on','is-out')}
   function cycle(){
+    timers=[];
+    if(document.hidden||!seen){later(cycle,1000);return}   /* keep the full line showing; try again shortly */
     el.classList.remove('is-on','is-out');
     void el.offsetWidth;            /* restart from hidden words */
     el.classList.add('is-on');
-    later(function(){el.classList.add('is-out')},WRITE+HOLD);
+    later(function(){if(!document.hidden&&seen)el.classList.add('is-out')},WRITE+HOLD);
     later(cycle,WRITE+HOLD+FADE+GAP);
   }
+  if('IntersectionObserver' in window)new IntersectionObserver(function(es){seen=es[0].isIntersecting}).observe(el);
   el.classList.add('tl-loop');
   later(cycle,250);
   if(mq&&mq.addEventListener)mq.addEventListener('change',function(e){if(e.matches)stop()});
@@ -164,5 +169,6 @@
     var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;if(!a||!window.gtag)return;
     var h=a.getAttribute('href')||'',m=h.indexOf('wa.me/')>-1?'whatsapp':h.indexOf('mailto:')===0?'email':h.indexOf('tel:')===0?'phone':'';
     if(m)gtag('event','contact_click',{method:m,page_path:location.pathname});
+    else if(a.getAttribute('data-demo'))gtag('event','view_demo',{demo:a.getAttribute('data-demo'),page_path:location.pathname});
   });
 })();

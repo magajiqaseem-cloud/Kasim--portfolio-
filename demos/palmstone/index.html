@@ -64,8 +64,6 @@ p{margin:0}
   .hero-copy .wrap>*{max-width:560px}
 }
 @media (min-width:820px) and (prefers-reduced-motion:no-preference){
-  .hero-art img{animation:drift 16s ease-out both}
-  @keyframes drift{from{transform:scale(1.06)}to{transform:none}}
 }
 /* search */
 .search{position:relative;z-index:2;margin-top:clamp(-96px,-9vw,-70px)}
@@ -162,7 +160,27 @@ form.card{padding:22px;border:1px solid var(--line);border-radius:18px;backgroun
 footer{border-top:1px solid var(--line);padding:26px 0;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
 footer a{color:var(--brass);font-weight:600}
+
+/* ===== Motion (demos/motion.js). Text stays still; only photos, light and cards move. ===== */
+.hero-art{overflow:hidden}
+.hero-art img,.feat-frame img{will-change:transform}
+.sweep-host{position:relative;overflow:hidden}
+.sweep-host::after{content:"";position:absolute;top:-25%;bottom:-25%;left:-45%;width:30%;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,226,170,.2) 45%,rgba(255,244,214,.26) 50%,rgba(255,226,170,.2) 55%,rgba(255,255,255,0));
+  transform:skewX(-14deg);mix-blend-mode:screen}
+[data-reveal]{transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0) * 90ms)}
+.m-on [data-reveal]:not(.is-in){opacity:0;transform:translateY(16px)}
+@media (prefers-reduced-motion:no-preference){
+  .hero-art.is-live img{animation:kb 28s ease-in-out infinite alternate}
+  .feat-frame.is-on::after{animation:sweep 10s cubic-bezier(.45,0,.25,1) infinite 1.5s}
+  .m-on .search form{animation:lift 1s .35s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.08) translate(-1.4%,-.8%)}}
+  @keyframes sweep{0%{opacity:0;transform:skewX(-14deg) translateX(0)}6%{opacity:1}34%{opacity:1}40%{opacity:0;transform:skewX(-14deg) translateX(560%)}100%{opacity:0;transform:skewX(-14deg) translateX(560%)}}
+  @keyframes lift{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+}
+@media (max-width:819px) and (prefers-reduced-motion:no-preference){.hero-art.is-live img{animation-duration:20s}}
 </style>
+<script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('m-on')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -176,7 +194,7 @@ footer a{color:var(--brass);font-weight:600}
 
 <main id="main">
 <section class="hero" id="top">
-  <picture class="hero-art">
+  <picture class="hero-art" data-live>
     <source type="image/webp" srcset="estate-720.webp 720w, estate-1100.webp 1100w, estate-1672.webp 1672w" sizes="100vw">
     <img src="estate-1100.webp" width="1672" height="941" alt="A modern limestone villa with tall glass walls and a water feature, on a palm-lined drive beside the bay at sunset" fetchpriority="high" decoding="async">
   </picture>
@@ -201,8 +219,8 @@ footer a{color:var(--brass);font-weight:600}
 
 <section class="sec feat" id="signature" aria-labelledby="s-title">
   <div class="wrap feat-grid">
-    <figure class="feat-media">
-      <div class="feat-frame">
+    <figure class="feat-media" data-reveal>
+      <div class="feat-frame sweep-host">
         <img src="featured-estate-1100.webp" srcset="featured-estate-720.webp 720w, featured-estate-1100.webp 1100w, featured-estate-1600.webp 1600w" sizes="(min-width:1240px) 700px, (min-width:900px) 58vw, 100vw" width="1600" height="900" alt="A two-storey modern villa in pale stone with timber screens and glass walls, a long pool and terrace in front, palms and the bay beside it" loading="lazy" decoding="async">
       </div>
       <figcaption>AI-generated concept imagery. Not a photo of a real property or address.</figcaption>
@@ -211,7 +229,7 @@ footer a{color:var(--brass);font-weight:600}
       <p class="eyebrow">Signature listing &middot; Sample</p>
       <h2 id="s-title">Waterfront estate with infinity pool</h2>
       <p class="home-area">Key Biscayne &middot; Villa &middot; For sale</p>
-      <p class="dlg-price">$8,600,000</p>
+      <p class="dlg-price"><span data-count="8600000" data-prefix="$">$8,600,000</span></p>
       <p class="lead">Open bay views, a terrace that runs the length of the house and a pool that meets the water.</p>
       <ul class="meta" aria-label="Key specifications"><li><b>6</b> beds</li><li><b>7</b> baths</li><li><b>7,850</b> sq ft</li></ul>
       <div class="actions"><button class="btn btn-d" type="button" id="featView">View home</button><button class="btn btn-l" type="button" id="featVisit">Request a viewing</button></div>
@@ -318,7 +336,7 @@ footer a{color:var(--brass);font-weight:600}
   var CAP={sale:{min:500000,max:9000000,step:250000},rent:{min:3000,max:15000,step:500}};
   var st={mode:'sale',area:'',type:'',beds:0,max:9000000,short:false},saved={};
   $('area').innerHTML='<option value="">All neighbourhoods</option>'+AREAS.map(function(a){return '<option>'+a+'</option>'}).join('');
-  $('areaList').innerHTML=AREAS.map(function(a){var n=H.filter(function(h){return h.area===a}).length;return '<li><button type="button" data-area="'+a+'"><b>'+a+'</b><span>'+n+(n===1?' home':' homes')+'</span></button></li>'}).join('');
+  $('areaList').innerHTML=AREAS.map(function(a){var n=H.filter(function(h){return h.area===a}).length;return '<li data-reveal style="--d:'+AREAS.indexOf(a)%3+'"><button type="button" data-area="'+a+'"><b>'+a+'</b><span>'+n+(n===1?' home':' homes')+'</span></button></li>'}).join('');
   function setCap(){var c=CAP[st.mode],m=$('max');m.min=c.min;m.max=c.max;m.step=c.step;m.value=c.max;st.max=c.max}
   function price(h){return usd(h.price)+(h.mode==='rent'?' / month':'')}
   function render(){
@@ -326,8 +344,9 @@ footer a{color:var(--brass);font-weight:600}
     $('maxOut').textContent=usd(st.max)+(st.mode==='rent'?' / month':'');
     $('count').innerHTML=st.short?'<b>'+list.length+'</b> in your shortlist':'<b>'+list.length+'</b> '+(list.length===1?'home':'homes')+' '+(st.mode==='sale'?'for sale':'for rent');
     $('empty').hidden=list.length>0;$('emptyMsg').textContent=st.short?'Your shortlist is empty. Tap the heart on a home to save it.':'No homes match that search.';
-    $('grid').innerHTML=list.map(function(h){return '<li class="home"><div class="home-art">'+scene(h)+'<span class="pill">'+(h.mode==='sale'?'For sale':'For rent')+'</span><button class="save" type="button" data-save="'+h.id+'" aria-pressed="'+!!saved[h.id]+'" aria-label="Save '+h.title+' to shortlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg></button></div><div class="home-body"><p class="home-price">'+price(h)+'</p><h3>'+h.title+'</h3><p class="home-area">'+h.area+' &middot; '+h.type+'</p><ul class="meta"><li><b>'+h.beds+'</b> beds</li><li><b>'+h.baths+'</b> baths</li><li><b>'+h.sqft.toLocaleString('en-US')+'</b> sq ft</li></ul><button class="btn btn-l btn-s" type="button" data-open="'+h.id+'">View home<span class="sr">: '+h.title+'</span></button></div></li>'}).join('');
+    $('grid').innerHTML=list.map(function(h,i){return '<li class="home" data-reveal style="--d:'+(i%3)+'"><div class="home-art">'+scene(h)+'<span class="pill">'+(h.mode==='sale'?'For sale':'For rent')+'</span><button class="save" type="button" data-save="'+h.id+'" aria-pressed="'+!!saved[h.id]+'" aria-label="Save '+h.title+' to shortlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg></button></div><div class="home-body"><p class="home-price">'+price(h)+'</p><h3>'+h.title+'</h3><p class="home-area">'+h.area+' &middot; '+h.type+'</p><ul class="meta"><li><b>'+h.beds+'</b> beds</li><li><b>'+h.baths+'</b> baths</li><li><b>'+h.sqft.toLocaleString('en-US')+'</b> sq ft</li></ul><button class="btn btn-l btn-s" type="button" data-open="'+h.id+'">View home<span class="sr">: '+h.title+'</span></button></div></li>'}).join('');
     $('shortN').textContent=Object.keys(saved).filter(function(k){return saved[k]}).length;
+    if(window.DemoMotion)DemoMotion.observe($('grid').children);
   }
   function leaveShort(){st.short=false;$('shortBtn').setAttribute('aria-pressed','false')}
   $('mode').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;st.mode=b.dataset.m;[].forEach.call($('mode').children,function(x){x.setAttribute('aria-pressed',x===b)});setCap();leaveShort();render()});
@@ -340,7 +359,7 @@ footer a{color:var(--brass);font-weight:600}
   $('areaList').addEventListener('click',function(e){var b=e.target.closest('[data-area]');if(!b)return;leaveShort();st.area=b.dataset.area;$('area').value=st.area;st.type='';st.beds=0;$('type').value='';$('beds').value='0';setCap();if(!H.some(function(h){return h.area===st.area&&h.mode===st.mode})){st.mode=st.mode==='sale'?'rent':'sale';[].forEach.call($('mode').children,function(x){x.setAttribute('aria-pressed',x.dataset.m===st.mode)});setCap()}render();$('listings').scrollIntoView();$('l-title').setAttribute('tabindex','-1');$('l-title').focus({preventScroll:true})});
   /* details */
   var dlg=$('dlg'),cur=null,opener=null;
-  function pay(){var d=+$('d-down').value/100,n=+$('d-years').value*12,P=cur.price*(1-d),r=.065/12;$('d-pay').textContent=usd(P*r/(1-Math.pow(1+r,-n)))+' per month'}
+  function pay(){var d=+$('d-down').value/100,n=+$('d-years').value*12,P=cur.price*(1-d),r=.065/12;var m=P*r/(1-Math.pow(1+r,-n)),o=$('d-pay'),prev=parseFloat((o.textContent||'').replace(/[^0-9.]/g,''));if(window.DemoMotion&&o.dataset.home===cur.id)DemoMotion.tween(o,prev,m,function(v){return usd(v)+' per month'});else o.textContent=usd(m)+' per month';o.dataset.home=cur.id}
   $('grid').addEventListener('click',function(e){
     var s=e.target.closest('[data-save]');if(s){saved[s.dataset.save]=!saved[s.dataset.save];s.setAttribute('aria-pressed',!!saved[s.dataset.save]);$('shortN').textContent=Object.keys(saved).filter(function(k){return saved[k]}).length;if(st.short)render();return}
     var b=e.target.closest('[data-open]');if(!b)return;openHome(b.dataset.open,b)});
@@ -376,5 +395,6 @@ footer a{color:var(--brass);font-weight:600}
   setCap();render();
 })();
 </script>
+<script src="../motion.js"></script>
 </body>
 </html>

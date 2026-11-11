@@ -66,9 +66,7 @@ p{margin:0}
   .img-note{position:absolute;right:16px;bottom:10px;padding:5px 10px;border-radius:999px;background:rgba(5,7,10,.7);color:#D5DAE3}
 }
 @media (min-width:1100px) and (prefers-reduced-motion:no-preference){
-  .hero-img img{animation:settle 1.8s cubic-bezier(.2,.7,.2,1) both}
   .hero-copy{animation:rise .9s .2s cubic-bezier(.2,.7,.2,1) both}
-  @keyframes settle{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
   @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 }
 .hero-in{overflow:hidden}
@@ -186,7 +184,24 @@ form.card,.done{padding:24px;border:1px solid var(--line);border-radius:18px;bac
 footer{border-top:1px solid var(--line);padding:26px 0;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
 footer a{color:var(--amber-hi)}
+
+/* ===== Motion (demos/motion.js). Text stays still; only photos, light and cards move. ===== */
+.hero-img{position:relative;overflow:hidden}
+.hero-img img,.feat-frame img{will-change:transform}
+.sweep-host::after{content:"";position:absolute;top:-25%;bottom:-25%;left:-45%;width:32%;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,231,186,.22) 45%,rgba(255,255,255,.28) 50%,rgba(255,231,186,.22) 55%,rgba(255,255,255,0));
+  transform:skewX(-14deg);mix-blend-mode:screen}
+[data-reveal]{transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0) * 90ms)}
+.m-on [data-reveal]:not(.is-in){opacity:0;transform:translateY(16px)}
+@media (prefers-reduced-motion:no-preference){
+  .hero-img.is-live img{animation:kb 26s ease-in-out infinite alternate}
+  .sweep-host.is-live::after,.feat-frame.is-on::after{animation:sweep 9s cubic-bezier(.45,0,.25,1) infinite 1.2s}
+  @keyframes kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.08) translate(-1.6%,-1%)}}
+  @keyframes sweep{0%{opacity:0;transform:skewX(-14deg) translateX(0)}6%{opacity:1}34%{opacity:1}40%{opacity:0;transform:skewX(-14deg) translateX(560%)}100%{opacity:0;transform:skewX(-14deg) translateX(560%)}}
+}
+@media (max-width:640px) and (prefers-reduced-motion:no-preference){.hero-img.is-live img{animation-duration:20s}}
 </style>
+<script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('m-on')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -201,7 +216,7 @@ footer a{color:var(--amber-hi)}
 <main id="main">
 <section class="hero" id="top">
   <div class="hero-in">
-    <picture class="hero-img">
+    <picture class="hero-img sweep-host" data-live>
       <source type="image/webp" srcset="showroom-720.webp 720w, showroom-1100.webp 1100w, showroom-1672.webp 1672w" sizes="(min-width:1672px) 1672px, 100vw">
       <img src="showroom-1100.webp" width="1672" height="941" alt="Five cars lined up outside a glass-fronted showroom at night: a white saloon, a silver SUV, a black saloon, a dark blue coupé and a white SUV" fetchpriority="high" decoding="async">
     </picture>
@@ -214,17 +229,17 @@ footer a{color:var(--amber-hi)}
     <p class="img-note">Concept imagery. The cars pictured are illustrative and are not the sample inventory below.</p>
   </div>
   <div class="facts wrap" role="list">
-    <div role="listitem"><b>180-point</b><span>inspection on every car</span></div>
-    <div role="listitem"><b>12 months</b><span>warranty included</span></div>
-    <div role="listitem"><b>7 days</b><span>exchange if it isn't right</span></div>
-    <div role="listitem"><b>Open pricing</b><span>no hidden fees</span></div>
+    <div role="listitem" data-reveal><b><span data-count="180">180</span>-point</b><span>inspection on every car</span></div>
+    <div role="listitem" data-reveal style="--d:1"><b><span data-count="12">12</span> months</b><span>warranty included</span></div>
+    <div role="listitem" data-reveal style="--d:2"><b><span data-count="7">7</span> days</b><span>exchange if it isn't right</span></div>
+    <div role="listitem" data-reveal style="--d:3"><b>Open pricing</b><span>no hidden fees</span></div>
   </div>
 </section>
 
 <section class="sec feat" id="featured" aria-labelledby="f-title">
   <div class="wrap feat-grid">
-    <figure class="feat-media">
-      <div class="feat-frame">
+    <figure class="feat-media" data-reveal>
+      <div class="feat-frame sweep-host">
         <img src="featured-gt-1100.webp" srcset="featured-gt-720.webp 720w, featured-gt-1100.webp 1100w, featured-gt-1600.webp 1600w" sizes="(min-width:1240px) 700px, (min-width:900px) 58vw, 100vw" width="1600" height="900" alt="A dark blue grand-touring coupé with tan leather seats, parked on stone paving outside a glass-fronted building" loading="lazy" decoding="async">
       </div>
       <figcaption>AI-generated concept imagery. Not a photo of a real vehicle or a specific manufacturer's model.</figcaption>
@@ -233,7 +248,7 @@ footer a{color:var(--amber-hi)}
       <p class="eyebrow">Featured &middot; Sample listing</p>
       <h2 id="f-title">Aureon GT Coupé</h2>
       <p class="feat-sub">2025 &middot; Coupé &middot; Midnight Blue</p>
-      <p class="feat-price">SAR 685,000<small>incl. registration</small></p>
+      <p class="feat-price">SAR <span data-count="685000">685,000</span><small>incl. registration</small></p>
       <p class="blurb">A long-bonnet grand tourer with adaptive suspension and a hand-stitched tan leather cabin.</p>
       <ul class="specs" aria-label="Key specifications"><li>4,200 km</li><li>540 hp</li><li>Rear-wheel drive</li></ul>
       <div class="actions"><button class="btn btn-a" type="button" data-open="gt">View details</button><a class="btn btn-l" href="#testdrive" data-book="gt">Book a test drive</a></div>
@@ -259,9 +274,9 @@ footer a{color:var(--amber-hi)}
   <div class="wrap">
     <div class="sec-head"><h2 id="why-title">Buying should feel as good as driving</h2></div>
     <div class="why-grid">
-      <article><p class="num">01</p><h3>Inspected, then inspected again</h3><p>Every car passes a 180-point check and comes with its full service history before it reaches the floor.</p></article>
-      <article><p class="num">02</p><h3>One price, shown openly</h3><p>The price on the card is the price you pay. Registration and handover are included.</p></article>
-      <article><p class="num">03</p><h3>Test drives that come to you</h3><p>Visit the showroom, or we bring the car to your home or office anywhere in Riyadh.</p></article>
+      <article data-reveal style="--d:0"><p class="num">01</p><h3>Inspected, then inspected again</h3><p>Every car passes a 180-point check and comes with its full service history before it reaches the floor.</p></article>
+      <article data-reveal style="--d:1"><p class="num">02</p><h3>One price, shown openly</h3><p>The price on the card is the price you pay. Registration and handover are included.</p></article>
+      <article data-reveal style="--d:2"><p class="num">03</p><h3>Test drives that come to you</h3><p>Visit the showroom, or we bring the car to your home or office anywhere in Riyadh.</p></article>
     </div>
   </div>
 </section>
@@ -362,7 +377,8 @@ footer a{color:var(--amber-hi)}
     $('maxOut').textContent=sar(state.max);
     $('count').innerHTML='<b>'+list.length+'</b> '+(list.length===1?'car':'cars')+' available';
     $('empty').hidden=list.length>0;
-    $('grid').innerHTML=list.map(function(c){return '<li class="car-card"><div class="car-art">'+art(c)+(c.tag?'<span class="badge">'+c.tag+'</span>':'')+'</div><div class="car-body"><p class="car-sub">'+c.year+' &middot; '+c.body+' &middot; '+c.colName+'</p><h3>'+c.name+'</h3><ul class="specs"><li>'+c.km.toLocaleString('en-US')+' km</li><li>'+c.fuel+'</li><li>'+c.power+'</li></ul><div class="car-foot"><p class="price">'+sar(c.price)+'<small>incl. registration</small></p><button class="btn btn-l btn-s" type="button" data-open="'+c.id+'">View details<span class="sr">: '+c.name+'</span></button></div></div></li>'}).join('');
+    $('grid').innerHTML=list.map(function(c,i){return '<li class="car-card" data-reveal style="--d:'+(i%3)+'"><div class="car-art">'+art(c)+(c.tag?'<span class="badge">'+c.tag+'</span>':'')+'</div><div class="car-body"><p class="car-sub">'+c.year+' &middot; '+c.body+' &middot; '+c.colName+'</p><h3>'+c.name+'</h3><ul class="specs"><li>'+c.km.toLocaleString('en-US')+' km</li><li>'+c.fuel+'</li><li>'+c.power+'</li></ul><div class="car-foot"><p class="price">'+sar(c.price)+'<small>incl. registration</small></p><button class="btn btn-l btn-s" type="button" data-open="'+c.id+'">View details<span class="sr">: '+c.name+'</span></button></div></div></li>'}).join('');
+    if(window.DemoMotion)DemoMotion.observe($('grid').children);
   }
   $('chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;state.body=b.dataset.b;[].forEach.call($('chips').children,function(x){x.setAttribute('aria-pressed',x===b)});render()});
   $('max').addEventListener('input',function(){state.max=+this.value;render()});
@@ -370,7 +386,7 @@ footer a{color:var(--amber-hi)}
   $('reset').addEventListener('click',function(){state={body:'All',max:900000,sort:'new'};$('max').value=900000;$('sort').value='new';[].forEach.call($('chips').children,function(x,i){x.setAttribute('aria-pressed',i===0)});render();$('chips').children[0].focus()});
   /* details dialog */
   var dlg=$('dlg'),cur=null,opener=null;
-  function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));$('d-pay').textContent=sar(m)+' per month'}
+  function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));var o=$('d-pay'),prev=parseFloat((o.textContent||'').replace(/[^0-9.]/g,''));if(window.DemoMotion&&o.dataset.car===cur.id)DemoMotion.tween(o,prev,m,function(v){return sar(v)+' per month'});else o.textContent=sar(m)+' per month';o.dataset.car=cur.id}
   document.addEventListener('click',function(e){var b=e.target.closest('[data-open]');if(!b)return;opener=b;cur=CARS.filter(function(c){return c.id===b.dataset.open})[0];
     $('d-art').innerHTML=art(cur,1);$('d-art').parentNode.classList.toggle('has-photo',!!cur.photo);$('d-sub').textContent=cur.year+' · '+cur.body+' · '+sar(cur.price);$('d-title').textContent=cur.name;$('d-blurb').textContent=cur.blurb;
     $('d-sheet').innerHTML=[['Mileage',cur.km.toLocaleString('en-US')+' km'],['Fuel',cur.fuel],['Power',cur.power],['Gearbox',cur.box],['Drive',cur.drive],['Colour',cur.colName]].map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'}).join('');
@@ -398,5 +414,6 @@ footer a{color:var(--amber-hi)}
   render();
 })();
 </script>
+<script src="../motion.js"></script>
 </body>
 </html>

@@ -66,16 +66,14 @@ p{margin:0}
   .img-note{position:absolute;right:16px;bottom:10px;padding:5px 10px;border-radius:999px;background:rgba(5,7,10,.7);color:#D5DAE3}
 }
 @media (min-width:1100px) and (prefers-reduced-motion:no-preference){
-  .hero-img img{animation:settle 1.8s cubic-bezier(.2,.7,.2,1) both}
   .hero-copy{animation:rise .9s .2s cubic-bezier(.2,.7,.2,1) both}
-  @keyframes settle{from{opacity:0;transform:scale(1.03)}to{opacity:1;transform:none}}
   @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 }
 .hero-in{overflow:hidden}
 .facts{padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-block:1px solid var(--line);position:relative;z-index:1}
 .facts div{background:var(--bg);padding:22px 20px}
 .facts b{display:block;font-size:clamp(22px,2.6vw,30px);font-weight:500;color:var(--amber-hi)}
-.facts span{font-size:14px;color:var(--muted)}
+.facts div>span{font-size:14px;color:var(--muted)}
 @media (max-width:760px){.facts{grid-template-columns:1fr 1fr}}
 /* sections */
 .sec{padding:clamp(56px,8vw,104px) 0;scroll-margin-top:60px}
@@ -103,7 +101,10 @@ select:focus,input:focus,textarea:focus{border-color:var(--amber)}
 .car-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--r);background:var(--card);overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
 .car-card:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 26px 50px -30px rgba(227,169,60,.5)}
 .car-art{aspect-ratio:16/9;background:radial-gradient(70% 80% at 50% 78%,rgba(255,255,255,.12),transparent 62%),linear-gradient(180deg,#171D28,#0C1016);position:relative}
-.car-art svg{position:absolute;inset:0;width:100%;height:100%}
+.car-art svg,.car-art>img{position:absolute;inset:0;width:100%;height:100%}
+.car-art{overflow:hidden}.car-art>img{object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.car-card:hover .car-art>img{transform:scale(1.04)}
+.ai-tag{position:absolute;right:10px;bottom:10px;z-index:1;font-size:11px;line-height:1.3;letter-spacing:.02em;padding:3px 8px;border-radius:999px;background:rgba(5,7,10,.6);color:#E8EBF0;backdrop-filter:blur(4px);pointer-events:none}
 .badge{position:absolute;left:12px;top:12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(5,7,10,.75);border:1px solid var(--line-2);color:var(--amber-hi)}
 .car-body{padding:18px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
 .car-body h3{font-size:21px;font-weight:500}
@@ -119,6 +120,34 @@ dialog::backdrop{background:rgba(3,4,6,.78);backdrop-filter:blur(4px)}
 .dlg{display:grid;grid-template-columns:1.15fr 1fr}
 .dlg-art{position:relative;min-height:280px;background:radial-gradient(70% 70% at 50% 76%,rgba(255,255,255,.14),transparent 62%),linear-gradient(180deg,#1A2130,#0B0E14)}
 .dlg-art svg{position:absolute;inset:0;width:100%;height:100%}
+.dlg.has-photo{grid-template-columns:1fr}
+.dlg.has-photo .dlg-art{min-height:0;background:#07090C}
+.dlg.has-photo .dlg-art img{display:block;width:100%;height:auto;aspect-ratio:16/9}
+.dlg.has-photo .dlg-body{display:grid;grid-template-columns:1.1fr 1fr;gap:16px 32px;align-items:start}
+.dlg.has-photo .dlg-body>*{grid-column:1}
+.dlg.has-photo .dlg-body>.fin,.dlg.has-photo .dlg-body>.actions{grid-column:2}
+.dlg.has-photo .dlg-body>.fin{grid-row:1/span 3}
+@media (max-width:820px){.dlg.has-photo .dlg-body{display:flex}}
+/* featured car: full 16:9 frame, slow push-in only while on screen */
+.feat{background:linear-gradient(180deg,#0A0C10,#0E1219 60%,#0A0C10)}
+.feat-grid{display:grid;grid-template-columns:1.45fr 1fr;gap:clamp(24px,4vw,56px);align-items:center}
+.feat-media{margin:0}
+.feat-frame{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line-2);box-shadow:0 40px 80px -40px #000,0 30px 70px -50px rgba(227,169,60,.45)}
+.feat-frame img{display:block;width:100%;height:auto;aspect-ratio:16/9;transform-origin:62% 58%}
+.feat-media figcaption{margin-top:10px;font-size:12.5px;color:var(--muted)}
+.feat-copy .eyebrow{margin-bottom:12px}
+.feat-copy h2{font-size:clamp(30px,3.4vw,44px);font-weight:600;letter-spacing:-.01em}
+.feat-sub{color:var(--muted);font-size:15px;margin-top:8px}
+.feat-price{font-size:26px;font-weight:600;margin:16px 0 0;color:var(--text)}
+.feat-price small{font-size:13px;font-weight:400;color:var(--muted);margin-left:6px}
+.feat-copy .blurb{color:#C9CED8;margin:12px 0 0;max-width:46ch}
+.feat-copy .specs{margin:16px 0 22px}
+@media (prefers-reduced-motion:no-preference){
+  .feat-frame img{transition:transform 1.2s ease}
+  .feat-frame.is-on img{animation:feat-zoom 22s ease-in-out infinite alternate}
+  @keyframes feat-zoom{from{transform:scale(1)}to{transform:scale(1.06) translate(-1%,-.6%)}}
+}
+@media (max-width:900px){.feat-grid{grid-template-columns:1fr}}
 .dlg-body{padding:26px 26px 28px;display:flex;flex-direction:column;gap:16px}
 .dlg-body h2{font-size:28px;font-weight:500}
 .x{position:absolute;right:12px;top:12px;z-index:2;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(5,7,10,.8);color:var(--text);font-size:22px;cursor:pointer}
@@ -155,7 +184,60 @@ form.card,.done{padding:24px;border:1px solid var(--line);border-radius:18px;bac
 footer{border-top:1px solid var(--line);padding:26px 0;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
 footer a{color:var(--amber-hi)}
+
+/* ===== Motion (demos/motion.js). Text stays still; only photos, light and cards move. ===== */
+.hero-img{position:relative;overflow:hidden}
+.hero-img img,.feat-frame img{will-change:transform}
+.sweep-host::after{content:"";position:absolute;top:-25%;bottom:-25%;left:-45%;width:32%;pointer-events:none;opacity:0;
+  background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,231,186,.22) 45%,rgba(255,255,255,.28) 50%,rgba(255,231,186,.22) 55%,rgba(255,255,255,0));
+  transform:skewX(-14deg);mix-blend-mode:screen}
+[data-reveal]{transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--d,0) * 90ms)}
+.m-on [data-reveal]:not(.is-in){opacity:0;transform:translateY(16px)}
+@media (prefers-reduced-motion:no-preference){
+  .hero-img.is-live img{animation:kb 26s ease-in-out infinite alternate}
+  .sweep-host.is-live::after,.feat-frame.is-on::after{animation:sweep 9s cubic-bezier(.45,0,.25,1) infinite 1.2s}
+  @keyframes kb{from{transform:scale(1) translate(0,0)}to{transform:scale(1.08) translate(-1.6%,-1%)}}
+  @keyframes sweep{0%{opacity:0;transform:skewX(-14deg) translateX(0)}6%{opacity:1}34%{opacity:1}40%{opacity:0;transform:skewX(-14deg) translateX(560%)}100%{opacity:0;transform:skewX(-14deg) translateX(560%)}}
+}
+@media (max-width:640px) and (prefers-reduced-motion:no-preference){.hero-img.is-live img{animation-duration:20s}}
+
+/* ===== Showroom navigation + detail gallery (11 Nov 2026) ===== */
+.feat-media,.feat-gallery,.gx{min-width:0;max-width:100%}
+.gx-thumbs{max-width:100%}
+.feat-gallery .gx-stage{border-radius:16px;border:1px solid var(--line-2);box-shadow:0 40px 80px -40px #000,0 30px 70px -50px rgba(227,169,60,.45)}
+.feat-gallery .gx-note{color:var(--muted)}
+.gx{--gx-accent:var(--amber)}
+.dnav{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:rgba(10,12,16,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.dnav-btn{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:none;color:var(--text);font:500 14px var(--f);cursor:pointer}
+.dnav-btn:hover{border-color:var(--amber);color:var(--amber-hi)}
+.dnav-pos{margin:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums}
+#dlg .dnav .x{position:static;flex:0 0 44px;margin-left:4px}
+.dnav-pos{flex:1;text-align:center}
+.dlg-art .gx-stage{border-radius:0}
+.dlg-art .gx-thumbs{padding:0 12px 4px}
+.dlg-art .gx-note{padding:0 14px 10px;color:var(--muted)}
+.dlg.has-photo .dlg-art{background:#07090C}
+.lineup-wrap{padding:6px 18px 20px;border-top:1px solid var(--line)}
+.lineup-h{margin:12px 0 10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.lineup{position:relative;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin}
+.lu{flex:0 0 150px;scroll-snap-align:start;text-align:left;padding:0;border:1px solid var(--line);border-radius:12px;background:#0C1016;color:var(--text);cursor:pointer;overflow:hidden;transition:border-color .2s,transform .2s}
+.lu:hover{transform:translateY(-2px);border-color:var(--line-2)}
+.lu[aria-current="true"]{border-color:var(--amber)}
+.lu-art{display:block;aspect-ratio:16/9;background:radial-gradient(70% 70% at 50% 76%,rgba(255,255,255,.12),transparent 62%),linear-gradient(180deg,#1A2130,#0B0E14);position:relative;overflow:hidden}
+.lu-art img,.lu-art svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lu-art .ai-tag{display:none}
+.lu b{display:block;padding:8px 10px 0;font-size:13.5px;font-weight:600}
+.lu small{display:block;padding:0 10px 9px;color:var(--muted);font-size:12px}
+@media (prefers-reduced-motion:no-preference){
+  #dlg .dlg{transition:opacity .28s ease,transform .28s ease}
+  #dlg .dlg.is-out{opacity:0;transform:translateX(var(--dx,-24px))}
+  #dlg .dlg.is-in{animation:car-in .55s cubic-bezier(.2,.7,.2,1)}
+  @keyframes car-in{from{opacity:0;transform:translateX(calc(var(--dx,-24px) * -1))}to{opacity:1;transform:none}}
+}
+@media (max-width:640px){.dnav{padding:8px 10px}.dnav-btn{padding:0 12px;font-size:13px}.dnav-pos{font-size:11px;letter-spacing:.08em}.lu{flex-basis:128px}}
+[hidden]{display:none!important}
 </style>
+<script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('m-on')</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -170,7 +252,7 @@ footer a{color:var(--amber-hi)}
 <main id="main">
 <section class="hero" id="top">
   <div class="hero-in">
-    <picture class="hero-img">
+    <picture class="hero-img sweep-host" data-live>
       <source type="image/webp" srcset="showroom-720.webp 720w, showroom-1100.webp 1100w, showroom-1672.webp 1672w" sizes="(min-width:1672px) 1672px, 100vw">
       <img src="showroom-1100.webp" width="1672" height="941" alt="Five cars lined up outside a glass-fronted showroom at night: a white saloon, a silver SUV, a black saloon, a dark blue coupé and a white SUV" fetchpriority="high" decoding="async">
     </picture>
@@ -183,10 +265,28 @@ footer a{color:var(--amber-hi)}
     <p class="img-note">Concept imagery. The cars pictured are illustrative and are not the sample inventory below.</p>
   </div>
   <div class="facts wrap" role="list">
-    <div role="listitem"><b>180-point</b><span>inspection on every car</span></div>
-    <div role="listitem"><b>12 months</b><span>warranty included</span></div>
-    <div role="listitem"><b>7 days</b><span>exchange if it isn't right</span></div>
-    <div role="listitem"><b>Open pricing</b><span>no hidden fees</span></div>
+    <div role="listitem" data-reveal><b><span data-count="180">180</span>-point</b><span>inspection on every car</span></div>
+    <div role="listitem" data-reveal style="--d:1"><b><span data-count="12">12</span> months</b><span>warranty included</span></div>
+    <div role="listitem" data-reveal style="--d:2"><b><span data-count="7">7</span> days</b><span>exchange if it isn't right</span></div>
+    <div role="listitem" data-reveal style="--d:3"><b>Open pricing</b><span>no hidden fees</span></div>
+  </div>
+</section>
+
+<section class="sec feat" id="featured" aria-labelledby="f-title">
+  <div class="wrap feat-grid">
+    <figure class="feat-media" data-reveal>
+      <div id="gtGallery" class="feat-gallery"><div class="feat-frame"><img src="featured-gt-1100.webp" width="1600" height="900" alt="A dark blue grand-touring coupé with tan leather seats, parked on stone paving outside a glass-fronted building" decoding="async"></div></div>
+      <figcaption>AI-generated concept imagery. Not a photo of a real vehicle or a specific manufacturer's model.</figcaption>
+    </figure>
+    <div class="feat-copy">
+      <p class="eyebrow">Featured &middot; Sample listing</p>
+      <h2 id="f-title">Aureon GT Coupé</h2>
+      <p class="feat-sub">2025 &middot; Coupé &middot; Midnight Blue</p>
+      <p class="feat-price">SAR <span data-count="685000">685,000</span><small>incl. registration</small></p>
+      <p class="blurb">A long-bonnet grand tourer with adaptive suspension and a hand-stitched tan leather cabin.</p>
+      <ul class="specs" aria-label="Key specifications"><li>4,200 km</li><li>540 hp</li><li>Rear-wheel drive</li></ul>
+      <div class="actions"><button class="btn btn-a" type="button" data-open="gt">View details</button><a class="btn btn-l" href="#testdrive" data-book="gt">Book a test drive</a><button class="btn btn-l" type="button" data-v360="aureon-gt" hidden>Explore in 360&deg;</button></div>
+    </div>
   </div>
 </section>
 
@@ -208,9 +308,9 @@ footer a{color:var(--amber-hi)}
   <div class="wrap">
     <div class="sec-head"><h2 id="why-title">Buying should feel as good as driving</h2></div>
     <div class="why-grid">
-      <article><p class="num">01</p><h3>Inspected, then inspected again</h3><p>Every car passes a 180-point check and comes with its full service history before it reaches the floor.</p></article>
-      <article><p class="num">02</p><h3>One price, shown openly</h3><p>The price on the card is the price you pay. Registration and handover are included.</p></article>
-      <article><p class="num">03</p><h3>Test drives that come to you</h3><p>Visit the showroom, or we bring the car to your home or office anywhere in Riyadh.</p></article>
+      <article data-reveal style="--d:0"><p class="num">01</p><h3>Inspected, then inspected again</h3><p>Every car passes a 180-point check and comes with its full service history before it reaches the floor.</p></article>
+      <article data-reveal style="--d:1"><p class="num">02</p><h3>One price, shown openly</h3><p>The price on the card is the price you pay. Registration and handover are included.</p></article>
+      <article data-reveal style="--d:2"><p class="num">03</p><h3>Test drives that come to you</h3><p>Visit the showroom, or we bring the car to your home or office anywhere in Riyadh.</p></article>
     </div>
   </div>
 </section>
@@ -252,6 +352,12 @@ footer a{color:var(--amber-hi)}
 <footer><div class="wrap"><span>© 2026 Aureon Motors (fictional). Concept demo.</span><span>Designed and built by <a href="https://www.kasimempire.com/portfolio">Kasim Elite Digital Global</a></span></div></footer>
 
 <dialog id="dlg" aria-labelledby="d-title">
+  <div class="dnav">
+    <button class="dnav-btn" type="button" id="d-prev" aria-label="Previous car"><span aria-hidden="true">&#8249;</span> Previous</button>
+    <p class="dnav-pos" id="d-pos" aria-live="polite"></p>
+    <button class="dnav-btn" type="button" id="d-next" aria-label="Next car">Next <span aria-hidden="true">&#8250;</span></button>
+    <button class="x" type="button" id="d-close" aria-label="Close details">&times;</button>
+  </div>
   <div class="dlg">
     <div class="dlg-art" id="d-art" aria-hidden="true"></div>
     <div class="dlg-body">
@@ -270,13 +376,14 @@ footer a{color:var(--amber-hi)}
       <div class="actions"><button class="btn btn-a" type="button" id="d-book">Book a test drive</button><button class="btn btn-l" type="button" id="d-close2">Keep browsing</button></div>
     </div>
   </div>
-  <button class="x" type="button" id="d-close" aria-label="Close details">&times;</button>
+  <div class="lineup-wrap"><p class="lineup-h">The showroom</p><div class="lineup" id="d-line" role="group" aria-label="All cars in this search"></div></div>
 </dialog>
 
+<script src="../gallery.js"></script>
 <script>
 (function(){
   var CARS=[
-    {id:'gt',name:'Aureon GT Coupé',year:2025,body:'Coupé',price:685000,km:4200,fuel:'Petrol',power:'540 hp',drive:'Rear-wheel',box:'8-speed auto',col:'#C98A22',colName:'Solar Bronze',tag:'New arrival',blurb:'A long-bonnet grand tourer with a twin-turbo V8, adaptive suspension and a hand-stitched cabin.'},
+    {id:'gt',photo:'featured-gt-card.webp',photoLarge:'featured-gt-1100.webp',srcset:'featured-gt-720.webp 720w, featured-gt-1100.webp 1100w, featured-gt-1600.webp 1600w',alt:'A dark blue grand-touring coupé with tan leather seats, parked on stone paving outside a glass-fronted building',views:[{label:'Full view'},{label:'Grille and headlights',x:.8,y:.6,s:2.1},{label:'Wheel detail',x:.52,y:.69,s:2.3},{label:'Tan leather cabin',x:.4,y:.35,s:2.2},{label:'Bonnet line',x:.7,y:.47,s:1.7}],name:'Aureon GT Coupé',year:2025,body:'Coupé',price:685000,km:4200,fuel:'Petrol',power:'540 hp',drive:'Rear-wheel',box:'8-speed auto',col:'#1C2742',colName:'Midnight Blue',tag:'New arrival',blurb:'A long-bonnet grand tourer with a twin-turbo V8, adaptive suspension and a hand-stitched tan leather cabin.'},
     {id:'sx',name:'Vanta SX',year:2024,body:'SUV',price:412000,km:18500,fuel:'Hybrid',power:'455 hp',drive:'All-wheel',box:'8-speed auto',col:'#2E3A4E',colName:'Midnight Steel',tag:'',blurb:'A seven-seat performance SUV with air suspension, a panoramic roof and a quiet hybrid drivetrain.'},
     {id:'e4',name:'Lumen E4',year:2025,body:'Saloon',price:298000,km:6100,fuel:'Electric',power:'402 hp',drive:'All-wheel',box:'Single-speed',col:'#DADFE8',colName:'Glacier White',tag:'Electric',blurb:'An electric saloon with a 520 km sample range, fast charging and a clean, screen-led interior.'},
     {id:'rs',name:'Corsa RS',year:2023,body:'Coupé',price:356000,km:27400,fuel:'Petrol',power:'420 hp',drive:'Rear-wheel',box:'7-speed dual-clutch',col:'#B3261E',colName:'Rosso Fuoco',tag:'',blurb:'A light, sharp two-door built for mountain roads, with carbon seats and a sports exhaust.'},
@@ -291,7 +398,8 @@ footer a{color:var(--amber-hi)}
     'SUV':{b:'M20 112 L22 84 Q24 74 50 70 L95 66 Q120 34 170 32 L290 32 Q320 34 335 66 L372 74 Q384 78 384 100 L384 116 L20 116 Z',w:'M112 64 Q130 42 170 40 L285 40 Q305 42 318 64 Z',p:'M215 40 L215 64'},
     'Saloon':{b:'M20 110 Q22 94 48 90 L110 82 Q145 54 195 52 L262 52 Q300 56 322 80 L362 88 Q382 92 384 108 L384 116 L20 116 Z',w:'M126 80 Q152 60 196 59 L258 59 Q285 62 304 80 Z',p:'M222 59 L222 80'}
   };
-  function art(c){var s=SHAPES[c.body],g='g'+c.id+Math.random().toString(36).slice(2,6);
+  var AI='<span class="ai-tag">AI-generated concept imagery</span>';
+  function art(c,big){if(c.photo)return '<img src="'+(big?c.photoLarge:c.photo)+'" width="1600" height="900" alt="" decoding="async"'+(big?'':' loading="lazy"')+'>'+AI;var s=SHAPES[c.body],g='g'+c.id+Math.random().toString(36).slice(2,6);
     return '<svg viewBox="-20 -10 444 170" preserveAspectRatio="xMidYMid meet" focusable="false" aria-hidden="true"><defs><linearGradient id="'+g+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".35" stop-color="'+c.col+'"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient></defs>'+
     '<ellipse cx="202" cy="124" rx="182" ry="7" fill="#000" opacity=".55"/>'+
     '<path d="'+s.b+'" fill="'+c.col+'"/><path d="'+s.b+'" fill="url(#'+g+')" opacity=".55"/>'+
@@ -310,7 +418,9 @@ footer a{color:var(--amber-hi)}
     $('maxOut').textContent=sar(state.max);
     $('count').innerHTML='<b>'+list.length+'</b> '+(list.length===1?'car':'cars')+' available';
     $('empty').hidden=list.length>0;
-    $('grid').innerHTML=list.map(function(c){return '<li class="car-card"><div class="car-art">'+art(c)+(c.tag?'<span class="badge">'+c.tag+'</span>':'')+'</div><div class="car-body"><p class="car-sub">'+c.year+' &middot; '+c.body+' &middot; '+c.colName+'</p><h3>'+c.name+'</h3><ul class="specs"><li>'+c.km.toLocaleString('en-US')+' km</li><li>'+c.fuel+'</li><li>'+c.power+'</li></ul><div class="car-foot"><p class="price">'+sar(c.price)+'<small>incl. registration</small></p><button class="btn btn-l btn-s" type="button" data-open="'+c.id+'">View details<span class="sr">: '+c.name+'</span></button></div></div></li>'}).join('');
+    shown=list;
+    $('grid').innerHTML=list.map(function(c,i){return '<li class="car-card" data-reveal style="--d:'+(i%3)+'"><div class="car-art">'+art(c)+(c.tag?'<span class="badge">'+c.tag+'</span>':'')+'</div><div class="car-body"><p class="car-sub">'+c.year+' &middot; '+c.body+' &middot; '+c.colName+'</p><h3>'+c.name+'</h3><ul class="specs"><li>'+c.km.toLocaleString('en-US')+' km</li><li>'+c.fuel+'</li><li>'+c.power+'</li></ul><div class="car-foot"><p class="price">'+sar(c.price)+'<small>incl. registration</small></p><button class="btn btn-l btn-s" type="button" data-open="'+c.id+'">View details<span class="sr">: '+c.name+'</span></button></div></div></li>'}).join('');
+    if(window.DemoMotion)DemoMotion.observe($('grid').children);
   }
   $('chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;state.body=b.dataset.b;[].forEach.call($('chips').children,function(x){x.setAttribute('aria-pressed',x===b)});render()});
   $('max').addEventListener('input',function(){state.max=+this.value;render()});
@@ -318,11 +428,38 @@ footer a{color:var(--amber-hi)}
   $('reset').addEventListener('click',function(){state={body:'All',max:900000,sort:'new'};$('max').value=900000;$('sort').value='new';[].forEach.call($('chips').children,function(x,i){x.setAttribute('aria-pressed',i===0)});render();$('chips').children[0].focus()});
   /* details dialog */
   var dlg=$('dlg'),cur=null,opener=null;
-  function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));$('d-pay').textContent=sar(m)+' per month'}
-  $('grid').addEventListener('click',function(e){var b=e.target.closest('[data-open]');if(!b)return;opener=b;cur=CARS.filter(function(c){return c.id===b.dataset.open})[0];
-    $('d-art').innerHTML=art(cur);$('d-sub').textContent=cur.year+' · '+cur.body+' · '+sar(cur.price);$('d-title').textContent=cur.name;$('d-blurb').textContent=cur.blurb;
-    $('d-sheet').innerHTML=[['Mileage',cur.km.toLocaleString('en-US')+' km'],['Fuel',cur.fuel],['Power',cur.power],['Gearbox',cur.box],['Drive',cur.drive],['Colour',cur.colName]].map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'}).join('');
-    pay();if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')});
+  function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));var o=$('d-pay'),prev=parseFloat((o.textContent||'').replace(/[^0-9.]/g,''));if(window.DemoMotion&&o.dataset.car===cur.id)DemoMotion.tween(o,prev,m,function(v){return sar(v)+' per month'});else o.textContent=sar(m)+' per month';o.dataset.car=cur.id}
+  var shown=CARS.slice(),gx=null,swapT=0;
+  function gal(c,el,auto,extra){return DemoGallery.mount(el,Object.assign({src:c.photoLarge,srcset:c.srcset,sizes:'(min-width:1000px) 980px, 100vw',thumb:c.photo,alt:c.alt||'',views:c.views,auto:auto,label:c.name+' photo gallery',badge:'<span class="ai-tag">AI-generated concept imagery</span>'},extra||{}))}
+  function fill(c){
+    if(gx){gx.destroy();gx=null}
+    var pane=$('d-art');pane.parentNode.classList.toggle('has-photo',!!c.photo);
+    if(c.photo&&c.views&&window.DemoGallery){pane.removeAttribute('aria-hidden');gx=gal(c,pane,false)}else{pane.setAttribute('aria-hidden','true');pane.innerHTML=art_(c)}
+    $('d-sub').textContent=c.year+' · '+c.body+' · '+sar(c.price);$('d-title').textContent=c.name;$('d-blurb').textContent=c.blurb;
+    $('d-sheet').innerHTML=[['Mileage',c.km.toLocaleString('en-US')+' km'],['Fuel',c.fuel],['Power',c.power],['Gearbox',c.box],['Drive',c.drive],['Colour',c.colName]].map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'}).join('');
+    var list=shown.indexOf(c)>-1?shown:CARS,k=list.indexOf(c);
+    $('d-pos').textContent=(k+1)+' of '+list.length;
+    $('d-line').innerHTML=list.map(function(x){return '<button type="button" class="lu" data-go="'+x.id+'"'+(x===c?' aria-current="true"':'')+'><span class="lu-art" aria-hidden="true">'+art(x)+'</span><b>'+x.name+'</b><small>'+sar(x.price)+'</small></button>'}).join('');
+    var line=$('d-line'),on=line.querySelector('[aria-current]');if(on)line.scrollLeft=on.offsetLeft-(line.clientWidth-on.clientWidth)/2;
+    pay();
+  }
+  function art_(c){return art(c,1)}
+  function step(dir,target){
+    var list=shown.indexOf(cur)>-1?shown:CARS,k=list.indexOf(cur),next=target||list[(k+dir+list.length)%list.length];
+    if(next===cur)return;
+    var box=dlg.querySelector('.dlg'),rm=window.DemoMotion&&DemoMotion.reduced();
+    box.style.setProperty('--dx',dir<0?'24px':'-24px');
+    clearTimeout(swapT);box.classList.remove('is-in');
+    if(rm){cur=next;fill(cur);return}
+    box.classList.add('is-out');
+    swapT=setTimeout(function(){cur=next;fill(cur);box.classList.remove('is-out');void box.offsetWidth;box.classList.add('is-in')},280);
+  }
+  document.addEventListener('click',function(e){var b=e.target.closest('[data-open]');if(!b)return;opener=b;cur=CARS.filter(function(c){return c.id===b.dataset.open})[0];
+    fill(cur);if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');dlg.scrollTop=0});
+  $('d-prev').addEventListener('click',function(){step(-1)});
+  $('d-next').addEventListener('click',function(){step(1)});
+  $('d-line').addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(!b)return;var t=CARS.filter(function(c){return c.id===b.dataset.go})[0];var list=shown.indexOf(cur)>-1?shown:CARS;step(list.indexOf(t)<list.indexOf(cur)?-1:1,t);dlg.scrollTo({top:0,behavior:'smooth'})});
+  dlg.addEventListener('keydown',function(e){if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&!/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)){e.preventDefault();step(e.key==='ArrowRight'?1:-1)}});
   function close(){if(dlg.close)dlg.close();else dlg.removeAttribute('open')}
   dlg.addEventListener('close',function(){if(opener&&document.contains(opener))opener.focus()});
   $('d-close').addEventListener('click',close);$('d-close2').addEventListener('click',close);
@@ -339,8 +476,15 @@ footer a{color:var(--amber-hi)}
     $('tdSummary').textContent='Reference TD-'+Math.floor(10000+Math.random()*89999)+': '+c.name+' on '+new Date(f.elements.date.value+'T12:00').toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'})+', '+f.elements.where.value.toLowerCase()+'. An advisor would confirm the time at '+em+'. This is a demo, so nothing was sent.';
     f.style.display='none';ok.style.display='block';ok.focus()});
   $('tdAgain').addEventListener('click',function(){f.reset();ok.style.display='none';f.style.display='block';$('t-name').focus()});
+  /* featured car: book button pre-selects it; slow zoom runs only while visible */
+  [].forEach.call(document.querySelectorAll('[data-book]'),function(a){a.addEventListener('click',function(){$('t-car').value=a.dataset.book})});
+  if(window.DemoGallery)gal(CARS[0],$('gtGallery'),true,{stageClass:'feat-frame sweep-host',sizes:'(min-width:1240px) 700px, (min-width:900px) 58vw, 100vw',src:'featured-gt-1100.webp',thumb:'featured-gt-720.webp',badge:''});
+  var ff=document.querySelector('.feat-frame');
+  if(ff&&'IntersectionObserver' in window)new IntersectionObserver(function(es){ff.classList.toggle('is-on',es[0].isIntersecting)}).observe(ff);
   render();
 })();
 </script>
+<script src="../motion.js"></script>
+<script type="module" src="../viewer360/viewer360.js"></script>
 </body>
 </html>

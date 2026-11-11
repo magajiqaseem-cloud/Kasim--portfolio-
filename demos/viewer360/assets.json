@@ -1,0 +1,4 @@
+{
+  "_readme": "Add one entry per subject. Each needs EITHER a GLB model OR a full turntable sequence (24+ evenly spaced frames, same subject, same lighting). The matching '360°' button on the demo page appears automatically once an entry is filled in. Paths are relative to this folder.",
+  "_example": { "title": "Aureon GT Coupé", "model": "assets/aureon-gt.glb", "frames": ["assets/aureon-gt/01.webp", "..."], "note": "AI-generated 3D concept model. Not a real vehicle." }
+}

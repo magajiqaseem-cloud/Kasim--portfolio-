@@ -57,7 +57,7 @@ function build() {
     <p class="v360-note"></p>`;
   document.body.appendChild(dlg);
   dlg.querySelector('.v360-x').addEventListener('click', () => dlg.close());
-  dlg.addEventListener('close', () => { if (current) { current.destroy(); current = null; } });
+  dlg.addEventListener('close', () => { if (!dlg.open && current) { current.destroy(); current = null; } });
   dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
   dlg.querySelector('.v360-bar').addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b || !current) return;
@@ -67,7 +67,7 @@ function build() {
     if (a === 'reset') current.reset();
     if (a === 'auto') current.setAuto(!current.auto);
   });
-  dlg.querySelector('.v360-stage').addEventListener('keydown', e => {
+  dlg.addEventListener('keydown', e => {
     if (!current) return;
     if (e.key === 'ArrowLeft') { e.preventDefault(); current.turn(-15); }
     if (e.key === 'ArrowRight') { e.preventDefault(); current.turn(15); }

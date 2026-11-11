@@ -59,19 +59,19 @@
         .then(function(res){
           if(res.ok){
             form.reset();
-            status('ok','<b>Thank you, your message has been sent.</b> I reply personally to every enquiry. For anything urgent, <a href="https://wa.me/2347080083489" target="_blank" rel="noopener">message me on WhatsApp</a>.');
+            status('ok','<b>Thank you, your message has been sent.</b> I reply personally to every enquiry. For anything urgent, <a href="https://wa.me/2347033255503" target="_blank" rel="noopener">message me on WhatsApp</a>.');
             if(window.gtag)gtag('event','generate_lead',{method:'contact_form'});
           }else{
             var why=(res.d&&res.d.errors&&res.d.errors.length)?res.d.errors.map(function(x){return x.message}).join(' '):'';
-            status('bad','<b>Sorry, your message didn’t send.</b> '+(why?why+' ':'')+'Please try again, or reach me on <a href="https://wa.me/2347080083489" target="_blank" rel="noopener">WhatsApp</a> or at <a href="mailto:hello@kasimempire.com">hello@kasimempire.com</a>.');
+            status('bad','<b>Sorry, your message didn’t send.</b> '+(why?why+' ':'')+'Please try again, or reach me on <a href="https://wa.me/2347033255503" target="_blank" rel="noopener">WhatsApp</a> or at <a href="mailto:hello@kasimempire.com">hello@kasimempire.com</a>.');
           }
         })
         .catch(function(){
-          status('bad','<b>Sorry, your message didn’t send</b> (no connection). Please try again, or reach me on <a href="https://wa.me/2347080083489" target="_blank" rel="noopener">WhatsApp</a> or at <a href="mailto:hello@kasimempire.com">hello@kasimempire.com</a>.');
+          status('bad','<b>Sorry, your message didn’t send</b> (no connection). Please try again, or reach me on <a href="https://wa.me/2347033255503" target="_blank" rel="noopener">WhatsApp</a> or at <a href="mailto:hello@kasimempire.com">hello@kasimempire.com</a>.');
         })
         .then(function(){btn.disabled=false;btn.textContent=label;$('f-status').scrollIntoView({block:'nearest',behavior:'smooth'})});
     });
-    $('f-wa').addEventListener('click',function(){if(!check(false))return;window.open('https://wa.me/2347080083489?text='+encodeURIComponent(compose()),'_blank','noopener')});
+    $('f-wa').addEventListener('click',function(){if(!check(false))return;window.open('https://wa.me/2347033255503?text='+encodeURIComponent(compose()),'_blank','noopener')});
   }
 })();
       
@@ -145,10 +145,10 @@
     btn.disabled=true;btn.textContent='Sending…';
     fetch(f.action,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}})
       .then(function(r){
-        if(r.ok){f.reset();say('ok','<b>Thank you, your request is in.</b> Your three fixes will arrive by email within 48 hours. For anything urgent, <a href="https://wa.me/2347080083489" target="_blank" rel="noopener">message on WhatsApp</a>.');if(window.gtag)gtag('event','generate_lead',{method:'free_review_form'})}
-        else{say('bad','<b>Sorry, that didn’t send.</b> Please try again, or send your link on <a href="https://wa.me/2347080083489" target="_blank" rel="noopener">WhatsApp</a> or to <a href="mailto:hello@kasimempire.com">hello@kasimempire.com</a>.')}
+        if(r.ok){f.reset();say('ok','<b>Thank you, your request is in.</b> Your three fixes will arrive by email within 48 hours. For anything urgent, <a href="https://wa.me/2347033255503" target="_blank" rel="noopener">message on WhatsApp</a>.');if(window.gtag)gtag('event','generate_lead',{method:'free_review_form'})}
+        else{say('bad','<b>Sorry, that didn’t send.</b> Please try again, or send your link on <a href="https://wa.me/2347033255503" target="_blank" rel="noopener">WhatsApp</a> or to <a href="mailto:hello@kasimempire.com">hello@kasimempire.com</a>.')}
       })
-      .catch(function(){say('bad','<b>Sorry, that didn’t send</b> (no connection). Please try again, or send your link on <a href="https://wa.me/2347080083489" target="_blank" rel="noopener">WhatsApp</a> or to <a href="mailto:hello@kasimempire.com">hello@kasimempire.com</a>.')})
+      .catch(function(){say('bad','<b>Sorry, that didn’t send</b> (no connection). Please try again, or send your link on <a href="https://wa.me/2347033255503" target="_blank" rel="noopener">WhatsApp</a> or to <a href="mailto:hello@kasimempire.com">hello@kasimempire.com</a>.')})
       .then(function(){btn.disabled=false;btn.textContent=label});
   });
 })();

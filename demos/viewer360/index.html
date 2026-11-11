@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>360° viewer test bench (preview only)</title>
+<style>
+body{margin:0;background:#050505;color:#fff;font:400 16px/1.6 Inter,system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:48px 20px 80px}
+h1{font:700 clamp(30px,5vw,44px)/1.1 "Cormorant Garamond",Georgia,serif;margin:0 0 12px}
+h1 span{color:#E2BE52}
+p,li{color:rgba(255,255,255,.8)}
+.tag{display:inline-block;margin-bottom:18px;padding:5px 12px;border-radius:999px;border:1px solid rgba(212,175,55,.5);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#E2BE52}
+.row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0}
+button{min-height:48px;padding:0 20px;border-radius:999px;border:0;font:600 15px/1 inherit;cursor:pointer;background:linear-gradient(180deg,#F1D27A,#D4AF37);color:#0b0b0b}
+button.alt{background:none;color:#fff;border:1px solid rgba(255,255,255,.3)}
+.box{margin-top:30px;padding:20px 22px;border-left:2px solid #D4AF37;background:rgba(255,255,255,.03);border-radius:0 14px 14px 0}
+code{color:#9CC3FF}
+</style>
+</head>
+<body>
+<main>
+  <span class="tag">Preview only &middot; not linked from the site</span>
+  <h1>360&deg; viewer <span>test bench</span></h1>
+  <p>This page proves the 360&deg; viewer that is built into the Aureon and Palmstone demos. The object below is a neutral test model made for checking the controls, not a car or a property. Try it on a phone: swipe to turn it, leave it alone and it turns slowly by itself.</p>
+  <div class="row">
+    <button type="button" id="m">Open the 3D model view</button>
+    <button type="button" class="alt" id="f">Open the image-sequence view</button>
+  </div>
+  <div class="box">
+    <p><b>What the demos need to switch their 360&deg; buttons on</b></p>
+    <ul>
+      <li><b>Car (Aureon GT Coup&eacute;):</b> one GLB model of that one car, or 36 to 72 photos/renders taken at equal steps all the way round it, same light, same background.</li>
+      <li><b>Estate (Palmstone waterfront villa):</b> one GLB model of that one building and its grounds, or a full set of matching exterior frames around it.</li>
+      <li>Add the files under <code>demos/viewer360/assets/</code> and an entry in <code>assets.json</code>. The buttons appear by themselves.</li>
+    </ul>
+  </div>
+</main>
+<script type="module">
+import { open } from './viewer360.js';
+const frames = Array.from({length: 36}, (_, i) => 'test/frames/' + String(i + 1).padStart(2, '0') + '.webp');
+document.getElementById('m').onclick = () => open({ title: 'Test model', subtitle: '3D model view, rendered live', model: 'test/test-emblem.glb', note: 'Neutral test object for checking controls.' });
+document.getElementById('f').onclick = () => open({ title: 'Test model', subtitle: 'Image-sequence view, 36 frames', frames, note: 'The same object as 36 pre-rendered frames: lighter for phones.' });
+</script>
+</body>
+</html>

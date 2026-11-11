@@ -1,0 +1,171 @@
+/* =========================================================
+   Cinematic hero (branch: upgrade/photo-showroom, 11 Nov 2026)
+   Bold luxury headline with a gold shine, blue accents on a
+   black stage, and a crossfading showcase of cars, estates
+   and interface concepts. Loaded after home-upgrade.css.
+   Only opacity and transform animate, so text never moves.
+   ========================================================= */
+
+/* ---------- black stage, blue accents ---------- */
+.hero{background:#030303}
+.hero > .cave{opacity:.78}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(42% 52% at 76% 42%,rgba(0,56,168,.30),transparent 70%),
+    radial-gradient(30% 40% at 12% 18%,rgba(212,175,55,.07),transparent 70%),
+    linear-gradient(180deg,rgba(3,3,3,.55),rgba(3,3,3,0) 30%,rgba(3,3,3,0) 70%,#030303)}
+
+/* ---------- headline ---------- */
+.hero h1.hero-title{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(46px,5.1vw,80px);line-height:.98;letter-spacing:-.02em;
+  max-width:13ch;color:#fff;
+  text-shadow:0 2px 30px rgba(0,0,0,.55)}
+.hero h1.hero-title .gold-text{
+  display:inline;
+  background-image:linear-gradient(105deg,#B8860B 0%,#D4AF37 22%,#F6DE8D 38%,#FFF6D2 46%,#F1D27A 54%,#D4AF37 70%,#A97C0F 100%);
+  background-size:220% 100%;background-position:100% 0;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:none;filter:drop-shadow(0 6px 24px rgba(212,175,55,.22))}
+/* blue-to-gold rule under the headline */
+.hero h1.hero-title::after{content:"";display:block;width:96px;height:3px;margin:22px 0 4px;border-radius:3px;
+  background:linear-gradient(90deg,#0038A8,#3B82F6 45%,#D4AF37)}
+.hero .lede{font-size:clamp(17px,1.25vw,19px);color:rgba(255,255,255,.84)}
+.hero .lede strong{color:#fff}
+
+@media (prefers-reduced-motion:no-preference){
+  /* the light runs across the gold words, then rests */
+  .hero h1.hero-title .gold-text{animation:gold-shine 7s 1.2s cubic-bezier(.45,0,.25,1) infinite}
+  @keyframes gold-shine{0%{background-position:100% 0}38%,100%{background-position:0 0}}
+}
+
+/* ---------- showcase ---------- */
+.hero .hero-grid{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}
+.cine{position:relative;margin:0;isolation:isolate}
+.cine-glow{position:absolute;inset:6% -4% 10%;z-index:-1;border-radius:40px;
+  background:radial-gradient(60% 60% at 50% 55%,rgba(0,56,168,.55),transparent 72%),radial-gradient(40% 30% at 50% 100%,rgba(212,175,55,.28),transparent 70%);
+  filter:blur(34px)}
+.cine-stage{position:relative;aspect-ratio:16/11;overflow:hidden;border-radius:22px;background:#07080b;
+  border:1px solid rgba(212,175,55,.42);
+  box-shadow:inset 0 1px 0 rgba(255,231,160,.25),0 0 0 1px #000,0 50px 100px -40px rgba(0,0,0,.95),0 0 70px -26px rgba(212,175,55,.45)}
+.cine-stage{clip-path:inset(0 round 22px)}
+.cine-slide.is-prev .cine-cap,.cine-slide.is-prev .cine-ai{opacity:0;transition:opacity .3s ease}
+.cine-link span[aria-hidden]{margin-left:6px}
+.cine-stage::before{content:"";position:absolute;left:14%;right:14%;top:0;height:1px;z-index:6;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(255,223,120,.9),transparent)}
+
+.cine-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1.4s cubic-bezier(.4,0,.2,1),visibility 0s 1.4s}
+.cine-slide.is-on{opacity:1;visibility:visible;transition:opacity 1.4s cubic-bezier(.4,0,.2,1),visibility 0s}
+/* the outgoing slide stays fully visible underneath while the new one fades in: no blank frames */
+.cine-slide.is-prev{opacity:1;visibility:visible;transition:none;z-index:0}
+.cine-slide.is-on{z-index:1}
+.cine-slide > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 55%}
+
+/* interface concepts sit in a floating browser frame */
+.cine-ui{background:
+  radial-gradient(70% 60% at 50% 40%,rgba(0,56,168,.42),transparent 70%),
+  radial-gradient(50% 40% at 50% 105%,rgba(212,175,55,.22),transparent 70%),#05060a}
+.cine-ui-frame{position:absolute;left:8%;right:8%;top:9%;border-radius:12px;overflow:hidden;background:#0b0d12;
+  border:1px solid rgba(255,255,255,.12);box-shadow:0 40px 70px -30px rgba(0,0,0,.95),0 0 0 1px rgba(0,0,0,.6),0 0 46px -14px rgba(59,130,246,.55);
+  transform-origin:50% 60%}
+.cine-ui-bar{display:flex;align-items:center;gap:5px;height:22px;padding:0 10px;background:#12141a;border-bottom:1px solid rgba(255,255,255,.06)}
+.cine-ui-bar i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.cine-ui-bar i:first-child{background:#D4AF37}
+.cine-ui-bar span{flex:1;margin-left:8px;height:14px;border-radius:999px;background:rgba(255,255,255,.06);font:500 9px/14px var(--sans);text-align:center;color:rgba(255,255,255,.55);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px}
+.cine-ui-frame img{filter:brightness(1.14) contrast(1.04);display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:top center}
+
+/* caption */
+.cine-cap{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:56px 22px 18px;
+  background:linear-gradient(180deg,transparent,rgba(3,3,3,.72) 45%,rgba(3,3,3,.92))}
+.cine-kick{margin:0 0 3px;font:600 11px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:#E2BE52}
+.cine-title{margin:0;font:600 clamp(18px,1.6vw,23px)/1.2 var(--serif);color:#fff;max-width:28ch}
+.cine-link{display:inline-flex;align-items:center;min-height:36px;margin-top:8px;padding:0 14px;border-radius:999px;
+  font:600 13px/1 var(--sans);color:#0b0b0b;background:linear-gradient(180deg,#F1D27A,#D4AF37);text-decoration:none;
+  box-shadow:0 8px 24px -10px rgba(212,175,55,.8)}
+.cine-link:hover{background:linear-gradient(180deg,#FFE39A,#E2BE52)}
+.cine-ai{position:absolute;right:12px;top:12px;z-index:3;padding:4px 10px;border-radius:999px;font:500 11px/1.3 var(--sans);
+  color:#E8EBF0;background:rgba(3,3,3,.6);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+
+/* light sweep across the frame on each change, and a soft vignette */
+.cine-sweep{position:absolute;inset:-20% -60%;z-index:2;pointer-events:none;opacity:0;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,236,180,.20) 48%,rgba(255,255,255,.32) 50%,rgba(255,236,180,.18) 52%,transparent 60%);
+  mix-blend-mode:screen;transform:translateX(-60%)}
+.cine-vignette{position:absolute;inset:0;z-index:2;pointer-events:none;box-shadow:inset 0 0 90px rgba(0,0,0,.55)}
+
+/* controls */
+.cine-controls{display:flex;align-items:center;gap:14px;margin-top:14px}
+.cine-segs{display:flex;gap:6px;flex:1}
+.cine-seg{position:relative;flex:1;height:24px;padding:0;border:0;background:none;cursor:pointer}
+.cine-seg i{position:absolute;left:0;right:0;top:11px;height:2px;border-radius:2px;background:rgba(255,255,255,.18);overflow:hidden}
+.cine-seg i::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#D4AF37,#F1D27A);transform:scaleX(0);transform-origin:0 50%}
+.cine-seg.is-done i::after{transform:scaleX(1)}
+.cine-seg.is-on i::after{transform:scaleX(1)}
+.cine-pause{flex:0 0 36px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(212,175,55,.5);background:rgba(5,5,5,.6);cursor:pointer;display:grid;place-items:center}
+.cine-pause span{display:block;width:10px;height:12px;border-left:3px solid #E2BE52;border-right:3px solid #E2BE52}
+.cine-pause[aria-pressed="true"] span{width:0;height:0;border:0;border-left:11px solid #E2BE52;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.cine-note{margin:10px 0 0;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.55)}
+.no-motion .cine-pause,.cine:not(.is-auto) .cine-pause{display:none}
+
+@media (prefers-reduced-motion:no-preference){
+  .cine-seg.is-on.is-run i::after{transform:scaleX(0);animation:seg-fill var(--dur,6.5s) linear forwards}
+  .cine.is-paused .cine-seg.is-on.is-run i::after{animation-play-state:paused}
+  @keyframes seg-fill{to{transform:scaleX(1)}}
+
+  /* slow camera moves, one per slide, restarted each time a slide comes on */
+  .cine.is-live .cine-slide.is-on > img,.cine.is-live .cine-slide.is-prev > img{animation-duration:9s;animation-timing-function:cubic-bezier(.3,0,.45,1);animation-fill-mode:both}
+  .cine.is-live .cine-slide:is(.is-on,.is-prev)[data-kb="in"] > img{animation-name:kb-in}
+  .cine.is-live .cine-slide:is(.is-on,.is-prev)[data-kb="out"] > img{animation-name:kb-out}
+  .cine.is-live .cine-slide:is(.is-on,.is-prev)[data-kb="left"] > img{animation-name:kb-left}
+  .cine.is-live .cine-slide:is(.is-on,.is-prev)[data-kb="right"] > img{animation-name:kb-right}
+  .cine.is-live .cine-slide.cine-ui:is(.is-on,.is-prev) .cine-ui-frame{animation:ui-drift 9s cubic-bezier(.3,0,.45,1) both}
+  .cine.is-live .cine-slide.cine-ui:is(.is-on,.is-prev)[data-kb="rise"] .cine-ui-frame{animation-name:ui-rise}
+  .cine.is-paused .cine-slide > img,.cine.is-paused .cine-ui-frame{animation-play-state:paused}
+  @keyframes kb-in{from{transform:scale(1.02)}to{transform:scale(1.12) translate3d(-1.2%,-.8%,0)}}
+  @keyframes kb-out{from{transform:scale(1.13) translate3d(1%,-.6%,0)}to{transform:scale(1.02)}}
+  @keyframes kb-left{from{transform:scale(1.1) translate3d(2.6%,0,0)}to{transform:scale(1.1) translate3d(-2.6%,-.6%,0)}}
+  @keyframes kb-right{from{transform:scale(1.1) translate3d(-2.6%,-.4%,0)}to{transform:scale(1.1) translate3d(2.6%,0,0)}}
+  @keyframes ui-drift{from{transform:perspective(1200px) rotateY(-5deg) rotateX(2deg) translate3d(-1.5%,2%,0) scale(.97)}to{transform:perspective(1200px) rotateY(3deg) rotateX(0) translate3d(1%,-1%,0) scale(1.02)}}
+  @keyframes ui-rise{from{transform:perspective(1200px) rotateX(6deg) translate3d(0,5%,0) scale(.96)}to{transform:perspective(1200px) rotateX(0) translate3d(0,-1%,0) scale(1.02)}}
+
+  .cine-sweep.is-run{animation:sweep-run 1.9s cubic-bezier(.4,0,.2,1) both}
+  @keyframes sweep-run{0%{opacity:0;transform:translateX(-60%)}20%{opacity:1}80%{opacity:1}100%{opacity:0;transform:translateX(60%)}}
+  .cine.is-live .cine-slide.is-on .cine-cap > *{animation:cap-in .9s cubic-bezier(.2,.7,.2,1) both}
+  .cine.is-live .cine-slide.is-on .cine-cap > :nth-child(2){animation-delay:.12s}
+  .cine.is-live .cine-slide.is-on .cine-cap > :nth-child(3){animation-delay:.24s}
+  @keyframes cap-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .cine{animation:cine-in 1.2s .2s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes cine-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+}
+
+/* old laptop/phone mockup no longer in the hero */
+.hero .devices{display:none}
+
+/* ---------- layout ---------- */
+.demo-links{margin:18px 0 0}
+.hero-promise{margin-left:0}
+@media (max-width:1180px){.hero h1.hero-title{font-size:clamp(44px,5.4vw,66px)}}
+@media (max-width:880px){
+  /* phones and tablets: headline first, then the showcase, then the intro and buttons */
+  .hero-copy > .hero-place{order:1}
+  .hero-copy > .hero-kicker{order:2}
+  .hero-copy > .hero-tagline{order:3}
+  .hero-copy > h1{order:4}
+  .hero-visual{order:5;max-width:640px;margin:8px auto 0}
+  .hero-copy > .lede{order:6;margin-top:26px}
+  .hero-copy > div{order:7;margin-top:22px}
+  .hero h1.hero-title{max-width:12ch}
+  .hero h1.hero-title::after{margin:18px 0 18px}
+  .cine-stage{aspect-ratio:4/3}
+  .demo-links{justify-content:flex-start}
+  .demo-links ul{justify-content:flex-start}
+}
+@media (max-width:640px){
+  .hero h1.hero-title{font-size:clamp(42px,11.2vw,54px);line-height:1}
+  .cine-stage{border-radius:18px;aspect-ratio:5/4;clip-path:inset(0 round 18px)}
+  .cine-cap{padding:48px 16px 14px}
+  .cine-title{font-size:18px}
+  .cine-ai{right:8px;top:8px;font-size:10.5px;padding:3px 8px}
+  .cine-ui-frame{left:5%;right:5%;top:7%}
+  .cine-note{font-size:12px}
+}
+@media (max-width:380px){.hero h1.hero-title{font-size:40px}}

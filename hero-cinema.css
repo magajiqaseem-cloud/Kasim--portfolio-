@@ -171,3 +171,11 @@
 @media (max-width:380px){.hero h1.hero-title{font-size:40px}}
 
 @media (prefers-reduced-motion:reduce){.cine-slide,.cine-slide.is-on{transition-duration:.2s}.cine-slide:not(.is-on){transition-delay:0s}}
+
+/* positioning update: Start Your Project leads; review stays one tap away */
+.hero .lede-facts{display:block;margin-top:10px;font-size:.92em;color:rgba(255,255,255,.7)}
+.btn-start{box-shadow:0 14px 34px -12px rgba(212,175,55,.75)}
+.hero-review-note a{color:#F1D27A;text-decoration:underline;text-underline-offset:3px;font-weight:600}
+.hero h1.hero-title{max-width:12.5ch}
+.hero h1.hero-title{max-width:15ch;font-size:clamp(44px,4.7vw,74px)}
+@media (max-width:640px){.hero h1.hero-title{max-width:none;font-size:clamp(40px,10.6vw,52px)}}

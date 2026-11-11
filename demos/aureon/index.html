@@ -200,6 +200,42 @@ footer a{color:var(--amber-hi)}
   @keyframes sweep{0%{opacity:0;transform:skewX(-14deg) translateX(0)}6%{opacity:1}34%{opacity:1}40%{opacity:0;transform:skewX(-14deg) translateX(560%)}100%{opacity:0;transform:skewX(-14deg) translateX(560%)}}
 }
 @media (max-width:640px) and (prefers-reduced-motion:no-preference){.hero-img.is-live img{animation-duration:20s}}
+
+/* ===== Showroom navigation + detail gallery (11 Nov 2026) ===== */
+.feat-media,.feat-gallery,.gx{min-width:0;max-width:100%}
+.gx-thumbs{max-width:100%}
+.feat-gallery .gx-stage{border-radius:16px;border:1px solid var(--line-2);box-shadow:0 40px 80px -40px #000,0 30px 70px -50px rgba(227,169,60,.45)}
+.feat-gallery .gx-note{color:var(--muted)}
+.gx{--gx-accent:var(--amber)}
+.dnav{position:sticky;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:rgba(10,12,16,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.dnav-btn{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:none;color:var(--text);font:500 14px var(--f);cursor:pointer}
+.dnav-btn:hover{border-color:var(--amber);color:var(--amber-hi)}
+.dnav-pos{margin:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums}
+#dlg .dnav .x{position:static;flex:0 0 44px;margin-left:4px}
+.dnav-pos{flex:1;text-align:center}
+.dlg-art .gx-stage{border-radius:0}
+.dlg-art .gx-thumbs{padding:0 12px 4px}
+.dlg-art .gx-note{padding:0 14px 10px;color:var(--muted)}
+.dlg.has-photo .dlg-art{background:#07090C}
+.lineup-wrap{padding:6px 18px 20px;border-top:1px solid var(--line)}
+.lineup-h{margin:12px 0 10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.lineup{position:relative;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;scrollbar-width:thin}
+.lu{flex:0 0 150px;scroll-snap-align:start;text-align:left;padding:0;border:1px solid var(--line);border-radius:12px;background:#0C1016;color:var(--text);cursor:pointer;overflow:hidden;transition:border-color .2s,transform .2s}
+.lu:hover{transform:translateY(-2px);border-color:var(--line-2)}
+.lu[aria-current="true"]{border-color:var(--amber)}
+.lu-art{display:block;aspect-ratio:16/9;background:radial-gradient(70% 70% at 50% 76%,rgba(255,255,255,.12),transparent 62%),linear-gradient(180deg,#1A2130,#0B0E14);position:relative;overflow:hidden}
+.lu-art img,.lu-art svg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lu-art .ai-tag{display:none}
+.lu b{display:block;padding:8px 10px 0;font-size:13.5px;font-weight:600}
+.lu small{display:block;padding:0 10px 9px;color:var(--muted);font-size:12px}
+@media (prefers-reduced-motion:no-preference){
+  #dlg .dlg{transition:opacity .28s ease,transform .28s ease}
+  #dlg .dlg.is-out{opacity:0;transform:translateX(var(--dx,-24px))}
+  #dlg .dlg.is-in{animation:car-in .55s cubic-bezier(.2,.7,.2,1)}
+  @keyframes car-in{from{opacity:0;transform:translateX(calc(var(--dx,-24px) * -1))}to{opacity:1;transform:none}}
+}
+@media (max-width:640px){.dnav{padding:8px 10px}.dnav-btn{padding:0 12px;font-size:13px}.dnav-pos{font-size:11px;letter-spacing:.08em}.lu{flex-basis:128px}}
+[hidden]{display:none!important}
 </style>
 <script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('m-on')</script>
 </head>
@@ -239,9 +275,7 @@ footer a{color:var(--amber-hi)}
 <section class="sec feat" id="featured" aria-labelledby="f-title">
   <div class="wrap feat-grid">
     <figure class="feat-media" data-reveal>
-      <div class="feat-frame sweep-host">
-        <img src="featured-gt-1100.webp" srcset="featured-gt-720.webp 720w, featured-gt-1100.webp 1100w, featured-gt-1600.webp 1600w" sizes="(min-width:1240px) 700px, (min-width:900px) 58vw, 100vw" width="1600" height="900" alt="A dark blue grand-touring coupé with tan leather seats, parked on stone paving outside a glass-fronted building" loading="lazy" decoding="async">
-      </div>
+      <div id="gtGallery" class="feat-gallery"><div class="feat-frame"><img src="featured-gt-1100.webp" width="1600" height="900" alt="A dark blue grand-touring coupé with tan leather seats, parked on stone paving outside a glass-fronted building" decoding="async"></div></div>
       <figcaption>AI-generated concept imagery. Not a photo of a real vehicle or a specific manufacturer's model.</figcaption>
     </figure>
     <div class="feat-copy">
@@ -318,6 +352,12 @@ footer a{color:var(--amber-hi)}
 <footer><div class="wrap"><span>© 2026 Aureon Motors (fictional). Concept demo.</span><span>Designed and built by <a href="https://www.kasimempire.com/portfolio">Kasim Elite Digital Global</a></span></div></footer>
 
 <dialog id="dlg" aria-labelledby="d-title">
+  <div class="dnav">
+    <button class="dnav-btn" type="button" id="d-prev" aria-label="Previous car"><span aria-hidden="true">&#8249;</span> Previous</button>
+    <p class="dnav-pos" id="d-pos" aria-live="polite"></p>
+    <button class="dnav-btn" type="button" id="d-next" aria-label="Next car">Next <span aria-hidden="true">&#8250;</span></button>
+    <button class="x" type="button" id="d-close" aria-label="Close details">&times;</button>
+  </div>
   <div class="dlg">
     <div class="dlg-art" id="d-art" aria-hidden="true"></div>
     <div class="dlg-body">
@@ -336,13 +376,14 @@ footer a{color:var(--amber-hi)}
       <div class="actions"><button class="btn btn-a" type="button" id="d-book">Book a test drive</button><button class="btn btn-l" type="button" id="d-close2">Keep browsing</button></div>
     </div>
   </div>
-  <button class="x" type="button" id="d-close" aria-label="Close details">&times;</button>
+  <div class="lineup-wrap"><p class="lineup-h">The showroom</p><div class="lineup" id="d-line" role="group" aria-label="All cars in this search"></div></div>
 </dialog>
 
+<script src="../gallery.js"></script>
 <script>
 (function(){
   var CARS=[
-    {id:'gt',photo:'featured-gt-card.webp',photoLarge:'featured-gt-1100.webp',name:'Aureon GT Coupé',year:2025,body:'Coupé',price:685000,km:4200,fuel:'Petrol',power:'540 hp',drive:'Rear-wheel',box:'8-speed auto',col:'#1C2742',colName:'Midnight Blue',tag:'New arrival',blurb:'A long-bonnet grand tourer with a twin-turbo V8, adaptive suspension and a hand-stitched tan leather cabin.'},
+    {id:'gt',photo:'featured-gt-card.webp',photoLarge:'featured-gt-1100.webp',srcset:'featured-gt-720.webp 720w, featured-gt-1100.webp 1100w, featured-gt-1600.webp 1600w',alt:'A dark blue grand-touring coupé with tan leather seats, parked on stone paving outside a glass-fronted building',views:[{label:'Full view'},{label:'Grille and headlights',x:.8,y:.6,s:2.1},{label:'Wheel detail',x:.52,y:.69,s:2.3},{label:'Tan leather cabin',x:.4,y:.35,s:2.2},{label:'Bonnet line',x:.7,y:.47,s:1.7}],name:'Aureon GT Coupé',year:2025,body:'Coupé',price:685000,km:4200,fuel:'Petrol',power:'540 hp',drive:'Rear-wheel',box:'8-speed auto',col:'#1C2742',colName:'Midnight Blue',tag:'New arrival',blurb:'A long-bonnet grand tourer with a twin-turbo V8, adaptive suspension and a hand-stitched tan leather cabin.'},
     {id:'sx',name:'Vanta SX',year:2024,body:'SUV',price:412000,km:18500,fuel:'Hybrid',power:'455 hp',drive:'All-wheel',box:'8-speed auto',col:'#2E3A4E',colName:'Midnight Steel',tag:'',blurb:'A seven-seat performance SUV with air suspension, a panoramic roof and a quiet hybrid drivetrain.'},
     {id:'e4',name:'Lumen E4',year:2025,body:'Saloon',price:298000,km:6100,fuel:'Electric',power:'402 hp',drive:'All-wheel',box:'Single-speed',col:'#DADFE8',colName:'Glacier White',tag:'Electric',blurb:'An electric saloon with a 520 km sample range, fast charging and a clean, screen-led interior.'},
     {id:'rs',name:'Corsa RS',year:2023,body:'Coupé',price:356000,km:27400,fuel:'Petrol',power:'420 hp',drive:'Rear-wheel',box:'7-speed dual-clutch',col:'#B3261E',colName:'Rosso Fuoco',tag:'',blurb:'A light, sharp two-door built for mountain roads, with carbon seats and a sports exhaust.'},
@@ -377,6 +418,7 @@ footer a{color:var(--amber-hi)}
     $('maxOut').textContent=sar(state.max);
     $('count').innerHTML='<b>'+list.length+'</b> '+(list.length===1?'car':'cars')+' available';
     $('empty').hidden=list.length>0;
+    shown=list;
     $('grid').innerHTML=list.map(function(c,i){return '<li class="car-card" data-reveal style="--d:'+(i%3)+'"><div class="car-art">'+art(c)+(c.tag?'<span class="badge">'+c.tag+'</span>':'')+'</div><div class="car-body"><p class="car-sub">'+c.year+' &middot; '+c.body+' &middot; '+c.colName+'</p><h3>'+c.name+'</h3><ul class="specs"><li>'+c.km.toLocaleString('en-US')+' km</li><li>'+c.fuel+'</li><li>'+c.power+'</li></ul><div class="car-foot"><p class="price">'+sar(c.price)+'<small>incl. registration</small></p><button class="btn btn-l btn-s" type="button" data-open="'+c.id+'">View details<span class="sr">: '+c.name+'</span></button></div></div></li>'}).join('');
     if(window.DemoMotion)DemoMotion.observe($('grid').children);
   }
@@ -387,10 +429,37 @@ footer a{color:var(--amber-hi)}
   /* details dialog */
   var dlg=$('dlg'),cur=null,opener=null;
   function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));var o=$('d-pay'),prev=parseFloat((o.textContent||'').replace(/[^0-9.]/g,''));if(window.DemoMotion&&o.dataset.car===cur.id)DemoMotion.tween(o,prev,m,function(v){return sar(v)+' per month'});else o.textContent=sar(m)+' per month';o.dataset.car=cur.id}
+  var shown=CARS.slice(),gx=null,swapT=0;
+  function gal(c,el,auto,extra){return DemoGallery.mount(el,Object.assign({src:c.photoLarge,srcset:c.srcset,sizes:'(min-width:1000px) 980px, 100vw',thumb:c.photo,alt:c.alt||'',views:c.views,auto:auto,label:c.name+' photo gallery',badge:'<span class="ai-tag">AI-generated concept imagery</span>'},extra||{}))}
+  function fill(c){
+    if(gx){gx.destroy();gx=null}
+    var pane=$('d-art');pane.parentNode.classList.toggle('has-photo',!!c.photo);
+    if(c.photo&&c.views&&window.DemoGallery){pane.removeAttribute('aria-hidden');gx=gal(c,pane,false)}else{pane.setAttribute('aria-hidden','true');pane.innerHTML=art_(c)}
+    $('d-sub').textContent=c.year+' · '+c.body+' · '+sar(c.price);$('d-title').textContent=c.name;$('d-blurb').textContent=c.blurb;
+    $('d-sheet').innerHTML=[['Mileage',c.km.toLocaleString('en-US')+' km'],['Fuel',c.fuel],['Power',c.power],['Gearbox',c.box],['Drive',c.drive],['Colour',c.colName]].map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'}).join('');
+    var list=shown.indexOf(c)>-1?shown:CARS,k=list.indexOf(c);
+    $('d-pos').textContent=(k+1)+' of '+list.length;
+    $('d-line').innerHTML=list.map(function(x){return '<button type="button" class="lu" data-go="'+x.id+'"'+(x===c?' aria-current="true"':'')+'><span class="lu-art" aria-hidden="true">'+art(x)+'</span><b>'+x.name+'</b><small>'+sar(x.price)+'</small></button>'}).join('');
+    var line=$('d-line'),on=line.querySelector('[aria-current]');if(on)line.scrollLeft=on.offsetLeft-(line.clientWidth-on.clientWidth)/2;
+    pay();
+  }
+  function art_(c){return art(c,1)}
+  function step(dir,target){
+    var list=shown.indexOf(cur)>-1?shown:CARS,k=list.indexOf(cur),next=target||list[(k+dir+list.length)%list.length];
+    if(next===cur)return;
+    var box=dlg.querySelector('.dlg'),rm=window.DemoMotion&&DemoMotion.reduced();
+    box.style.setProperty('--dx',dir<0?'24px':'-24px');
+    clearTimeout(swapT);box.classList.remove('is-in');
+    if(rm){cur=next;fill(cur);return}
+    box.classList.add('is-out');
+    swapT=setTimeout(function(){cur=next;fill(cur);box.classList.remove('is-out');void box.offsetWidth;box.classList.add('is-in')},280);
+  }
   document.addEventListener('click',function(e){var b=e.target.closest('[data-open]');if(!b)return;opener=b;cur=CARS.filter(function(c){return c.id===b.dataset.open})[0];
-    $('d-art').innerHTML=art(cur,1);$('d-art').parentNode.classList.toggle('has-photo',!!cur.photo);$('d-sub').textContent=cur.year+' · '+cur.body+' · '+sar(cur.price);$('d-title').textContent=cur.name;$('d-blurb').textContent=cur.blurb;
-    $('d-sheet').innerHTML=[['Mileage',cur.km.toLocaleString('en-US')+' km'],['Fuel',cur.fuel],['Power',cur.power],['Gearbox',cur.box],['Drive',cur.drive],['Colour',cur.colName]].map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'}).join('');
-    pay();if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','')});
+    fill(cur);if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');dlg.scrollTop=0});
+  $('d-prev').addEventListener('click',function(){step(-1)});
+  $('d-next').addEventListener('click',function(){step(1)});
+  $('d-line').addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(!b)return;var t=CARS.filter(function(c){return c.id===b.dataset.go})[0];var list=shown.indexOf(cur)>-1?shown:CARS;step(list.indexOf(t)<list.indexOf(cur)?-1:1,t);dlg.scrollTo({top:0,behavior:'smooth'})});
+  dlg.addEventListener('keydown',function(e){if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&!/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)){e.preventDefault();step(e.key==='ArrowRight'?1:-1)}});
   function close(){if(dlg.close)dlg.close();else dlg.removeAttribute('open')}
   dlg.addEventListener('close',function(){if(opener&&document.contains(opener))opener.focus()});
   $('d-close').addEventListener('click',close);$('d-close2').addEventListener('click',close);
@@ -409,6 +478,7 @@ footer a{color:var(--amber-hi)}
   $('tdAgain').addEventListener('click',function(){f.reset();ok.style.display='none';f.style.display='block';$('t-name').focus()});
   /* featured car: book button pre-selects it; slow zoom runs only while visible */
   [].forEach.call(document.querySelectorAll('[data-book]'),function(a){a.addEventListener('click',function(){$('t-car').value=a.dataset.book})});
+  if(window.DemoGallery)gal(CARS[0],$('gtGallery'),true,{stageClass:'feat-frame sweep-host',sizes:'(min-width:1240px) 700px, (min-width:900px) 58vw, 100vw',src:'featured-gt-1100.webp',thumb:'featured-gt-720.webp',badge:''});
   var ff=document.querySelector('.feat-frame');
   if(ff&&'IntersectionObserver' in window)new IntersectionObserver(function(es){ff.classList.toggle('is-on',es[0].isIntersecting)}).observe(ff);
   render();

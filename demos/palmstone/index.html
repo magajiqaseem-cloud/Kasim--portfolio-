@@ -179,6 +179,36 @@ footer a{color:var(--brass);font-weight:600}
   @keyframes lift{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 }
 @media (max-width:819px) and (prefers-reduced-motion:no-preference){.hero-art.is-live img{animation-duration:20s}}
+
+/* ===== Property galleries + home-to-home navigation (11 Nov 2026) ===== */
+.gx{--gx-accent:var(--brass-hi)}
+.feat-media,.feat-gallery,.gx{min-width:0;max-width:100%}
+.gx-thumbs{max-width:100%}
+.feat-gallery .gx-stage{border-radius:18px;box-shadow:0 40px 80px -44px rgba(19,33,29,.6),0 0 0 1px rgba(140,106,34,.25)}
+.feat-gallery .gx-note{color:var(--muted)}
+.dnav{position:sticky;top:0;z-index:4;display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.dnav-btn{min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--ink);font:500 14px var(--f);cursor:pointer}
+.dnav-btn:hover{border-color:var(--brass);color:var(--brass)}
+.dnav-pos{flex:1;margin:0;text-align:center;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-variant-numeric:tabular-nums}
+#dlg .dnav .x{position:static;flex:0 0 44px;background:var(--paper)}
+#dlg .dlg-art.has-gx{aspect-ratio:auto;min-height:0;overflow:visible}
+#dlg .dlg-art .gx-stage{border-radius:0}
+#dlg .dlg-art .gx-thumbs{padding:0 14px}
+#dlg .dlg-art .gx-note{padding:0 16px;color:var(--muted)}
+/* listing photos: a slow zoom on hover (desktop) or while on screen (touch) */
+.home-art img{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+@media (hover:hover){.home:hover .home-art img,.home:focus-within .home-art img{transform:scale(1.07)}}
+@media (prefers-reduced-motion:no-preference){
+  @media (hover:none){.m-on .home.is-live .home-art img{animation:card-kb 14s ease-in-out infinite alternate}}
+  @keyframes card-kb{from{transform:scale(1)}to{transform:scale(1.08) translate(-1%,-.5%)}}
+  #dlg .dswap{transition:opacity .28s ease,transform .28s ease}
+  #dlg .dswap.is-out{opacity:0;transform:translateX(var(--dx,-24px))}
+  #dlg .dswap.is-in{animation:home-in .55s cubic-bezier(.2,.7,.2,1)}
+  @keyframes home-in{from{opacity:0;transform:translateX(calc(var(--dx,-24px) * -1))}to{opacity:1;transform:none}}
+}
+@media (prefers-reduced-motion:reduce){.home-art img{transition:none}}
+@media (max-width:640px){.dnav{padding:8px 10px}.dnav-btn{padding:0 12px;font-size:13px}.dnav-pos{font-size:11px;letter-spacing:.08em}}
+[hidden]{display:none!important}
 </style>
 <script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('m-on')</script>
 </head>
@@ -220,9 +250,7 @@ footer a{color:var(--brass);font-weight:600}
 <section class="sec feat" id="signature" aria-labelledby="s-title">
   <div class="wrap feat-grid">
     <figure class="feat-media" data-reveal>
-      <div class="feat-frame sweep-host">
-        <img src="featured-estate-1100.webp" srcset="featured-estate-720.webp 720w, featured-estate-1100.webp 1100w, featured-estate-1600.webp 1600w" sizes="(min-width:1240px) 700px, (min-width:900px) 58vw, 100vw" width="1600" height="900" alt="A two-storey modern villa in pale stone with timber screens and glass walls, a long pool and terrace in front, palms and the bay beside it" loading="lazy" decoding="async">
-      </div>
+      <div id="estGallery" class="feat-gallery"><div class="feat-frame"><img src="featured-estate-1100.webp" width="1600" height="900" alt="A two-storey waterfront villa in pale stone with timber screens and a long pool at golden hour" decoding="async"></div></div>
       <figcaption>AI-generated concept imagery. Not a photo of a real property or address.</figcaption>
     </figure>
     <div class="feat-copy">
@@ -278,6 +306,13 @@ footer a{color:var(--brass);font-weight:600}
 <footer><div class="wrap"><span>© 2026 Palmstone Estates (fictional). Concept demo.</span><span>Designed and built by <a href="https://www.kasimempire.com/portfolio">Kasim Elite Digital Global</a></span></div></footer>
 
 <dialog id="dlg" aria-labelledby="d-title">
+  <div class="dnav">
+    <button class="dnav-btn" type="button" id="d-prev" aria-label="Previous home"><span aria-hidden="true">&#8249;</span> Previous</button>
+    <p class="dnav-pos" id="d-pos" aria-live="polite"></p>
+    <button class="dnav-btn" type="button" id="d-next" aria-label="Next home">Next <span aria-hidden="true">&#8250;</span></button>
+    <button class="x" type="button" id="d-close" aria-label="Close details">&times;</button>
+  </div>
+  <div class="dswap">
   <div class="dlg-art" id="d-art" aria-hidden="true"></div>
   <div class="dlg">
     <div>
@@ -307,21 +342,22 @@ footer a{color:var(--brass);font-weight:600}
       <div class="okmsg" id="vDone" tabindex="-1"><h3>Viewing requested</h3><p id="vSummary"></p></div>
     </div>
   </div>
-  <button class="x" type="button" id="d-close" aria-label="Close details">&times;</button>
+  </div>
 </dialog>
 
+<script src="../gallery.js"></script>
 <script>
 (function(){
   var H=[
-    {id:'p1',photo:'homes/p1-card.webp',photoLarge:'homes/p1-1600.webp',title:'Bayfront penthouse with wraparound terrace',area:'Brickell',type:'Condo',mode:'sale',price:2850000,beds:3,baths:3,sqft:2640,sky:'dusk',feats:['Private elevator','Bay and skyline views','Two parking spaces','24-hour concierge','Rooftop pool','Wine storage'],blurb:'A corner penthouse on the 48th floor, with floor-to-ceiling glass and a terrace that runs the full width of the home.'},
-    {id:'p2',img:1,title:'Modern family villa with pool',area:'Coral Gables',type:'Villa',mode:'sale',price:3975000,beds:5,baths:5,sqft:5120,sky:'day',feats:['Heated saltwater pool','Chef\'s kitchen','Home office','Three-car garage','Summer kitchen','Impact windows'],blurb:'A newly built villa on a quiet, tree-lined street, with an open ground floor that leads straight out to the pool.'},
-    {id:'p3',photo:'homes/p3-card.webp',photoLarge:'homes/p3-1600.webp',title:'Garden townhouse near the marina',area:'Coconut Grove',type:'Townhouse',mode:'sale',price:1425000,beds:3,baths:3,sqft:2210,sky:'day',feats:['Private courtyard','Roof terrace','Two-car garage','Walk to the marina','Smart home system','Low monthly fees'],blurb:'Three floors of light-filled living, a short walk from the bayfront parks and the village centre.'},
-    {id:'p4',photo:'homes/p4-card.webp',photoLarge:'homes/p4-1600.webp',title:'Oceanfront two-bedroom with beach access',area:'Miami Beach',type:'Condo',mode:'sale',price:1190000,beds:2,baths:2,sqft:1380,sky:'dusk',feats:['Direct beach access','Ocean-view balcony','Valet parking','Fitness centre','Renovated kitchen','Pet friendly'],blurb:'Wake up to the Atlantic. A renovated apartment in a full-service building on the sand.'},
-    {id:'p5',photo:'featured-estate-card.webp',photoLarge:'featured-estate-1100.webp',pos:'50% 62%',title:'Waterfront estate with infinity pool',area:'Key Biscayne',type:'Villa',mode:'sale',price:8600000,beds:6,baths:7,sqft:7850,sky:'dusk',feats:['80 ft private dock','Infinity pool','Guest house','Home cinema','Gated entrance','Generator'],blurb:'A gated waterfront estate with open bay views, deep-water dockage and a separate guest house.'},
-    {id:'p6',photo:'homes/p6-card.webp',photoLarge:'homes/p6-1600.webp',title:'Bay-view condo in a new tower',area:'Edgewater',type:'Condo',mode:'sale',price:735000,beds:2,baths:2,sqft:1120,sky:'night',feats:['Bay views','Resort-style pool','Co-working lounge','One parking space','Built 2024','Short-term rentals allowed'],blurb:'A bright two-bedroom in one of Edgewater\'s newest buildings, minutes from the Design District.'},
-    {id:'r1',photo:'homes/r1-card.webp',photoLarge:'homes/r1-1600.webp',title:'Furnished skyline apartment',area:'Brickell',type:'Condo',mode:'rent',price:5400,beds:2,baths:2,sqft:1210,sky:'night',feats:['Fully furnished','City views','Gym and pool','One parking space','12-month lease','Available now'],blurb:'A turnkey rental in the heart of the financial district, with everything walkable.'},
-    {id:'r2',photo:'homes/r2-card.webp',photoLarge:'homes/r2-1600.webp',title:'Family villa with garden',area:'Coral Gables',type:'Villa',mode:'rent',price:14500,beds:4,baths:4,sqft:3460,sky:'day',feats:['Private pool','Fenced garden','Two-car garage','Top school district','Gardener included','Pets considered'],blurb:'A classic Gables home with a large garden, close to schools, golf and the Venetian Pool.'},
-    {id:'r3',photo:'homes/r3-card.webp',photoLarge:'homes/r3-1600.webp',title:'Townhouse with roof terrace',area:'Coconut Grove',type:'Townhouse',mode:'rent',price:7900,beds:3,baths:3,sqft:1980,sky:'dusk',feats:['Roof terrace','Two parking spaces','Unfurnished','Walk to cafés','Washer and dryer','Available in 30 days'],blurb:'A modern townhouse on a leafy street, moments from the Grove\'s cafés and waterfront.'}
+    {id:'p1',views:[{label:'Full view'},{label:'Living room',x:.25,y:.55,s:2},{label:'Terrace',x:.55,y:.72,s:1.9},{label:'Bay view',x:.78,y:.5,s:2.2}],photo:'homes/p1-card.webp',photoLarge:'homes/p1-1600.webp',title:'Bayfront penthouse with wraparound terrace',area:'Brickell',type:'Condo',mode:'sale',price:2850000,beds:3,baths:3,sqft:2640,sky:'dusk',feats:['Private elevator','Bay and skyline views','Two parking spaces','24-hour concierge','Rooftop pool','Wine storage'],blurb:'A corner penthouse on the 48th floor, with floor-to-ceiling glass and a terrace that runs the full width of the home.'},
+    {id:'p2',views:[{label:'Full view'},{label:'Entrance and water feature',x:.82,y:.68,s:2},{label:'Upper terrace',x:.86,y:.33,s:2.1},{label:'Living room',x:.92,y:.6,s:2.4}],img:1,title:'Modern family villa with pool',area:'Coral Gables',type:'Villa',mode:'sale',price:3975000,beds:5,baths:5,sqft:5120,sky:'day',feats:['Heated saltwater pool','Chef\'s kitchen','Home office','Three-car garage','Summer kitchen','Impact windows'],blurb:'A newly built villa on a quiet, tree-lined street, with an open ground floor that leads straight out to the pool.'},
+    {id:'p3',views:[{label:'Full view'},{label:'Facade',x:.6,y:.38,s:1.9},{label:'Roof terrace',x:.7,y:.18,s:2.2},{label:'Garden gate',x:.6,y:.8,s:2}],photo:'homes/p3-card.webp',photoLarge:'homes/p3-1600.webp',title:'Garden townhouse near the marina',area:'Coconut Grove',type:'Townhouse',mode:'sale',price:1425000,beds:3,baths:3,sqft:2210,sky:'day',feats:['Private courtyard','Roof terrace','Two-car garage','Walk to the marina','Smart home system','Low monthly fees'],blurb:'Three floors of light-filled living, a short walk from the bayfront parks and the village centre.'},
+    {id:'p4',views:[{label:'Full view'},{label:'Balconies',x:.5,y:.35,s:2},{label:'Ground-floor lounge',x:.5,y:.72,s:2},{label:'Beach path',x:.5,y:.9,s:1.7}],photo:'homes/p4-card.webp',photoLarge:'homes/p4-1600.webp',title:'Oceanfront two-bedroom with beach access',area:'Miami Beach',type:'Condo',mode:'sale',price:1190000,beds:2,baths:2,sqft:1380,sky:'dusk',feats:['Direct beach access','Ocean-view balcony','Valet parking','Fitness centre','Renovated kitchen','Pet friendly'],blurb:'Wake up to the Atlantic. A renovated apartment in a full-service building on the sand.'},
+    {id:'p5',views:[{label:'Full view'},{label:'Infinity pool',x:.62,y:.82,s:1.9},{label:'Upper terrace',x:.44,y:.4,s:2.2},{label:'Living room',x:.43,y:.61,s:2.5},{label:'Bay view',x:.9,y:.6,s:2.2}],photo:'featured-estate-card.webp',photoLarge:'featured-estate-1100.webp',pos:'50% 62%',title:'Waterfront estate with infinity pool',area:'Key Biscayne',type:'Villa',mode:'sale',price:8600000,beds:6,baths:7,sqft:7850,sky:'dusk',feats:['80 ft private dock','Infinity pool','Guest house','Home cinema','Gated entrance','Generator'],blurb:'A gated waterfront estate with open bay views, deep-water dockage and a separate guest house.'},
+    {id:'p6',views:[{label:'Full view'},{label:'Rooftop pool deck',x:.62,y:.85,s:2.1},{label:'Tower',x:.45,y:.3,s:1.8}],photo:'homes/p6-card.webp',photoLarge:'homes/p6-1600.webp',title:'Bay-view condo in a new tower',area:'Edgewater',type:'Condo',mode:'sale',price:735000,beds:2,baths:2,sqft:1120,sky:'night',feats:['Bay views','Resort-style pool','Co-working lounge','One parking space','Built 2024','Short-term rentals allowed'],blurb:'A bright two-bedroom in one of Edgewater\'s newest buildings, minutes from the Design District.'},
+    {id:'r1',views:[{label:'Full view'},{label:'Skyline view',x:.5,y:.4,s:1.9},{label:'Lounge',x:.62,y:.75,s:1.8}],photo:'homes/r1-card.webp',photoLarge:'homes/r1-1600.webp',title:'Furnished skyline apartment',area:'Brickell',type:'Condo',mode:'rent',price:5400,beds:2,baths:2,sqft:1210,sky:'night',feats:['Fully furnished','City views','Gym and pool','One parking space','12-month lease','Available now'],blurb:'A turnkey rental in the heart of the financial district, with everything walkable.'},
+    {id:'r2',views:[{label:'Full view'},{label:'Arched loggia',x:.75,y:.55,s:2},{label:'Pool',x:.88,y:.88,s:2.2},{label:'Garden',x:.35,y:.85,s:1.8}],photo:'homes/r2-card.webp',photoLarge:'homes/r2-1600.webp',title:'Family villa with garden',area:'Coral Gables',type:'Villa',mode:'rent',price:14500,beds:4,baths:4,sqft:3460,sky:'day',feats:['Private pool','Fenced garden','Two-car garage','Top school district','Gardener included','Pets considered'],blurb:'A classic Gables home with a large garden, close to schools, golf and the Venetian Pool.'},
+    {id:'r3',views:[{label:'Full view'},{label:'Roof terrace',x:.55,y:.35,s:2},{label:'Lit windows',x:.32,y:.72,s:2}],photo:'homes/r3-card.webp',photoLarge:'homes/r3-1600.webp',title:'Townhouse with roof terrace',area:'Coconut Grove',type:'Townhouse',mode:'rent',price:7900,beds:3,baths:3,sqft:1980,sky:'dusk',feats:['Roof terrace','Two parking spaces','Unfurnished','Walk to cafés','Washer and dryer','Available in 30 days'],blurb:'A modern townhouse on a leafy street, moments from the Grove\'s cafés and waterfront.'}
   ];
   var SKY={dusk:['#1B2A4F','#8A5A78','#F2A76C'],day:['#5FA9DB','#A9D5EE','#F6EBD8'],night:['#070C1C','#12224A','#2D4A80']};
   function palm(x,y,s){return '<g transform="translate('+x+' '+y+') scale('+s+')"><path d="M0 0 Q-6 -60 8 -110" stroke="#0E1B16" stroke-width="5" fill="none" stroke-linecap="round"/><path fill="#0E1B16" d="M8 -110 Q-22 -124 -48 -108 Q-18 -118 8 -110Z M8 -110 Q-12 -146 -42 -150 Q-10 -138 8 -110Z M8 -110 Q18 -148 48 -158 Q26 -136 8 -110Z M8 -110 Q40 -124 64 -104 Q36 -116 8 -110Z M8 -110 Q4 -140 12 -160 Q14 -136 8 -110Z"/></g>'}
@@ -344,7 +380,8 @@ footer a{color:var(--brass);font-weight:600}
     $('maxOut').textContent=usd(st.max)+(st.mode==='rent'?' / month':'');
     $('count').innerHTML=st.short?'<b>'+list.length+'</b> in your shortlist':'<b>'+list.length+'</b> '+(list.length===1?'home':'homes')+' '+(st.mode==='sale'?'for sale':'for rent');
     $('empty').hidden=list.length>0;$('emptyMsg').textContent=st.short?'Your shortlist is empty. Tap the heart on a home to save it.':'No homes match that search.';
-    $('grid').innerHTML=list.map(function(h,i){return '<li class="home" data-reveal style="--d:'+(i%3)+'"><div class="home-art">'+scene(h)+'<span class="pill">'+(h.mode==='sale'?'For sale':'For rent')+'</span><button class="save" type="button" data-save="'+h.id+'" aria-pressed="'+!!saved[h.id]+'" aria-label="Save '+h.title+' to shortlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg></button></div><div class="home-body"><p class="home-price">'+price(h)+'</p><h3>'+h.title+'</h3><p class="home-area">'+h.area+' &middot; '+h.type+'</p><ul class="meta"><li><b>'+h.beds+'</b> beds</li><li><b>'+h.baths+'</b> baths</li><li><b>'+h.sqft.toLocaleString('en-US')+'</b> sq ft</li></ul><button class="btn btn-l btn-s" type="button" data-open="'+h.id+'">View home<span class="sr">: '+h.title+'</span></button></div></li>'}).join('');
+    shown=list;
+    $('grid').innerHTML=list.map(function(h,i){return '<li class="home" data-reveal data-live style="--d:'+(i%3)+'"><div class="home-art">'+scene(h)+'<span class="pill">'+(h.mode==='sale'?'For sale':'For rent')+'</span><button class="save" type="button" data-save="'+h.id+'" aria-pressed="'+!!saved[h.id]+'" aria-label="Save '+h.title+' to shortlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-9.6A4 4 0 0 1 12 8a4 4 0 0 1 7 2.4C19 15.6 12 20 12 20z"/></svg></button></div><div class="home-body"><p class="home-price">'+price(h)+'</p><h3>'+h.title+'</h3><p class="home-area">'+h.area+' &middot; '+h.type+'</p><ul class="meta"><li><b>'+h.beds+'</b> beds</li><li><b>'+h.baths+'</b> baths</li><li><b>'+h.sqft.toLocaleString('en-US')+'</b> sq ft</li></ul><button class="btn btn-l btn-s" type="button" data-open="'+h.id+'">View home<span class="sr">: '+h.title+'</span></button></div></li>'}).join('');
     $('shortN').textContent=Object.keys(saved).filter(function(k){return saved[k]}).length;
     if(window.DemoMotion)DemoMotion.observe($('grid').children);
   }
@@ -363,16 +400,44 @@ footer a{color:var(--brass);font-weight:600}
   $('grid').addEventListener('click',function(e){
     var s=e.target.closest('[data-save]');if(s){saved[s.dataset.save]=!saved[s.dataset.save];s.setAttribute('aria-pressed',!!saved[s.dataset.save]);$('shortN').textContent=Object.keys(saved).filter(function(k){return saved[k]}).length;if(st.short)render();return}
     var b=e.target.closest('[data-open]');if(!b)return;openHome(b.dataset.open,b)});
-  function openHome(id,from){opener=from;cur=H.filter(function(h){return h.id===id})[0];
-    $('d-art').innerHTML=scene(cur,1);$('d-area').textContent=cur.area+' · '+cur.type+' · '+(cur.mode==='sale'?'For sale':'For rent');$('d-title').textContent=cur.title;$('d-price').textContent=price(cur);
-    $('d-meta').innerHTML='<li><b>'+cur.beds+'</b> beds</li><li><b>'+cur.baths+'</b> baths</li><li><b>'+cur.sqft.toLocaleString('en-US')+'</b> sq ft</li>';
-    $('d-blurb').textContent=cur.blurb;$('d-feats').innerHTML=cur.feats.map(function(f){return '<li>'+f+'</li>'}).join('');
-    $('d-mort').style.display=cur.mode==='sale'?'block':'none';if(cur.mode==='sale')pay();
+  var shown=H.slice(),gx=null,swapT=0;
+  function imgOf(h){
+    if(h.id==='p5')return {src:'featured-estate-1100.webp',srcset:'featured-estate-720.webp 720w, featured-estate-1100.webp 1100w, featured-estate-1600.webp 1600w',thumb:'featured-estate-720.webp',ai:1};
+    if(h.img)return {src:'estate-1100.webp',srcset:'estate-720.webp 720w, estate-1100.webp 1100w, estate-1672.webp 1672w',thumb:'estate-720.webp',ai:0};
+    if(h.photo)return {src:h.photoLarge,srcset:h.photo+' 800w, '+h.photoLarge+' 1600w',thumb:h.photo,ai:1};
+    return null;
+  }
+  function gal(h,el,auto,extra){var m=imgOf(h);return DemoGallery.mount(el,Object.assign({src:m.src,srcset:m.srcset,sizes:'(min-width:1000px) 1000px, 100vw',thumb:m.thumb,alt:h.title,views:h.views,auto:auto,label:h.title+' photo gallery',badge:m.ai?'<span class="ai-tag">AI-generated concept imagery</span>':''},extra||{}))}
+  function fill(h){
+    if(gx){gx.destroy();gx=null}
+    var pane=$('d-art');
+    if(imgOf(h)&&h.views&&window.DemoGallery){pane.classList.add('has-gx');pane.removeAttribute('aria-hidden');gx=gal(h,pane,false)}else{pane.classList.remove('has-gx');pane.setAttribute('aria-hidden','true');pane.innerHTML=scene(h,1)}
+    $('d-area').textContent=h.area+' · '+h.type+' · '+(h.mode==='sale'?'For sale':'For rent');$('d-title').textContent=h.title;$('d-price').textContent=price(h);
+    $('d-meta').innerHTML='<li><b>'+h.beds+'</b> beds</li><li><b>'+h.baths+'</b> baths</li><li><b>'+h.sqft.toLocaleString('en-US')+'</b> sq ft</li>';
+    $('d-blurb').textContent=h.blurb;$('d-feats').innerHTML=h.feats.map(function(f){return '<li>'+f+'</li>'}).join('');
+    $('d-mort').style.display=h.mode==='sale'?'block':'none';if(h.mode==='sale')pay();
     $('vForm').reset();$('vForm').style.display='block';$('vDone').style.display='none';$('v-err').textContent='';
+    var list=shown.indexOf(h)>-1?shown:H;$('d-pos').textContent=(list.indexOf(h)+1)+' of '+list.length;
+  }
+  function step(dir){
+    var list=shown.indexOf(cur)>-1?shown:H,k=list.indexOf(cur),next=list[(k+dir+list.length)%list.length];
+    if(next===cur)return;
+    var box=dlg.querySelector('.dswap'),rm=window.DemoMotion&&DemoMotion.reduced();
+    box.style.setProperty('--dx',dir<0?'24px':'-24px');clearTimeout(swapT);box.classList.remove('is-in');
+    if(rm){cur=next;fill(cur);dlg.scrollTop=0;return}
+    box.classList.add('is-out');
+    swapT=setTimeout(function(){cur=next;fill(cur);dlg.scrollTop=0;box.classList.remove('is-out');void box.offsetWidth;box.classList.add('is-in')},280);
+  }
+  function openHome(id,from){opener=from;cur=H.filter(function(h){return h.id===id})[0];
+    fill(cur);
     if(dlg.showModal)dlg.showModal();else dlg.setAttribute('open','');dlg.scrollTop=0}
+  $('d-prev').addEventListener('click',function(){step(-1)});
+  $('d-next').addEventListener('click',function(){step(1)});
+  dlg.addEventListener('keydown',function(e){if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&!/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)){e.preventDefault();step(e.key==='ArrowRight'?1:-1)}});
   $('heroView').addEventListener('click',function(){openHome('p2',this);$('v-name').focus()});
   $('featView').addEventListener('click',function(){openHome('p5',this)});
   $('featVisit').addEventListener('click',function(){openHome('p5',this);$('v-name').focus()});
+  if(window.DemoGallery)gal(H.filter(function(h){return h.id==='p5'})[0],$('estGallery'),true,{stageClass:'feat-frame sweep-host',sizes:'(min-width:1240px) 700px, (min-width:900px) 58vw, 100vw',badge:''});
   var ff=document.querySelector('.feat-frame');
   if(ff&&'IntersectionObserver' in window)new IntersectionObserver(function(es){ff.classList.toggle('is-on',es[0].isIntersecting)}).observe(ff);
   function close(){if(dlg.close)dlg.close();else dlg.removeAttribute('open')}

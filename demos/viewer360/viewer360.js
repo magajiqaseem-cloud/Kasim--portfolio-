@@ -19,21 +19,21 @@ const CSS = `
 .v360{width:min(1100px,calc(100vw - 20px));max-width:none;max-height:calc(100dvh - 20px);padding:0;border:1px solid rgba(212,175,55,.45);border-radius:20px;background:#06070a;color:#fff;overflow:hidden;font:400 15px/1.5 Inter,system-ui,sans-serif}
 .v360::backdrop{background:rgba(2,3,6,.82);backdrop-filter:blur(4px)}
 .v360-head{display:flex;align-items:center;gap:12px;padding:14px 16px 12px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
-.v360-head h2{flex:1;margin:0;font:600 18px/1.25 inherit;font-family:inherit}
+.v360-head h2{flex:1;margin:0;font:600 18px/1.25 Inter,system-ui,sans-serif;font-family:inherit}
 .v360-head p{margin:2px 0 0;font-size:12.5px;color:rgba(255,255,255,.62)}
 .v360-x{flex:0 0 44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:none;color:#fff;font-size:22px;line-height:1;cursor:pointer}
 .v360-stage{position:relative;aspect-ratio:16/9;max-height:calc(100dvh - 190px);width:100%;background:radial-gradient(70% 70% at 50% 45%,#1a2033,#06070a 75%);touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;overflow:hidden}
 .v360-stage.is-drag{cursor:grabbing}
 .v360-stage canvas,.v360-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;-webkit-user-drag:none}
-.v360-badge{position:absolute;left:50%;top:14px;transform:translateX(-50%);z-index:2;padding:6px 14px;border-radius:999px;background:rgba(3,3,3,.62);border:1px solid rgba(212,175,55,.5);font:600 12px/1.3 inherit;letter-spacing:.04em;color:#F1D27A;pointer-events:none;transition:opacity .6s}
+.v360-badge{position:absolute;left:50%;top:14px;transform:translateX(-50%);z-index:2;padding:6px 14px;border-radius:999px;background:rgba(3,3,3,.62);border:1px solid rgba(212,175,55,.5);font:600 12px/1.3 Inter,system-ui,sans-serif;letter-spacing:.04em;color:#F1D27A;pointer-events:none;transition:opacity .6s}
 .v360-badge.is-gone{opacity:0}
 .v360-load{position:absolute;left:20%;right:20%;bottom:24px;height:3px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden}
 .v360-load i{display:block;height:100%;width:0;background:linear-gradient(90deg,#0038A8,#D4AF37);transition:width .2s}
 .v360-msg{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:rgba(255,255,255,.8)}
 .v360-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:12px 16px 16px}
-.v360-bar button{min-height:44px;min-width:44px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.04);color:#fff;font:500 14px/1 inherit;cursor:pointer}
+.v360-bar button{min-height:44px;min-width:44px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.04);color:#fff;font:500 14px/1 Inter,system-ui,sans-serif;cursor:pointer}
 .v360-bar button:hover{border-color:#D4AF37;color:#F1D27A}
-.v360-bar .v360-deg{margin-left:auto;font:500 13px/1 inherit;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums}
+.v360-bar .v360-deg{margin-left:auto;font:500 13px/1 Inter,system-ui,sans-serif;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums}
 .v360-note{margin:0;padding:0 18px 16px;font-size:12px;color:rgba(255,255,255,.55)}
 @media (max-width:640px){.v360-stage{aspect-ratio:4/3}.v360-head h2{font-size:16px}.v360-bar button{padding:0 12px;font-size:13px}}
 `;

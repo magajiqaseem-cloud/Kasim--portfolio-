@@ -11,7 +11,7 @@
       pauseBtn=fig.querySelector('.cine-pause'),
       sweep=fig.querySelector('.cine-sweep'),
       mq=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):{matches:false},
-      DUR=6500,FADE=1400,i=0,timer=0,prevTimer=0,onScreen=true,paused=false,busy=false;
+      DUR=6500,FADE=mq.matches?250:1400,i=0,timer=0,prevTimer=0,onScreen=true,paused=false,busy=false;
 
   fig.style.setProperty('--dur',DUR/1000+'s');
 

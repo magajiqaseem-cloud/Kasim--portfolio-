@@ -179,3 +179,4 @@
 .hero h1.hero-title{max-width:12.5ch}
 .hero h1.hero-title{max-width:15ch;font-size:clamp(44px,4.7vw,74px)}
 @media (max-width:640px){.hero h1.hero-title{max-width:none;font-size:clamp(40px,10.6vw,52px)}}
+.hero h1.hero-title .gold-text{white-space:nowrap}

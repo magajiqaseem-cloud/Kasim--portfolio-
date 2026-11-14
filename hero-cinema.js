@@ -11,7 +11,7 @@
       pauseBtn=fig.querySelector('.cine-pause'),
       sweep=fig.querySelector('.cine-sweep'),
       mq=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):{matches:false},
-      DUR=6500,FADE=mq.matches?250:1400,i=0,timer=0,prevTimer=0,onScreen=true,paused=false,busy=false;
+      DUR=6500,FADE=mq.matches?250:1400,i=0,timer=0,prevTimer=0,onScreen=true,paused=true,busy=false;
 
   fig.style.setProperty('--dur',DUR/1000+'s');
 
@@ -50,7 +50,7 @@
       clearTimeout(prevTimer);
       prevTimer=setTimeout(function(){old.classList.remove('is-prev')},FADE+50);
       busy=false;
-      ready((n+1)%slides.length);   // warm the next image while this one plays
+      if(running())ready((n+1)%slides.length);   // warm the next image while this one plays
       schedule();
     });
   }
@@ -94,9 +94,5 @@
   document.addEventListener('visibilitychange',function(){schedule();restartRun()});
   if(mq.addEventListener)mq.addEventListener('change',function(){schedule();restartRun()});
 
-  // start once the first image is ready; warm the second in the background
-  ready(0).then(function(){mark(0);schedule();
-    var warm=function(){ready(1)};
-    if(document.readyState==='complete')warm();else addEventListener('load',warm,{once:true});
-  });
+  ready(0).then(function(){mark(0);schedule()});
 })();

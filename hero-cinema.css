@@ -180,3 +180,10 @@
 .hero h1.hero-title{max-width:15ch;font-size:clamp(44px,4.7vw,74px)}
 @media (max-width:640px){.hero h1.hero-title{max-width:none;font-size:clamp(40px,10.6vw,52px)}}
 .hero h1.hero-title .gold-text{white-space:nowrap}
+
+/* Scene labels remain readable and reachable on narrow screens. */
+.cine-segs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem}
+.cine-seg{height:auto;min-height:44px;padding:.4rem .2rem;color:#fff;border:1px solid #ffffff38;border-radius:6px;font-family:inherit;line-height:1.2;font-size:.72rem}
+.cine-seg.is-on{background:#0038A8;border-color:#D4AF37}
+.cine-seg:focus-visible,.cine-pause:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}
+@media(max-width:460px){.cine-segs{grid-template-columns:repeat(3,minmax(0,1fr))}}

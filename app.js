@@ -160,6 +160,11 @@
   var pick=function(id,val){var s=document.getElementById(id);if(!s)return;[].slice.call(s.options).forEach(function(o){if(o.text===val)s.value=o.value})};
   var subj=document.getElementById('f-subject');
   if(p&&map[p]){pick('f-service',map[p][0]);pick('f-budget',map[p][1]);if(subj&&!subj.value)subj.value=map[p][2]}
+  else if(t==='aureon'||t==='palmstone'||t==='vaultra'||t==='nexacoin'){
+    var showcase={aureon:['Automotive showroom website','Automotive showroom website enquiry'],palmstone:['Real estate website','Real estate website enquiry'],vaultra:['Fintech & crypto web design','Fintech dashboard project enquiry'],nexacoin:['Fintech & crypto web design','Crypto website project enquiry']}[t];
+    pick('f-service',showcase[0]);
+    if(subj&&!subj.value)subj.value=showcase[1];
+  }
   else if(t==='review'){pick('f-service','Website redesign');if(subj&&!subj.value)subj.value='Free 3-point website review';var m=document.getElementById('f-msg');if(m&&!m.value)m.value='Please review my website: '}
 })();
 

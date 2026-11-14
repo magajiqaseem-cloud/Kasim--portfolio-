@@ -9,9 +9,8 @@
   var slides=[].slice.call(fig.querySelectorAll('.cine-slide')),
       segs=[].slice.call(fig.querySelectorAll('.cine-seg')),
       pauseBtn=fig.querySelector('.cine-pause'),
-      sweep=fig.querySelector('.cine-sweep'),
       mq=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):{matches:false},
-      DUR=6500,FADE=mq.matches?250:1400,i=0,timer=0,prevTimer=0,onScreen=true,paused=true,busy=false;
+      DUR=5000,FADE=850,i=0,timer=0,prevTimer=0,onScreen=true,paused=false,busy=false;
 
   fig.style.setProperty('--dur',DUR/1000+'s');
 
@@ -46,7 +45,6 @@
       old.classList.add('is-prev');old.classList.remove('is-on');old.setAttribute('inert','');
       slides[n].classList.add('is-on');slides[n].removeAttribute('inert');
       i=n;mark(n);
-      if(sweep&&motion()){sweep.classList.remove('is-run');void sweep.offsetWidth;sweep.classList.add('is-run')}
       clearTimeout(prevTimer);
       prevTimer=setTimeout(function(){old.classList.remove('is-prev')},FADE+50);
       busy=false;
@@ -54,7 +52,7 @@
       schedule();
     });
   }
-  function running(){return motion()&&onScreen&&!paused&&!document.hidden}
+  function running(){return motion()&&onScreen&&!paused&&!document.hidden&&!fig.querySelector('.cine-stage').contains(document.activeElement)}
   function schedule(){
     clearTimeout(timer);
     fig.classList.toggle('is-live',motion()&&onScreen&&!document.hidden);
@@ -67,7 +65,6 @@
   segs.forEach(function(s,k){s.addEventListener('click',function(){if(k===i){return}show(k)})});
   if(pauseBtn)pauseBtn.addEventListener('click',function(){
     paused=!paused;
-    pauseBtn.setAttribute('aria-pressed',String(paused));
     pauseBtn.setAttribute('aria-label',paused?'Play the showcase':'Pause the showcase');
     schedule();if(!paused)restartRun();
   });
@@ -91,8 +88,10 @@
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){onScreen=es[0].isIntersecting;schedule();restartRun()},{threshold:.15}).observe(fig);
   }
+  fig.addEventListener('focusin',schedule);
+  fig.addEventListener('focusout',function(){setTimeout(schedule,0)});
   document.addEventListener('visibilitychange',function(){schedule();restartRun()});
   if(mq.addEventListener)mq.addEventListener('change',function(){schedule();restartRun()});
 
-  ready(0).then(function(){mark(0);schedule()});
+  ready(0).then(function(){mark(0);schedule();if(running())ready(1)});
 })();

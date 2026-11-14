@@ -187,3 +187,39 @@
 .cine-seg.is-on{background:#0038A8;border-color:#D4AF37}
 .cine-seg:focus-visible,.cine-pause:focus-visible{outline:2px solid #D4AF37;outline-offset:2px}
 @media(max-width:460px){.cine-segs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* The five projects share a wide stage with room for the whole image. */
+.hero{background:#050505}
+.hero > .cave{opacity:.25}
+.hero .hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(20px,3vw,46px)}
+.hero .hero-copy{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);column-gap:clamp(24px,6vw,96px);align-items:start}
+.hero .hero-copy > :is(.hero-place,.hero-kicker,.hero-tagline,h1){grid-column:1}
+.hero .hero-copy > .lede{grid-column:2;grid-row:3 / span 2;margin-top:0}
+.hero .hero-copy > div{grid-column:1 / -1;margin-top:12px}
+.hero h1.hero-title{max-width:20ch;font-size:clamp(44px,5.3vw,84px)}
+.hero h1.hero-title .gold-text{animation:none}
+.hero .hero-visual{width:100%;max-width:none;margin:0}
+.cine-stage{aspect-ratio:2.15;border-radius:14px;clip-path:inset(0 round 14px);border-color:#d4af3760}
+.cine-slide,.cine-slide.is-on{transition-duration:.85s,0s}
+.cine-slide:not(.is-on){transition-delay:0s,.85s}
+.cine-ui-frame{left:21%;right:8%;top:8%;border-radius:12px}
+.cine-cap{padding:clamp(18px,4vw,62px);background:linear-gradient(90deg,#050505ed,transparent 75%),linear-gradient(0deg,#050505da,transparent)}
+.cine-title{max-width:15ch;font-size:clamp(26px,4.3vw,64px);line-height:1}
+.cine-link{min-height:44px}
+.cine-controls{padding:10px 0;align-items:stretch}
+.cine-segs{grid-template-columns:repeat(5,minmax(0,1fr))}
+.cine-seg{text-align:left;min-width:0;padding:10px 10px 16px;background:#10131b;font-size:clamp(.72rem,1.3vw,1rem);overflow-wrap:anywhere}
+.cine-seg i{inset:auto 9px 7px}
+.cine-pause{min-width:44px;min-height:44px}
+@media (max-width:700px){
+  .hero .hero-copy{display:block}
+  .hero .hero-copy > .lede{margin-top:14px}
+  .hero h1.hero-title{font-size:clamp(38px,9vw,56px)}
+  .cine-stage{aspect-ratio:4/4.5}
+  .cine-ui-frame{left:6%;right:6%;top:12%}
+  .cine-cap{background:linear-gradient(0deg,#050505 0%,#050505cb 60%,transparent)}
+  .cine-segs{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){
+  .cine-slide,.cine-slide.is-on,.cine-slide:not(.is-on){transition:none}
+}

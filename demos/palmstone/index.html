@@ -250,6 +250,7 @@ footer a{color:var(--brass);font-weight:600}
 <section class="sec feat" id="signature" aria-labelledby="s-title">
   <div class="wrap feat-grid">
     <figure class="feat-media" data-reveal>
+      <p>Explore the featured waterfront estate, then <a href="#search">search the collection</a> to find a home and preview a viewing request.</p>
       <div id="estGallery" class="feat-gallery"><div class="feat-frame"><img src="featured-estate-1100.webp" width="1600" height="900" alt="A two-storey waterfront villa in pale stone with timber screens and a long pool at golden hour" decoding="async"></div></div>
       <figcaption>AI-generated concept imagery. Not a photo of a real property or address.</figcaption>
     </figure>
@@ -361,7 +362,7 @@ footer a{color:var(--brass);font-weight:600}
   ];
   var SKY={dusk:['#1B2A4F','#8A5A78','#F2A76C'],day:['#5FA9DB','#A9D5EE','#F6EBD8'],night:['#070C1C','#12224A','#2D4A80']};
   function palm(x,y,s){return '<g transform="translate('+x+' '+y+') scale('+s+')"><path d="M0 0 Q-6 -60 8 -110" stroke="#0E1B16" stroke-width="5" fill="none" stroke-linecap="round"/><path fill="#0E1B16" d="M8 -110 Q-22 -124 -48 -108 Q-18 -118 8 -110Z M8 -110 Q-12 -146 -42 -150 Q-10 -138 8 -110Z M8 -110 Q18 -148 48 -158 Q26 -136 8 -110Z M8 -110 Q40 -124 64 -104 Q36 -116 8 -110Z M8 -110 Q4 -140 12 -160 Q14 -136 8 -110Z"/></g>'}
-  function scene(h,big){if(h.photo)return '<img src="'+(big?h.photoLarge:h.photo)+'" width="1600" height="900" alt="" decoding="async"'+(big?' style="object-position:'+(h.pos||'50% 50%')+'"':' loading="lazy"')+'><span class="ai-tag">AI-generated concept imagery</span>';if(h.img)return big?'<img src="estate-1100.webp" srcset="estate-1100.webp 1100w, estate-1672.webp 1672w" sizes="(min-width:1000px) 1000px, 100vw" width="1672" height="941" alt="" decoding="async">':'<img src="estate-card.webp" width="800" height="577" alt="" loading="lazy" decoding="async">';var c=SKY[h.sky],id='s'+h.id+Math.random().toString(36).slice(2,6),lit=h.sky==='day'?'#DCEBF2':'#FFD98A',wall=h.sky==='night'?'#C9CFDB':'#F4EEE2',b='';
+  function scene(h,big){if(h.photo)return '<img src="'+(big?h.photoLarge:h.photo)+'" width="1600" height="900" alt="" decoding="async"'+(big?' style="object-position:'+(h.pos||'50% 50%')+'"':' loading="lazy"')+'>';if(h.img)return big?'<img src="estate-1100.webp" srcset="estate-1100.webp 1100w, estate-1672.webp 1672w" sizes="(min-width:1000px) 1000px, 100vw" width="1672" height="941" alt="" decoding="async">':'<img src="estate-card.webp" width="800" height="577" alt="" loading="lazy" decoding="async">';var c=SKY[h.sky],id='s'+h.id+Math.random().toString(36).slice(2,6),lit=h.sky==='day'?'#DCEBF2':'#FFD98A',wall=h.sky==='night'?'#C9CFDB':'#F4EEE2',b='';
     if(h.type==='Condo'){var w='';for(var r=0;r<9;r++)for(var k=0;k<4;k++)w+='<rect x="'+(168+k*17)+'" y="'+(34+r*15)+'" width="12" height="9" fill="'+lit+'" opacity="'+(((r*3+k*5)%4)?'.95':'.35')+'"/>';
       b='<rect x="250" y="70" width="52" height="110" fill="'+wall+'" opacity=".75"/><rect x="160" y="24" width="80" height="156" fill="'+wall+'"/><rect x="156" y="20" width="88" height="6" fill="#26302C"/>'+w+'<rect x="96" y="120" width="56" height="60" fill="'+wall+'" opacity=".6"/>'}
     else if(h.type==='Villa'){b='<rect x="150" y="84" width="130" height="44" fill="'+wall+'"/><rect x="142" y="80" width="146" height="5" fill="#26302C"/><rect x="100" y="124" width="220" height="56" fill="'+wall+'"/><rect x="92" y="120" width="236" height="5" fill="#26302C"/><g fill="'+lit+'"><rect x="160" y="94" width="50" height="26"/><rect x="220" y="94" width="50" height="26"/><rect x="112" y="136" width="70" height="36"/><rect x="192" y="136" width="50" height="36"/><rect x="252" y="136" width="56" height="36"/></g><rect x="110" y="192" width="200" height="18" rx="3" fill="#3FA7C9"/><rect x="110" y="192" width="200" height="4" fill="#C8EEF7" opacity=".7"/>'}
@@ -407,7 +408,7 @@ footer a{color:var(--brass);font-weight:600}
     if(h.photo)return {src:h.photoLarge,srcset:h.photo+' 800w, '+h.photoLarge+' 1600w',thumb:h.photo,ai:1};
     return null;
   }
-  function gal(h,el,auto,extra){var m=imgOf(h);return DemoGallery.mount(el,Object.assign({src:m.src,srcset:m.srcset,sizes:'(min-width:1000px) 1000px, 100vw',thumb:m.thumb,alt:h.title,views:h.views,auto:auto,label:h.title+' photo gallery',badge:m.ai?'<span class="ai-tag">AI-generated concept imagery</span>':''},extra||{}))}
+  function gal(h,el,auto,extra){var m=imgOf(h);return DemoGallery.mount(el,Object.assign({src:m.src,srcset:m.srcset,sizes:'(min-width:1000px) 1000px, 100vw',thumb:m.thumb,alt:h.title,views:h.views,auto:auto,label:h.title+' photo gallery'},extra||{}))}
   function fill(h){
     if(gx){gx.destroy();gx=null}
     var pane=$('d-art');

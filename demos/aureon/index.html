@@ -275,6 +275,7 @@ footer a{color:var(--amber-hi)}
 <section class="sec feat" id="featured" aria-labelledby="f-title">
   <div class="wrap feat-grid">
     <figure class="feat-media" data-reveal>
+      <p>Explore the featured GT gallery, then <a href="#inventory">browse the inventory</a> to preview a test-drive request.</p>
       <div id="gtGallery" class="feat-gallery"><div class="feat-frame"><img src="featured-gt-1100.webp" width="1600" height="900" alt="A dark blue grand-touring coupé with tan leather seats, parked on stone paving outside a glass-fronted building" decoding="async"></div></div>
       <figcaption>AI-generated concept imagery. Not a photo of a real vehicle or a specific manufacturer's model.</figcaption>
     </figure>
@@ -393,19 +394,13 @@ footer a{color:var(--amber-hi)}
     {id:'s5',name:'Meridia S5',year:2022,body:'Saloon',price:176000,km:46200,fuel:'Hybrid',power:'292 hp',drive:'Front-wheel',box:'8-speed auto',col:'#8A8F99',colName:'Graphite',tag:'Best value',blurb:'A well-kept hybrid saloon with a full service history, heated seats and adaptive cruise.'},
     {id:'sp',name:'Aureon Spyder',year:2024,body:'Coupé',price:842000,km:5200,fuel:'Petrol',power:'630 hp',drive:'All-wheel',box:'8-speed dual-clutch',col:'#0F1116',colName:'Obsidian',tag:'',blurb:'A mid-engined flagship with a folding hardtop, carbon-ceramic brakes and launch control.'}
   ];
-  var SHAPES={
-    'Coupé':{b:'M20 110 Q22 92 50 88 L120 80 Q160 50 215 48 Q270 48 310 78 L360 86 Q382 90 384 108 L384 116 L20 116 Z',w:'M135 80 Q165 58 212 56 L250 56 Q275 60 295 78 Z',p:'M214 56 L212 79'},
-    'SUV':{b:'M20 112 L22 84 Q24 74 50 70 L95 66 Q120 34 170 32 L290 32 Q320 34 335 66 L372 74 Q384 78 384 100 L384 116 L20 116 Z',w:'M112 64 Q130 42 170 40 L285 40 Q305 42 318 64 Z',p:'M215 40 L215 64'},
-    'Saloon':{b:'M20 110 Q22 94 48 90 L110 82 Q145 54 195 52 L262 52 Q300 56 322 80 L362 88 Q382 92 384 108 L384 116 L20 116 Z',w:'M126 80 Q152 60 196 59 L258 59 Q285 62 304 80 Z',p:'M222 59 L222 80'}
-  };
-  var AI='<span class="ai-tag">AI-generated concept imagery</span>';
-  function art(c,big){if(c.photo)return '<img src="'+(big?c.photoLarge:c.photo)+'" width="1600" height="900" alt="" decoding="async"'+(big?'':' loading="lazy"')+'>'+AI;var s=SHAPES[c.body],g='g'+c.id+Math.random().toString(36).slice(2,6);
-    return '<svg viewBox="-20 -10 444 170" preserveAspectRatio="xMidYMid meet" focusable="false" aria-hidden="true"><defs><linearGradient id="'+g+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".35" stop-color="'+c.col+'"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient></defs>'+
-    '<ellipse cx="202" cy="124" rx="182" ry="7" fill="#000" opacity=".55"/>'+
-    '<path d="'+s.b+'" fill="'+c.col+'"/><path d="'+s.b+'" fill="url(#'+g+')" opacity=".55"/>'+
-    '<path d="'+s.w+'" fill="#0B1220"/><path d="'+s.w+'" fill="#9FC2FF" opacity=".28"/><path d="'+s.p+'" stroke="'+c.col+'" stroke-width="3"/>'+
-    '<path d="M40 97 L360 97" stroke="#fff" stroke-opacity=".25" stroke-width="1.2"/><path d="M362 90 L382 94 L380 100 L360 98 Z" fill="#FFF3C4"/><path d="M22 96 L36 94 L36 102 L22 104 Z" fill="#E0463A"/>'+
-    '<g fill="#07090C"><circle cx="100" cy="112" r="27"/><circle cx="310" cy="112" r="27"/></g><g fill="none" stroke="#C9CED8" stroke-width="3"><circle cx="100" cy="112" r="16"/><circle cx="310" cy="112" r="16"/></g><g fill="#C9CED8"><circle cx="100" cy="112" r="4"/><circle cx="310" cy="112" r="4"/></g></svg>'}
+  CARS.forEach(function(car){
+    if(car.photo)return;
+    car.photo=car.photoLarge='inventory/'+car.id+'.webp';
+  });
+  function art(car,detail){
+    return '<img src="'+(detail?car.photoLarge:car.photo)+'" width="1600" height="900" alt="" decoding="async"'+(detail?'':' loading="lazy"')+'>';
+  }
   var sar=function(n){return 'SAR '+Math.round(n).toLocaleString('en-US')};
   var $=function(id){return document.getElementById(id)};
   var state={body:'All',max:900000,sort:'new'};
@@ -430,7 +425,7 @@ footer a{color:var(--amber-hi)}
   var dlg=$('dlg'),cur=null,opener=null;
   function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));var o=$('d-pay'),prev=parseFloat((o.textContent||'').replace(/[^0-9.]/g,''));if(window.DemoMotion&&o.dataset.car===cur.id)DemoMotion.tween(o,prev,m,function(v){return sar(v)+' per month'});else o.textContent=sar(m)+' per month';o.dataset.car=cur.id}
   var shown=CARS.slice(),gx=null,swapT=0;
-  function gal(c,el,auto,extra){return DemoGallery.mount(el,Object.assign({src:c.photoLarge,srcset:c.srcset,sizes:'(min-width:1000px) 980px, 100vw',thumb:c.photo,alt:c.alt||'',views:c.views,auto:auto,label:c.name+' photo gallery',badge:'<span class="ai-tag">AI-generated concept imagery</span>'},extra||{}))}
+  function gal(c,el,auto,extra){return DemoGallery.mount(el,Object.assign({src:c.photoLarge,srcset:c.srcset,sizes:'(min-width:1000px) 980px, 100vw',thumb:c.photo,alt:c.alt||'',views:c.views,auto:auto,label:c.name+' photo gallery'},extra||{}))}
   function fill(c){
     if(gx){gx.destroy();gx=null}
     var pane=$('d-art');pane.parentNode.classList.toggle('has-photo',!!c.photo);

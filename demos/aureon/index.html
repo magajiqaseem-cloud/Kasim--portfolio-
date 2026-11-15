@@ -236,6 +236,29 @@ footer a{color:var(--amber-hi)}
 }
 @media (max-width:640px){.dnav{padding:8px 10px}.dnav-btn{padding:0 12px;font-size:13px}.dnav-pos{font-size:11px;letter-spacing:.08em}.lu{flex-basis:128px}}
 [hidden]{display:none!important}
+
+/* Aureon-only cinematic refinements. */
+.motion-toggle{position:absolute;right:16px;top:16px;z-index:3;border:1px solid #ffffff55;background:#080c12d9;color:#f4f1ea;border-radius:999px;padding:12px 18px;font:500 13px var(--f);min-height:44px;cursor:pointer}
+.hero-img img{animation-play-state:paused}
+.hero-img.is-live img{animation-play-state:running}
+.motion-paused .hero-img img,.motion-paused .sweep-host::after{animation-play-state:paused!important}
+.hero-img.is-live img{animation-name:aureon-camera;animation-duration:28s;animation-timing-function:cubic-bezier(.37,0,.63,1)}
+@keyframes aureon-camera{from{transform:scale(1)}to{transform:scale(1.045) translate(-.6%,-.25%)}}
+.hero-in::before{z-index:1}.hero-copy{z-index:2}
+.feat-media>p{font-size:13px;color:var(--muted);margin-bottom:14px}
+.feat-gallery .gx-stage{box-shadow:0 30px 70px -36px #000}
+.feat-gallery .gx-stage .gx-img{transition:transform 2.8s cubic-bezier(.45,0,.2,1)}
+.gx-stage::after{display:none}
+.gx-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;color:var(--muted);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.gx-play{border:1px solid var(--line-2);border-radius:999px;background:#10141b;color:var(--amber-hi);font:500 13px var(--f);min-height:44px;padding:8px 16px;cursor:pointer}
+.gx-stage .gx-label{bottom:18px;left:18px;max-width:calc(100% - 36px);font-size:11px}
+.gx-progress{height:2px;background:#ffffff18;margin-top:12px;overflow:hidden}
+.gx-progress span{display:block;height:100%;background:var(--amber);transform:scaleX(0);transform-origin:left}
+.gx-running .gx-progress span{animation:aureon-progress 6s linear forwards}
+@keyframes aureon-progress{to{transform:scaleX(1)}}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.car-card:hover .car-art>img{transform:scale(1.065);transition-duration:1.2s}}
+@media(max-width:1099px){.motion-toggle{top:auto;bottom:60px}.hero-copy{position:relative}.hero-img{isolation:isolate}}
+@media(prefers-reduced-motion:reduce){.motion-toggle,.gx-play,.gx-progress{display:none}.hero-img img{transform:none!important}}
 </style>
 <script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('m-on')</script>
 </head>
@@ -252,6 +275,7 @@ footer a{color:var(--amber-hi)}
 <main id="main">
 <section class="hero" id="top">
   <div class="hero-in">
+    <button class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
     <picture class="hero-img sweep-host" data-live>
       <source type="image/webp" srcset="showroom-720.webp 720w, showroom-1100.webp 1100w, showroom-1672.webp 1672w" sizes="(min-width:1672px) 1672px, 100vw">
       <img src="showroom-1100.webp" width="1672" height="941" alt="Five cars lined up outside a glass-fronted showroom at night: a white saloon, a silver SUV, a black saloon, a dark blue coupé and a white SUV" fetchpriority="high" decoding="async">
@@ -277,7 +301,7 @@ footer a{color:var(--amber-hi)}
     <figure class="feat-media" data-reveal>
       <p>Explore the featured GT gallery, then <a href="#inventory">browse the inventory</a> to preview a test-drive request.</p>
       <div id="gtGallery" class="feat-gallery"><div class="feat-frame"><img src="featured-gt-1100.webp" width="1600" height="900" alt="A dark blue grand-touring coupé with tan leather seats, parked on stone paving outside a glass-fronted building" decoding="async"></div></div>
-      <figcaption>AI-generated concept imagery. Not a photo of a real vehicle or a specific manufacturer's model.</figcaption>
+      <figcaption>Aureon GT Coupé · Concept vehicle showcase.</figcaption>
     </figure>
     <div class="feat-copy">
       <p class="eyebrow">Featured &middot; Sample listing</p>
@@ -380,7 +404,7 @@ footer a{color:var(--amber-hi)}
   <div class="lineup-wrap"><p class="lineup-h">The showroom</p><div class="lineup" id="d-line" role="group" aria-label="All cars in this search"></div></div>
 </dialog>
 
-<script src="../gallery.js"></script>
+<script src="cinematic-gallery.js"></script>
 <script>
 (function(){
   var CARS=[
@@ -423,9 +447,9 @@ footer a{color:var(--amber-hi)}
   $('reset').addEventListener('click',function(){state={body:'All',max:900000,sort:'new'};$('max').value=900000;$('sort').value='new';[].forEach.call($('chips').children,function(x,i){x.setAttribute('aria-pressed',i===0)});render();$('chips').children[0].focus()});
   /* details dialog */
   var dlg=$('dlg'),cur=null,opener=null;
-  function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));var o=$('d-pay'),prev=parseFloat((o.textContent||'').replace(/[^0-9.]/g,''));if(window.DemoMotion&&o.dataset.car===cur.id)DemoMotion.tween(o,prev,m,function(v){return sar(v)+' per month'});else o.textContent=sar(m)+' per month';o.dataset.car=cur.id}
+  function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));var o=$('d-pay'),prev=parseFloat((o.textContent||'').replace(/[^0-9.]/g,''));o.textContent=sar(m)+' per month';o.dataset.car=cur.id}
   var shown=CARS.slice(),gx=null,swapT=0;
-  function gal(c,el,auto,extra){return DemoGallery.mount(el,Object.assign({src:c.photoLarge,srcset:c.srcset,sizes:'(min-width:1000px) 980px, 100vw',thumb:c.photo,alt:c.alt||'',views:c.views,auto:auto,label:c.name+' photo gallery'},extra||{}))}
+  function gal(c,el,auto,extra){return DemoGallery.mount(el,Object.assign({src:c.photoLarge,srcset:c.srcset,sizes:'(min-width:1000px) 980px, 100vw',thumb:c.photo,alt:c.alt||'',views:c.views,auto:auto,interval:6000,label:c.name+' photo gallery'},extra||{}))}
   function fill(c){
     if(gx){gx.destroy();gx=null}
     var pane=$('d-art');pane.parentNode.classList.toggle('has-photo',!!c.photo);
@@ -456,7 +480,7 @@ footer a{color:var(--amber-hi)}
   $('d-line').addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(!b)return;var t=CARS.filter(function(c){return c.id===b.dataset.go})[0];var list=shown.indexOf(cur)>-1?shown:CARS;step(list.indexOf(t)<list.indexOf(cur)?-1:1,t);dlg.scrollTo({top:0,behavior:'smooth'})});
   dlg.addEventListener('keydown',function(e){if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&!/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)){e.preventDefault();step(e.key==='ArrowRight'?1:-1)}});
   function close(){if(dlg.close)dlg.close();else dlg.removeAttribute('open')}
-  dlg.addEventListener('close',function(){if(opener&&document.contains(opener))opener.focus()});
+  dlg.addEventListener('close',function(){clearTimeout(swapT);dlg.querySelector('.dlg').classList.remove('is-out','is-in');if(gx){gx.destroy();gx=null}if(opener&&document.contains(opener))opener.focus()});
   $('d-close').addEventListener('click',close);$('d-close2').addEventListener('click',close);
   dlg.addEventListener('click',function(e){if(e.target===dlg)close()});
   $('d-dep').addEventListener('change',pay);$('d-term').addEventListener('change',pay);
@@ -474,6 +498,12 @@ footer a{color:var(--amber-hi)}
   /* featured car: book button pre-selects it; slow zoom runs only while visible */
   [].forEach.call(document.querySelectorAll('[data-book]'),function(a){a.addEventListener('click',function(){$('t-car').value=a.dataset.book})});
   if(window.DemoGallery)gal(CARS[0],$('gtGallery'),true,{stageClass:'feat-frame sweep-host',sizes:'(min-width:1240px) 700px, (min-width:900px) 58vw, 100vw',src:'featured-gt-1100.webp',thumb:'featured-gt-720.webp',badge:''});
+  var motionButton=document.querySelector('.motion-toggle');
+  motionButton.addEventListener('click',function(){
+    var paused=document.body.classList.toggle('motion-paused');
+    motionButton.setAttribute('aria-pressed',String(paused));
+    motionButton.textContent=paused?'Play motion':'Pause motion';
+  });
   var ff=document.querySelector('.feat-frame');
   if(ff&&'IntersectionObserver' in window)new IntersectionObserver(function(es){ff.classList.toggle('is-on',es[0].isIntersecting)}).observe(ff);
   render();

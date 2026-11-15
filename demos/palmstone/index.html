@@ -209,6 +209,15 @@ footer a{color:var(--brass);font-weight:600}
 @media (prefers-reduced-motion:reduce){.home-art img{transition:none}}
 @media (max-width:640px){.dnav{padding:8px 10px}.dnav-btn{padding:0 12px;font-size:13px}.dnav-pos{font-size:11px;letter-spacing:.08em}}
 [hidden]{display:none!important}
+/* Cinematic collection slideshow; property detail tours remain property-specific. */
+.hero-art{position:relative;aspect-ratio:5/4}
+.hero-art .collection-img{position:absolute;inset:0;width:100%;height:100%;opacity:0;object-position:center;animation:none!important;transform:scale(1);transition:opacity 1.3s ease,transform 7s ease}
+.hero-art .collection-img.active{opacity:1;transform:scale(1.07)}
+.hero-art .collection-img:first-child{object-position:78% 50%}
+.collection-controls{position:absolute;right:16px;top:16px;z-index:3;display:flex;gap:8px}
+.collection-controls button{min-width:44px;min-height:44px;border:1px solid #ffffff88;border-radius:24px;background:#13211de6;color:#fff;padding:8px 14px;font:500 14px var(--f);cursor:pointer}
+@media(min-width:820px){.hero-art{position:absolute;aspect-ratio:auto}.hero::after{pointer-events:none}}
+@media(prefers-reduced-motion:reduce){.hero-art .collection-img{transition:none;transform:none}}
 </style>
 <script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('m-on')</script>
 <link rel="stylesheet" href="../polish.css">
@@ -225,16 +234,20 @@ footer a{color:var(--brass);font-weight:600}
 
 <main id="main">
 <section class="hero" id="top">
-  <picture class="hero-art" data-live>
-    <source type="image/webp" srcset="estate-720.webp 720w, estate-1100.webp 1100w, estate-1672.webp 1672w" sizes="100vw">
-    <img src="estate-1100.webp" width="1672" height="941" alt="A modern limestone villa with tall glass walls and a water feature, on a palm-lined drive beside the bay at sunset" fetchpriority="high" decoding="async">
-  </picture>
+  <div class="hero-art" aria-label="Luxury property collection">
+    <img class="collection-img active" src="estate-1100.webp" srcset="estate-720.webp 720w, estate-1100.webp 1100w, estate-1672.webp 1672w" sizes="100vw" width="1672" height="941" alt="Coral Gables villa exterior and upper terrace" fetchpriority="high" decoding="async">
+  </div>
+  <div class="collection-controls" role="group" aria-label="Property slideshow controls">
+    <button type="button" id="collectionPrev" aria-label="Previous property image">&#8249;</button>
+    <button type="button" id="collectionPlay" aria-pressed="true">Pause tour</button>
+    <button type="button" id="collectionNext" aria-label="Next property image">&#8250;</button>
+  </div>
   <div class="hero-copy"><div class="wrap">
     <p class="eyebrow">Miami &middot; Sales &amp; lettings</p>
     <h1>Find the home that fits your life.</h1>
     <p class="lede">Waterfront condos, family villas and townhouses across Miami's best neighbourhoods. Search, shortlist and book a viewing in a few taps.</p>
     <div class="actions"><a class="btn btn-b" href="#search">Search homes</a><button class="btn btn-w" type="button" id="heroView">Request a viewing</button></div>
-    <p class="feat-tag"><b>Featured:</b> Modern family villa with pool, Coral Gables &middot; $3,975,000 <span>Concept imagery, sample listing</span></p>
+    <p class="feat-tag"><b>Discover:</b> <span id="collectionCaption" style="display:inline;font:inherit;color:inherit">Coral Gables · Villa exterior and upper terrace</span> <span>Concept imagery, sample listing</span></p>
   </div></div>
 </section>
 
@@ -347,7 +360,7 @@ footer a{color:var(--brass);font-weight:600}
   </div>
 </dialog>
 
-<script src="../gallery.js"></script>
+<script src="../aureon/cinematic-gallery.js"></script>
 <script>
 (function(){
   var H=[
@@ -413,7 +426,7 @@ footer a{color:var(--brass);font-weight:600}
   function fill(h){
     if(gx){gx.destroy();gx=null}
     var pane=$('d-art');
-    if(imgOf(h)&&h.views&&window.DemoGallery){pane.classList.add('has-gx');pane.removeAttribute('aria-hidden');gx=gal(h,pane,false)}else{pane.classList.remove('has-gx');pane.setAttribute('aria-hidden','true');pane.innerHTML=scene(h,1)}
+    if(imgOf(h)&&h.views&&window.DemoGallery){pane.classList.add('has-gx');pane.removeAttribute('aria-hidden');gx=gal(h,pane,true)}else{pane.classList.remove('has-gx');pane.setAttribute('aria-hidden','true');pane.innerHTML=scene(h,1)}
     $('d-area').textContent=h.area+' · '+h.type+' · '+(h.mode==='sale'?'For sale':'For rent');$('d-title').textContent=h.title;$('d-price').textContent=price(h);
     $('d-meta').innerHTML='<li><b>'+h.beds+'</b> beds</li><li><b>'+h.baths+'</b> baths</li><li><b>'+h.sqft.toLocaleString('en-US')+'</b> sq ft</li>';
     $('d-blurb').textContent=h.blurb;$('d-feats').innerHTML=h.feats.map(function(f){return '<li>'+f+'</li>'}).join('');
@@ -436,14 +449,14 @@ footer a{color:var(--brass);font-weight:600}
   $('d-prev').addEventListener('click',function(){step(-1)});
   $('d-next').addEventListener('click',function(){step(1)});
   dlg.addEventListener('keydown',function(e){if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&!/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)){e.preventDefault();step(e.key==='ArrowRight'?1:-1)}});
-  $('heroView').addEventListener('click',function(){openHome('p2',this);$('v-name').focus()});
+  $('heroView').addEventListener('click',function(){openHome(window.palmstoneFeaturedId||'p2',this);$('v-name').focus()});
   $('featView').addEventListener('click',function(){openHome('p5',this)});
   $('featVisit').addEventListener('click',function(){openHome('p5',this);$('v-name').focus()});
   if(window.DemoGallery)gal(H.filter(function(h){return h.id==='p5'})[0],$('estGallery'),true,{stageClass:'feat-frame sweep-host',sizes:'(min-width:1240px) 700px, (min-width:900px) 58vw, 100vw',badge:''});
   var ff=document.querySelector('.feat-frame');
   if(ff&&'IntersectionObserver' in window)new IntersectionObserver(function(es){ff.classList.toggle('is-on',es[0].isIntersecting)}).observe(ff);
   function close(){if(dlg.close)dlg.close();else dlg.removeAttribute('open')}
-  dlg.addEventListener('close',function(){if(opener&&document.contains(opener))opener.focus()});
+  dlg.addEventListener('close',function(){if(gx){gx.destroy();gx=null}if(opener&&document.contains(opener))opener.focus()});
   $('d-close').addEventListener('click',close);dlg.addEventListener('click',function(e){if(e.target===dlg)close()});
   $('d-down').addEventListener('change',pay);$('d-years').addEventListener('change',pay);
   /* demo forms */
@@ -460,6 +473,44 @@ footer a{color:var(--brass);font-weight:600}
     f.style.display='none';$('cDone').style.display='block';$('cDone').focus()});
   $('cAgain').addEventListener('click',function(){var f=$('cForm');f.reset();$('cDone').style.display='none';f.style.display='block';$('c-name').focus()});
   setCap();render();
+})();
+</script>
+
+<script>
+(function(){
+  'use strict';
+  var hero=document.querySelector('.hero'), art=hero.querySelector('.hero-art');
+  var slides=[
+    {id:'p2',src:'estate-1100.webp',caption:'Coral Gables · Villa exterior and upper terrace'},
+    {id:'p5',src:'featured-estate-1100.webp',caption:'Key Biscayne · Waterfront estate and infinity pool'},
+    {id:'r1',src:'homes/r1-1600.webp',caption:'Brickell · Skyline living room'},
+    {id:'p1',src:'homes/p1-1600.webp',caption:'Brickell · Penthouse living space and terrace'},
+    {id:'r3',src:'homes/r3-1600.webp',caption:'Coconut Grove · Upper-level roof terrace'},
+    {id:'r2',src:'homes/r2-1600.webp',caption:'Coral Gables · Garden villa and swimming pool'}
+  ];
+  var motion=matchMedia('(prefers-reduced-motion: reduce)'), index=0, paused=false, visible=false, timer=0, request=0;
+  var images=[art.querySelector('img')], play=document.getElementById('collectionPlay');
+  function schedule(){clearTimeout(timer);if(!paused&&!motion.matches&&visible&&!document.hidden)timer=setTimeout(function(){go(index+1,false)},6500)}
+  function controls(){play.textContent=paused||motion.matches?'Play tour':'Pause tour';play.setAttribute('aria-pressed',String(!paused&&!motion.matches));play.hidden=motion.matches}
+  function go(n,manual){
+    clearTimeout(timer);if(manual)paused=true;controls();
+    var target=(n+slides.length)%slides.length, token=++request;
+    var img=images[target];
+    if(!img){img=new Image();img.className='collection-img';img.alt=slides[target].caption;img.width=1600;img.height=900;img.decoding='async';img.src=slides[target].src;images[target]=img;art.appendChild(img)}
+    function show(){if(token!==request)return;if(!img.naturalWidth){schedule();return}
+      images.forEach(function(item){item.classList.remove('active')});img.classList.add('active');index=target;
+      window.palmstoneFeaturedId=slides[index].id;document.getElementById('collectionCaption').textContent=slides[index].caption;schedule();
+    }
+    if(img.complete)show();else{img.onload=show;img.onerror=function(){if(token===request)schedule()}}
+  }
+  document.getElementById('collectionPrev').onclick=function(){go(index-1,true)};
+  document.getElementById('collectionNext').onclick=function(){go(index+1,true)};
+  play.onclick=function(){paused=!paused;controls();schedule()};
+  document.addEventListener('visibilitychange',schedule);
+  motion.addEventListener('change',function(){controls();schedule()});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(entries){visible=entries[0].isIntersecting;schedule()},{threshold:.15}).observe(art);
+  else{visible=true;schedule()}
+  controls();
 })();
 </script>
 <script src="../motion.js"></script>

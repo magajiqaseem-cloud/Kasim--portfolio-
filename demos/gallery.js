@@ -78,13 +78,14 @@
     var pv = el.querySelector('.gx-prev'), nx = el.querySelector('.gx-next');
     if (pv) pv.addEventListener('click', function (e) { e.stopPropagation(); go(i - 1, true); });
     if (nx) nx.addEventListener('click', function (e) { e.stopPropagation(); go(i + 1, true); });
-    el.addEventListener('keydown', function (e) {
+    var onKey = function (e) {
       if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
       if (/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)) return;
       e.preventDefault(); e.stopPropagation();
       go(i + (e.key === 'ArrowRight' ? 1 : -1), true);
       if (thumbs[i] && el.contains(d.activeElement) && d.activeElement.classList.contains('gx-thumb')) thumbs[i].focus();
-    });
+    };
+    el.addEventListener('keydown', onKey);
     var sx = 0, sy = 0, on = false;
     stage.addEventListener('pointerdown', function (e) { if (e.pointerType === 'mouse') return; on = true; sx = e.clientX; sy = e.clientY; }, { passive: true });
     stage.addEventListener('pointerup', function (e) {
@@ -99,7 +100,7 @@
     var onVis = function () { schedule(); };
     d.addEventListener('visibilitychange', onVis);
     go(0);
-    return { go: function (n) { go(n, true); }, destroy: function () { clearTimeout(timer); if (io) io.disconnect(); d.removeEventListener('visibilitychange', onVis); } };
+    return { go: function (n) { go(n, true); }, destroy: function () { el.removeEventListener('keydown', onKey); clearTimeout(timer); if (io) io.disconnect(); d.removeEventListener('visibilitychange', onVis); } };
   }
   w.DemoGallery = { mount: mount };
 })(window, document);

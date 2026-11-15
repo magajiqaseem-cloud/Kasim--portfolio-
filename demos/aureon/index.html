@@ -238,6 +238,7 @@ footer a{color:var(--amber-hi)}
 [hidden]{display:none!important}
 </style>
 <script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('m-on')</script>
+<link rel="stylesheet" href="../polish.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -275,18 +276,19 @@ footer a{color:var(--amber-hi)}
 <section class="sec feat" id="featured" aria-labelledby="f-title">
   <div class="wrap feat-grid">
     <figure class="feat-media" data-reveal>
-      <p>Explore the featured GT gallery, then <a href="#inventory">browse the inventory</a> to preview a test-drive request.</p>
-      <div id="gtGallery" class="feat-gallery"><div class="feat-frame"><img src="featured-gt-1100.webp" width="1600" height="900" alt="A dark blue grand-touring coupé with tan leather seats, parked on stone paving outside a glass-fronted building" decoding="async"></div></div>
-      <figcaption>AI-generated concept imagery. Not a photo of a real vehicle or a specific manufacturer's model.</figcaption>
+      <p>Explore the featured sports-car gallery, then <a href="#inventory">browse the inventory</a> to preview a test-drive request.</p>
+      <div class="chips" id="featured-picks" role="group" aria-label="Featured cars" style="margin-bottom:14px"><button class="chip" type="button" data-feature="rs" aria-pressed="true">Corsa RS</button><button class="chip" type="button" data-feature="tr" aria-pressed="false">Dune TR-8</button><button class="chip" type="button" data-feature="gt" aria-pressed="false">Aureon GT</button></div>
+      <div id="gtGallery" class="feat-gallery"><div class="feat-frame"><img src="inventory/rs.webp" width="1600" height="900" alt="Red Corsa RS sports coupé in a studio" decoding="async"></div></div>
+      <figcaption>Explore the full car, then select a detail below.</figcaption>
     </figure>
     <div class="feat-copy">
       <p class="eyebrow">Featured &middot; Sample listing</p>
-      <h2 id="f-title">Aureon GT Coupé</h2>
-      <p class="feat-sub">2025 &middot; Coupé &middot; Midnight Blue</p>
-      <p class="feat-price">SAR <span data-count="685000">685,000</span><small>incl. registration</small></p>
-      <p class="blurb">A long-bonnet grand tourer with adaptive suspension and a hand-stitched tan leather cabin.</p>
-      <ul class="specs" aria-label="Key specifications"><li>4,200 km</li><li>540 hp</li><li>Rear-wheel drive</li></ul>
-      <div class="actions"><button class="btn btn-a" type="button" data-open="gt">View details</button><a class="btn btn-l" href="#testdrive" data-book="gt">Book a test drive</a><button class="btn btn-l" type="button" data-v360="aureon-gt" hidden>Explore in 360&deg;</button></div>
+      <h2 id="f-title">Corsa RS</h2>
+      <p class="feat-sub">2023 &middot; Coupé &middot; Rosso Fuoco</p>
+      <p class="feat-price">SAR <span data-count="356000">356,000</span><small>incl. registration</small></p>
+      <p class="blurb">A sculpted red sports coupé with a low stance, distinctive lighting and a driver-focused character.</p>
+      <ul class="specs" aria-label="Key specifications"><li>27,400 km</li><li>420 hp</li><li>Rear-wheel drive</li></ul>
+      <div class="actions"><button class="btn btn-a" type="button" data-open="rs">View details</button><a class="btn btn-l" href="#testdrive" data-book="rs">Book a test drive</a><button class="btn btn-l" type="button" data-v360="aureon-gt" hidden>Explore in 360&deg;</button></div>
     </div>
   </div>
 </section>
@@ -297,7 +299,7 @@ footer a{color:var(--amber-hi)}
     <div class="filters">
       <div><span class="lbl" id="body-lbl">Body style</span><div class="chips" role="group" aria-labelledby="body-lbl" id="chips"></div></div>
       <div class="fld" style="margin:0"><label for="max">Maximum price: <b id="maxOut"></b></label><input type="range" id="max" min="150000" max="900000" step="25000" value="900000"></div>
-      <div class="fld" style="margin:0"><label for="sort">Sort by</label><select id="sort"><option value="new">Newest first</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="km">Lowest mileage</option></select></div>
+      <div class="fld" style="margin:0"><label for="sort">Sort by</label><select id="sort"><option value="featured">Featured selection</option><option value="new">Newest first</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="km">Lowest mileage</option></select></div>
     </div>
     <p class="count" id="count" role="status" aria-live="polite"></p>
     <ul class="grid" id="grid"></ul>
@@ -380,7 +382,7 @@ footer a{color:var(--amber-hi)}
   <div class="lineup-wrap"><p class="lineup-h">The showroom</p><div class="lineup" id="d-line" role="group" aria-label="All cars in this search"></div></div>
 </dialog>
 
-<script src="../gallery.js"></script>
+<script src="cinematic-gallery.js"></script>
 <script>
 (function(){
   var CARS=[
@@ -394,22 +396,40 @@ footer a{color:var(--amber-hi)}
     {id:'s5',name:'Meridia S5',year:2022,body:'Saloon',price:176000,km:46200,fuel:'Hybrid',power:'292 hp',drive:'Front-wheel',box:'8-speed auto',col:'#8A8F99',colName:'Graphite',tag:'Best value',blurb:'A well-kept hybrid saloon with a full service history, heated seats and adaptive cruise.'},
     {id:'sp',name:'Aureon Spyder',year:2024,body:'Coupé',price:842000,km:5200,fuel:'Petrol',power:'630 hp',drive:'All-wheel',box:'8-speed dual-clutch',col:'#0F1116',colName:'Obsidian',tag:'',blurb:'A mid-engined flagship with a folding hardtop, carbon-ceramic brakes and launch control.'}
   ];
+  // Focus points follow each car's own photograph; no unrelated angle images.
+  var focus={
+    gt:{front:[.80,.62],wheel:[.52,.70],roof:[.43,.34],profile:[.38,.52]},
+    sx:{front:[.28,.60],wheel:[.64,.72],roof:[.60,.28],profile:[.76,.49]},
+    e4:{front:[.28,.62],wheel:[.65,.73],roof:[.60,.32],profile:[.77,.51]},
+    rs:{front:[.27,.64],wheel:[.63,.74],roof:[.61,.35],profile:[.77,.52]},
+    lx:{front:[.25,.61],wheel:[.61,.72],roof:[.58,.30],profile:[.77,.49]},
+    tr:{front:[.27,.58],wheel:[.63,.73],roof:[.59,.26],profile:[.77,.48]},
+    ex:{front:[.27,.60],wheel:[.63,.73],roof:[.58,.26],profile:[.76,.49]},
+    s5:{front:[.26,.62],wheel:[.62,.73],roof:[.59,.29],profile:[.77,.50]},
+    sp:{front:[.28,.65],wheel:[.62,.74],roof:[.60,.34],profile:[.78,.52]}
+  };
   CARS.forEach(function(car){
-    if(car.photo)return;
-    car.photo=car.photoLarge='inventory/'+car.id+'.webp';
+    if(!car.photo)car.photo=car.photoLarge='inventory/'+car.id+'.webp';
+    if(!car.alt)car.alt=car.name+' concept vehicle, full three-quarter view';
+    var f=focus[car.id];
+    car.views=[{label:'Full view'},
+      {label:'Grille and headlights',x:f.front[0],y:f.front[1],s:1.8},
+      {label:'Wheel detail',x:f.wheel[0],y:f.wheel[1],s:2.1},
+      {label:'Roofline',x:f.roof[0],y:f.roof[1],s:1.65},
+      {label:'Side profile',x:f.profile[0],y:f.profile[1],s:1.6}];
   });
   function art(car,detail){
     return '<img src="'+(detail?car.photoLarge:car.photo)+'" width="1600" height="900" alt="" decoding="async"'+(detail?'':' loading="lazy"')+'>';
   }
   var sar=function(n){return 'SAR '+Math.round(n).toLocaleString('en-US')};
   var $=function(id){return document.getElementById(id)};
-  var state={body:'All',max:900000,sort:'new'};
+  var state={body:'All',max:900000,sort:'featured'};
   var bodies=['All','Coupé','SUV','Saloon','Electric'];
   $('chips').innerHTML=bodies.map(function(b){return '<button class="chip" type="button" data-b="'+b+'" aria-pressed="'+(b==='All')+'">'+b+'</button>'}).join('');
   $('t-car').innerHTML='<option value="">Select a car</option>'+CARS.map(function(c){return '<option value="'+c.id+'">'+c.name+' ('+c.year+')</option>'}).join('');
   function render(){
     var list=CARS.filter(function(c){return (state.body==='All'||(state.body==='Electric'?c.fuel==='Electric':c.body===state.body))&&c.price<=state.max});
-    list.sort({new:function(a,b){return b.year-a.year||a.km-b.km},low:function(a,b){return a.price-b.price},high:function(a,b){return b.price-a.price},km:function(a,b){return a.km-b.km}}[state.sort]);
+    list.sort({featured:function(a,b){var order=['rs','tr','gt','sx','e4','lx','ex','s5','sp'];return order.indexOf(a.id)-order.indexOf(b.id)},new:function(a,b){return b.year-a.year||a.km-b.km},low:function(a,b){return a.price-b.price},high:function(a,b){return b.price-a.price},km:function(a,b){return a.km-b.km}}[state.sort]);
     $('maxOut').textContent=sar(state.max);
     $('count').innerHTML='<b>'+list.length+'</b> '+(list.length===1?'car':'cars')+' available';
     $('empty').hidden=list.length>0;
@@ -420,7 +440,7 @@ footer a{color:var(--amber-hi)}
   $('chips').addEventListener('click',function(e){var b=e.target.closest('.chip');if(!b)return;state.body=b.dataset.b;[].forEach.call($('chips').children,function(x){x.setAttribute('aria-pressed',x===b)});render()});
   $('max').addEventListener('input',function(){state.max=+this.value;render()});
   $('sort').addEventListener('change',function(){state.sort=this.value;render()});
-  $('reset').addEventListener('click',function(){state={body:'All',max:900000,sort:'new'};$('max').value=900000;$('sort').value='new';[].forEach.call($('chips').children,function(x,i){x.setAttribute('aria-pressed',i===0)});render();$('chips').children[0].focus()});
+  $('reset').addEventListener('click',function(){state={body:'All',max:900000,sort:'featured'};$('max').value=900000;$('sort').value='featured';[].forEach.call($('chips').children,function(x,i){x.setAttribute('aria-pressed',i===0)});render();$('chips').children[0].focus()});
   /* details dialog */
   var dlg=$('dlg'),cur=null,opener=null;
   function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));var o=$('d-pay'),prev=parseFloat((o.textContent||'').replace(/[^0-9.]/g,''));if(window.DemoMotion&&o.dataset.car===cur.id)DemoMotion.tween(o,prev,m,function(v){return sar(v)+' per month'});else o.textContent=sar(m)+' per month';o.dataset.car=cur.id}
@@ -429,7 +449,7 @@ footer a{color:var(--amber-hi)}
   function fill(c){
     if(gx){gx.destroy();gx=null}
     var pane=$('d-art');pane.parentNode.classList.toggle('has-photo',!!c.photo);
-    if(c.photo&&c.views&&window.DemoGallery){pane.removeAttribute('aria-hidden');gx=gal(c,pane,false)}else{pane.setAttribute('aria-hidden','true');pane.innerHTML=art_(c)}
+    if(c.photo&&c.views&&window.DemoGallery){pane.removeAttribute('aria-hidden');gx=gal(c,pane,true)}else{pane.setAttribute('aria-hidden','true');pane.innerHTML=art_(c)}
     $('d-sub').textContent=c.year+' · '+c.body+' · '+sar(c.price);$('d-title').textContent=c.name;$('d-blurb').textContent=c.blurb;
     $('d-sheet').innerHTML=[['Mileage',c.km.toLocaleString('en-US')+' km'],['Fuel',c.fuel],['Power',c.power],['Gearbox',c.box],['Drive',c.drive],['Colour',c.colName]].map(function(r){return '<div><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'}).join('');
     var list=shown.indexOf(c)>-1?shown:CARS,k=list.indexOf(c);
@@ -456,7 +476,7 @@ footer a{color:var(--amber-hi)}
   $('d-line').addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(!b)return;var t=CARS.filter(function(c){return c.id===b.dataset.go})[0];var list=shown.indexOf(cur)>-1?shown:CARS;step(list.indexOf(t)<list.indexOf(cur)?-1:1,t);dlg.scrollTo({top:0,behavior:'smooth'})});
   dlg.addEventListener('keydown',function(e){if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&!/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)){e.preventDefault();step(e.key==='ArrowRight'?1:-1)}});
   function close(){if(dlg.close)dlg.close();else dlg.removeAttribute('open')}
-  dlg.addEventListener('close',function(){if(opener&&document.contains(opener))opener.focus()});
+  dlg.addEventListener('close',function(){clearTimeout(swapT);dlg.querySelector('.dlg').classList.remove('is-out','is-in');if(gx){gx.destroy();gx=null}if(opener&&document.contains(opener))opener.focus()});
   $('d-close').addEventListener('click',close);$('d-close2').addEventListener('click',close);
   dlg.addEventListener('click',function(e){if(e.target===dlg)close()});
   $('d-dep').addEventListener('change',pay);$('d-term').addEventListener('change',pay);
@@ -473,7 +493,23 @@ footer a{color:var(--amber-hi)}
   $('tdAgain').addEventListener('click',function(){f.reset();ok.style.display='none';f.style.display='block';$('t-name').focus()});
   /* featured car: book button pre-selects it; slow zoom runs only while visible */
   [].forEach.call(document.querySelectorAll('[data-book]'),function(a){a.addEventListener('click',function(){$('t-car').value=a.dataset.book})});
-  if(window.DemoGallery)gal(CARS[0],$('gtGallery'),true,{stageClass:'feat-frame sweep-host',sizes:'(min-width:1240px) 700px, (min-width:900px) 58vw, 100vw',src:'featured-gt-1100.webp',thumb:'featured-gt-720.webp',badge:''});
+  var featuredGallery=null;
+  function feature(id){
+    var c=CARS.filter(function(x){return x.id===id})[0];
+    if(featuredGallery)featuredGallery.destroy();
+    if(window.DemoGallery)featuredGallery=gal(c,$('gtGallery'),true,{stageClass:'feat-frame sweep-host',sizes:'(min-width:1240px) 700px, (min-width:900px) 58vw, 100vw',badge:''});
+    var copy=document.querySelector('.feat-copy');
+    $('f-title').textContent=c.name;
+    copy.querySelector('.feat-sub').textContent=c.year+' · '+c.body+' · '+c.colName;
+    copy.querySelector('.feat-price').innerHTML=sar(c.price)+'<small>incl. registration</small>';
+    copy.querySelector('.blurb').textContent=c.blurb;
+    copy.querySelector('.specs').innerHTML='<li>'+c.km.toLocaleString('en-US')+' km</li><li>'+c.power+'</li><li>'+c.drive+' drive</li>';
+    copy.querySelector('[data-open]').dataset.open=id;
+    copy.querySelector('[data-book]').dataset.book=id;
+    document.querySelectorAll('[data-feature]').forEach(function(button){button.setAttribute('aria-pressed',button.dataset.feature===id)});
+  }
+  $('featured-picks').addEventListener('click',function(e){var button=e.target.closest('[data-feature]');if(button)feature(button.dataset.feature)});
+  feature('rs');
   var ff=document.querySelector('.feat-frame');
   if(ff&&'IntersectionObserver' in window)new IntersectionObserver(function(es){ff.classList.toggle('is-on',es[0].isIntersecting)}).observe(ff);
   render();

@@ -382,7 +382,7 @@ footer a{color:var(--amber-hi)}
   <div class="lineup-wrap"><p class="lineup-h">The showroom</p><div class="lineup" id="d-line" role="group" aria-label="All cars in this search"></div></div>
 </dialog>
 
-<script src="../gallery.js"></script>
+<script src="cinematic-gallery.js"></script>
 <script>
 (function(){
   var CARS=[
@@ -396,10 +396,27 @@ footer a{color:var(--amber-hi)}
     {id:'s5',name:'Meridia S5',year:2022,body:'Saloon',price:176000,km:46200,fuel:'Hybrid',power:'292 hp',drive:'Front-wheel',box:'8-speed auto',col:'#8A8F99',colName:'Graphite',tag:'Best value',blurb:'A well-kept hybrid saloon with a full service history, heated seats and adaptive cruise.'},
     {id:'sp',name:'Aureon Spyder',year:2024,body:'Coupé',price:842000,km:5200,fuel:'Petrol',power:'630 hp',drive:'All-wheel',box:'8-speed dual-clutch',col:'#0F1116',colName:'Obsidian',tag:'',blurb:'A mid-engined flagship with a folding hardtop, carbon-ceramic brakes and launch control.'}
   ];
+  // Focus points follow each car's own photograph; no unrelated angle images.
+  var focus={
+    gt:{front:[.80,.62],wheel:[.52,.70],roof:[.43,.34],profile:[.38,.52]},
+    sx:{front:[.28,.60],wheel:[.64,.72],roof:[.60,.28],profile:[.76,.49]},
+    e4:{front:[.28,.62],wheel:[.65,.73],roof:[.60,.32],profile:[.77,.51]},
+    rs:{front:[.27,.64],wheel:[.63,.74],roof:[.61,.35],profile:[.77,.52]},
+    lx:{front:[.25,.61],wheel:[.61,.72],roof:[.58,.30],profile:[.77,.49]},
+    tr:{front:[.27,.58],wheel:[.63,.73],roof:[.59,.26],profile:[.77,.48]},
+    ex:{front:[.27,.60],wheel:[.63,.73],roof:[.58,.26],profile:[.76,.49]},
+    s5:{front:[.26,.62],wheel:[.62,.73],roof:[.59,.29],profile:[.77,.50]},
+    sp:{front:[.28,.65],wheel:[.62,.74],roof:[.60,.34],profile:[.78,.52]}
+  };
   CARS.forEach(function(car){
     if(!car.photo)car.photo=car.photoLarge='inventory/'+car.id+'.webp';
     if(!car.alt)car.alt=car.name+' concept vehicle, full three-quarter view';
-    if(!car.views)car.views=[{label:'Full view'},{label:'Front styling',x:.26,y:.58,s:1.65},{label:'Wheel detail',x:.62,y:.70,s:1.8},{label:'Roof and profile',x:.61,y:.32,s:1.55}];
+    var f=focus[car.id];
+    car.views=[{label:'Full view'},
+      {label:'Grille and headlights',x:f.front[0],y:f.front[1],s:1.8},
+      {label:'Wheel detail',x:f.wheel[0],y:f.wheel[1],s:2.1},
+      {label:'Roofline',x:f.roof[0],y:f.roof[1],s:1.65},
+      {label:'Side profile',x:f.profile[0],y:f.profile[1],s:1.6}];
   });
   function art(car,detail){
     return '<img src="'+(detail?car.photoLarge:car.photo)+'" width="1600" height="900" alt="" decoding="async"'+(detail?'':' loading="lazy"')+'>';
@@ -459,7 +476,7 @@ footer a{color:var(--amber-hi)}
   $('d-line').addEventListener('click',function(e){var b=e.target.closest('[data-go]');if(!b)return;var t=CARS.filter(function(c){return c.id===b.dataset.go})[0];var list=shown.indexOf(cur)>-1?shown:CARS;step(list.indexOf(t)<list.indexOf(cur)?-1:1,t);dlg.scrollTo({top:0,behavior:'smooth'})});
   dlg.addEventListener('keydown',function(e){if((e.key==='ArrowLeft'||e.key==='ArrowRight')&&!/^(INPUT|SELECT|TEXTAREA)$/.test(e.target.tagName)){e.preventDefault();step(e.key==='ArrowRight'?1:-1)}});
   function close(){if(dlg.close)dlg.close();else dlg.removeAttribute('open')}
-  dlg.addEventListener('close',function(){if(opener&&document.contains(opener))opener.focus()});
+  dlg.addEventListener('close',function(){clearTimeout(swapT);dlg.querySelector('.dlg').classList.remove('is-out','is-in');if(gx){gx.destroy();gx=null}if(opener&&document.contains(opener))opener.focus()});
   $('d-close').addEventListener('click',close);$('d-close2').addEventListener('click',close);
   dlg.addEventListener('click',function(e){if(e.target===dlg)close()});
   $('d-dep').addEventListener('change',pay);$('d-term').addEventListener('change',pay);

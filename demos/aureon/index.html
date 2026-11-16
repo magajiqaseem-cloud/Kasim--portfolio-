@@ -382,7 +382,7 @@ footer a{color:var(--amber-hi)}
   <div class="lineup-wrap"><p class="lineup-h">The showroom</p><div class="lineup" id="d-line" role="group" aria-label="All cars in this search"></div></div>
 </dialog>
 
-<script src="cinematic-gallery.js"></script>
+<script src="cinematic-gallery.js?v=20261116"></script>
 <script>
 (function(){
   var CARS=[
@@ -445,7 +445,7 @@ footer a{color:var(--amber-hi)}
   var dlg=$('dlg'),cur=null,opener=null;
   function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));var o=$('d-pay'),prev=parseFloat((o.textContent||'').replace(/[^0-9.]/g,''));if(window.DemoMotion&&o.dataset.car===cur.id)DemoMotion.tween(o,prev,m,function(v){return sar(v)+' per month'});else o.textContent=sar(m)+' per month';o.dataset.car=cur.id}
   var shown=CARS.slice(),gx=null,swapT=0;
-  function gal(c,el,auto,extra){return DemoGallery.mount(el,Object.assign({src:c.photoLarge,srcset:c.srcset,sizes:'(min-width:1000px) 980px, 100vw',thumb:c.photo,alt:c.alt||'',views:c.views,auto:auto,label:c.name+' photo gallery'},extra||{}))}
+  function gal(c,el,auto,extra){return DemoGallery.mount(el,Object.assign({mobileToolbar:true,src:c.photoLarge,srcset:c.srcset,sizes:'(min-width:1000px) 980px, 100vw',thumb:c.photo,alt:c.alt||'',views:c.views,auto:auto,label:c.name+' photo gallery'},extra||{}))}
   function fill(c){
     if(gx){gx.destroy();gx=null}
     var pane=$('d-art');pane.parentNode.classList.toggle('has-photo',!!c.photo);

@@ -17,6 +17,8 @@
   var css = d.createElement('style');
   css.textContent = [
     '.gx{position:relative}',
+    '.gx-toolbar{position:absolute;top:0;left:0;width:100%;aspect-ratio:16/9;pointer-events:none}.gx-toolbar button{pointer-events:auto}.gx-reset{display:none}',
+    '@media(max-width:760px){.gx-mobile-clear .gx-toolbar{position:static;aspect-ratio:auto;pointer-events:auto;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:10px 8px;background:#0c1016;border-bottom:1px solid #ffffff1a}.gx-mobile-clear .gx-toolbar button{position:static;inset:auto;transform:none;margin:0;min-height:44px;min-width:44px;border:1px solid #ffffff40;border-radius:8px;background:#151b24;color:#fff;font:500 12px system-ui;opacity:1;padding:0 10px}.gx-mobile-clear .gx-toolbar .gx-arrow{font-size:24px;width:44px;height:44px}.gx-mobile-clear .gx-reset{display:block}.gx-mobile-clear .gx-toolbar .gx-label{position:static;flex-basis:100%;margin:4px 0 0;padding:4px 0;background:none;backdrop-filter:none;text-align:center;font-size:11px}.gx-mobile-clear .gx-stage .gx-img{object-fit:contain}.gx-mobile-clear .gx-stage:after{display:none}}',
     '.gx-play{position:absolute;top:12px;left:12px;z-index:2;min-height:44px;padding:0 14px;border:1px solid #ffffff66;border-radius:999px;background:#05070acc;color:#fff;cursor:pointer;font:500 13px inherit}',
     '.gx-stage{position:relative;aspect-ratio:16/9;overflow:hidden;background:#07090C;border-radius:inherit;touch-action:pan-y}',
     '.gx-stage .gx-img{position:absolute;animation:none!important;inset:0;width:100%;height:100%;object-fit:cover;transform-origin:50% 50%;will-change:transform;transition:transform 1.5s cubic-bezier(.65,0,.25,1),filter 1.5s}',
@@ -64,6 +66,19 @@
       '</div>';
     var img = el.querySelector('.gx-img'), label = el.querySelector('.gx-label'), thumbs = [].slice.call(el.querySelectorAll('.gx-thumb')), stage = el.querySelector('.gx-stage');
 
+    // Keep the photograph unobstructed on phones; desktop controls retain their positions.
+    if (o.mobileToolbar) {
+      el.classList.add('gx-mobile-clear');
+      var bar = d.createElement('div'); bar.className = 'gx-toolbar';
+      bar.setAttribute('role', 'group'); bar.setAttribute('aria-label', 'Photo tour controls');
+      stage.insertAdjacentElement('afterend', bar);
+      ['.gx-prev', '.gx-play', '.gx-next', '.gx-label'].forEach(function(sel) {
+        var control = el.querySelector(sel); if(control) bar.appendChild(control);
+      });
+      var reset = d.createElement('button'); reset.type = 'button'; reset.className = 'gx-reset';
+      reset.textContent = 'Full view'; reset.addEventListener('click', function(){go(0,true);});
+      bar.insertBefore(reset, bar.querySelector('.gx-next'));
+    }
     var play = el.querySelector('.gx-play');
     function updatePlay(){if(play){play.hidden=RM.matches;var paused=user||RM.matches;play.textContent=paused?'Play tour':'Pause tour';play.setAttribute('aria-pressed',String(!paused));}}
     if(play)play.addEventListener('click',function(){user=!user;schedule();updatePlay();});

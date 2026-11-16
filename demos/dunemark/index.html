@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dunemark Logistics — Freight forwarding from Dubai (concept demo)</title>
-<meta name="description" content="Concept demo by Kasim Elite Digital Global: a corporate website for a fictional Dubai freight forwarder, with live shipment tracking and an instant quote request.">
+<meta name="description" content="Concept demo by Kasim Elite Digital Global: a corporate website for a fictional Dubai freight forwarder, with simulated shipment tracking and a demonstration quote form.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0E2A33">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E2A33'/%3E%3Cpath d='M7 21h18l-3 4H10z' fill='%23F2C230'/%3E%3Crect x='10' y='12' width='5' height='7' fill='%23F2C230'/%3E%3Crect x='17' y='9' width='5' height='10' fill='%23EEF1F2'/%3E%3C/svg%3E">
@@ -221,6 +221,8 @@ footer a{color:var(--signal)}
 </style>
 <script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('m-on')</script>
 <link rel="stylesheet" href="../polish.css">
+<link rel="stylesheet" href="cinematic.css">
+<script src="cinematic.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -235,7 +237,7 @@ footer a{color:var(--signal)}
     <nav class="nav" id="nav" aria-label="Main">
       <ul>
         <li><a href="#services">Services</a></li>
-        <li><a href="#process">How it works</a></li>
+        <li><a href="#network">Global routes</a></li><li><a href="#tracking">Tracking demo</a></li>
         <li><a href="#industries">Industries</a></li>
         <li><a href="#quote">Contact</a></li>
       </ul>
@@ -249,24 +251,34 @@ footer a{color:var(--signal)}
 
 <main id="main">
 <section class="hero" id="top">
+  <div class="cinema" aria-label="Shipping photography slideshow">
+    <img class="cinema-slide active" src="assets/sailing.webp" srcset="assets/sailing-mobile.webp 800w, assets/sailing.webp 1600w" sizes="100vw" alt="Aerial view of a container ship sailing across the open ocean" width="1600" height="1067" fetchpriority="high">
+    <img class="cinema-slide" data-src="assets/photo-0.webp" alt="Container ship alongside port cranes for cargo handling" width="1600" height="1067">
+    <img class="cinema-slide" data-src="assets/photo-1.webp" alt="Aerial view of organized container lanes at an international terminal" width="1600" height="1067">
+    <img class="cinema-slide" data-src="assets/ocean.webp" alt="A massive container vessel underway" width="1600" height="1067">
+  </div>
   <div class="wrap">
     <div>
-      <h1>Your cargo, out of Jebel Ali and on time.</h1>
-      <p class="lead">Sea, air and road freight from Dubai, with customs clearance handled in-house. One contact person for every shipment, and tracking you can check yourself.</p>
+      <p class="eyebrow">DUNEMARK / SHIPPING &amp; LOGISTICS</p><h1><span>Across oceans.</span><span>Beyond borders.</span></h1>
+      <p class="lead">An integrated journey for your cargo. Ocean, air and road freight connected through Dubai to the world.</p>
       <div class="actions">
-        <a class="btn btn-signal" href="#quote">Get a quote in 24 hours</a>
-        <a class="btn btn-ghost" href="#services">See our services</a>
+        <a class="btn btn-signal" href="#quote">Explore a freight quote</a>
+        <a class="btn btn-ghost" href="#tracking">Try demo tracking</a>
       </div>
       <dl class="facts" aria-label="At a glance">
         <div><dt>Based in</dt><dd>Deira, Dubai</dd></div>
         <div><dt>Modes</dt><dd>Sea · Air · Road</dd></div>
-        <div><dt>Quote reply</dt><dd>Within 24h</dd></div>
+        <div><dt>Built around</dt><dd>Your next move</dd></div>
       </dl>
     </div>
 
-    <div class="tracker" aria-labelledby="trk-title">
-      <div class="tracker-head"><h2 id="trk-title">Track a shipment</h2><small>Sample data</small></div>
-      <form class="track-form" id="trackForm" novalidate>
+    <div class="cinema-controls"><span id="scene-label">01 / Ocean passage</span><div><button type="button" id="prev-scene" aria-label="Previous shipping image">←</button><button type="button" id="motion-toggle" aria-pressed="false">Pause motion</button><button type="button" id="next-scene" aria-label="Next shipping image">→</button></div></div>
+  </div>
+</section>
+
+<section class="band tracking-band" id="tracking"><div class="wrap tracking-layout"><div class="head"><p class="eyebrow">CLARITY AT EVERY STAGE</p><h2>A journey you<br>can follow.</h2><p>Explore three simulated shipments: ocean freight to Rotterdam, air cargo to London, and road transport to Riyadh.</p><p class="demo-callout">Select a sample tracking number to see its route, milestones and illustrative delivery status. All dates and shipment details are fictional.</p></div>    <div class="tracker" id="tracking-card" aria-labelledby="trk-title">
+      <div class="tracker-head"><h2 id="trk-title">Shipment visibility</h2><small>SIMULATED DATA</small></div>
+      <p class="simulation-note">Interactive demonstration only. No live carrier or shipment system is connected.</p><form class="track-form" id="trackForm" novalidate>
         <label for="trk">Tracking number</label>
         <input id="trk" name="trk" value="DMK-48219" autocomplete="off" spellcheck="false" aria-describedby="trk-hint trk-err">
         <button class="btn btn-ink" type="submit">Track</button>
@@ -290,24 +302,22 @@ footer a{color:var(--signal)}
       </div>
       <ol class="status" id="statusList" aria-live="polite"></ol>
       <div class="tracker-foot"><span id="trkSummary"><strong>DMK-48219</strong> · 2 × 40ft containers</span><span class="eta" id="trkEta">ETA 28 Oct</span></div>
-    </div>
-  </div>
-</section>
-
+    </div></div></section>
 <section class="band" id="services">
   <div class="wrap">
     <div class="head"><h2>Freight services, under one roof.</h2><p>Pick the mode that fits your cargo and deadline. We book the space, prepare the documents and keep you updated until delivery.</p></div>
     <div class="services">
-      <article class="svc" data-reveal style="--d:0"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 26h32l-4 7H8z"/><path d="M10 26V16h8v10M20 26V11h9v15"/><path d="M4 36c3 0 3-2 6-2s3 2 6 2 3-2 6-2 3 2 6 2 3-2 6-2"/></svg><h3>Sea freight</h3><p>Full container (FCL) and shared container (LCL) shipping from Jebel Ali to ports in Europe, Asia and Africa.</p><span class="tag">Best for heavy or bulk cargo</span></article>
-      <article class="svc" data-reveal style="--d:1"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 22l32-10-3 6-12 4 2 10-4 2-4-10-7 2-2 4-3-1 1-6z"/></svg><h3>Air freight</h3><p>Priority and economy air cargo through Dubai International and Al Maktoum, with door pickup across the UAE.</p><span class="tag">Best for urgent or high-value goods</span></article>
-      <article class="svc" data-reveal style="--d:2"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M3 12h21v16H3zM24 18h8l5 6v4H24z"/><circle cx="10" cy="30" r="3"/><circle cx="30" cy="30" r="3"/></svg><h3>Road freight</h3><p>Trucking across the GCC to Saudi Arabia, Oman, Qatar, Bahrain and Kuwait, with border paperwork done for you.</p><span class="tag">Best for GCC deliveries</span></article>
-      <article class="svc" data-reveal style="--d:0"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M10 4h14l7 7v25H10z"/><path d="M24 4v7h7M15 18h11M15 23h11M15 28h7"/></svg><h3>Customs clearance</h3><p>Import and export declarations, HS codes and duty payments handled by our licensed in-house team.</p><span class="tag">Fewer delays at the port</span></article>
-      <article class="svc" data-reveal style="--d:1"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 16L20 6l16 10v20H4z"/><path d="M11 36V22h18v14M11 27h18M11 32h18"/></svg><h3>Warehousing</h3><p>Short and long-term storage in Jebel Ali Free Zone, with stock counts, packing and re-export.</p><span class="tag">Store now, ship later</span></article>
-      <article class="svc" data-reveal style="--d:2"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M5 20h30M20 5c5 5 5 25 0 30M20 5c-5 5-5 25 0 30"/></svg><h3>Project cargo</h3><p>Oversized machinery and equipment moved with route surveys, special permits and lifting plans.</p><span class="tag">For construction and industry</span></article>
+      <article class="svc" data-reveal style="--d:0"><img class="service-photo" src="assets/ocean-card.webp" alt="Large container ship underway" width="640" height="420" loading="lazy" decoding="async"><span class="service-number">01</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 26h32l-4 7H8z"/><path d="M10 26V16h8v10M20 26V11h9v15"/><path d="M4 36c3 0 3-2 6-2s3 2 6 2 3-2 6-2 3 2 6 2 3-2 6-2"/></svg><h3>Ocean Freight</h3><p>Full container (FCL) and shared container (LCL) shipping from Jebel Ali to ports in Europe, Asia and Africa.</p><span class="tag">Best for heavy or bulk cargo</span></article>
+      <article class="svc" data-reveal style="--d:1"><img class="service-photo" src="assets/photo-3-card.webp" alt="Aircraft wing above the clouds" width="640" height="420" loading="lazy" decoding="async"><span class="service-number">02</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 22l32-10-3 6-12 4 2 10-4 2-4-10-7 2-2 4-3-1 1-6z"/></svg><h3>Air Freight</h3><p>Priority and economy air cargo through Dubai International and Al Maktoum, with door pickup across the UAE.</p><span class="tag">Best for urgent or high-value goods</span></article>
+      <article class="svc" data-reveal style="--d:2"><img class="service-photo" src="assets/photo-4-card.webp" alt="Freight truck travelling on a mountain highway" width="640" height="420" loading="lazy" decoding="async"><span class="service-number">03</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M3 12h21v16H3zM24 18h8l5 6v4H24z"/><circle cx="10" cy="30" r="3"/><circle cx="30" cy="30" r="3"/></svg><h3>Road Transportation</h3><p>Trucking across the GCC to Saudi Arabia, Oman, Qatar, Bahrain and Kuwait, with border paperwork done for you.</p><span class="tag">Best for GCC deliveries</span></article>
+      <article class="svc" data-reveal style="--d:0"><img class="service-photo" src="assets/photo-0-card.webp" alt="Container vessel and loading cranes in port" width="640" height="420" loading="lazy" decoding="async"><span class="service-number">04</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M10 4h14l7 7v25H10z"/><path d="M24 4v7h7M15 18h11M15 23h11M15 28h7"/></svg><h3>International Logistics</h3><p>Coordinate customs documentation, international cargo movements and multimodal handovers through one connected plan.</p><span class="tag">Fewer delays at the port</span></article>
+      <article class="svc" data-reveal style="--d:1"><img class="service-photo" src="assets/photo-5-card.webp" alt="Organized warehouse and fulfilment aisles" width="640" height="420" loading="lazy" decoding="async"><span class="service-number">05</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 16L20 6l16 10v20H4z"/><path d="M11 36V22h18v14M11 27h18M11 32h18"/></svg><h3>Warehousing</h3><p>Short and long-term storage in Jebel Ali Free Zone, with stock counts, packing and re-export.</p><span class="tag">Store now, ship later</span></article>
+      <article class="svc" data-reveal style="--d:2"><img class="service-photo" src="assets/photo-1-card.webp" alt="Aerial container terminal logistics" width="640" height="420" loading="lazy" decoding="async"><span class="service-number">06</span><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M5 20h30M20 5c5 5 5 25 0 30M20 5c-5 5-5 25 0 30"/></svg><h3>Supply Chain Solutions</h3><p>Connect procurement, inventory, warehousing and final delivery. Plan the complete flow from supplier to destination.</p><span class="tag">From first mile to final delivery</span></article>
     </div>
   </div>
 </section>
 
+<section class="band network" id="network"><div class="wrap"><div class="network-heading"><div class="head"><p class="eyebrow">A WORLD OF CONNECTIONS</p><h2>One hub.<br>Global possibilities.</h2></div><p>Explore illustrative connections from Jebel Ali.<br>Concept routes, not live vessel positions or navigational paths.</p></div><div class="world-map"><svg viewBox="0 0 1000 460" role="img" aria-label="Illustrative world map connecting Jebel Ali to Rotterdam, New York, Mombasa, Mumbai, Singapore and Shanghai"><image href="assets/world.svg" width="1000" height="460"/><g class="global-lane selected" data-lane="0"><path d="M652.9,172.5 Q582.7,20.1 512.4,95.1"/><circle cx="512.4" cy="95.1" r="4"/><text x="512.4" y="114.1" text-anchor="middle">Rotterdam</text></g><g class="global-lane " data-lane="1"><path d="M652.9,172.5 Q473.7,52.4 294.4,127.4"/><circle cx="294.4" cy="127.4" r="4"/><text x="294.4" y="146.4" text-anchor="middle">New York</text></g><g class="global-lane " data-lane="2"><path d="M652.9,172.5 Q631.6,97.5 610.2,256.0"/><circle cx="610.2" cy="256.0" r="4"/><text x="610.2" y="275.0" text-anchor="middle">Mombasa</text></g><g class="global-lane " data-lane="3"><path d="M652.9,172.5 Q677.7,97.5 702.4,189.5"/><circle cx="702.4" cy="189.5" r="4"/><text x="702.4" y="208.5" text-anchor="middle">Mumbai</text></g><g class="global-lane " data-lane="4"><path d="M652.9,172.5 Q720.7,97.5 788.4,240.5"/><circle cx="788.4" cy="240.5" r="4"/><text x="788.4" y="259.5" text-anchor="middle">Singapore</text></g><g class="global-lane " data-lane="5"><path d="M652.9,172.5 Q745.2,79.6 837.4,154.6"/><circle cx="837.4" cy="154.6" r="4"/><text x="837.4" y="173.6" text-anchor="middle">Shanghai</text></g><circle class="hub-ring" cx="652.9444444444445" cy="172.52875" r="13"/><circle cx="652.9444444444445" cy="172.52875" r="5" fill="#f2c230"/><text class="hub-label" x="664.9444444444445" y="179.52875">JEBEL ALI</text></svg></div><div class="port-buttons" aria-label="Explore a sample route"><button type="button" data-port="0" aria-pressed="true">Rotterdam</button><button type="button" data-port="1" aria-pressed="false">New York</button><button type="button" data-port="2" aria-pressed="false">Mombasa</button><button type="button" data-port="3" aria-pressed="false">Mumbai</button><button type="button" data-port="4" aria-pressed="false">Singapore</button><button type="button" data-port="5" aria-pressed="false">Shanghai</button></div><p id="route-detail" aria-live="polite">Jebel Ali → Rotterdam · Illustrative ocean freight connection</p></div></section>
 <section class="band dark" id="process">
   <div class="wrap">
     <div class="head"><h2>How a shipment works with us.</h2><p>Four steps, one contact person, and an update at every stage.</p></div>
@@ -315,7 +325,7 @@ footer a{color:var(--signal)}
       <li data-reveal style="--d:0"><h3>Request a quote</h3><p>Tell us what, where and when. You get a fixed price within 24 hours.</p></li>
       <li data-reveal style="--d:1"><h3>Book and collect</h3><p>We reserve space with the carrier and collect your cargo from your door.</p></li>
       <li data-reveal style="--d:2"><h3>Customs and loading</h3><p>Our team files the documents and clears customs before departure.</p></li>
-      <li data-reveal style="--d:3"><h3>Delivery</h3><p>Track it live, and we confirm with photos when it arrives.</p></li>
+      <li data-reveal style="--d:3"><h3>Delivery</h3><p>Follow shipment milestones through the tracking experience. This demo uses simulated updates.</p></li>
     </ol>
   </div>
 </section>
@@ -334,7 +344,7 @@ footer a{color:var(--signal)}
     </div>
     <aside class="coverage" aria-labelledby="lanes-title">
       <h3 id="lanes-title">Regular lanes from Dubai</h3>
-      <p>Typical door-to-door transit times. Your quote confirms the exact schedule.</p>
+      <p>Illustrative lanes and transit times for this concept. Not real schedules or service commitments.</p>
       <ul class="lanes">
         <li><b>Jebel Ali → Rotterdam</b><span>18–22 days by sea</span></li>
         <li><b>Jebel Ali → Mombasa</b><span>10–12 days by sea</span></li>
@@ -416,7 +426,7 @@ footer a{color:var(--signal)}
   function setText(id,t){document.getElementById(id).textContent=t}
   function show(code){
     var d=DATA[code];
-    if(!d){err.textContent='No shipment found for '+code+'. Tracking numbers look like DMK-48219.';return}
+    if(!d){err.textContent='No simulated shipment matches '+code+'. Choose one of the three sample numbers above. The previous example remains displayed.';return}
     err.textContent='';
     setText('fromName',d.from[0]);setText('fromSub',d.from[1]);setText('toName',d.to[0]);setText('toSub',d.to[1]);
     done.style.strokeDashoffset=L*(1-d.p);

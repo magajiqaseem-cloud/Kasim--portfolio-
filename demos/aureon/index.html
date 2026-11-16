@@ -236,6 +236,14 @@ footer a{color:var(--amber-hi)}
 }
 @media (max-width:640px){.dnav{padding:8px 10px}.dnav-btn{padding:0 12px;font-size:13px}.dnav-pos{font-size:11px;letter-spacing:.08em}.lu{flex-basis:128px}}
 [hidden]{display:none!important}
+
+/* KEDG cinematic film showcase */
+.kedg-film{background:linear-gradient(145deg,#0b0c10,#17130c);border-block:1px solid rgba(227,169,60,.22)}
+.kedg-film .film-layout{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:clamp(24px,5vw,70px);align-items:center}
+.kedg-film video{display:block;width:100%;max-height:72vh;aspect-ratio:1080/1878;object-fit:contain;background:#050505;border-radius:16px;border:1px solid rgba(227,169,60,.3)}
+.kedg-film .film-copy h3{font-size:clamp(25px,3vw,38px);font-weight:500;margin-bottom:16px}.kedg-film .film-copy p{color:var(--muted);margin-bottom:20px}
+.kedg-film .film-controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+@media(max-width:760px){.kedg-film .film-layout{grid-template-columns:1fr}.kedg-film video{max-height:65vh}}
 </style>
 <script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.classList.add('m-on')</script>
 <link rel="stylesheet" href="../polish.css">
@@ -273,6 +281,11 @@ footer a{color:var(--amber-hi)}
   </div>
 </section>
 
+
+<section class="sec kedg-film" id="cinematic-showcase" aria-labelledby="film-heading"><div class="wrap">
+<p class="eyebrow">Cinematic digital experience · KEDG</p><h2 id="film-heading" style="margin-bottom:28px">The showroom, reimagined in motion.</h2>
+<div class="film-layout"><div><video id="kedg-film-video" muted autoplay loop playsinline preload="metadata" poster="showroom-720.webp" aria-label="KEDG cinematic automotive promotional film"><source src="../../9d04e540-b789-4e89-99a2-948f4560afb6.mp4" type="video/mp4">Your browser does not support video.</video><div class="film-controls"><button class="btn btn-l btn-s" id="kedg-film-toggle" type="button">Pause video</button><button class="btn btn-l btn-s" id="kedg-film-replay" type="button">Replay</button></div></div>
+<div class="film-copy"><h3>Luxury automotive websites. Cinematic digital experiences.</h3><p>A 15-second portfolio concept film by Kasim Elite Digital Global, demonstrating premium automotive digital presentation. This fictional showroom is not a vehicle sales offer.</p><a class="btn btn-a" href="https://kasimempire.com">Explore KEDG services</a></div></div></div></section>
 <section class="sec feat" id="featured" aria-labelledby="f-title">
   <div class="wrap feat-grid">
     <figure class="feat-media" data-reveal>
@@ -527,5 +540,7 @@ footer a{color:var(--amber-hi)}
 </script>
 <script src="../motion.js"></script>
 <script type="module" src="../viewer360/viewer360.js"></script>
+
+<script>(function(){var v=document.getElementById('kedg-film-video'),t=document.getElementById('kedg-film-toggle'),r=document.getElementById('kedg-film-replay');if(!v||!t||!r)return;function sync(){t.textContent=v.paused?'Play video':'Pause video'}t.addEventListener('click',function(){if(v.paused){var p=v.play();if(p&&p.catch)p.catch(sync)}else v.pause();sync()});r.addEventListener('click',function(){v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(sync);sync()});v.addEventListener('play',sync);v.addEventListener('pause',sync);if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){v.autoplay=false;v.pause()}else{var p=v.play();if(p&&p.catch)p.catch(sync)}sync()})();</script>
 </body>
 </html>

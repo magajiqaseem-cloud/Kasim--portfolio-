@@ -276,19 +276,19 @@ footer a{color:var(--amber-hi)}
 <section class="sec feat" id="featured" aria-labelledby="f-title">
   <div class="wrap feat-grid">
     <figure class="feat-media" data-reveal>
-      <p>Explore the featured sports-car gallery, then <a href="#inventory">browse the inventory</a> to preview a test-drive request.</p>
-      <div class="chips" id="featured-picks" role="group" aria-label="Featured cars" style="margin-bottom:14px"><button class="chip" type="button" data-feature="rs" aria-pressed="true">Corsa RS</button><button class="chip" type="button" data-feature="tr" aria-pressed="false">Dune TR-8</button><button class="chip" type="button" data-feature="gt" aria-pressed="false">Aureon GT</button></div>
-      <div id="gtGallery" class="feat-gallery"><div class="feat-frame"><img src="inventory/rs.webp" width="1600" height="900" alt="Red Corsa RS sports coupé in a studio" decoding="async"></div></div>
-      <figcaption>Explore the full car, then select a detail below.</figcaption>
+      <p>Discover the Aureon GT exterior and interior concept, then <a href="#inventory">browse the inventory</a> to preview a test-drive request.</p>
+      <div class="chips" id="featured-picks" role="group" aria-label="Featured cars" style="margin-bottom:14px"><button class="chip" type="button" data-feature="rs" aria-pressed="false">Corsa RS</button><button class="chip" type="button" data-feature="tr" aria-pressed="false">Dune TR-8</button><button class="chip" type="button" data-feature="gt" aria-pressed="true">Aureon GT</button></div>
+      <div id="gtGallery" class="feat-gallery"><div class="feat-frame"><img src="featured-gt-1100.webp" width="1600" height="900" alt="Midnight blue Aureon GT grand touring coupé" decoding="async"></div></div>
+      <figcaption>Pause, replay or choose a detail. Swipe the image on your phone to explore.</figcaption>
     </figure>
     <div class="feat-copy">
       <p class="eyebrow">Featured &middot; Sample listing</p>
-      <h2 id="f-title">Corsa RS</h2>
-      <p class="feat-sub">2023 &middot; Coupé &middot; Rosso Fuoco</p>
-      <p class="feat-price">SAR <span data-count="356000">356,000</span><small>incl. registration</small></p>
-      <p class="blurb">A sculpted red sports coupé with a low stance, distinctive lighting and a driver-focused character.</p>
-      <ul class="specs" aria-label="Key specifications"><li>27,400 km</li><li>420 hp</li><li>Rear-wheel drive</li></ul>
-      <div class="actions"><button class="btn btn-a" type="button" data-open="rs">View details</button><a class="btn btn-l" href="#testdrive" data-book="rs">Book a test drive</a><button class="btn btn-l" type="button" data-v360="aureon-gt" hidden>Explore in 360&deg;</button></div>
+      <h2 id="f-title">Aureon GT Coupé</h2>
+      <p class="feat-sub">2025 &middot; Coupé &middot; Midnight Blue</p>
+      <p class="feat-price">SAR <span data-count="685000">685,000</span><small>incl. registration</small></p>
+      <p class="blurb">A long-bonnet grand tourer with a twin-turbo V8 and a hand-stitched tan leather cabin.</p>
+      <ul class="specs" aria-label="Key specifications"><li>4,200 km</li><li>540 hp</li><li>Rear-wheel drive</li></ul>
+      <div class="actions"><button class="btn btn-a" type="button" data-open="gt">View details</button><a class="btn btn-l" href="#testdrive" data-book="gt">Book a test drive</a><button class="btn btn-l" type="button" data-v360="aureon-gt" hidden>Explore in 360&deg;</button></div>
     </div>
   </div>
 </section>
@@ -382,7 +382,7 @@ footer a{color:var(--amber-hi)}
   <div class="lineup-wrap"><p class="lineup-h">The showroom</p><div class="lineup" id="d-line" role="group" aria-label="All cars in this search"></div></div>
 </dialog>
 
-<script src="cinematic-gallery.js?v=20261116"></script>
+<script src="flagship-gallery.js?v=20261116b"></script>
 <script>
 (function(){
   var CARS=[
@@ -418,6 +418,16 @@ footer a{color:var(--amber-hi)}
       {label:'Roofline',x:f.roof[0],y:f.roof[1],s:1.65},
       {label:'Side profile',x:f.profile[0],y:f.profile[1],s:1.6}];
   });
+  var gt=CARS.filter(function(car){return car.id==='gt'})[0];
+  var cabin={src:'gt-interior-1600.webp',srcset:'gt-interior-720.webp 720w, gt-interior-1600.webp 1600w',thumb:'gt-interior-720.webp',alt:'Illustrative Aureon GT interior concept with tan leather seats, steering wheel and digital dashboard'};
+  gt.views=gt.views.concat([
+    Object.assign({label:'Step inside · cabin concept'},cabin),
+    Object.assign({label:'Steering and instruments',x:.29,y:.45,s:1.65},cabin),
+    Object.assign({label:'Digital dashboard',x:.50,y:.41,s:1.7},cabin),
+    Object.assign({label:'Tan leather and stitching',x:.72,y:.80,s:1.55},cabin),
+    {label:'Back to the exterior'}
+  ]);
+  gt.note='Exterior-to-interior concept tour. Cabin is an illustrative design; transitions do not animate physical doors. Exterior details use the same photograph.';
   function art(car,detail){
     return '<img src="'+(detail?car.photoLarge:car.photo)+'" width="1600" height="900" alt="" decoding="async"'+(detail?'':' loading="lazy"')+'>';
   }
@@ -445,7 +455,7 @@ footer a{color:var(--amber-hi)}
   var dlg=$('dlg'),cur=null,opener=null;
   function pay(){if(!cur)return;var dep=+$('d-dep').value/100,n=+$('d-term').value,P=cur.price*(1-dep),r=.049/12,m=P*r/(1-Math.pow(1+r,-n));var o=$('d-pay'),prev=parseFloat((o.textContent||'').replace(/[^0-9.]/g,''));if(window.DemoMotion&&o.dataset.car===cur.id)DemoMotion.tween(o,prev,m,function(v){return sar(v)+' per month'});else o.textContent=sar(m)+' per month';o.dataset.car=cur.id}
   var shown=CARS.slice(),gx=null,swapT=0;
-  function gal(c,el,auto,extra){return DemoGallery.mount(el,Object.assign({mobileToolbar:true,src:c.photoLarge,srcset:c.srcset,sizes:'(min-width:1000px) 980px, 100vw',thumb:c.photo,alt:c.alt||'',views:c.views,auto:auto,label:c.name+' photo gallery'},extra||{}))}
+  function gal(c,el,auto,extra){return DemoGallery.mount(el,Object.assign({mobileToolbar:true,src:c.photoLarge,srcset:c.srcset,sizes:'(min-width:1000px) 980px, 100vw',thumb:c.photo,alt:c.alt||'',views:c.views,auto:auto,label:c.name+' photo gallery',note:c.note},extra||{}))}
   function fill(c){
     if(gx){gx.destroy();gx=null}
     var pane=$('d-art');pane.parentNode.classList.toggle('has-photo',!!c.photo);
@@ -509,7 +519,7 @@ footer a{color:var(--amber-hi)}
     document.querySelectorAll('[data-feature]').forEach(function(button){button.setAttribute('aria-pressed',button.dataset.feature===id)});
   }
   $('featured-picks').addEventListener('click',function(e){var button=e.target.closest('[data-feature]');if(button)feature(button.dataset.feature)});
-  feature('rs');
+  feature('gt');
   var ff=document.querySelector('.feat-frame');
   if(ff&&'IntersectionObserver' in window)new IntersectionObserver(function(es){ff.classList.toggle('is-on',es[0].isIntersecting)}).observe(ff);
   render();
